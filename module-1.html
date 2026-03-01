@@ -472,6 +472,16 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 <div class="save-badge" id="save-badge">Saved ✓</div>
 
 <script>
+
+// ── ACCESS GATE ──────────────────────────────────────────────────────────────
+(function(){
+  const S='lc_access', D=7*24*60*60*1000;
+  try{
+    const s=JSON.parse(localStorage.getItem(S)||'null');
+    if(!s||Date.now()-s.ts>D){localStorage.removeItem(S);window.location.replace('access.html');}
+  }catch(e){window.location.replace('access.html');}
+})();
+// ─────────────────────────────────────────────────────────────────────────────
 const MOD = 1;
 const KEY = `lc_m${MOD}`;
 const TOTAL_FIELDS = 6; // reflect boxes
@@ -536,6 +546,10 @@ function calcProgress() {
   const done = filled + auditFilled;
   const pct = Math.min(100, Math.round((done / total) * 100));
   localStorage.setItem(`lc_m${MOD}_progress`, pct);
+  // Sync to unified portal progress object
+  const _prog = JSON.parse(localStorage.getItem('lc_progress') || '{}');
+  _prog[`mod${MOD}`] = pct;
+  localStorage.setItem('lc_progress', JSON.stringify(_prog));
   document.getElementById('nav-pct').textContent = pct + '%';
   document.getElementById('nav-bar-fill').style.width = pct + '%';
   if (pct >= 80) {

@@ -104,6 +104,15 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .stat-card.red .stat-num{color:var(--red)}
 .stat-card.yellow .stat-num{color:var(--yellow)}
 
+/* ACTIVITY FEED */
+.activity-feed{background:var(--card);border:1px solid var(--rule);overflow:hidden}
+.activity-feed-empty{padding:20px 24px;font-size:13px;color:var(--light);font-style:italic}
+.activity-item{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--rule)}
+.activity-item:last-child{border-bottom:none}
+.activity-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.activity-text{font-size:13px;color:var(--mid);font-weight:600;flex:1}
+.activity-time{font-size:11px;color:var(--light)}
+
 /* SECTION TITLES */
 .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
 .section-head-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em}
@@ -276,6 +285,17 @@ body{display:flex;flex-direction:column;min-height:100vh}
           <div class="stat-num" id="statRemaining">7</div>
           <div class="stat-label">Modules<br>Remaining</div>
         </div>
+      </div>
+    </div>
+
+    <!-- RECENT ACTIVITY -->
+    <div>
+      <div class="section-head">
+        <div class="section-head-title">Recent Activity</div>
+        <div class="section-head-meta" id="activityMeta"></div>
+      </div>
+      <div class="activity-feed" id="activityFeed">
+        <div class="activity-feed-empty" id="activityEmpty">No activity yet — start Module 01 to begin</div>
       </div>
     </div>
 
@@ -457,6 +477,11 @@ const MODULES = [
 
 function loadDashboard(){
   const prog = JSON.parse(localStorage.getItem('lc_progress') || '{}');
+  // Belt-and-braces: also read legacy lc_m1_progress / lc_m2_progress keys
+  [1,2].forEach(n => {
+    const legacy = localStorage.getItem(`lc_m${n}_progress`);
+    if(legacy && !prog[`mod${n}`]) prog[`mod${n}`] = parseInt(legacy)||0;
+  });
   let totalPct = 0;
   let started = 0;
   let complete = 0;
@@ -519,12 +544,45 @@ function loadDashboard(){
   document.getElementById('statComplete').textContent = complete;
   document.getElementById('statPct').textContent = avg + '%';
   document.getElementById('statRemaining').textContent = MODULES.length - complete;
+
+  // Load activity feed
+  loadActivity();
+}
+
+function loadActivity(){
+  const log = JSON.parse(localStorage.getItem('lc_activity') || '[]');
+  const feed = document.getElementById('activityFeed');
+  const empty = document.getElementById('activityEmpty');
+  const meta = document.getElementById('activityMeta');
+  if(!log.length){
+    empty.style.display='block';
+    meta.textContent = '';
+    return;
+  }
+  empty.style.display='none';
+  meta.textContent = log.length + ' entr' + (log.length===1?'y':'ies');
+  // Show most recent first, max 8
+  const items = [...log].reverse().slice(0,8);
+  const existing = feed.querySelectorAll('.activity-item');
+  existing.forEach(el=>el.remove());
+  items.forEach(item=>{
+    const div = document.createElement('div');
+    div.className = 'activity-item';
+    div.innerHTML = `<div class="activity-dot" style="background:${item.color||'var(--teal)'}"></div><div class="activity-text">${item.text}</div><div class="activity-time">${item.time||''}</div>`;
+    feed.appendChild(div);
+  });
 }
 
 function resetProgress(){
   if(!confirm('Reset ALL progress? This will clear every reflection, audit, and saved response across all 7 modules. This cannot be undone.')) return;
   MODULES.forEach(m => localStorage.removeItem(m.key));
   localStorage.removeItem('lc_progress');
+  // Also clear legacy keys from modules 1 & 2
+  [1,2].forEach(n => {
+    localStorage.removeItem(`lc_m${n}`);
+    localStorage.removeItem(`lc_m${n}_progress`);
+  });
+  localStorage.removeItem('lc_activity');
   loadDashboard();
 }
 

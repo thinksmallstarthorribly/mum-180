@@ -4,7 +4,6 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 02: The Stuck Framework — Life Circuitry</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="module-shared.css">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--accent:#e05555;--accent-d:#c03a3a;--accent-p:#fdf1f1;--accent-m:#f0b0b0;--teal:#5ec5cc;--teal-p:#eaf7f8;--charcoal:#1a1a1a;--mid:#444;--light:#888;--bg:#f0f0ee;--card:#fff;--rule:#e8e8e6}
@@ -172,7 +171,7 @@ body{display:flex;flex-direction:column}
   <div class="reflect-box">
     <div class="reflect-label">Reflect · Your Loop</div>
     <div class="reflect-question">Describe your specific stuck loop. What does giving up look like for you? What does starting again look like? How many times has this cycle repeated?</div>
-    <textarea class="reflect-input" id="r1" placeholder="Be specific about the pattern — not just 'I give up on things' but what exactly happens, in what order, what you tell yourself..." onchange="save()"></textarea>
+    <textarea class="reflect-input" id="r1" placeholder="Be specific about the pattern — not just 'I give up on things' but what exactly happens, in what order, what you tell yourself..." oninput="save()"></textarea>
   </div>
 </div>
 
@@ -203,7 +202,7 @@ body{display:flex;flex-direction:column}
   <div class="reflect-box">
     <div class="reflect-label">Reflect · Your Threshold</div>
     <div class="reflect-question">What does your real life look like on the other side of the threshold? Describe it concretely — what are you doing, how are you operating, what's different?</div>
-    <textarea class="reflect-input" id="r2" placeholder="Not 'I'd be happy and successful' — specifically: what actions are you taking, what decisions are you making differently, what does a typical week look like?" onchange="save()"></textarea>
+    <textarea class="reflect-input" id="r2" placeholder="Not 'I'd be happy and successful' — specifically: what actions are you taking, what decisions are you making differently, what does a typical week look like?" oninput="save()"></textarea>
   </div>
 </div>
 
@@ -252,12 +251,12 @@ body{display:flex;flex-direction:column}
   <div class="reflect-box">
     <div class="reflect-label">Build · Evidence Inventory</div>
     <div class="reflect-question">List every piece of evidence you have that you are capable of following through. Include things from years ago. Include things that feel small. Every instance counts.</div>
-    <textarea class="reflect-input" id="r3" style="min-height:160px" placeholder="1. Finished [x] even when I didn't feel like it&#10;2. Showed up consistently to [x] for [x] months&#10;3. Completed [x] despite [obstacle]&#10;..." onchange="save()"></textarea>
+    <textarea class="reflect-input" id="r3" style="min-height:160px" placeholder="1. Finished [x] even when I didn't feel like it&#10;2. Showed up consistently to [x] for [x] months&#10;3. Completed [x] despite [obstacle]&#10;..." oninput="save()"></textarea>
   </div>
   <div class="reflect-box">
     <div class="reflect-label">Build · Your Minimum Viable Action</div>
     <div class="reflect-question">What is the smallest action you could take today that would constitute a deposit in your self-trust account? So small it's almost embarrassing. Define it precisely.</div>
-    <textarea class="reflect-input" id="r4" placeholder="Not 'work on my business' — 'send one email to one potential client before 10am'" onchange="save()"></textarea>
+    <textarea class="reflect-input" id="r4" placeholder="Not 'work on my business' — 'send one email to one potential client before 10am'" oninput="save()"></textarea>
   </div>
 </div>
 
@@ -269,7 +268,7 @@ body{display:flex;flex-direction:column}
   <div class="reflect-box">
     <div class="reflect-label">Commit · Your Threshold Plan</div>
     <div class="reflect-question">Write your specific plan for the next 21 days. What is the one action you will take daily? How will you record it? What will you do on day 1, and what will "crossed" look like?</div>
-    <textarea class="reflect-input" id="r5" style="min-height:140px" placeholder="Daily action: [x]&#10;How I'll record it: [x]&#10;Day 1 starts: [date]&#10;What 'crossed' looks like: [x]" onchange="save()"></textarea>
+    <textarea class="reflect-input" id="r5" style="min-height:140px" placeholder="Daily action: [x]&#10;How I'll record it: [x]&#10;Day 1 starts: [date]&#10;What 'crossed' looks like: [x]" oninput="save()"></textarea>
   </div>
   <div class="complete-banner" id="complete-banner">
     <h3>Module 02 Complete ✓</h3>
@@ -293,15 +292,48 @@ body{display:flex;flex-direction:column}
 </div>
 <div class="save-badge" id="save-badge">Saved ✓</div>
 <script>
+
+// ── ACCESS GATE ──────────────────────────────────────────────────────────────
+(function(){
+  const S='lc_access', D=7*24*60*60*1000;
+  try{
+    const s=JSON.parse(localStorage.getItem(S)||'null');
+    if(!s||Date.now()-s.ts>D){localStorage.removeItem(S);window.location.replace('access.html');}
+  }catch(e){window.location.replace('access.html');}
+})();
+// ─────────────────────────────────────────────────────────────────────────────
 const MOD=2;const KEY=`lc_m${MOD}`;
 function load(){const d=JSON.parse(localStorage.getItem(KEY)||'{}');['r1','r2','r3','r4','r5'].forEach(id=>{if(d[id]!==undefined){const el=document.getElementById(id);if(el)el.value=d[id];}});['st1','st2','st3','st4'].forEach(q=>{if(d[q]){const btn=document.querySelector(`[data-q="${q}"] [data-v="${d[q]}"]`);if(btn)btn.classList.add('on');}});calcProgress();updateResults();}
 let saveTimer;
 function save(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{const d={};['r1','r2','r3','r4','r5'].forEach(id=>{const el=document.getElementById(id);if(el)d[id]=el.value;});['st1','st2','st3','st4'].forEach(q=>{const on=document.querySelector(`[data-q="${q}"] .on`);if(on)d[q]=on.getAttribute('data-v');});localStorage.setItem(KEY,JSON.stringify(d));calcProgress();showSaved();},500);}
 function showSaved(){const b=document.getElementById('save-badge');b.classList.add('show');setTimeout(()=>b.classList.remove('show'),2000);}
-function calcProgress(){const d=JSON.parse(localStorage.getItem(KEY)||'{}');let f=0;['r1','r2','r3','r4','r5'].forEach(id=>{if(d[id]&&d[id].trim().length>10)f++;});const af=['st1','st2','st3','st4'].filter(q=>d[q]).length;const pct=Math.min(100,Math.round(((f+af)/(5+4))*100));localStorage.setItem(`lc_m${MOD}_progress`,pct);document.getElementById('nav-pct').textContent=pct+'%';document.getElementById('nav-bar-fill').style.width=pct+'%';if(pct>=80)document.getElementById('complete-banner').classList.add('show');}
+function calcProgress(){const d=JSON.parse(localStorage.getItem(KEY)||'{}');let f=0;['r1','r2','r3','r4','r5'].forEach(id=>{if(d[id]&&d[id].trim().length>10)f++;});const af=['st1','st2','st3','st4'].filter(q=>d[q]).length;const pct=Math.min(100,Math.round(((f+af)/(5+4))*100));localStorage.setItem(`lc_m${MOD}_progress`,pct);
+  // Sync to unified portal progress object
+  const _prog=JSON.parse(localStorage.getItem('lc_progress')||'{}');
+  _prog[`mod${MOD}`]=pct;
+  localStorage.setItem('lc_progress',JSON.stringify(_prog));
+  // Log activity
+  if(pct>0){const _log=JSON.parse(localStorage.getItem('lc_activity')||'[]');const _entry={text:`Module 02 — ${pct}% complete`,color:'#e05555',time:new Date().toLocaleDateString()};const _last=_log[_log.length-1];if(!_last||_last.text!==_entry.text){_log.push(_entry);localStorage.setItem('lc_activity',JSON.stringify(_log.slice(-20)));}}document.getElementById('nav-pct').textContent=pct+'%';document.getElementById('nav-bar-fill').style.width=pct+'%';if(pct>=80)document.getElementById('complete-banner').classList.add('show');}
 function auditClick(btn,q){document.querySelectorAll(`[data-q="${q}"] .audit-btn`).forEach(b=>b.classList.remove('on'));btn.classList.add('on');save();updateResults();}
 function updateResults(){const d=JSON.parse(localStorage.getItem(KEY)||'{}');const qs=['st1','st2','st3','st4'];const vals=qs.map(q=>parseInt(d[q]||0));if(vals.every(v=>v>0)){const total=vals.reduce((a,b)=>a+b,0);const max=qs.length*5;document.getElementById('st-score').textContent=total+'/'+max;const pct=Math.round((total/max)*100);document.getElementById('st-text').textContent=pct>=75?'Strong self-trust foundation. Focus on maintaining the follow-through streak.':pct>=50?'Moderate. Self-trust exists in some areas but not others. Identify which conditions trigger the collapse.':'Low self-trust. This is the core thing to work on — not motivation, not strategy. Start with the minimum viable action and stack evidence.';document.getElementById('st-result').classList.add('show');}}
+// Scroll spy for TOC
+function setupScrollSpy(){
+  const sections = ['s1','s2','s3','s4','s5'].map(id=>document.getElementById(id));
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const n = entry.target.id;
+        document.querySelectorAll('.toc-item').forEach(t=>t.classList.remove('active'));
+        const tocEl = document.getElementById('toc-'+n);
+        if(tocEl) tocEl.classList.add('active');
+      }
+    });
+  },{threshold:0.3});
+  sections.forEach(s=>{if(s)observer.observe(s);});
+}
+
 load();
+setupScrollSpy();
 </script>
 </body>
 </html>

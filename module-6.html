@@ -371,6 +371,16 @@ textarea.reflect-input:focus{outline:none;border-color:var(--orange);background:
 </div>
 
 <script>
+
+// ── ACCESS GATE ──────────────────────────────────────────────────────────────
+(function(){
+  const S='lc_access', D=7*24*60*60*1000;
+  try{
+    const s=JSON.parse(localStorage.getItem(S)||'null');
+    if(!s||Date.now()-s.ts>D){localStorage.removeItem(S);window.location.replace('access.html');}
+  }catch(e){window.location.replace('access.html');}
+})();
+// ─────────────────────────────────────────────────────────────────────────────
 const MOD_KEY='lc_mod6';
 function togglePrinciple(el){el.classList.toggle('selected');updateProgress();save()}
 function selectHier(el,level){
@@ -412,6 +422,13 @@ function save(){
   const prog=JSON.parse(localStorage.getItem('lc_progress')||'{}');
   prog.mod6=calcPct();
   localStorage.setItem('lc_progress',JSON.stringify(prog));
+  // Log activity
+  const _pct2=calcPct();
+  if(_pct2>0){
+    const _log=JSON.parse(localStorage.getItem('lc_activity')||'[]');
+    const _entry={text:'Module 06 — '+_pct2+'% complete',color:'#e67e22',time:new Date().toLocaleDateString()};
+    const _last=_log[_log.length-1];
+    if(!_last||_last.text!==_entry.text){_log.push(_entry);localStorage.setItem('lc_activity',JSON.stringify(_log.slice(-20)));}  }
 }
 function load(){
   const d=JSON.parse(localStorage.getItem(MOD_KEY)||'{}');
