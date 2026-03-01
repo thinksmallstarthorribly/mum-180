@@ -126,16 +126,6 @@ textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:
   .toc-sidebar{display:none}
   .barrier-grid{grid-template-columns:1fr}
 }
-
-    /* Source document viewer */
-    .source-doc-wrap{border:1px solid var(--border,#e0e0e0);border-radius:8px;overflow:hidden;margin-top:16px}
-    .source-doc-toolbar{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--card,#f8f8f8);border-bottom:1px solid var(--border,#e0e0e0)}
-    .source-doc-label{font-size:12px;font-weight:700;color:var(--charcoal,#1a1a1a);flex:1}
-    .source-doc-download{font-size:12px;font-weight:600;color:var(--accent,#5ec5cc);text-decoration:none;padding:4px 10px;border:1px solid var(--accent,#5ec5cc);border-radius:4px;transition:all 0.15s}
-    .source-doc-download:hover{background:var(--accent,#5ec5cc);color:#fff}
-    .source-doc-viewer{width:100%;height:680px;border:none;display:block}
-    @media(max-width:768px){.source-doc-viewer{height:480px}}
-    @media print{.source-doc-wrap{display:none}}
     </style>
 </head>
 <body>
@@ -411,26 +401,6 @@ textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:
       </div>
 
       <!-- CIRCUIT CHECK -->
-      
-      <div class="section-block" id="sec-source">
-        <div class="section-label">Source Document</div>
-        <h2 class="section-title">Escaping the Conceptual Landscape</h2>
-        <p class="body-text">The original source document — the complete guide to the 20 psychological barriers and the bridge from theory to action.</p>
-        <div class="source-doc-wrap">
-          <div class="source-doc-toolbar">
-            <span class="source-doc-label">📄 Original PDF</span>
-            <a class="source-doc-download" href="assets/docs/module-3-source.pdf" download target="_blank">⬇ Download</a>
-            <a class="source-doc-download" href="assets/docs/module-3-source.pdf" target="_blank">↗ Open in new tab</a>
-          </div>
-          <iframe
-            class="source-doc-viewer"
-            src="assets/docs/module-3-source.pdf#toolbar=1&navpanes=0&scrollbar=1"
-            title="Source Document: Escaping the Conceptual Landscape"
-            loading="lazy"
-          ></iframe>
-        </div>
-      </div>
-
       <div class="section-block" id="sec-circuit">
         <div class="section-label">Circuit Check</div>
         <h2 class="section-title">Module Diagnostic</h2>
@@ -496,7 +466,6 @@ textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:
     <a href="#sec-thinking" class="toc-link" onclick="setToc(this)">04 — Thinking Barriers</a>
     <a href="#sec-adapting" class="toc-link" onclick="setToc(this)">05 — Adapting Barriers</a>
     <a href="#sec-bridge" class="toc-link" onclick="setToc(this)">06 — The Bridge</a>
-        <a href="#sec-source" class="toc-link" onclick="setToc(this)">Source Document</a>
 <a href="#sec-circuit" class="toc-link" onclick="setToc(this)">Circuit Check</a>
     <div class="toc-footer">
       <button class="btn-download" style="width:100%" onclick="downloadPDF()">⬇ Download PDF</button>

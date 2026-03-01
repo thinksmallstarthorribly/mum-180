@@ -108,16 +108,6 @@ body{display:flex;flex-direction:column}
 .save-badge.show{opacity:1}
 @media(max-width:768px){.toc-sidebar{display:none}.content-body{padding:32px 20px}.mod-header{padding:36px 24px}}
 @media print{.topnav,.toc-sidebar,.save-badge{display:none!important}.content-body{max-width:none;padding:20px}}
-
-    /* Source document viewer */
-    .source-doc-wrap{border:1px solid var(--border,#e0e0e0);border-radius:8px;overflow:hidden;margin-top:16px}
-    .source-doc-toolbar{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--card,#f8f8f8);border-bottom:1px solid var(--border,#e0e0e0)}
-    .source-doc-label{font-size:12px;font-weight:700;color:var(--charcoal,#1a1a1a);flex:1}
-    .source-doc-download{font-size:12px;font-weight:600;color:var(--accent,#5ec5cc);text-decoration:none;padding:4px 10px;border:1px solid var(--accent,#5ec5cc);border-radius:4px;transition:all 0.15s}
-    .source-doc-download:hover{background:var(--accent,#5ec5cc);color:#fff}
-    .source-doc-viewer{width:100%;height:680px;border:none;display:block}
-    @media(max-width:768px){.source-doc-viewer{height:480px}}
-    @media print{.source-doc-wrap{display:none}}
     </style>
 </head>
 <body>
@@ -269,27 +259,6 @@ body{display:flex;flex-direction:column}
     <textarea class="reflect-input" id="r4" placeholder="Not 'work on my business' — 'send one email to one potential client before 10am'" oninput="save()"></textarea>
   </div>
 </div>
-
-
-      <div class="section-block" id="sec-source">
-        <div class="section-label">Source Document</div>
-        <h2 class="section-title">Stuck Framework</h2>
-        <p class="body-text">The original source document for this module — the complete Stuck Framework reference guide.</p>
-        <div class="source-doc-wrap">
-          <div class="source-doc-toolbar">
-            <span class="source-doc-label">📄 Original PDF</span>
-            <a class="source-doc-download" href="assets/docs/module-2-source.pdf" download target="_blank">⬇ Download</a>
-            <a class="source-doc-download" href="assets/docs/module-2-source.pdf" target="_blank">↗ Open in new tab</a>
-          </div>
-          <iframe
-            class="source-doc-viewer"
-            src="assets/docs/module-2-source.pdf#toolbar=1&navpanes=0&scrollbar=1"
-            title="Source Document: Stuck Framework"
-            loading="lazy"
-          ></iframe>
-        </div>
-      </div>
-
       <div class="section-block" id="s5">
   <div class="section-label">Section 5 of 5</div>
   <div class="section-title">Crossing the Threshold</div>
@@ -317,7 +286,6 @@ body{display:flex;flex-direction:column}
   <a class="toc-item" href="#s2" id="toc-s2"><div class="toc-dot"></div>The Threshold</a>
   <a class="toc-item" href="#s3" id="toc-s3"><div class="toc-dot"></div>Confidence vs Self-Trust</a>
   <a class="toc-item" href="#s4" id="toc-s4"><div class="toc-dot"></div>Evidence Builder</a>
-  <a class="toc-item" href="#sec-source" id="toc-sec-source"><div class="toc-dot"></div>Source Document</a>
     <a class="toc-item" href="#s5" id="toc-s5"><div class="toc-dot"></div>Crossing the Threshold</a>
 </div>
 </div>

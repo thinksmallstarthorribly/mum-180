@@ -117,16 +117,6 @@ textarea.reflect-input:focus{outline:none;border-color:var(--orange);background:
 .btn-download{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;border:none;background:var(--charcoal);color:#fff;cursor:pointer;transition:all 0.2s}
 .btn-download:hover{background:var(--orange)}
 @media(max-width:768px){.mod-header{padding:32px 24px}.content-body{padding:32px 20px}.toc-sidebar{display:none}}
-
-    /* Source document viewer */
-    .source-doc-wrap{border:1px solid var(--border,#e0e0e0);border-radius:8px;overflow:hidden;margin-top:16px}
-    .source-doc-toolbar{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--card,#f8f8f8);border-bottom:1px solid var(--border,#e0e0e0)}
-    .source-doc-label{font-size:12px;font-weight:700;color:var(--charcoal,#1a1a1a);flex:1}
-    .source-doc-download{font-size:12px;font-weight:600;color:var(--accent,#5ec5cc);text-decoration:none;padding:4px 10px;border:1px solid var(--accent,#5ec5cc);border-radius:4px;transition:all 0.15s}
-    .source-doc-download:hover{background:var(--accent,#5ec5cc);color:#fff}
-    .source-doc-viewer{width:100%;height:680px;border:none;display:block}
-    @media(max-width:768px){.source-doc-viewer{height:480px}}
-    @media print{.source-doc-wrap{display:none}}
     </style>
 </head>
 <body>
@@ -340,26 +330,6 @@ textarea.reflect-input:focus{outline:none;border-color:var(--orange);background:
       </div>
 
       <!-- SECTION 5: CIRCUIT CHECK -->
-      
-      <div class="section-block" id="sec-source">
-        <div class="section-label">Source Document</div>
-        <h2 class="section-title">The Marketplace & The Hierarchy of Value</h2>
-        <p class="body-text">The original source document — the complete guide to marketplace principles and the five stages of value.</p>
-        <div class="source-doc-wrap">
-          <div class="source-doc-toolbar">
-            <span class="source-doc-label">📄 Original PDF</span>
-            <a class="source-doc-download" href="assets/docs/module-6-source.pdf" download target="_blank">⬇ Download</a>
-            <a class="source-doc-download" href="assets/docs/module-6-source.pdf" target="_blank">↗ Open in new tab</a>
-          </div>
-          <iframe
-            class="source-doc-viewer"
-            src="assets/docs/module-6-source.pdf#toolbar=1&navpanes=0&scrollbar=1"
-            title="Source Document: The Marketplace & The Hierarchy of Value"
-            loading="lazy"
-          ></iframe>
-        </div>
-      </div>
-
       <div class="section-block" id="sec-circuit">
         <div class="section-label">Circuit Check</div>
         <h2 class="section-title">Module Diagnostic</h2>
@@ -393,7 +363,6 @@ textarea.reflect-input:focus{outline:none;border-color:var(--orange);background:
     <a href="#sec-hierarchy" class="toc-link" onclick="setToc(this)">02 — Hierarchy of Value</a>
     <a href="#sec-audit" class="toc-link" onclick="setToc(this)">03 — Value Audit</a>
     <a href="#sec-advantage" class="toc-link" onclick="setToc(this)">04 — Competitive Advantage</a>
-        <a href="#sec-source" class="toc-link" onclick="setToc(this)">Source Document</a>
 <a href="#sec-circuit" class="toc-link" onclick="setToc(this)">Circuit Check</a>
     <div class="toc-footer">
       <button class="btn-download" style="width:100%" onclick="downloadPDF()">⬇ Download PDF</button>
