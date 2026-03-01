@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Life Circuitry</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --teal:#5ec5cc;--teal-d:#3aabb3;--teal-p:#eaf7f8;
+  --yellow:#f5c842;--yp:#fef9e7;
+  --red:#e05555;--rp:#fdf1f1;
+  --green:#27ae60;--gp:#eafaf1;
+  --charcoal:#1a1a1a;--mid:#444;--light:#888;
+  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+}
+html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal)}
+
+/* TOP BAR */
+.topbar{background:var(--charcoal);height:56px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal)}
+.topbar-logo span{color:rgba(255,255,255,0.2)}
+.topbar-tag{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);background:rgba(245,200,66,0.12);padding:4px 10px;border:1px solid rgba(245,200,66,0.25)}
+
+/* GATE */
+.gate{min-height:calc(100vh - 56px);display:flex;align-items:center;justify-content:center;padding:40px 20px}
+.gate-card{background:var(--card);border:1px solid var(--rule);max-width:380px;width:100%;padding:40px}
+.gate-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;margin-bottom:8px}
+.gate-sub{font-size:13px;color:var(--light);margin-bottom:28px;line-height:1.6}
+.gate-input{width:100%;padding:14px 16px;border:1.5px solid var(--rule);font-family:'Barlow',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.08em;outline:none;background:#fff;transition:border 0.2s;margin-bottom:10px}
+.gate-input:focus{border-color:var(--teal)}
+.gate-input.error{border-color:var(--red);animation:shake 0.3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.gate-btn{width:100%;padding:15px;background:var(--charcoal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;transition:background 0.2s}
+.gate-btn:hover{background:var(--teal)}
+.gate-err{font-size:12px;color:var(--red);margin-top:8px;display:none}
+.gate-err.show{display:block}
+
+/* MAIN ADMIN UI */
+.admin-wrap{display:none;max-width:960px;margin:0 auto;padding:40px 24px}
+.admin-wrap.show{display:block}
+.page-title{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;text-transform:uppercase;margin-bottom:4px}
+.page-sub{font-size:13px;color:var(--light);margin-bottom:40px}
+
+/* PANELS */
+.panel{background:var(--card);border:1px solid var(--rule);margin-bottom:24px}
+.panel-head{padding:20px 24px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between}
+.panel-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em}
+.panel-meta{font-size:11px;color:var(--light);font-weight:600}
+.panel-body{padding:24px}
+
+/* CODE TABLE */
+.code-table{width:100%;border-collapse:collapse}
+.code-table th{font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);text-align:left;padding:0 0 12px 0;border-bottom:2px solid var(--rule)}
+.code-table td{padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:middle}
+.code-table tr:last-child td{border-bottom:none}
+.code-badge{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:0.1em;color:var(--charcoal)}
+.code-tier{font-size:11px;font-weight:700;padding:3px 8px;text-transform:uppercase;letter-spacing:0.08em}
+.code-tier.foundation{background:var(--teal-p);color:var(--teal-d)}
+.code-tier.full{background:var(--yp);color:#b8900a}
+.code-tier.coaching{background:var(--rp);color:var(--red)}
+.code-tier.demo{background:#f4f4f4;color:var(--light)}
+.code-note{font-size:12px;color:var(--light)}
+.code-status{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em}
+.code-status.active{color:var(--green)}
+.code-status.active::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block}
+.code-status.revoked{color:var(--red);text-decoration:line-through;opacity:0.6}
+.code-status.revoked::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block}
+.btn-revoke{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:5px 10px;background:transparent;border:1px solid var(--rule);color:var(--light);cursor:pointer;transition:all 0.15s}
+.btn-revoke:hover{border-color:var(--red);color:var(--red);background:var(--rp)}
+.btn-restore{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:5px 10px;background:transparent;border:1px solid var(--rule);color:var(--light);cursor:pointer;transition:all 0.15s}
+.btn-restore:hover{border-color:var(--green);color:var(--green);background:var(--gp)}
+.btn-copy{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:5px 10px;background:transparent;border:1px solid var(--rule);color:var(--light);cursor:pointer;transition:all 0.15s;margin-right:4px}
+.btn-copy:hover{border-color:var(--teal);color:var(--teal-d);background:var(--teal-p)}
+
+/* ADD CODE FORM */
+.add-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;align-items:end}
+@media(max-width:640px){.add-form{grid-template-columns:1fr}}
+.field label{font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:6px}
+.field input,.field select{width:100%;padding:12px 14px;border:1.5px solid var(--rule);font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;outline:none;background:#fff;transition:border 0.2s}
+.field input:focus,.field select:focus{border-color:var(--teal)}
+.btn-add{padding:13px 20px;background:var(--charcoal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;white-space:nowrap;transition:background 0.2s}
+.btn-add:hover{background:var(--teal)}
+
+/* GENERATE */
+.gen-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.gen-output{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:0.12em;color:var(--teal);background:var(--teal-p);padding:12px 20px;flex:1;min-width:200px}
+.btn-gen{padding:13px 20px;background:var(--teal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;transition:background 0.2s}
+.btn-gen:hover{background:var(--teal-d)}
+
+/* EMAIL TEMPLATE */
+.email-tmpl{background:var(--bg);border:1px solid var(--rule);padding:20px;font-size:13px;line-height:1.8;color:var(--mid);white-space:pre-wrap;font-family:monospace;cursor:pointer;transition:border 0.2s;position:relative}
+.email-tmpl:hover{border-color:var(--teal)}
+.tmpl-copy-hint{position:absolute;top:8px;right:10px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--light)}
+.email-tmpl-code{color:var(--teal-d);font-weight:700}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--charcoal);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none}
+.toast.show{opacity:1}
+
+/* STATS BAR */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:32px}
+.sbar-card{background:var(--card);border:1px solid var(--rule);padding:16px 20px}
+.sbar-num{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:var(--charcoal);line-height:1;margin-bottom:2px}
+.sbar-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--light)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Life Circuitry <span>/ Admin</span></div>
+  <div class="topbar-tag">Private — Alex Only</div>
+</div>
+
+<!-- ADMIN PASSWORD GATE -->
+<div id="gate" class="gate">
+  <div class="gate-card">
+    <div class="gate-title">Admin Access</div>
+    <div class="gate-sub">This page is for Alex only. Enter the admin password to manage client access codes.</div>
+    <input type="password" id="adminPwd" class="gate-input" placeholder="Admin password" onkeydown="if(event.key==='Enter')checkAdmin()">
+    <button class="gate-btn" onclick="checkAdmin()">Enter Admin →</button>
+    <div class="gate-err" id="adminErr">Incorrect password</div>
+  </div>
+</div>
+
+<!-- ADMIN UI -->
+<div id="adminUI" class="admin-wrap">
+  <div class="page-title">Code Manager</div>
+  <div class="page-sub">Manage client access codes — add, revoke, and copy codes for delivery. All changes save instantly.</div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="sbar-card"><div class="sbar-num" id="statTotal">0</div><div class="sbar-label">Total Codes</div></div>
+    <div class="sbar-card"><div class="sbar-num" id="statActive">0</div><div class="sbar-label">Active</div></div>
+    <div class="sbar-card"><div class="sbar-num" id="statRevoked">0</div><div class="sbar-label">Revoked</div></div>
+    <div class="sbar-card"><div class="sbar-num" id="statRevenue">$0</div><div class="sbar-label">Tracked Revenue</div></div>
+  </div>
+
+  <!-- GENERATE A CODE -->
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">Generate New Code</div>
+      <div class="panel-meta">Random 10-character code</div>
+    </div>
+    <div class="panel-body">
+      <div class="gen-row">
+        <div class="gen-output" id="genOutput">Click Generate →</div>
+        <button class="btn-gen" onclick="generateCode()">Generate</button>
+        <button class="btn-gen" style="background:var(--charcoal)" onclick="copyGenerated()">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD CODE -->
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">Add Client Code</div>
+      <div class="panel-meta">Manually add a code for a new client</div>
+    </div>
+    <div class="panel-body">
+      <div class="add-form">
+        <div class="field">
+          <label>Access Code</label>
+          <input type="text" id="newCode" placeholder="e.g. ALEX2026" oninput="this.value=this.value.toUpperCase().replace(/\s/g,'')">
+        </div>
+        <div class="field">
+          <label>Client Name / Note</label>
+          <input type="text" id="newNote" placeholder="e.g. John Smith - Full Prog">
+        </div>
+        <div class="field">
+          <label>Tier</label>
+          <select id="newTier">
+            <option value="full">Full Programme ($297)</option>
+            <option value="foundation">Foundation Pack ($97)</option>
+            <option value="coaching">Coaching ($997)</option>
+            <option value="demo">Demo / Complimentary</option>
+          </select>
+        </div>
+        <button class="btn-add" onclick="addCode()">Add Code</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CODE LIST -->
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">All Codes</div>
+      <div class="panel-meta" id="codeCount">0 codes</div>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <table class="code-table" style="margin:0 24px;width:calc(100% - 48px)">
+        <thead>
+          <tr>
+            <th style="width:28%">Code</th>
+            <th style="width:16%">Tier</th>
+            <th style="width:26%">Note</th>
+            <th style="width:10%">Status</th>
+            <th style="width:20%;text-align:right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="codeTableBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- EMAIL TEMPLATE -->
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-title">Email Template</div>
+      <div class="panel-meta">Click to copy — paste into email, replace [CODE] with the client's code</div>
+    </div>
+    <div class="panel-body">
+      <div class="email-tmpl" id="emailTemplate" onclick="copyEmailTemplate()">
+        <div class="tmpl-copy-hint">Click to copy</div>Subject: Your Life Circuitry Access Code
+
+Hi [Name],
+
+Thanks for getting access to Life Circuitry. Here's everything you need to get started.
+
+YOUR ACCESS CODE: <span class="email-tmpl-code">[CODE]</span>
+
+HOW TO ACCESS:
+1. Go to: https://thinksmallstarthorribly.github.io/foundation-circuit/access.html
+2. Enter your code: [CODE]
+3. You're in — start from Module 01 and work through in order.
+
+Your progress saves automatically to your device. You can also add the portal to your phone's home screen for app-like access (tap Share → Add to Home Screen in Safari, or the install icon in Chrome).
+
+A few things worth knowing:
+— Each module takes 45–60 minutes done honestly. Don't rush it.
+— The work compounds. Module 01 builds on itself.
+— Think Small, Start Horribly is literal advice, not motivational fluff.
+
+Any questions, just reply to this email.
+
+Alex
+hello@thinksmallstarthorribly.com
+thinksmallstarthorribly.com</div>
+    </div>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="panel">
+    <div class="panel-head"><div class="panel-title">How This Works</div></div>
+    <div class="panel-body">
+      <p style="font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:12px"><strong>Codes live in two places:</strong> This admin page (your records) and <code style="background:var(--bg);padding:2px 6px;font-size:12px">access.html</code> (the actual validation). When you add a code here it saves to your browser's localStorage as your record — but you also need to add it to the <code style="background:var(--bg);padding:2px 6px;font-size:12px">VALID_CODES</code> array in access.html on GitHub.</p>
+      <p style="font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:12px"><strong>To add a code to access.html:</strong> Go to <a href="https://github.com/thinksmallstarthorribly/foundation-circuit/blob/main/access.html" target="_blank" style="color:var(--teal)">access.html on GitHub</a> → click the pencil icon to edit → find the <code style="background:var(--bg);padding:2px 6px;font-size:12px">VALID_CODES</code> array → add your new code → commit.</p>
+      <p style="font-size:13px;color:var(--mid);line-height:1.8"><strong>To revoke a code:</strong> Mark it revoked here (your records), then remove it from the <code style="background:var(--bg);padding:2px 6px;font-size:12px">VALID_CODES</code> array in access.html on GitHub. The client's existing session lasts up to 7 days after their last login.</p>
+      <div style="margin-top:20px">
+        <a href="https://github.com/thinksmallstarthorribly/foundation-circuit/blob/main/access.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--charcoal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;text-decoration:none">Edit access.html on GitHub →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── ADMIN PASSWORD ────────────────────────────────────────────────────────────
+// Change this to whatever you want. Keep it private.
+const ADMIN_PASSWORD = 'TSSH2026admin';
+// ─────────────────────────────────────────────────────────────────────────────
+
+const STORE_KEY = 'lc_admin_codes';
+
+// Default codes to pre-populate on first run
+const DEFAULT_CODES = [
+  { code:'CIRCUIT2026',   note:'Default demo code',       tier:'demo',       active:true,  rev:0 },
+  { code:'THINKSMALL',    note:'Alex personal',           tier:'demo',       active:true,  rev:0 },
+  { code:'FOUNDATION',    note:'Foundation Pack sample',  tier:'foundation', active:true,  rev:0 },
+  { code:'LIFECIRCUITRY', note:'Full programme sample',   tier:'full',       active:true,  rev:0 },
+  { code:'STARTHORRI8LY', note:'Alternate demo',          tier:'demo',       active:true,  rev:0 },
+];
+
+const TIER_PRICES = { foundation:97, full:297, coaching:997, demo:0 };
+
+function checkAdmin(){
+  const pwd = document.getElementById('adminPwd').value;
+  if(pwd === ADMIN_PASSWORD){
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('adminUI').classList.add('show');
+    initAdmin();
+  } else {
+    const inp = document.getElementById('adminPwd');
+    inp.classList.add('error');
+    document.getElementById('adminErr').classList.add('show');
+    setTimeout(()=>{ inp.classList.remove('error'); inp.value=''; }, 600);
+  }
+}
+
+function getCodes(){
+  const stored = localStorage.getItem(STORE_KEY);
+  if(!stored){
+    const data = DEFAULT_CODES;
+    localStorage.setItem(STORE_KEY, JSON.stringify(data));
+    return data;
+  }
+  return JSON.parse(stored);
+}
+
+function saveCodes(codes){
+  localStorage.setItem(STORE_KEY, JSON.stringify(codes));
+}
+
+function initAdmin(){
+  renderTable();
+  renderStats();
+}
+
+function renderStats(){
+  const codes = getCodes();
+  const active = codes.filter(c=>c.active).length;
+  const revoked = codes.filter(c=>!c.active).length;
+  const revenue = codes.filter(c=>c.active && c.tier!=='demo').reduce((s,c)=>s+(TIER_PRICES[c.tier]||0),0);
+  document.getElementById('statTotal').textContent = codes.length;
+  document.getElementById('statActive').textContent = active;
+  document.getElementById('statRevoked').textContent = revoked;
+  document.getElementById('statRevenue').textContent = '$'+revenue;
+  document.getElementById('codeCount').textContent = codes.length + ' code' + (codes.length===1?'':'s');
+}
+
+function renderTable(){
+  const codes = getCodes();
+  const tbody = document.getElementById('codeTableBody');
+  if(!codes.length){
+    tbody.innerHTML = '<tr><td colspan="5" style="padding:24px 0;color:var(--light);font-size:13px">No codes yet. Add one above.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = codes.map((c,i)=>`
+    <tr>
+      <td><div class="code-badge">${c.code}</div></td>
+      <td><span class="code-tier ${c.tier}">${c.tier === 'full' ? 'Full Prog' : c.tier === 'foundation' ? 'Foundation' : c.tier === 'coaching' ? 'Coaching' : 'Demo'}</span></td>
+      <td><div class="code-note">${c.note||'—'}</div></td>
+      <td><div class="code-status ${c.active?'active':'revoked'}">${c.active?'Active':'Revoked'}</div></td>
+      <td style="text-align:right">
+        <button class="btn-copy" onclick="copyCode('${c.code}')">Copy</button>
+        ${c.active
+          ? `<button class="btn-revoke" onclick="revokeCode(${i})">Revoke</button>`
+          : `<button class="btn-restore" onclick="restoreCode(${i})">Restore</button>`}
+      </td>
+    </tr>
+  `).join('');
+}
+
+function addCode(){
+  const code = document.getElementById('newCode').value.trim().toUpperCase();
+  const note = document.getElementById('newNote').value.trim();
+  const tier = document.getElementById('newTier').value;
+
+  if(!code){ toast('Enter a code first'); return; }
+
+  const codes = getCodes();
+  if(codes.find(c=>c.code===code)){ toast('Code already exists'); return; }
+
+  codes.unshift({ code, note, tier, active:true, rev:Date.now() });
+  saveCodes(codes);
+  document.getElementById('newCode').value = '';
+  document.getElementById('newNote').value = '';
+  renderTable();
+  renderStats();
+  toast('Code added: ' + code);
+}
+
+function revokeCode(i){
+  if(!confirm('Revoke this code? The client will lose access on their next login.')) return;
+  const codes = getCodes();
+  codes[i].active = false;
+  saveCodes(codes);
+  renderTable();
+  renderStats();
+  toast('Code revoked');
+}
+
+function restoreCode(i){
+  const codes = getCodes();
+  codes[i].active = true;
+  saveCodes(codes);
+  renderTable();
+  renderStats();
+  toast('Code restored');
+}
+
+function copyCode(code){
+  navigator.clipboard.writeText(code).then(()=>toast('Copied: '+code)).catch(()=>{
+    // fallback
+    const el = document.createElement('textarea');
+    el.value = code; document.body.appendChild(el); el.select();
+    document.execCommand('copy'); document.body.removeChild(el);
+    toast('Copied: '+code);
+  });
+}
+
+function generateCode(){
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = '';
+  for(let i=0;i<10;i++) code += chars[Math.floor(Math.random()*chars.length)];
+  document.getElementById('genOutput').textContent = code;
+}
+
+function copyGenerated(){
+  const code = document.getElementById('genOutput').textContent;
+  if(code === 'Click Generate →'){ toast('Generate a code first'); return; }
+  copyCode(code);
+}
+
+function copyEmailTemplate(){
+  const text = document.getElementById('emailTemplate').innerText;
+  navigator.clipboard.writeText(text).then(()=>toast('Email template copied!')).catch(()=>{
+    const el = document.createElement('textarea');
+    el.value = text; document.body.appendChild(el); el.select();
+    document.execCommand('copy'); document.body.removeChild(el);
+    toast('Email template copied!');
+  });
+}
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2500);
+}
+
+// Auto-focus password field
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('adminPwd').focus();
+});
+</script>
+</body>
+</html>

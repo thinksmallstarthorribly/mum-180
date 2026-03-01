@@ -1,8 +1,9 @@
-const CACHE_NAME = 'life-circuitry-v2';
+const CACHE_NAME = 'life-circuitry-v3';
 const ASSETS = [
   './index.html',
   './portal.html',
   './access.html',
+  './admin.html',
   './module-1.html',
   './module-2.html',
   './module-3.html',

@@ -512,34 +512,129 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 </footer>
 
 <!-- PURCHASE MODAL -->
-<div id="purchaseModal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)closePurchaseModal()">
-  <div style="background:var(--charcoal);max-width:520px;width:100%;padding:40px;position:relative">
-    <button onclick="closePurchaseModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:24px;cursor:pointer;line-height:1">×</button>
-    <div style="font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:12px">Getting Started</div>
-    <h3 id="modalPlanName" style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:8px"></h3>
-    <div id="modalPlanPrice" style="font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:var(--teal);margin-bottom:24px"></div>
-    <div style="background:rgba(255,255,255,0.05);padding:20px;margin-bottom:24px">
-      <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6">Payment processing coming soon. To get access now, contact Alex directly. You'll receive a unique access code by email immediately after payment is confirmed.</div>
-      <div style="margin-top:12px">
-        <a href="mailto:hello@thinksmallstarthorribly.com" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);text-decoration:none">📧 hello@thinksmallstarthorribly.com</a>
-      </div>
+<style>
+.modal-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.88);align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--charcoal);max-width:540px;width:100%;position:relative;overflow:hidden}
+.modal-top{padding:32px 36px 24px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;color:rgba(255,255,255,0.35);font-size:26px;cursor:pointer;line-height:1;transition:color 0.2s}
+.modal-close:hover{color:#fff}
+.modal-eyebrow{font-size:9px;font-weight:800;letter-spacing:0.28em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.modal-plan{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:2px}
+.modal-price{font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;color:var(--teal);line-height:1;margin-bottom:0}
+.modal-price sup{font-size:24px;vertical-align:super}
+.modal-steps{padding:28px 36px}
+.modal-step{display:flex;gap:16px;margin-bottom:24px;align-items:flex-start}
+.modal-step:last-child{margin-bottom:0}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-body{}
+.step-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em}
+.step-desc{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6}
+.modal-pay-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:10px;padding:15px 20px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;text-decoration:none;cursor:pointer;border:none;transition:all 0.2s}
+.modal-pay-btn.paypal{background:#0070ba;color:#fff}
+.modal-pay-btn.paypal:hover{background:#005ea6}
+.modal-pay-btn.email{background:var(--teal);color:#fff}
+.modal-pay-btn.email:hover{background:var(--teal-d)}
+.modal-divider{display:flex;align-items:center;gap:12px;margin:12px 0}
+.modal-divider-line{flex:1;height:1px;background:rgba(255,255,255,0.08)}
+.modal-divider-text{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.modal-footer-note{padding:16px 36px;background:rgba(0,0,0,0.3);font-size:11px;color:rgba(255,255,255,0.25);line-height:1.7;border-top:1px solid rgba(255,255,255,0.06)}
+.modal-footer-note a{color:var(--teal);text-decoration:none}
+</style>
+
+<div id="purchaseModal" class="modal-overlay" onclick="if(event.target===this)closePurchaseModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closePurchaseModal()">×</button>
+
+    <div class="modal-top">
+      <div class="modal-eyebrow">Getting Access</div>
+      <div class="modal-plan" id="modalPlanName"></div>
+      <div class="modal-price"><sup>$</sup><span id="modalPlanPrice"></span></div>
     </div>
-    <p style="font-size:12px;color:rgba(255,255,255,0.3);line-height:1.6">Once payment is confirmed you'll receive your personal access code. Enter it at <a href="access.html" style="color:var(--teal)">the access page</a> to unlock your portal.</p>
-    <div style="margin-top:20px;display:flex;gap:10px">
-      <a href="mailto:hello@thinksmallstarthorribly.com" style="flex:1;padding:14px;background:var(--teal);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-align:center;text-decoration:none">Contact to Purchase</a>
-      <button onclick="closePurchaseModal()" style="padding:14px 20px;background:transparent;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.4);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer">Cancel</button>
+
+    <div class="modal-steps">
+
+      <!-- STEP 1: PAY -->
+      <div class="modal-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Pay — choose your method</div>
+          <div class="step-desc">PayPal is instant. Or email Alex directly for bank transfer or other arrangements.</div>
+          <a id="paypalBtn" href="#" target="_blank" rel="noopener" class="modal-pay-btn paypal" style="margin-top:12px">
+            Pay with PayPal →
+          </a>
+          <div class="modal-divider"><div class="modal-divider-line"></div><div class="modal-divider-text">or</div><div class="modal-divider-line"></div></div>
+          <a id="emailBtn" href="mailto:hello@thinksmallstarthorribly.com?subject=Life%20Circuitry%20Purchase&body=Hi%20Alex%2C%0A%0AI%27d%20like%20to%20purchase%20the%20programme.%0A%0APlan%3A%20" class="modal-pay-btn email">
+            Email Alex to Pay →
+          </a>
+        </div>
+      </div>
+
+      <!-- STEP 2: RECEIVE CODE -->
+      <div class="modal-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Receive your access code</div>
+          <div class="step-desc">Alex sends your unique access code by email — usually within a few hours, often faster.</div>
+        </div>
+      </div>
+
+      <!-- STEP 3: ENTER CODE -->
+      <div class="modal-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Enter code and start</div>
+          <div class="step-desc">Go to the <a href="access.html" style="color:var(--teal)">access page</a>, enter your code, and you're in. Saves automatically. Works on any device.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="modal-footer-note">
+      30-day guarantee — if you complete the first three modules and don't find value, full refund, no questions. Questions? <a href="mailto:hello@thinksmallstarthorribly.com">hello@thinksmallstarthorribly.com</a>
     </div>
   </div>
 </div>
 
 <script>
+// ── PAYPAL CONFIG ─────────────────────────────────────────────────────────────
+// Replace these with your actual PayPal.me links or PayPal button links.
+// Easiest: go to paypal.com/paypalme and set up your PayPal.me link.
+// Format: https://paypal.me/YOURUSERNAME/AMOUNT
+const PAYPAL_BASE = 'https://paypal.me/thinksmallstarthorribly';
+const PLANS = {
+  '97':  { paypal: PAYPAL_BASE + '/97USD',  subject: 'Life Circuitry — Foundation Pack ($97)' },
+  '297': { paypal: PAYPAL_BASE + '/297USD', subject: 'Life Circuitry — Full Programme ($297)' },
+  '997': { paypal: PAYPAL_BASE + '/997USD', subject: 'Life Circuitry — Circuit + Coaching ($997)' },
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
 function selectPlan(name, price){
-  document.getElementById('modalPlanName').textContent=name;
-  document.getElementById('modalPlanPrice').textContent='$'+price;
-  document.getElementById('purchaseModal').style.display='flex';
+  document.getElementById('modalPlanName').textContent = name;
+  document.getElementById('modalPlanPrice').textContent = price;
+
+  const plan = PLANS[price] || {};
+  const paypalBtn = document.getElementById('paypalBtn');
+  const emailBtn  = document.getElementById('emailBtn');
+
+  // PayPal button
+  if(plan.paypal){
+    paypalBtn.href = plan.paypal;
+    paypalBtn.style.display = 'flex';
+  } else {
+    paypalBtn.style.display = 'none';
+  }
+
+  // Email button — pre-fill subject + body
+  const subj = encodeURIComponent(plan.subject || 'Life Circuitry Purchase');
+  const body = encodeURIComponent(`Hi Alex,\n\nI'd like to purchase: ${name} ($${price})\n\nPlease send my access code to this email address.\n\nThanks`);
+  emailBtn.href = `mailto:hello@thinksmallstarthorribly.com?subject=${subj}&body=${body}`;
+
+  document.getElementById('purchaseModal').classList.add('open');
 }
+
 function closePurchaseModal(){
-  document.getElementById('purchaseModal').style.display='none';
+  document.getElementById('purchaseModal').classList.remove('open');
 }
 function toggleFaq(el){
   const item=el.parentElement;
