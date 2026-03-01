@@ -1,8 +1,8 @@
 {
-  "name": "Foundation Circuit",
-  "short_name": "Foundation Circuit",
-  "description": "Capability and capacity assessment. Know your system state before you act.",
-  "start_url": "./foundation-circuit-workbook-v10.html",
+  "name": "Life Circuitry",
+  "short_name": "Life Circuitry",
+  "description": "Close the gap between who you know you can be and who you actually show up as. 7 interactive modules.",
+  "start_url": "./portal.html",
   "display": "standalone",
   "background_color": "#1a1a1a",
   "theme_color": "#3aabb3",

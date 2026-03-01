@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 07: Re-Entering the Early Learning Phase — Life Circuitry</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --accent:#5ec5cc;--accent-d:#3aabb3;--accent-p:#eaf7f8;--accent-m:#b8e8eb;
+  --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
+  --green:#27ae60;--gp:#e9f7ef;
+  --charcoal:#1a1a1a;--mid:#444;--light:#888;
+  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+}
+html,body{height:100%;font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg)}
+body{display:flex;flex-direction:column}
+.topnav{background:var(--charcoal);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
+.topnav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.topnav-back:hover{color:var(--green)}
+.topnav-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4)}
+.topnav-title span{color:var(--green)}
+.topnav-progress{display:flex;align-items:center;gap:12px}
+.nav-pct{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:var(--green)}
+.nav-bar{width:120px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden}
+.nav-bar-fill{height:100%;background:var(--green);border-radius:2px;transition:width 0.4s}
+.shell{display:flex;flex:1;min-height:0;overflow:hidden}
+.content-area{flex:1;overflow-y:auto}
+.toc-sidebar{width:240px;flex-shrink:0;background:var(--card);border-left:1px solid var(--rule);overflow-y:auto;display:flex;flex-direction:column}
+.mod-header{background:var(--charcoal);color:#fff;padding:48px 56px;border-bottom:4px solid var(--green)}
+.mod-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.mod-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,6vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95;margin-bottom:16px;color:#fff}
+.mod-subtitle{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.6;max-width:560px;margin-bottom:28px}
+.mod-meta{display:flex;gap:32px;flex-wrap:wrap}
+.mod-meta-item{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.mod-meta-item span{color:rgba(255,255,255,0.7)}
+.content-body{max-width:720px;margin:0 auto;padding:48px 40px}
+.section-block{margin-bottom:56px;scroll-margin-top:70px}
+.section-label{font-size:9px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;color:var(--charcoal);line-height:1;margin-bottom:20px}
+.body-text{font-size:15px;line-height:1.85;color:var(--mid);margin-bottom:16px}
+.highlight-box{background:var(--gp);border-left:4px solid var(--green);padding:20px 24px;margin-bottom:24px}
+.highlight-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
+.red-box{background:var(--rp);border-left:4px solid var(--red);padding:20px 24px;margin-bottom:24px}
+.red-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
+.teal-box{background:var(--accent-p);border-left:4px solid var(--accent);padding:20px 24px;margin-bottom:24px}
+.teal-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
+
+/* PRACTICE FRAMEWORK */
+.pf-step{display:flex;gap:20px;padding:24px;background:var(--card);border:1px solid var(--rule);margin-bottom:12px;border-left:4px solid transparent;transition:all 0.2s;cursor:pointer}
+.pf-step:hover{border-left-color:var(--green)}
+.pf-step.active-step{border-left-color:var(--green);background:var(--gp)}
+.pf-num{width:40px;height:40px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;flex-shrink:0}
+.pf-content{flex:1}
+.pf-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.pf-desc{font-size:13px;color:var(--mid);line-height:1.5}
+.pf-badge{font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);background:var(--gp);padding:2px 8px;border:1px solid var(--green);display:none;margin-top:6px;display:inline-block;opacity:0;transition:opacity 0.2s}
+.pf-step.active-step .pf-badge{opacity:1}
+
+/* SILO EFFECT SELECTOR */
+.silo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+@media(max-width:560px){.silo-grid{grid-template-columns:1fr}}
+.silo-card{padding:18px;background:var(--card);border:1px solid var(--rule);cursor:pointer;transition:all 0.2s;border-top:3px solid var(--rule)}
+.silo-card:hover{border-top-color:var(--red)}
+.silo-card.active{border-top-color:var(--red);background:var(--rp)}
+.silo-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.silo-desc{font-size:12px;color:var(--light);line-height:1.5}
+.silo-card.active .silo-name{color:var(--red)}
+
+/* REENTRY AUDIT */
+.reentry-audit{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);margin-bottom:24px}
+.ra-row{display:flex;align-items:stretch;border-bottom:1px solid var(--rule)}
+.ra-row:last-child{border-bottom:none}
+.ra-label{width:140px;flex-shrink:0;padding:16px;background:var(--charcoal);color:rgba(255,255,255,0.7);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center}
+.ra-score{width:80px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--rule)}
+.ra-score input{width:48px;height:48px;border:2px solid var(--rule);text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--green);background:var(--card)}
+.ra-score input:focus{outline:none;border-color:var(--green)}
+.ra-input{flex:1;padding:12px 16px;border:none;font-family:'Barlow',sans-serif;font-size:13px;color:var(--charcoal);resize:none;background:var(--card);min-height:60px;line-height:1.5}
+.ra-input:focus{outline:none;background:#fafafa}
+.ra-score-label{font-size:8px;color:var(--light);text-align:center;margin-top:2px}
+
+/* OPERATIONAL CIRCUITRY */
+.op-circuit{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-bottom:24px;justify-content:center}
+.op-node{padding:16px 20px;background:var(--card);border:1px solid var(--rule);text-align:center;min-width:120px;flex:1}
+.op-node-label{font-size:9px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--light);margin-bottom:6px}
+.op-node-action{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)}
+.op-arrow{font-size:20px;color:var(--rule);padding:0 4px;font-weight:300;flex-shrink:0}
+
+/* REFLECT */
+.reflect-block{margin-bottom:24px}
+.reflect-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.reflect-prompt{font-size:14px;font-weight:600;color:var(--charcoal);margin-bottom:10px;line-height:1.5}
+textarea.reflect-input{width:100%;min-height:100px;border:1px solid var(--rule);padding:14px 16px;font-family:'Barlow',sans-serif;font-size:14px;line-height:1.6;resize:vertical;background:var(--bg);color:var(--charcoal);transition:border-color 0.2s}
+textarea.reflect-input:focus{outline:none;border-color:var(--green);background:#fff}
+.char-count{font-size:10px;color:var(--light);text-align:right;margin-top:4px}
+
+/* CIRCUIT CHECK */
+.circuit-item{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:var(--card);border:1px solid var(--rule);margin-bottom:10px;cursor:pointer;transition:all 0.2s}
+.circuit-item:hover{border-color:var(--green)}
+.circuit-item.done{border-color:var(--green);background:var(--gp)}
+.circuit-toggle{width:24px;height:24px;border-radius:50%;border:2px solid var(--rule);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s;margin-top:2px}
+.circuit-item.done .circuit-toggle{background:var(--green);border-color:var(--green);color:#fff}
+.circuit-text{font-size:14px;line-height:1.6;color:var(--mid)}
+.circuit-item.done .circuit-text{color:var(--charcoal);font-weight:600}
+
+/* COMPLETION CARD */
+.completion-card{background:var(--charcoal);padding:40px;text-align:center;margin-bottom:32px}
+.completion-title{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-bottom:12px}
+.completion-sub{font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:28px;line-height:1.6}
+.completion-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-complete{padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.btn-complete.primary{background:var(--accent);border:none;color:#fff}
+.btn-complete.primary:hover{background:var(--accent-d)}
+.btn-complete.secondary{background:transparent;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)}
+.btn-complete.secondary:hover{border-color:rgba(255,255,255,0.5);color:#fff}
+
+/* PROGRESS */
+.progress-wrap{background:var(--card);border:1px solid var(--rule);padding:20px 24px;margin-bottom:32px}
+.progress-label{display:flex;justify-content:space-between;margin-bottom:8px}
+.progress-label span{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--light)}
+.progress-label strong{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--green)}
+.progress-bar{height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--green);border-radius:3px;transition:width 0.5s}
+
+.toc-head{padding:20px 20px 8px;font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);border-bottom:1px solid var(--rule)}
+.toc-link{display:block;padding:10px 20px;font-size:12px;font-weight:600;color:var(--mid);text-decoration:none;border-left:2px solid transparent;transition:all 0.15s;line-height:1.4}
+.toc-link:hover{color:var(--green);border-left-color:var(--gp)}
+.toc-link.active{color:var(--green);border-left-color:var(--green);font-weight:700}
+.toc-footer{padding:20px;margin-top:auto;border-top:1px solid var(--rule)}
+.btn-nav{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px 24px;text-decoration:none;transition:all 0.2s;border:2px solid var(--rule);color:var(--mid);background:var(--card)}
+.btn-nav:hover{border-color:var(--accent);color:var(--accent-d)}
+.btn-nav.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-nav.primary:hover{background:var(--accent-d);border-color:var(--accent-d)}
+.nav-buttons{display:flex;justify-content:space-between;padding:32px 0;border-top:1px solid var(--rule);margin-top:32px}
+.btn-download{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;border:none;background:var(--charcoal);color:#fff;cursor:pointer;transition:all 0.2s}
+.btn-download:hover{background:var(--green)}
+@media(max-width:768px){.mod-header{padding:32px 24px}.content-body{padding:32px 20px}.toc-sidebar{display:none}.op-circuit{flex-direction:column}.op-arrow{transform:rotate(90deg)}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="portal.html" class="topnav-back">← Back to Portal</a>
+  <div class="topnav-title">Life Circuitry / <span>Module 07</span></div>
+  <div class="topnav-progress">
+    <span class="nav-pct" id="navPct">0%</span>
+    <div class="nav-bar"><div class="nav-bar-fill" id="navFill" style="width:0%"></div></div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="content-area">
+    <div class="mod-header">
+      <div class="mod-eyebrow">Module 07 of 07 — Final Module — Life Circuitry Program</div>
+      <h1 class="mod-title">Re-Entering the<br>Early Learning Phase</h1>
+      <p class="mod-subtitle">The professional trap: expertise that calcifies into rigidity. This module recalibrates you for transitions, new challenges, and the edge where real growth happens.</p>
+      <div class="mod-meta">
+        <div class="mod-meta-item">Duration <span>45–60 min</span></div>
+        <div class="mod-meta-item">Sections <span>5</span></div>
+        <div class="mod-meta-item">Type <span>Transition Audit + Practice Framework</span></div>
+        <div class="mod-meta-item">Module <span>Final — 07 of 07</span></div>
+      </div>
+    </div>
+
+    <div class="content-body">
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Module Progress</span><strong id="pctLabel">0%</strong></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      </div>
+
+      <!-- SECTION 1: EARLY LEARNING PHASE -->
+      <div class="section-block" id="sec-elp">
+        <div class="section-label">Section 01</div>
+        <h2 class="section-title">The Early Learning Phase</h2>
+        <p class="body-text">The Early Learning Phase is the period at the start of any new skill, role, challenge, or transition where you are genuinely a beginner. You don't know how things work yet. You make mistakes. You need feedback more than you need confidence.</p>
+        <div class="highlight-box"><p><strong>The professional trap:</strong> The longer you've been skilled in one domain, the harder it becomes to enter the Early Learning Phase in another. Your expertise creates an identity investment in being competent — which makes incompetence feel like a threat rather than a phase.</p></div>
+        <p class="body-text">Most transitions fail not because people lack ability — but because they apply an expert mindset to a beginner situation. They expect immediate competence. They resist feedback. They mistake unfamiliarity for incapability. Re-entering the Early Learning Phase is a deliberate skill.</p>
+        <div class="red-box"><p><strong>The question this module answers:</strong> Where are you currently in a transition that requires you to be a beginner — and what psychological recalibrations do you need to operate effectively in that space?</p></div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 1.1</div>
+          <div class="reflect-prompt">Name a current area of your life or work where you're in — or should be in — the Early Learning Phase. What has your actual response to that been?</div>
+          <textarea class="reflect-input" id="r1" placeholder="Name the area, then describe your honest response to being a beginner there…" oninput="updateProgress();updateChar(this,'c1')"></textarea>
+          <div class="char-count" id="c1">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: SILO EFFECT -->
+      <div class="section-block" id="sec-silo">
+        <div class="section-label">Section 02</div>
+        <h2 class="section-title">The Silo Effect</h2>
+        <p class="body-text">The Silo Effect describes what happens when your expertise in one area creates a blind spot that prevents you from effectively learning in another. You stop seeing the new domain clearly — you see it through the lens of what you already know. This is how professionals fail at transitions and how experts make beginner mistakes.</p>
+
+        <div style="font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--rule)">Select any Silo Effects currently operating for you</div>
+        <div class="silo-grid" id="siloGrid">
+          <div class="silo-card" onclick="toggleSilo(this)"><div class="silo-name">Expert Arrogance</div><div class="silo-desc">Applying domain expertise to dismiss feedback that doesn't match your existing model</div></div>
+          <div class="silo-card" onclick="toggleSilo(this)"><div class="silo-name">Comparison to Previous Self</div><div class="silo-desc">Measuring beginner performance against expert performance — in a different context</div></div>
+          <div class="silo-card" onclick="toggleSilo(this)"><div class="silo-name">Impatience with Process</div><div class="silo-desc">Expecting to compress the learning curve because you've done it before in other areas</div></div>
+          <div class="silo-card" onclick="toggleSilo(this)"><div class="silo-name">Identity Protection</div><div class="silo-desc">Avoiding situations where you might appear incompetent to protect your expert identity</div></div>
+          <div class="silo-card" onclick="toggleSilo(this)"><div class="silo-name">Framework Overlay</div><div class="silo-desc">Forcing existing frameworks onto new situations where they don't apply</div></div>
+          <div class="silo-card" onclick="toggleSilo(this)"><div class="silo-name">Feedback Filtering</div><div class="silo-desc">Discounting feedback that contradicts your existing mental model of how things work</div></div>
+        </div>
+
+        <div class="reflect-block" style="margin-top:20px">
+          <div class="reflect-label">Reflection 2.1</div>
+          <div class="reflect-prompt">For the most active Silo Effect you identified — describe a recent specific situation where it showed up and what it cost you.</div>
+          <textarea class="reflect-input" id="r2" placeholder="Be specific — name the situation, the silo, the cost…" oninput="updateProgress();updateChar(this,'c2')"></textarea>
+          <div class="char-count" id="c2">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: DIAGNOSTIC CORRECTIONS -->
+      <div class="section-block" id="sec-diagnostic">
+        <div class="section-label">Section 03</div>
+        <h2 class="section-title">The Diagnostic Correction</h2>
+        <p class="body-text">Four psychological recalibrations are required to successfully re-enter the Early Learning Phase. These aren't soft suggestions — they're operational corrections. Without them, your transition will stall at the point where discomfort meets expertise.</p>
+
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px">
+          <div style="padding:20px 24px;background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--green)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Correction 1: Competence ≠ Confidence</div>
+            <div style="font-size:13px;color:var(--mid);line-height:1.6">You can be highly competent and have low confidence in a new domain. This is appropriate. Confidence follows evidence — and evidence takes time to accumulate. Stop waiting to feel confident before acting. Act, collect evidence, let confidence follow.</div>
+          </div>
+          <div style="padding:20px 24px;background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--green)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Correction 2: Feedback is Data, Not Verdict</div>
+            <div style="font-size:13px;color:var(--mid);line-height:1.6">In the Early Learning Phase, negative feedback is the primary learning mechanism. It tells you exactly what to adjust. Treating feedback as a verdict on your worth or capability closes the feedback loop — and stalls learning permanently.</div>
+          </div>
+          <div style="padding:20px 24px;background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--green)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Correction 3: Process Before Outcome</div>
+            <div style="font-size:13px;color:var(--mid);line-height:1.6">In early stages, you cannot control outcomes. You can only control adherence to the process. Measuring success by outcome in the Early Learning Phase is how you quit before the compound effect kicks in.</div>
+          </div>
+          <div style="padding:20px 24px;background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--green)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Correction 4: Time Horizon Recalibration</div>
+            <div style="font-size:13px;color:var(--mid);line-height:1.6">Most people dramatically underestimate how long the Early Learning Phase takes in a new domain — and dramatically overestimate how fast they should be progressing. Recalibrate your timeline. Then double it.</div>
+          </div>
+        </div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 3.1</div>
+          <div class="reflect-prompt">Which correction is most needed for you right now — and what's the specific situation where you need to apply it this week?</div>
+          <textarea class="reflect-input" id="r3" placeholder="Name the correction and the specific situation…" oninput="updateProgress();updateChar(this,'c3')"></textarea>
+          <div class="char-count" id="c3">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: PRACTICE FRAMEWORK + REENTRY AUDIT -->
+      <div class="section-block" id="sec-practice">
+        <div class="section-label">Section 04</div>
+        <h2 class="section-title">The Practice Framework</h2>
+        <p class="body-text">A 4-step operational sequence for moving through the Early Learning Phase without quitting, stalling, or reverting to old patterns. Click the step you're currently on to track your position.</p>
+
+        <div style="margin-bottom:32px">
+          <div class="pf-step" onclick="selectStep(this,'1')">
+            <div class="pf-num">1</div>
+            <div class="pf-content">
+              <div class="pf-title">Act</div>
+              <div class="pf-desc">Take the smallest possible action in the new domain. Imperfect action. Uncomfortable action. Action before readiness.</div>
+              <div class="pf-badge">CURRENT STEP</div>
+            </div>
+          </div>
+          <div class="pf-step" onclick="selectStep(this,'2')">
+            <div class="pf-num">2</div>
+            <div class="pf-content">
+              <div class="pf-title">Observe</div>
+              <div class="pf-desc">Watch the result without judgment. What actually happened? What does the data say? Separate the observation from the interpretation.</div>
+              <div class="pf-badge">CURRENT STEP</div>
+            </div>
+          </div>
+          <div class="pf-step" onclick="selectStep(this,'3')">
+            <div class="pf-num">3</div>
+            <div class="pf-content">
+              <div class="pf-title">Adjust</div>
+              <div class="pf-desc">Based on what you observed — not what you hoped for — make one specific adjustment. One. Keep the rest constant.</div>
+              <div class="pf-badge">CURRENT STEP</div>
+            </div>
+          </div>
+          <div class="pf-step" onclick="selectStep(this,'4')">
+            <div class="pf-num">4</div>
+            <div class="pf-content">
+              <div class="pf-title">Act Again</div>
+              <div class="pf-desc">Return to Step 1 with the adjustment applied. The loop is the mechanism. Each cycle builds the evidence base.</div>
+              <div class="pf-badge">CURRENT STEP</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OPERATIONAL CIRCUITRY VISUAL -->
+        <div class="teal-box"><p><strong>The Operational Circuitry:</strong> The feedback loop below is the engine of learning. The circuit only stays connected if you complete each step honestly — including the observe and adjust phases, which most people skip.</p></div>
+        <div class="op-circuit">
+          <div class="op-node"><div class="op-node-label">Step 1</div><div class="op-node-action">Act</div></div>
+          <div class="op-arrow">→</div>
+          <div class="op-node"><div class="op-node-label">Step 2</div><div class="op-node-action">Observe</div></div>
+          <div class="op-arrow">→</div>
+          <div class="op-node"><div class="op-node-label">Step 3</div><div class="op-node-action">Adjust</div></div>
+          <div class="op-arrow">→</div>
+          <div class="op-node"><div class="op-node-label">Step 4</div><div class="op-node-action">Act Again</div></div>
+        </div>
+
+        <!-- REENTRY AUDIT -->
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;margin:28px 0 16px">Reentry Audit</h3>
+        <p class="body-text" style="margin-bottom:16px">Rate yourself 1–5 and write a one-line honest note for each dimension of your current early learning experience.</p>
+
+        <div class="reentry-audit">
+          <div class="ra-row">
+            <div class="ra-label">Energy</div>
+            <div class="ra-score"><input type="number" id="ra1" min="1" max="5" value="3" oninput="updateProgress()"><div class="ra-score-label">/ 5</div></div>
+            <textarea class="ra-input" id="ra1t" placeholder="What's your energy availability for this transition right now?" oninput="updateProgress()"></textarea>
+          </div>
+          <div class="ra-row">
+            <div class="ra-label">Practice</div>
+            <div class="ra-score"><input type="number" id="ra2" min="1" max="5" value="3" oninput="updateProgress()"><div class="ra-score-label">/ 5</div></div>
+            <textarea class="ra-input" id="ra2t" placeholder="How consistently are you actually practising in this domain?" oninput="updateProgress()"></textarea>
+          </div>
+          <div class="ra-row">
+            <div class="ra-label">Measurement</div>
+            <div class="ra-score"><input type="number" id="ra3" min="1" max="5" value="3" oninput="updateProgress()"><div class="ra-score-label">/ 5</div></div>
+            <textarea class="ra-input" id="ra3t" placeholder="How clearly are you measuring what matters in early-stage learning?" oninput="updateProgress()"></textarea>
+          </div>
+          <div class="ra-row">
+            <div class="ra-label">Expectation</div>
+            <div class="ra-score"><input type="number" id="ra4" min="1" max="5" value="3" oninput="updateProgress()"><div class="ra-score-label">/ 5</div></div>
+            <textarea class="ra-input" id="ra4t" placeholder="Are your progress expectations calibrated to the phase you're in?" oninput="updateProgress()"></textarea>
+          </div>
+          <div class="ra-row">
+            <div class="ra-label">Trust</div>
+            <div class="ra-score"><input type="number" id="ra5" min="1" max="5" value="3" oninput="updateProgress()"><div class="ra-score-label">/ 5</div></div>
+            <textarea class="ra-input" id="ra5t" placeholder="Do you trust the process enough to stay in it when it's uncomfortable?" oninput="updateProgress()"></textarea>
+          </div>
+        </div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 4.1</div>
+          <div class="reflect-prompt">Based on your Reentry Audit — what is the single most important adjustment you need to make to your approach in this transition?</div>
+          <textarea class="reflect-input" id="r4" placeholder="One specific, actionable adjustment…" oninput="updateProgress();updateChar(this,'c4')"></textarea>
+          <div class="char-count" id="c4">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: CIRCUIT CHECK + COMPLETION -->
+      <div class="section-block" id="sec-circuit">
+        <div class="section-label">Circuit Check — Final Module</div>
+        <h2 class="section-title">Complete the Circuit</h2>
+        <p class="body-text">This is your final circuit check — not just for this module, but for the full Life Circuitry programme. Check each item when you've genuinely completed it.</p>
+
+        <div id="circuitList">
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I identified where I currently need to be in the Early Learning Phase and described my honest response</div></div>
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I identified my active Silo Effects and named a specific situation where they showed up</div></div>
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I identified the most needed Diagnostic Correction and applied it to a specific situation</div></div>
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I completed the Reentry Audit honestly across all five dimensions</div></div>
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I identified one specific adjustment to make to my current transition this week</div></div>
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I have completed all 7 modules of the Life Circuitry Programme</div></div>
+        </div>
+      </div>
+
+      <!-- COMPLETION CARD -->
+      <div class="completion-card">
+        <div class="completion-title">Circuit Complete.</div>
+        <p class="completion-sub">You've done the work across all seven modules. The circuit is connected when the work is consistent — not just when it's completed once. Come back. Update your answers as you change. Build the evidence base.</p>
+        <div class="completion-actions">
+          <a href="portal.html" class="btn-complete primary">Back to Portal Dashboard</a>
+          <button class="btn-complete secondary" onclick="downloadPDF()">Download Final Summary PDF</button>
+        </div>
+      </div>
+
+      <div style="background:var(--charcoal);padding:28px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px">Export Your Work</div>
+          <div style="font-size:15px;font-weight:600;color:#fff">Download your re-entry audit and practice framework as PDF</div>
+        </div>
+        <button class="btn-download" onclick="downloadPDF()">⬇ Download PDF</button>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="module-6.html" class="btn-nav">← Module 06: Marketplace</a>
+        <a href="portal.html" class="btn-nav primary">Back to Portal →</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="toc-sidebar">
+    <div class="toc-head">In This Module</div>
+    <a href="#sec-elp" class="toc-link active" onclick="setToc(this)">01 — Early Learning Phase</a>
+    <a href="#sec-silo" class="toc-link" onclick="setToc(this)">02 — The Silo Effect</a>
+    <a href="#sec-diagnostic" class="toc-link" onclick="setToc(this)">03 — Diagnostic Corrections</a>
+    <a href="#sec-practice" class="toc-link" onclick="setToc(this)">04 — Practice Framework</a>
+    <a href="#sec-circuit" class="toc-link" onclick="setToc(this)">Circuit Check</a>
+    <div class="toc-footer">
+      <button class="btn-download" style="width:100%" onclick="downloadPDF()">⬇ Download PDF</button>
+    </div>
+  </aside>
+</div>
+
+<script>
+const MOD_KEY='lc_mod7';
+function toggleSilo(el){el.classList.toggle('active');updateProgress();save()}
+function selectStep(el,step){
+  document.querySelectorAll('.pf-step').forEach(s=>s.classList.remove('active-step'));
+  el.classList.add('active-step');updateProgress();save();
+}
+function toggleCircuit(el){el.classList.toggle('done');updateProgress();save()}
+function updateChar(ta,cid){const el=document.getElementById(cid);if(el)el.textContent=ta.value.length+' characters'}
+function calcPct(){
+  let s=0,m=0;
+  ['r1','r2','r3','r4'].forEach(id=>{m+=10;if((document.getElementById(id).value||'').length>20)s+=10});
+  m+=10;if(document.querySelectorAll('.silo-card.active').length>0)s+=10;
+  m+=10;if(document.querySelector('.pf-step.active-step'))s+=10;
+  const auditFilled=['ra1t','ra2t','ra3t','ra4t','ra5t'].filter(id=>(document.getElementById(id).value||'').trim().length>5).length;
+  m+=10;if(auditFilled>=3)s+=10;
+  const done=document.querySelectorAll('.circuit-item.done').length;
+  m+=30;s+=done*5;
+  return Math.round((s/m)*100);
+}
+function updateProgress(){
+  const pct=calcPct();
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('pctLabel').textContent=pct+'%';
+  document.getElementById('navFill').style.width=pct+'%';
+  document.getElementById('navPct').textContent=pct+'%';
+  save();
+}
+function save(){
+  const d={};
+  ['r1','r2','r3','r4'].forEach(id=>d[id]=document.getElementById(id).value);
+  ['ra1','ra2','ra3','ra4','ra5'].forEach(id=>d[id]=document.getElementById(id).value);
+  ['ra1t','ra2t','ra3t','ra4t','ra5t'].forEach(id=>d[id]=document.getElementById(id).value);
+  d.silos=[...document.querySelectorAll('.silo-card.active')].map(el=>el.querySelector('.silo-name').textContent);
+  d.step=document.querySelector('.pf-step.active-step')?.getAttribute('onclick')?.match(/'(\d+)'/)?.[1]||null;
+  d.circuit=[...document.querySelectorAll('.circuit-item')].map(el=>el.classList.contains('done'));
+  localStorage.setItem(MOD_KEY,JSON.stringify(d));
+  const prog=JSON.parse(localStorage.getItem('lc_progress')||'{}');
+  prog.mod7=calcPct();
+  localStorage.setItem('lc_progress',JSON.stringify(prog));
+}
+function load(){
+  const d=JSON.parse(localStorage.getItem(MOD_KEY)||'{}');
+  ['r1','r2','r3','r4'].forEach(id=>{if(d[id]){document.getElementById(id).value=d[id];updateChar(document.getElementById(id),'c'+id.slice(1))}});
+  ['ra1','ra2','ra3','ra4','ra5'].forEach(id=>{if(d[id])document.getElementById(id).value=d[id]});
+  ['ra1t','ra2t','ra3t','ra4t','ra5t'].forEach(id=>{if(d[id])document.getElementById(id).value=d[id]});
+  if(d.silos){d.silos.forEach(name=>{const el=[...document.querySelectorAll('.silo-card')].find(c=>c.querySelector('.silo-name')?.textContent===name);if(el)el.classList.add('active')})}
+  if(d.step){const el=document.querySelector(`[onclick="selectStep(this,'${d.step}')"]`);if(el)el.classList.add('active-step')}
+  if(d.circuit){const items=document.querySelectorAll('.circuit-item');d.circuit.forEach((v,i)=>{if(v&&items[i])items[i].classList.add('done')})}
+  updateProgress();
+}
+function setToc(el){document.querySelectorAll('.toc-link').forEach(l=>l.classList.remove('active'));el.classList.add('active')}
+function downloadPDF(){
+  const d={};
+  ['r1','r2','r3','r4'].forEach(id=>d[id]=document.getElementById(id).value);
+  const silos=[...document.querySelectorAll('.silo-card.active')].map(el=>el.querySelector('.silo-name').textContent);
+  const scores=[1,2,3,4,5].map(i=>({label:['Energy','Practice','Measurement','Expectation','Trust'][i-1],score:document.getElementById('ra'+i).value,note:document.getElementById('ra'+i+'t').value}));
+  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Module 07 — Re-Entry</title>
+  <style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;color:#1a1a1a;line-height:1.6}
+  h1{font-size:28px;border-bottom:3px solid #27ae60;padding-bottom:12px}
+  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#27ae60;margin-top:28px}
+  h3{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-top:16px}
+  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #27ae60}
+  .chip{display:inline-block;padding:4px 10px;margin:3px;font-size:12px;font-weight:bold;background:#fdf1f1;border:1px solid #e05555;color:#e05555}
+  table{width:100%;border-collapse:collapse;margin:12px 0}
+  td,th{border:1px solid #e0e0e0;padding:8px 12px;font-size:12px}
+  th{background:#e9f7ef;font-weight:bold}
+  .footer{margin-top:40px;font-size:11px;color:#aaa;border-top:1px solid #eee;padding-top:12px}
+  .complete-box{background:#e9f7ef;border:2px solid #27ae60;padding:16px 20px;text-align:center;margin-bottom:20px}
+  .complete-box h2{color:#27ae60;margin:0 0 4px;font-size:20px}
+  </style></head><body>
+  <div class="complete-box"><h2>Life Circuitry Programme — Circuit Complete</h2><p style="background:transparent;border:none;padding:0;margin:0">All 7 Modules Completed — ${new Date().toLocaleDateString()}</p></div>
+  <h1>Module 07: Re-Entering the Early Learning Phase</h1>
+  <h2>Active Silo Effects (${silos.length})</h2>
+  ${silos.map(s=>`<span class="chip">${s}</span>`).join('')}
+  <h2>Reentry Audit</h2>
+  <table><tr><th>Dimension</th><th>Score</th><th>Notes</th></tr>
+  ${scores.map(s=>`<tr><td><strong>${s.label}</strong></td><td style="text-align:center">${s.score}/5</td><td>${s.note||'—'}</td></tr>`).join('')}
+  </table>
+  <h2>Reflections</h2>
+  <h3>1.1 — Where I need to be in the Early Learning Phase</h3><p>${d.r1||'—'}</p>
+  <h3>2.1 — My active Silo Effect + specific situation</h3><p>${d.r2||'—'}</p>
+  <h3>3.1 — Most needed Diagnostic Correction</h3><p>${d.r3||'—'}</p>
+  <h3>4.1 — Single most important adjustment</h3><p>${d.r4||'—'}</p>
+  <div class="footer">Life Circuitry — Think Small, Start Horribly — thinksmallstarthorribly.com</div>
+  </body></html>`;
+  const w=window.open('','_blank');w.document.write(html);w.document.close();setTimeout(()=>w.print(),500);
+}
+window.addEventListener('DOMContentLoaded',load);
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life Circuitry — Access</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --teal:#5ec5cc;--teal-d:#3aabb3;--teal-p:#eaf7f8;
+  --charcoal:#1a1a1a;--mid:#444;--light:#888;
+  --red:#e05555;--rp:#fdf1f1;
+  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+}
+html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--charcoal);color:#fff}
+body{display:flex;flex-direction:column;min-height:100vh}
+
+/* BACKGROUND GRID */
+body::before{
+  content:'';position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(94,197,204,0.04) 60px,rgba(94,197,204,0.04) 61px),
+             repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(94,197,204,0.04) 60px,rgba(94,197,204,0.04) 61px);
+  pointer-events:none;z-index:0
+}
+
+/* TOP BAR */
+.topbar{padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;border-bottom:1px solid rgba(255,255,255,0.05)}
+.topbar-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal)}
+.topbar-logo span{color:rgba(255,255,255,0.2)}
+.topbar-link{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.topbar-link:hover{color:var(--teal)}
+
+/* MAIN LOCK SCREEN */
+.lock-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;z-index:1}
+.lock-card{width:100%;max-width:440px}
+
+.lock-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.28em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+.lock-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,8vw,56px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95;color:#fff;margin-bottom:12px}
+.lock-sub{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:36px}
+
+/* PASSCODE INPUT */
+.lock-form{display:flex;flex-direction:column;gap:12px}
+.lock-input-wrap{position:relative}
+.lock-input{
+  width:100%;padding:18px 20px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  color:#fff;font-family:'Barlow',sans-serif;font-size:16px;font-weight:600;
+  letter-spacing:0.08em;
+  transition:border-color 0.2s,background 0.2s;
+  outline:none;
+}
+.lock-input::placeholder{color:rgba(255,255,255,0.2);letter-spacing:0.04em;font-weight:400;font-size:14px}
+.lock-input:focus{border-color:var(--teal);background:rgba(94,197,204,0.05)}
+.lock-input.error{border-color:var(--red);background:rgba(224,85,85,0.06);animation:shake 0.4s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+
+.lock-btn{
+  padding:18px;background:var(--teal);border:none;
+  font-family:'Barlow',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;color:#fff;cursor:pointer;
+  transition:all 0.2s;
+}
+.lock-btn:hover{background:var(--teal-d)}
+.lock-btn:active{transform:scale(0.99)}
+.lock-btn.loading{background:rgba(255,255,255,0.1);cursor:default}
+
+.lock-error{font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--red);padding:12px 16px;background:rgba(224,85,85,0.08);border:1px solid rgba(224,85,85,0.2);display:none}
+.lock-error.show{display:block}
+
+/* PURCHASE PROMPT */
+.lock-purchase{margin-top:32px;padding:20px 24px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)}
+.lp-title{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px}
+.lp-text{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:14px}
+.lp-actions{display:flex;gap:10px;flex-wrap:wrap}
+.lp-btn{font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:10px 18px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer}
+.lp-btn.primary{background:var(--teal);color:#fff}
+.lp-btn.primary:hover{background:var(--teal-d)}
+.lp-btn.outline{background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.45)}
+.lp-btn.outline:hover{border-color:rgba(255,255,255,0.35);color:rgba(255,255,255,0.7)}
+
+/* HINT */
+.lock-hint{margin-top:20px;font-size:11px;color:rgba(255,255,255,0.15);text-align:center;line-height:1.5}
+.lock-hint a{color:rgba(255,255,255,0.25);text-decoration:none}
+.lock-hint a:hover{color:var(--teal)}
+
+/* FOOTER */
+.lock-footer{padding:20px 32px;text-align:center;font-size:11px;color:rgba(255,255,255,0.15);position:relative;z-index:1;border-top:1px solid rgba(255,255,255,0.04)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Life Circuitry <span>/ Think Small, Start Horribly</span></div>
+  <a href="index.html" class="topbar-link">← Sales Page</a>
+</div>
+
+<div class="lock-wrap">
+  <div class="lock-card">
+    <div class="lock-eyebrow">Member Access</div>
+    <h1 class="lock-title">Enter Your<br>Access Code.</h1>
+    <p class="lock-sub">Enter the access code from your purchase confirmation to enter the programme portal.</p>
+
+    <form class="lock-form" onsubmit="event.preventDefault();checkCode()">
+      <div class="lock-input-wrap">
+        <input
+          class="lock-input"
+          id="codeInput"
+          type="password"
+          placeholder="Enter your access code…"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          onkeydown="if(event.key==='Enter') checkCode()"
+        >
+      </div>
+      <div class="lock-error" id="lockError">Incorrect access code. Check your purchase confirmation email and try again.</div>
+      <button class="lock-btn" id="lockBtn" type="submit">Enter Programme →</button>
+    </form>
+
+    <div class="lock-purchase">
+      <div class="lp-title">Don't have an access code?</div>
+      <p class="lp-text">Get the full 7-module interactive programme — one-time payment, lifetime access. Includes all frameworks, diagnostics, and PDF exports.</p>
+      <div class="lp-actions">
+        <a href="index.html#pricing" class="lp-btn primary">View Pricing →</a>
+        <a href="mailto:hello@thinksmallstarthorribly.com" class="lp-btn outline">Contact Alex</a>
+      </div>
+    </div>
+
+    <div class="lock-hint">
+      Forgot your code? <a href="mailto:hello@thinksmallstarthorribly.com">Email hello@thinksmallstarthorribly.com</a>
+    </div>
+  </div>
+</div>
+
+<div class="lock-footer">
+  © 2026 Alex Cooper / Think Small, Start Horribly. All rights reserved.
+</div>
+
+<script>
+// ─── ACCESS CODES ────────────────────────────────────────────────────────────
+// Add or remove codes here as needed. All codes are case-insensitive.
+// To add a new client: just add their code to this array.
+// Format: plain text strings — e.g. 'ALEX2026', 'CLIENT-ABC', etc.
+const VALID_CODES = [
+  'CIRCUIT2026',      // Default / demo code
+  'THINKSMALL',       // Alex personal code
+  'FOUNDATION',       // Foundation Pack
+  'LIFECIRCUITRY',    // Full programme
+  'STARTHORRI8LY',    // Alternate
+];
+// ─────────────────────────────────────────────────────────────────────────────
+
+const SESSION_KEY = 'lc_access';
+const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+function isValidSession(){
+  try{
+    const s = JSON.parse(localStorage.getItem(SESSION_KEY)||'null');
+    if(!s) return false;
+    if(Date.now() - s.ts > SESSION_DURATION){ localStorage.removeItem(SESSION_KEY); return false; }
+    return true;
+  }catch(e){ return false; }
+}
+
+function checkCode(){
+  const btn = document.getElementById('lockBtn');
+  const input = document.getElementById('codeInput');
+  const errEl = document.getElementById('lockError');
+  const code = input.value.trim().toUpperCase().replace(/\s+/g,'');
+
+  if(!code){
+    input.classList.add('error');
+    setTimeout(()=>input.classList.remove('error'),500);
+    return;
+  }
+
+  btn.textContent = 'Checking…';
+  btn.classList.add('loading');
+  errEl.classList.remove('show');
+
+  // Small artificial delay for UX
+  setTimeout(()=>{
+    const normalised = VALID_CODES.map(c=>c.toUpperCase().replace(/\s+/g,''));
+    if(normalised.includes(code)){
+      // Valid — store session and redirect
+      localStorage.setItem(SESSION_KEY, JSON.stringify({ts: Date.now(), code}));
+      btn.textContent = 'Welcome ✓ — Loading portal…';
+      setTimeout(()=>{ window.location.href = 'portal.html'; }, 600);
+    } else {
+      // Invalid
+      input.classList.add('error');
+      errEl.classList.add('show');
+      btn.textContent = 'Enter Programme →';
+      btn.classList.remove('loading');
+      setTimeout(()=>input.classList.remove('error'), 500);
+      input.select();
+    }
+  }, 400);
+}
+
+// Auto-redirect if already authenticated
+window.addEventListener('DOMContentLoaded', ()=>{
+  if(isValidSession()){
+    window.location.href = 'portal.html';
+  }
+  document.getElementById('codeInput').focus();
+});
+</script>
+</body>
+</html>

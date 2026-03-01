@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 05: Version of Self — Life Circuitry</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --accent:#5ec5cc;--accent-d:#3aabb3;--accent-p:#eaf7f8;--accent-m:#b8e8eb;
+  --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
+  --green:#27ae60;--gp:#e9f7ef;--purple:#9b59b6;--pp:#f5eef8;
+  --charcoal:#1a1a1a;--mid:#444;--light:#888;
+  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+}
+html,body{height:100%;font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg)}
+body{display:flex;flex-direction:column}
+.topnav{background:var(--charcoal);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
+.topnav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.topnav-back:hover{color:var(--accent)}
+.topnav-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4)}
+.topnav-title span{color:var(--accent)}
+.topnav-progress{display:flex;align-items:center;gap:12px}
+.nav-pct{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:var(--accent)}
+.nav-bar{width:120px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden}
+.nav-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.4s}
+.shell{display:flex;flex:1;min-height:0;overflow:hidden}
+.content-area{flex:1;overflow-y:auto}
+.toc-sidebar{width:240px;flex-shrink:0;background:var(--card);border-left:1px solid var(--rule);overflow-y:auto;display:flex;flex-direction:column}
+.mod-header{background:var(--charcoal);color:#fff;padding:48px 56px;border-bottom:4px solid var(--purple)}
+.mod-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--purple);margin-bottom:12px}
+.mod-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,6vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95;margin-bottom:16px;color:#fff}
+.mod-subtitle{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.6;max-width:560px;margin-bottom:28px}
+.mod-meta{display:flex;gap:32px;flex-wrap:wrap}
+.mod-meta-item{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.mod-meta-item span{color:rgba(255,255,255,0.7)}
+.content-body{max-width:720px;margin:0 auto;padding:48px 40px}
+.section-block{margin-bottom:56px;scroll-margin-top:70px}
+.section-label{font-size:9px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--purple);margin-bottom:12px}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;color:var(--charcoal);line-height:1;margin-bottom:20px}
+.body-text{font-size:15px;line-height:1.85;color:var(--mid);margin-bottom:16px}
+.highlight-box{background:var(--pp);border-left:4px solid var(--purple);padding:20px 24px;margin-bottom:24px}
+.highlight-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
+.red-box{background:var(--rp);border-left:4px solid var(--red);padding:20px 24px;margin-bottom:24px}
+.red-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
+
+/* MINDSET FLIP CARDS */
+.mindset-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:24px}
+@media(max-width:580px){.mindset-grid{grid-template-columns:1fr}}
+.mindset-card{padding:18px;background:var(--card);border:1px solid var(--rule);cursor:pointer;transition:all 0.2s;position:relative}
+.mindset-card.limiting{border-top:3px solid var(--red)}
+.mindset-card.growth{border-top:3px solid var(--green)}
+.mindset-card.selected{box-shadow:0 0 0 3px var(--purple)}
+.mindset-label{font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px}
+.mindset-card.limiting .mindset-label{color:var(--red)}
+.mindset-card.growth .mindset-label{color:var(--green)}
+.mindset-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;color:var(--charcoal);margin-bottom:4px}
+.mindset-desc{font-size:12px;color:var(--light);line-height:1.5}
+.mindset-check{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;background:var(--purple);color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.mindset-card.selected .mindset-check{opacity:1}
+
+/* IDENTITY STATEMENT BUILDER */
+.identity-builder{background:var(--card);border:1px solid var(--rule);padding:28px;margin-bottom:24px}
+.identity-row{display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.identity-prefix{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--light);white-space:nowrap}
+.identity-input{flex:1;min-width:200px;border:none;border-bottom:2px solid var(--rule);padding:8px 4px;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--charcoal);background:transparent;transition:border-color 0.2s}
+.identity-input:focus{outline:none;border-bottom-color:var(--purple)}
+.identity-preview{margin-top:16px;padding:16px 20px;background:var(--pp);border-left:3px solid var(--purple)}
+.identity-preview-text{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--charcoal);line-height:1.4}
+
+/* REFLECT */
+.reflect-block{margin-bottom:24px}
+.reflect-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:8px}
+.reflect-prompt{font-size:14px;font-weight:600;color:var(--charcoal);margin-bottom:10px;line-height:1.5}
+textarea.reflect-input{width:100%;min-height:100px;border:1px solid var(--rule);padding:14px 16px;font-family:'Barlow',sans-serif;font-size:14px;line-height:1.6;resize:vertical;background:var(--bg);color:var(--charcoal);transition:border-color 0.2s}
+textarea.reflect-input:focus{outline:none;border-color:var(--purple);background:#fff}
+.char-count{font-size:10px;color:var(--light);text-align:right;margin-top:4px}
+
+/* VALUES SELECTOR */
+.values-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.value-chip{padding:8px 16px;border:1px solid var(--rule);background:var(--card);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
+.value-chip:hover{border-color:var(--purple)}
+.value-chip.selected{background:var(--purple);border-color:var(--purple);color:#fff}
+
+/* CIRCUIT CHECK */
+.circuit-item{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:var(--card);border:1px solid var(--rule);margin-bottom:10px;cursor:pointer;transition:all 0.2s}
+.circuit-item:hover{border-color:var(--purple)}
+.circuit-item.done{border-color:var(--green);background:var(--gp)}
+.circuit-toggle{width:24px;height:24px;border-radius:50%;border:2px solid var(--rule);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s;margin-top:2px}
+.circuit-item.done .circuit-toggle{background:var(--green);border-color:var(--green);color:#fff}
+.circuit-text{font-size:14px;line-height:1.6;color:var(--mid)}
+.circuit-item.done .circuit-text{color:var(--charcoal);font-weight:600}
+
+/* PROGRESS */
+.progress-wrap{background:var(--card);border:1px solid var(--rule);padding:20px 24px;margin-bottom:32px}
+.progress-label{display:flex;justify-content:space-between;margin-bottom:8px}
+.progress-label span{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--light)}
+.progress-label strong{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--purple)}
+.progress-bar{height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--purple);border-radius:3px;transition:width 0.5s}
+
+.toc-head{padding:20px 20px 8px;font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);border-bottom:1px solid var(--rule)}
+.toc-link{display:block;padding:10px 20px;font-size:12px;font-weight:600;color:var(--mid);text-decoration:none;border-left:2px solid transparent;transition:all 0.15s;line-height:1.4}
+.toc-link:hover{color:var(--purple);border-left-color:var(--pp)}
+.toc-link.active{color:var(--purple);border-left-color:var(--purple);font-weight:700}
+.toc-footer{padding:20px;margin-top:auto;border-top:1px solid var(--rule)}
+.btn-nav{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px 24px;text-decoration:none;transition:all 0.2s;border:2px solid var(--rule);color:var(--mid);background:var(--card)}
+.btn-nav:hover{border-color:var(--accent);color:var(--accent-d)}
+.btn-nav.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-nav.primary:hover{background:var(--accent-d);border-color:var(--accent-d)}
+.nav-buttons{display:flex;justify-content:space-between;padding:32px 0;border-top:1px solid var(--rule);margin-top:32px}
+.btn-download{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;border:none;background:var(--charcoal);color:#fff;cursor:pointer;transition:all 0.2s}
+.btn-download:hover{background:var(--purple)}
+@media(max-width:768px){.mod-header{padding:32px 24px}.content-body{padding:32px 20px}.toc-sidebar{display:none}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="portal.html" class="topnav-back">← Back to Portal</a>
+  <div class="topnav-title">Life Circuitry / <span>Module 05</span></div>
+  <div class="topnav-progress">
+    <span class="nav-pct" id="navPct">0%</span>
+    <div class="nav-bar"><div class="nav-bar-fill" id="navFill" style="width:0%"></div></div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="content-area">
+    <div class="mod-header">
+      <div class="mod-eyebrow">Module 05 of 07 — Life Circuitry Program</div>
+      <h1 class="mod-title">Version of Self /<br>Identity Shift</h1>
+      <p class="mod-subtitle">Mindset isn't a motivation problem. It's an identity problem. This module builds the operating system you actually run from — not the one you wish you had.</p>
+      <div class="mod-meta">
+        <div class="mod-meta-item">Duration <span>45–60 min</span></div>
+        <div class="mod-meta-item">Sections <span>5</span></div>
+        <div class="mod-meta-item">Type <span>Identity + Values Audit</span></div>
+        <div class="mod-meta-item">Includes <span>Identity Statement Builder</span></div>
+      </div>
+    </div>
+
+    <div class="content-body">
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Module Progress</span><strong id="pctLabel">0%</strong></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      </div>
+
+      <!-- SECTION 1: VERSION OF SELF -->
+      <div class="section-block" id="sec-version">
+        <div class="section-label">Section 01</div>
+        <h2 class="section-title">Version of Self</h2>
+        <p class="body-text">You don't have one identity. You have a current version and an available version. The current version is shaped by your history, your habits, your evidence base. The available version is what you're actually capable of — the version that exists in your high-capacity state.</p>
+        <div class="highlight-box"><p><strong>The Identity Problem:</strong> Most people try to change their behaviour while keeping the same identity. It doesn't work. Behaviour follows identity. Change who you believe you are — through accumulated evidence — and behaviour changes automatically.</p></div>
+        <p class="body-text">Think Small, Start Horribly isn't about lowering your standards. It's about closing the gap between your current version and your available version through small, horrible, uncomfortable actions that generate real evidence of who you're becoming.</p>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 1.1</div>
+          <div class="reflect-prompt">Describe your current version of self. What are the three beliefs about yourself that are most actively shaping your behaviour right now?</div>
+          <textarea class="reflect-input" id="r1" placeholder="Be honest — not aspirational. What do you actually believe about yourself?" oninput="updateProgress();updateChar(this,'c1')"></textarea>
+          <div class="char-count" id="c1">0 characters</div>
+        </div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 1.2</div>
+          <div class="reflect-prompt">Describe your available version of self — the version that exists when you're operating at your best. What does that person believe? How do they behave?</div>
+          <textarea class="reflect-input" id="r2" placeholder="Not who you want to be — who you already are when the circuit is connected…" oninput="updateProgress();updateChar(this,'c2')"></textarea>
+          <div class="char-count" id="c2">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: MINDSET AUDIT -->
+      <div class="section-block" id="sec-mindset">
+        <div class="section-label">Section 02</div>
+        <h2 class="section-title">Mindset Audit</h2>
+        <p class="body-text">Below are 20 limiting mindset patterns and 20 growth patterns. Select any limiting ones that are currently active in your operating system — no judgment, just honest diagnostic.</p>
+
+        <div style="margin-bottom:12px">
+          <div style="font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);padding:6px 0;border-bottom:1px solid var(--rule);margin-bottom:10px">Limiting Patterns — Select any that are currently active for you</div>
+          <div class="mindset-grid" id="limitingGrid">
+            <div class="mindset-card limiting" onclick="toggleMindset(this)"><div class="mindset-check">✓</div><div class="mindset-label">Limiting</div><div class="mindset-name">Procrastination</div><div class="mindset-desc">Delaying action on what matters</div></div>
+            <div class="mindset-card limiting" onclick="toggleMindset(this)"><div class="mindset-check">✓</div><div class="mindset-label">Limiting</div><div class="mindset-name">Self-Doubt</div><div class="mindset-desc">Automatic questioning of your own capability</div></div>
+            <div class="mindset-card limiting" onclick="toggleMindset(this)"><div class="mindset-check">✓</div><div class="mindset-label">Limiting</div><div class="mindset-name">Perfectionism</div><div class="mindset-desc">Standards that prevent starting or finishing</div></div>
+            <div class="mindset-card limiting" onclick="toggleMindset(this)"><div class="mindset-check">✓</div><div class="mindset-label">Limiting</div><div class="mindset-name">External Validation</div><div class="mindset-desc">Needing approval before trusting your choices</div></div>
+            <div class="mindset-card limiting" onclick="toggleMindset(this)"><div class="mindset-check">✓</div><div class="mindset-label">Limiting</div><div class="mindset-name">Fixed Mindset</div><div class="mindset-desc">Believing ability is fixed — can't be developed</div></div>
+            <div class="mindset-card limiting" onclick="toggleMindset(this)"><div class="mindset-check">✓</div><div class="mindset-label">Limiting</div><div class="mindset-name">Comparison Trap</div><div class="mindset-desc">Measuring yourself against others' highlights</div></div>
+            <div class="mindset-card limiting" onclick="toggleMindset(this)"><div class="mindset-check">✓</div><div class="mindset-label">Limiting</div><div class="mindset-name">Scarcity Thinking</div><div class="mindset-desc">Belief that resources, opportunities, time are always limited</div></div>
+            <div class="mindset-card limiting" onclick="toggleMindset(this)"><div class="mindset-check">✓</div><div class="mindset-label">Limiting</div><div class="mindset-name">Victim Narrative</div><div class="mindset-desc">Circumstances as the primary cause of your outcomes</div></div>
+            <div class="mindset-card limiting" onclick="toggleMindset(this)"><div class="mindset-check">✓</div><div class="mindset-label">Limiting</div><div class="mindset-name">Catastrophising</div><div class="mindset-desc">Assuming the worst possible outcome</div></div>
+            <div class="mindset-card limiting" onclick="toggleMindset(this)"><div class="mindset-check">✓</div><div class="mindset-label">Limiting</div><div class="mindset-name">Fear of Judgement</div><div class="mindset-desc">Decisions shaped by what others might think</div></div>
+          </div>
+        </div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 2.1</div>
+          <div class="reflect-prompt">Pick the single most active limiting pattern from your selections. Where did it come from, and what specific behaviour is it producing right now?</div>
+          <textarea class="reflect-input" id="r3" placeholder="Trace it to its origin — and name what it's costing you today…" oninput="updateProgress();updateChar(this,'c3')"></textarea>
+          <div class="char-count" id="c3">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: VALUES -->
+      <div class="section-block" id="sec-values">
+        <div class="section-label">Section 03</div>
+        <h2 class="section-title">Core Values Audit</h2>
+        <p class="body-text">Your values aren't what you say they are. They're what your behaviour reveals them to be. Select up to five values below that you want to operate from — then we'll examine whether your current behaviour actually reflects them.</p>
+
+        <div class="values-grid" id="valuesGrid">
+          <div class="value-chip" onclick="toggleValue(this)">Integrity</div>
+          <div class="value-chip" onclick="toggleValue(this)">Courage</div>
+          <div class="value-chip" onclick="toggleValue(this)">Consistency</div>
+          <div class="value-chip" onclick="toggleValue(this)">Growth</div>
+          <div class="value-chip" onclick="toggleValue(this)">Accountability</div>
+          <div class="value-chip" onclick="toggleValue(this)">Creativity</div>
+          <div class="value-chip" onclick="toggleValue(this)">Excellence</div>
+          <div class="value-chip" onclick="toggleValue(this)">Impact</div>
+          <div class="value-chip" onclick="toggleValue(this)">Authenticity</div>
+          <div class="value-chip" onclick="toggleValue(this)">Discipline</div>
+          <div class="value-chip" onclick="toggleValue(this)">Freedom</div>
+          <div class="value-chip" onclick="toggleValue(this)">Service</div>
+          <div class="value-chip" onclick="toggleValue(this)">Resilience</div>
+          <div class="value-chip" onclick="toggleValue(this)">Leadership</div>
+          <div class="value-chip" onclick="toggleValue(this)">Presence</div>
+          <div class="value-chip" onclick="toggleValue(this)">Innovation</div>
+          <div class="value-chip" onclick="toggleValue(this)">Honesty</div>
+          <div class="value-chip" onclick="toggleValue(this)">Ownership</div>
+          <div class="value-chip" onclick="toggleValue(this)">Mastery</div>
+          <div class="value-chip" onclick="toggleValue(this)">Connection</div>
+        </div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 3.1</div>
+          <div class="reflect-prompt">For your top value — how is your current behaviour aligned with it? Where is it misaligned? Be specific.</div>
+          <textarea class="reflect-input" id="r4" placeholder="Alignment and misalignment — be concrete and honest…" oninput="updateProgress();updateChar(this,'c4')"></textarea>
+          <div class="char-count" id="c4">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: IDENTITY STATEMENT -->
+      <div class="section-block" id="sec-identity">
+        <div class="section-label">Section 04</div>
+        <h2 class="section-title">Identity Statement Builder</h2>
+        <p class="body-text">An identity statement isn't an affirmation. It's a description of who you are when the circuit is connected — stated in the present tense, grounded in evidence and values you've already demonstrated. Build yours below.</p>
+
+        <div class="identity-builder">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--light);margin-bottom:16px">Complete each line to build your identity statement</div>
+          <div class="identity-row">
+            <div class="identity-prefix">I am someone who</div>
+            <input class="identity-input" id="id1" placeholder="consistently…" oninput="updatePreview();updateProgress()">
+          </div>
+          <div class="identity-row">
+            <div class="identity-prefix">I build trust by</div>
+            <input class="identity-input" id="id2" placeholder="doing…" oninput="updatePreview();updateProgress()">
+          </div>
+          <div class="identity-row">
+            <div class="identity-prefix">My evidence proves</div>
+            <input class="identity-input" id="id3" placeholder="that I…" oninput="updatePreview();updateProgress()">
+          </div>
+          <div class="identity-row">
+            <div class="identity-prefix">I operate from</div>
+            <input class="identity-input" id="id4" placeholder="the values of…" oninput="updatePreview();updateProgress()">
+          </div>
+          <div class="identity-preview" id="identityPreview" style="display:none">
+            <div style="font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--purple);margin-bottom:10px">Your Identity Statement</div>
+            <div class="identity-preview-text" id="previewText"></div>
+          </div>
+        </div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 4.1</div>
+          <div class="reflect-prompt">What would change — specifically — if you operated from this identity statement for the next 30 days?</div>
+          <textarea class="reflect-input" id="r5" placeholder="Name specific decisions, behaviours, habits that would shift…" oninput="updateProgress();updateChar(this,'c5')"></textarea>
+          <div class="char-count" id="c5">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: CIRCUIT CHECK -->
+      <div class="section-block" id="sec-circuit">
+        <div class="section-label">Circuit Check</div>
+        <h2 class="section-title">Module Diagnostic</h2>
+        <div id="circuitList">
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I described both my current and available version of self honestly</div></div>
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I identified and reflected on my most active limiting pattern</div></div>
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I selected my core values and examined their alignment with current behaviour</div></div>
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I built a complete identity statement grounded in evidence</div></div>
+          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I identified specific behavioural changes that follow from this identity</div></div>
+        </div>
+      </div>
+
+      <div style="background:var(--charcoal);padding:28px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px">Export Your Work</div>
+          <div style="font-size:15px;font-weight:600;color:#fff">Download your identity statement and mindset audit as PDF</div>
+        </div>
+        <button class="btn-download" onclick="downloadPDF()">⬇ Download PDF</button>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="module-4.html" class="btn-nav">← Module 04: Foundation Circuit</a>
+        <a href="module-6.html" class="btn-nav primary">Module 06: Marketplace →</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="toc-sidebar">
+    <div class="toc-head">In This Module</div>
+    <a href="#sec-version" class="toc-link active" onclick="setToc(this)">01 — Version of Self</a>
+    <a href="#sec-mindset" class="toc-link" onclick="setToc(this)">02 — Mindset Audit</a>
+    <a href="#sec-values" class="toc-link" onclick="setToc(this)">03 — Values Audit</a>
+    <a href="#sec-identity" class="toc-link" onclick="setToc(this)">04 — Identity Statement</a>
+    <a href="#sec-circuit" class="toc-link" onclick="setToc(this)">Circuit Check</a>
+    <div class="toc-footer">
+      <button class="btn-download" style="width:100%" onclick="downloadPDF()">⬇ Download PDF</button>
+    </div>
+  </aside>
+</div>
+
+<script>
+const MOD_KEY='lc_mod5';
+function toggleMindset(el){el.classList.toggle('selected');updateProgress();save()}
+function toggleValue(el){
+  const sel=document.querySelectorAll('.value-chip.selected');
+  if(!el.classList.contains('selected')&&sel.length>=5){alert('Select up to 5 core values.');return}
+  el.classList.toggle('selected');updateProgress();save();
+}
+function toggleCircuit(el){el.classList.toggle('done');updateProgress();save()}
+function updateChar(ta,cid){const el=document.getElementById(cid);if(el)el.textContent=ta.value.length+' characters'}
+function updatePreview(){
+  const v1=document.getElementById('id1').value.trim();
+  const v2=document.getElementById('id2').value.trim();
+  const v3=document.getElementById('id3').value.trim();
+  const v4=document.getElementById('id4').value.trim();
+  const prev=document.getElementById('identityPreview');
+  if(v1||v2||v3||v4){
+    prev.style.display='block';
+    document.getElementById('previewText').textContent=
+      `I am someone who ${v1||'…'}. I build trust by ${v2||'…'}. My evidence proves that I ${v3||'…'}. I operate from the values of ${v4||'…'}.`;
+  } else {prev.style.display='none'}
+}
+function calcPct(){
+  let s=0,m=0;
+  ['r1','r2','r3','r4','r5'].forEach(id=>{m+=10;if((document.getElementById(id).value||'').length>20)s+=10});
+  m+=10;if(document.querySelectorAll('.mindset-card.selected').length>0)s+=10;
+  m+=10;if(document.querySelectorAll('.value-chip.selected').length>0)s+=10;
+  const ids=['id1','id2','id3','id4'].filter(id=>(document.getElementById(id).value||'').trim().length>5).length;
+  m+=10;if(ids>=2)s+=10;
+  const done=document.querySelectorAll('.circuit-item.done').length;
+  m+=25;s+=done*5;
+  return Math.round((s/m)*100);
+}
+function updateProgress(){
+  const pct=calcPct();
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('pctLabel').textContent=pct+'%';
+  document.getElementById('navFill').style.width=pct+'%';
+  document.getElementById('navPct').textContent=pct+'%';
+  save();
+}
+function save(){
+  const d={};
+  ['r1','r2','r3','r4','r5'].forEach(id=>d[id]=document.getElementById(id).value);
+  ['id1','id2','id3','id4'].forEach(id=>d[id]=document.getElementById(id).value);
+  d.limiting=[...document.querySelectorAll('.mindset-card.selected')].map(el=>el.querySelector('.mindset-name').textContent);
+  d.values=[...document.querySelectorAll('.value-chip.selected')].map(el=>el.textContent);
+  d.circuit=[...document.querySelectorAll('.circuit-item')].map(el=>el.classList.contains('done'));
+  localStorage.setItem(MOD_KEY,JSON.stringify(d));
+  const prog=JSON.parse(localStorage.getItem('lc_progress')||'{}');
+  prog.mod5=calcPct();
+  localStorage.setItem('lc_progress',JSON.stringify(prog));
+}
+function load(){
+  const d=JSON.parse(localStorage.getItem(MOD_KEY)||'{}');
+  ['r1','r2','r3','r4','r5'].forEach(id=>{if(d[id]){document.getElementById(id).value=d[id];updateChar(document.getElementById(id),'c'+id.slice(1))}});
+  ['id1','id2','id3','id4'].forEach(id=>{if(d[id])document.getElementById(id).value=d[id]});
+  if(d.limiting){d.limiting.forEach(name=>{const el=[...document.querySelectorAll('.mindset-card')].find(c=>c.querySelector('.mindset-name')?.textContent===name);if(el)el.classList.add('selected')})}
+  if(d.values){d.values.forEach(v=>{const el=[...document.querySelectorAll('.value-chip')].find(c=>c.textContent===v);if(el)el.classList.add('selected')})}
+  if(d.circuit){const items=document.querySelectorAll('.circuit-item');d.circuit.forEach((v,i)=>{if(v&&items[i])items[i].classList.add('done')})}
+  updatePreview();updateProgress();
+}
+function setToc(el){document.querySelectorAll('.toc-link').forEach(l=>l.classList.remove('active'));el.classList.add('active')}
+function downloadPDF(){
+  const d={};
+  ['r1','r2','r3','r4','r5'].forEach(id=>d[id]=document.getElementById(id).value);
+  const limiting=[...document.querySelectorAll('.mindset-card.selected')].map(el=>el.querySelector('.mindset-name').textContent);
+  const values=[...document.querySelectorAll('.value-chip.selected')].map(el=>el.textContent);
+  const id1=document.getElementById('id1').value,id2=document.getElementById('id2').value,id3=document.getElementById('id3').value,id4=document.getElementById('id4').value;
+  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Module 05 — Version of Self</title>
+  <style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;color:#1a1a1a;line-height:1.6}
+  h1{font-size:28px;border-bottom:3px solid #9b59b6;padding-bottom:12px}
+  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#9b59b6;margin-top:28px}
+  h3{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-top:16px}
+  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #9b59b6}
+  .chip{display:inline-block;padding:4px 10px;margin:3px;font-size:12px;font-weight:bold}
+  .limiting-chip{background:#fdf1f1;border:1px solid #e05555;color:#e05555}
+  .value-chip{background:#f5eef8;border:1px solid #9b59b6;color:#9b59b6}
+  .identity-box{background:#f5eef8;border-left:4px solid #9b59b6;padding:16px 20px;font-size:15px;font-weight:bold;line-height:1.6}
+  .footer{margin-top:40px;font-size:11px;color:#aaa;border-top:1px solid #eee;padding-top:12px}
+  </style></head><body>
+  <h1>Module 05: Version of Self / Identity Shift</h1>
+  <p style="background:#f5eef8;border-color:#9b59b6"><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
+  <h2>My Identity Statement</h2>
+  <div class="identity-box">I am someone who ${id1||'…'}. I build trust by ${id2||'…'}. My evidence proves that I ${id3||'…'}. I operate from the values of ${id4||'…'}.</div>
+  <h2>Active Limiting Patterns (${limiting.length})</h2>
+  ${limiting.map(l=>`<span class="chip limiting-chip">${l}</span>`).join('')}
+  <h2>Core Values (${values.length})</h2>
+  ${values.map(v=>`<span class="chip value-chip">${v}</span>`).join('')}
+  <h2>Reflections</h2>
+  <h3>1.1 — Current version of self</h3><p>${d.r1||'—'}</p>
+  <h3>1.2 — Available version of self</h3><p>${d.r2||'—'}</p>
+  <h3>2.1 — Most active limiting pattern</h3><p>${d.r3||'—'}</p>
+  <h3>3.1 — Values alignment vs misalignment</h3><p>${d.r4||'—'}</p>
+  <h3>4.1 — What changes if I operate from this identity</h3><p>${d.r5||'—'}</p>
+  <div class="footer">Life Circuitry — Think Small, Start Horribly — thinksmallstarthorribly.com</div>
+  </body></html>`;
+  const w=window.open('','_blank');w.document.write(html);w.document.close();setTimeout(()=>w.print(),500);
+}
+window.addEventListener('DOMContentLoaded',load);
+</script>
+</body>
+</html>

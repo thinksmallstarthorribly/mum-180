@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal — Life Circuitry</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#3aabb3">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --teal:#5ec5cc;--teal-d:#3aabb3;--teal-p:#eaf7f8;--teal-m:#b8e8eb;
+  --yellow:#f5c842;--yp:#fef9e7;
+  --red:#e05555;--rp:#fdf1f1;
+  --green:#27ae60;--gp:#e9f7ef;
+  --purple:#9b59b6;--pp:#f5eef8;
+  --orange:#e67e22;--op:#fef3e8;
+  --charcoal:#1a1a1a;--mid:#444;--light:#888;
+  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+}
+html,body{height:100%;background:var(--bg);font-family:'Barlow',sans-serif;color:var(--charcoal)}
+body{display:flex;flex-direction:column;min-height:100vh}
+
+/* TOP NAV */
+.topnav{background:var(--charcoal);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
+.topnav-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal);text-decoration:none}
+.topnav-logo span{color:rgba(255,255,255,0.25)}
+.topnav-right{display:flex;align-items:center;gap:20px}
+.topnav-user{font-size:13px;color:rgba(255,255,255,0.4);font-weight:600}
+.nav-home{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
+.nav-home:hover{color:var(--teal)}
+
+/* LAYOUT */
+.shell{display:flex;flex:1;min-height:0}
+.sidebar{width:260px;background:var(--charcoal);flex-shrink:0;display:flex;flex-direction:column;overflow-y:auto}
+.main{flex:1;overflow-y:auto;padding:40px;display:flex;flex-direction:column;gap:32px}
+
+/* SIDEBAR */
+.sb-section{padding:20px 16px 8px;font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.18)}
+.sb-item{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;transition:all 0.15s;border-left:3px solid transparent;text-decoration:none}
+.sb-item:hover{background:rgba(255,255,255,0.04);border-left-color:rgba(94,197,204,0.3)}
+.sb-item.active{background:rgba(94,197,204,0.08);border-left-color:var(--teal)}
+.sb-item-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;transition:all 0.2s}
+.sb-item-body{flex:1;min-width:0}
+.sb-item-label{font-size:12px;font-weight:700;color:rgba(255,255,255,0.5);line-height:1.3}
+.sb-item.active .sb-item-label{color:#fff}
+.sb-item:hover .sb-item-label{color:rgba(255,255,255,0.8)}
+.sb-item-sub{font-size:10px;color:rgba(255,255,255,0.2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-progress{font-size:10px;font-weight:700;color:rgba(255,255,255,0.2);font-family:monospace;min-width:32px;text-align:right}
+.sb-item.active .sb-progress{color:var(--teal)}
+.sb-divider{height:1px;background:rgba(255,255,255,0.05);margin:8px 16px}
+.sb-footer{padding:20px 16px;margin-top:auto;border-top:1px solid rgba(255,255,255,0.05)}
+.sb-footer-text{font-size:11px;color:rgba(255,255,255,0.2);line-height:1.5}
+.sb-footer-brand{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal);margin-bottom:4px}
+
+/* DASHBOARD HEADER */
+.dash-header{background:var(--charcoal);padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.dash-headline{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;color:#fff;line-height:1;margin-bottom:6px}
+.dash-sub{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.5}
+.dash-overall{text-align:right}
+.dash-overall-num{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:var(--teal);line-height:1}
+.dash-overall-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+
+/* OVERALL PROGRESS BAR */
+.overall-bar-wrap{background:var(--card);border:1px solid var(--rule);padding:16px 24px;display:flex;align-items:center;gap:20px}
+.ob-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);white-space:nowrap}
+.ob-bar{flex:1;height:8px;background:var(--rule);border-radius:4px;overflow:hidden}
+.ob-fill{height:100%;background:var(--teal);border-radius:4px;transition:width 0.6s}
+.ob-pct{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--teal);min-width:44px;text-align:right}
+
+/* MODULE CARDS */
+.modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px}
+.mod-card{background:var(--card);border:1px solid var(--rule);display:flex;flex-direction:column;position:relative;overflow:hidden;transition:all 0.2s}
+.mod-card:hover{border-color:var(--teal-m);box-shadow:0 4px 20px rgba(94,197,204,0.1)}
+.mod-card-accent-bar{height:4px;width:100%}
+.mod-card-inner{padding:24px;flex:1;display:flex;flex-direction:column}
+.mod-card-eyebrow{font-size:9px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--light);margin-bottom:10px}
+.mod-card-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;line-height:1.1;margin-bottom:8px}
+.mod-card-desc{font-size:12px;color:var(--mid);line-height:1.6;flex:1;margin-bottom:16px}
+.mod-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--rule)}
+.mod-progress{flex:1}
+.mod-progress-bar{height:4px;background:var(--rule);border-radius:2px;overflow:hidden;margin-bottom:4px}
+.mod-progress-fill{height:100%;border-radius:2px;transition:width 0.4s}
+.mod-progress-pct{font-size:10px;font-weight:700;color:var(--light)}
+.mod-btn{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:8px 16px;text-decoration:none;transition:all 0.2s;white-space:nowrap;border:none;cursor:pointer}
+.mod-btn.start{background:var(--teal);color:#fff}
+.mod-btn.start:hover{background:var(--teal-d)}
+.mod-btn.continue{background:var(--charcoal);color:var(--teal)}
+.mod-btn.continue:hover{background:#111}
+.mod-btn.done{background:var(--green);color:#fff}
+.mod-card-status{position:absolute;top:16px;right:16px;font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;padding:3px 8px}
+.status-complete{background:var(--gp);color:var(--green);border:1px solid rgba(39,174,96,0.2)}
+.status-progress{background:var(--teal-p);color:var(--teal-d);border:1px solid rgba(94,197,204,0.2)}
+
+/* QUICK STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+@media(max-width:640px){.stats-row{grid-template-columns:1fr 1fr}}
+.stat-card{background:var(--card);border:1px solid var(--rule);padding:20px 24px}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;line-height:1;margin-bottom:4px}
+.stat-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--light)}
+.stat-card.teal .stat-num{color:var(--teal)}
+.stat-card.green .stat-num{color:var(--green)}
+.stat-card.red .stat-num{color:var(--red)}
+.stat-card.yellow .stat-num{color:var(--yellow)}
+
+/* SECTION TITLES */
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+.section-head-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em}
+.section-head-meta{font-size:11px;color:var(--light);font-weight:600}
+
+/* RESOURCES */
+.resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+@media(max-width:640px){.resources-grid{grid-template-columns:1fr}}
+.resource-card{background:var(--card);border:1px solid var(--rule);padding:20px 24px;display:flex;align-items:center;gap:16px;text-decoration:none;transition:all 0.2s}
+.resource-card:hover{border-color:var(--teal-m)}
+.resource-icon{font-size:24px;flex-shrink:0}
+.resource-body{flex:1}
+.resource-title{font-size:14px;font-weight:700;color:var(--charcoal);margin-bottom:2px}
+.resource-desc{font-size:11px;color:var(--light)}
+.resource-arrow{color:var(--teal);font-size:16px}
+
+/* WELCOME BANNER */
+.welcome-banner{background:var(--charcoal);padding:20px 24px;border-left:4px solid var(--teal);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.wb-text{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5}
+.wb-text strong{color:#fff}
+.wb-close{background:none;border:none;color:rgba(255,255,255,0.3);font-size:18px;cursor:pointer;padding:4px}
+.wb-close:hover{color:rgba(255,255,255,0.6)}
+
+@media(max-width:768px){
+  .sidebar{display:none}
+  .main{padding:20px}
+  .dash-header{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <a href="index.html" class="topnav-logo">Life Circuitry <span>/ Portal</span></a>
+  <div class="topnav-right">
+    <span class="topnav-user">Alex Cooper</span>
+    <button onclick="signOut()" class="nav-home" style="background:none;border:none;cursor:pointer;">Sign Out</button>
+    <a href="index.html" class="nav-home">← Sales Page</a>
+  </div>
+</nav>
+
+<div class="shell">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-section">Programme</div>
+    <a href="module-1.html" class="sb-item" id="sb-mod1">
+      <div class="sb-item-dot" style="background:#5ec5cc"></div>
+      <div class="sb-item-body">
+        <div class="sb-item-label">The Momentum Formula</div>
+        <div class="sb-item-sub">Module 01 · Foundation</div>
+      </div>
+      <div class="sb-progress" id="sbp1">0%</div>
+    </a>
+    <a href="module-2.html" class="sb-item" id="sb-mod2">
+      <div class="sb-item-dot" style="background:#e05555"></div>
+      <div class="sb-item-body">
+        <div class="sb-item-label">The Stuck Framework</div>
+        <div class="sb-item-sub">Module 02 · Diagnostic</div>
+      </div>
+      <div class="sb-progress" id="sbp2">0%</div>
+    </a>
+    <a href="module-3.html" class="sb-item" id="sb-mod3">
+      <div class="sb-item-dot" style="background:#f5c842"></div>
+      <div class="sb-item-body">
+        <div class="sb-item-label">Conceptual Landscape</div>
+        <div class="sb-item-sub">Module 03 · 20 Barriers</div>
+      </div>
+      <div class="sb-progress" id="sbp3">0%</div>
+    </a>
+    <a href="module-4.html" class="sb-item" id="sb-mod4">
+      <div class="sb-item-dot" style="background:#5ec5cc"></div>
+      <div class="sb-item-body">
+        <div class="sb-item-label">Foundation Circuit</div>
+        <div class="sb-item-sub">Module 04 · Workbook</div>
+      </div>
+      <div class="sb-progress" id="sbp4">0%</div>
+    </a>
+    <a href="module-5.html" class="sb-item" id="sb-mod5">
+      <div class="sb-item-dot" style="background:#9b59b6"></div>
+      <div class="sb-item-body">
+        <div class="sb-item-label">Version of Self</div>
+        <div class="sb-item-sub">Module 05 · Identity</div>
+      </div>
+      <div class="sb-progress" id="sbp5">0%</div>
+    </a>
+    <a href="module-6.html" class="sb-item" id="sb-mod6">
+      <div class="sb-item-dot" style="background:#e67e22"></div>
+      <div class="sb-item-body">
+        <div class="sb-item-label">The Marketplace</div>
+        <div class="sb-item-sub">Module 06 · Strategy</div>
+      </div>
+      <div class="sb-progress" id="sbp6">0%</div>
+    </a>
+    <a href="module-7.html" class="sb-item" id="sb-mod7">
+      <div class="sb-item-dot" style="background:#27ae60"></div>
+      <div class="sb-item-body">
+        <div class="sb-item-label">Re-Entering Early Learning</div>
+        <div class="sb-item-sub">Module 07 · Final</div>
+      </div>
+      <div class="sb-progress" id="sbp7">0%</div>
+    </a>
+    <div class="sb-divider"></div>
+    <div class="sb-section">Resources</div>
+    <a href="foundation-circuit-workbook-v10.html" class="sb-item" target="_blank">
+      <div class="sb-item-dot" style="background:var(--teal)"></div>
+      <div class="sb-item-body">
+        <div class="sb-item-label">Original Workbook v10</div>
+        <div class="sb-item-sub">Foundation Circuit PDF/HTML</div>
+      </div>
+    </a>
+    <a href="index.html" class="sb-item">
+      <div class="sb-item-dot" style="background:rgba(255,255,255,0.15)"></div>
+      <div class="sb-item-body">
+        <div class="sb-item-label">Sales Page</div>
+        <div class="sb-item-sub">Share with others</div>
+      </div>
+    </a>
+    <div class="sb-footer">
+      <div class="sb-footer-brand">Life Circuitry</div>
+      <div class="sb-footer-text">Think Small, Start Horribly<br>Alex Cooper © 2026</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- WELCOME BANNER -->
+    <div class="welcome-banner" id="welcomeBanner">
+      <div class="wb-text"><strong>Welcome to the Life Circuitry Portal.</strong> Start with Module 01 and work through the modules in sequence. Your progress saves automatically to this device.</div>
+      <button class="wb-close" onclick="document.getElementById('welcomeBanner').style.display='none'">×</button>
+    </div>
+
+    <!-- DASHBOARD HEADER -->
+    <div class="dash-header">
+      <div>
+        <div class="dash-headline">Your Dashboard</div>
+        <div class="dash-sub">Life Circuitry Programme — 7 Interactive Modules</div>
+      </div>
+      <div class="dash-overall">
+        <div class="dash-overall-num" id="overallPct">0%</div>
+        <div class="dash-overall-label">Programme Complete</div>
+      </div>
+    </div>
+
+    <!-- OVERALL PROGRESS -->
+    <div class="overall-bar-wrap">
+      <div class="ob-label">Overall Progress</div>
+      <div class="ob-bar"><div class="ob-fill" id="overallFill" style="width:0%"></div></div>
+      <div class="ob-pct" id="overallPctBar">0%</div>
+    </div>
+
+    <!-- QUICK STATS -->
+    <div>
+      <div class="section-head"><div class="section-head-title">At a Glance</div></div>
+      <div class="stats-row">
+        <div class="stat-card teal">
+          <div class="stat-num" id="statStarted">0</div>
+          <div class="stat-label">Modules<br>Started</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-num" id="statComplete">0</div>
+          <div class="stat-label">Modules<br>Completed</div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="stat-num" id="statPct">0%</div>
+          <div class="stat-label">Average<br>Completion</div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-num" id="statRemaining">7</div>
+          <div class="stat-label">Modules<br>Remaining</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULES GRID -->
+    <div>
+      <div class="section-head">
+        <div class="section-head-title">Programme Modules</div>
+        <div class="section-head-meta">7 modules · Progress saves automatically</div>
+      </div>
+      <div class="modules-grid" id="modulesGrid">
+
+        <div class="mod-card" id="mc1">
+          <div class="mod-card-accent-bar" style="background:#5ec5cc"></div>
+          <div class="mod-card-inner">
+            <div class="mod-card-eyebrow">Module 01 · Foundation</div>
+            <h3 class="mod-card-title">The Momentum Formula</h3>
+            <p class="mod-card-desc">Action precedes motivation. Build the evidence base — not the motivation — that creates real self-trust and consistent output.</p>
+            <div class="mod-card-footer">
+              <div class="mod-progress">
+                <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf1" style="width:0%;background:#5ec5cc"></div></div>
+                <div class="mod-progress-pct" id="mp1">Not started</div>
+              </div>
+              <a href="module-1.html" class="mod-btn start" id="mb1">Start →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mod-card" id="mc2">
+          <div class="mod-card-accent-bar" style="background:#e05555"></div>
+          <div class="mod-card-inner">
+            <div class="mod-card-eyebrow">Module 02 · Diagnostic</div>
+            <h3 class="mod-card-title">The Stuck Framework</h3>
+            <p class="mod-card-desc">Map the exact loop keeping you stuck. Understand the Threshold — the line between mediocrity and real life — and how to cross it.</p>
+            <div class="mod-card-footer">
+              <div class="mod-progress">
+                <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf2" style="width:0%;background:#e05555"></div></div>
+                <div class="mod-progress-pct" id="mp2">Not started</div>
+              </div>
+              <a href="module-2.html" class="mod-btn start" id="mb2">Start →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mod-card" id="mc3">
+          <div class="mod-card-accent-bar" style="background:#f5c842"></div>
+          <div class="mod-card-inner">
+            <div class="mod-card-eyebrow">Module 03 · 20 Barriers Mapped</div>
+            <h3 class="mod-card-title">Escaping the Conceptual Landscape</h3>
+            <p class="mod-card-desc">20 barriers across 4 groups — Starting, Continuing, Thinking, Adapting. Identify yours precisely. Then cross The Bridge.</p>
+            <div class="mod-card-footer">
+              <div class="mod-progress">
+                <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf3" style="width:0%;background:#f5c842"></div></div>
+                <div class="mod-progress-pct" id="mp3">Not started</div>
+              </div>
+              <a href="module-3.html" class="mod-btn start" id="mb3">Start →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mod-card" id="mc4">
+          <div class="mod-card-accent-bar" style="background:#5ec5cc"></div>
+          <div class="mod-card-inner">
+            <div class="mod-card-eyebrow">Module 04 · Interactive Workbook</div>
+            <h3 class="mod-card-title">Foundation Circuit</h3>
+            <p class="mod-card-desc">Your two states. Capacity audit. Recovery phase tracker. Evidence log. The core of the programme — the missing layer everyone skips.</p>
+            <div class="mod-card-footer">
+              <div class="mod-progress">
+                <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf4" style="width:0%;background:#5ec5cc"></div></div>
+                <div class="mod-progress-pct" id="mp4">Not started</div>
+              </div>
+              <a href="module-4.html" class="mod-btn start" id="mb4">Start →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mod-card" id="mc5">
+          <div class="mod-card-accent-bar" style="background:#9b59b6"></div>
+          <div class="mod-card-inner">
+            <div class="mod-card-eyebrow">Module 05 · Identity Shift</div>
+            <h3 class="mod-card-title">Version of Self</h3>
+            <p class="mod-card-desc">Mindset audit, values selector, and an evidence-based identity statement builder. Change the operating system, not just the behaviour.</p>
+            <div class="mod-card-footer">
+              <div class="mod-progress">
+                <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf5" style="width:0%;background:#9b59b6"></div></div>
+                <div class="mod-progress-pct" id="mp5">Not started</div>
+              </div>
+              <a href="module-5.html" class="mod-btn start" id="mb5">Start →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mod-card" id="mc6">
+          <div class="mod-card-accent-bar" style="background:#e67e22"></div>
+          <div class="mod-card-inner">
+            <div class="mod-card-eyebrow">Module 06 · Value Strategy</div>
+            <h3 class="mod-card-title">The Marketplace</h3>
+            <p class="mod-card-desc">5 marketplace principles. 5 stages in the Hierarchy of Value. Map your current position, identify the gap, and define your competitive advantage.</p>
+            <div class="mod-card-footer">
+              <div class="mod-progress">
+                <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf6" style="width:0%;background:#e67e22"></div></div>
+                <div class="mod-progress-pct" id="mp6">Not started</div>
+              </div>
+              <a href="module-6.html" class="mod-btn start" id="mb6">Start →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mod-card" id="mc7">
+          <div class="mod-card-accent-bar" style="background:#27ae60"></div>
+          <div class="mod-card-inner">
+            <div class="mod-card-eyebrow">Module 07 · Final Module</div>
+            <h3 class="mod-card-title">Re-Entering the Early Learning Phase</h3>
+            <p class="mod-card-desc">The professional trap. Silo effects. 4 diagnostic corrections. Practice framework + Reentry Audit. The final circuit.</p>
+            <div class="mod-card-footer">
+              <div class="mod-progress">
+                <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf7" style="width:0%;background:#27ae60"></div></div>
+                <div class="mod-progress-pct" id="mp7">Not started</div>
+              </div>
+              <a href="module-7.html" class="mod-btn start" id="mb7">Start →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RESOURCES -->
+    <div>
+      <div class="section-head"><div class="section-head-title">Resources</div></div>
+      <div class="resources-grid">
+        <a href="foundation-circuit-workbook-v10.html" class="resource-card" target="_blank">
+          <div class="resource-icon">📋</div>
+          <div class="resource-body">
+            <div class="resource-title">Foundation Circuit Workbook v10</div>
+            <div class="resource-desc">Original interactive workbook — open in browser or print</div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </a>
+        <a href="index.html" class="resource-card">
+          <div class="resource-icon">🌐</div>
+          <div class="resource-body">
+            <div class="resource-title">Sales Page</div>
+            <div class="resource-desc">Share the programme with others</div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </a>
+        <div class="resource-card" style="cursor:pointer" onclick="resetProgress()">
+          <div class="resource-icon">🔄</div>
+          <div class="resource-body">
+            <div class="resource-title">Reset Progress</div>
+            <div class="resource-desc">Clear all saved responses and start fresh</div>
+          </div>
+          <div class="resource-arrow" style="color:var(--red)">⚠</div>
+        </div>
+        <a href="mailto:hello@thinksmallstarthorribly.com" class="resource-card">
+          <div class="resource-icon">✉️</div>
+          <div class="resource-body">
+            <div class="resource-title">Contact Alex</div>
+            <div class="resource-desc">hello@thinksmallstarthorribly.com</div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+const MODULES = [
+  {key:'lc_mod1', id:1, color:'#5ec5cc'},
+  {key:'lc_mod2', id:2, color:'#e05555'},
+  {key:'lc_mod3', id:3, color:'#f5c842'},
+  {key:'lc_mod4', id:4, color:'#5ec5cc'},
+  {key:'lc_mod5', id:5, color:'#9b59b6'},
+  {key:'lc_mod6', id:6, color:'#e67e22'},
+  {key:'lc_mod7', id:7, color:'#27ae60'},
+];
+
+function loadDashboard(){
+  const prog = JSON.parse(localStorage.getItem('lc_progress') || '{}');
+  let totalPct = 0;
+  let started = 0;
+  let complete = 0;
+  let remaining = 0;
+
+  MODULES.forEach(m => {
+    const pct = prog['mod'+m.id] || 0;
+    totalPct += pct;
+
+    // Update sidebar
+    const sbp = document.getElementById('sbp'+m.id);
+    if(sbp) sbp.textContent = pct + '%';
+
+    // Update module card fill
+    const fill = document.getElementById('mf'+m.id);
+    const pctEl = document.getElementById('mp'+m.id);
+    const btn = document.getElementById('mb'+m.id);
+    const card = document.getElementById('mc'+m.id);
+
+    if(fill) fill.style.width = pct + '%';
+
+    if(pct === 0){
+      if(pctEl) pctEl.textContent = 'Not started';
+      if(btn){btn.textContent='Start →'; btn.className='mod-btn start';}
+      remaining++;
+    } else if(pct >= 80){
+      if(pctEl) pctEl.textContent = pct + '% — Complete';
+      if(btn){btn.textContent='Review →'; btn.className='mod-btn done';}
+      // Add status badge
+      if(card && !card.querySelector('.mod-card-status')){
+        const badge = document.createElement('div');
+        badge.className = 'mod-card-status status-complete';
+        badge.textContent = 'Complete';
+        card.appendChild(badge);
+      }
+      complete++;
+      started++;
+    } else {
+      if(pctEl) pctEl.textContent = pct + '% — In Progress';
+      if(btn){btn.textContent='Continue →'; btn.className='mod-btn continue';}
+      if(card && !card.querySelector('.mod-card-status')){
+        const badge = document.createElement('div');
+        badge.className = 'mod-card-status status-progress';
+        badge.textContent = 'In Progress';
+        card.appendChild(badge);
+      }
+      started++;
+    }
+  });
+
+  const avg = MODULES.length > 0 ? Math.round(totalPct / MODULES.length) : 0;
+
+  // Update overall
+  document.getElementById('overallPct').textContent = avg + '%';
+  document.getElementById('overallFill').style.width = avg + '%';
+  document.getElementById('overallPctBar').textContent = avg + '%';
+
+  // Stats
+  document.getElementById('statStarted').textContent = started;
+  document.getElementById('statComplete').textContent = complete;
+  document.getElementById('statPct').textContent = avg + '%';
+  document.getElementById('statRemaining').textContent = MODULES.length - complete;
+}
+
+function resetProgress(){
+  if(!confirm('Reset ALL progress? This will clear every reflection, audit, and saved response across all 7 modules. This cannot be undone.')) return;
+  MODULES.forEach(m => localStorage.removeItem(m.key));
+  localStorage.removeItem('lc_progress');
+  loadDashboard();
+}
+
+// ── ACCESS GATE ──────────────────────────────────────────────────────────────
+const SESSION_KEY = 'lc_access';
+const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000;
+
+function checkAccess(){
+  try{
+    const s = JSON.parse(localStorage.getItem(SESSION_KEY)||'null');
+    if(!s || Date.now() - s.ts > SESSION_DURATION){
+      localStorage.removeItem(SESSION_KEY);
+      window.location.href = 'access.html';
+      return false;
+    }
+    return true;
+  }catch(e){ window.location.href = 'access.html'; return false; }
+}
+
+function signOut(){
+  if(!confirm('Sign out? Your progress will be saved.')) return;
+  localStorage.removeItem(SESSION_KEY);
+  window.location.href = 'access.html';
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
+window.addEventListener('DOMContentLoaded', ()=>{ if(checkAccess()) loadDashboard(); });
+</script>
+</body>
+</html>

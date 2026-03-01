@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 04: Foundation Circuit — Life Circuitry</title>
+<link rel="manifest" href="./manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --accent:#5ec5cc;--accent-d:#3aabb3;--accent-p:#eaf7f8;--accent-m:#b8e8eb;
+  --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
+  --green:#27ae60;--gp:#e9f7ef;
+  --charcoal:#1a1a1a;--mid:#444;--light:#888;
+  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+}
+html,body{height:100%;font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg)}
+body{display:flex;flex-direction:column}
+.topnav{background:var(--charcoal);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
+.topnav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.topnav-back:hover{color:var(--accent)}
+.topnav-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4)}
+.topnav-title span{color:var(--accent)}
+.topnav-progress{display:flex;align-items:center;gap:12px}
+.nav-pct{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:var(--accent)}
+.nav-bar{width:120px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden}
+.nav-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.4s}
+.shell{display:flex;flex:1;min-height:0;overflow:hidden}
+.content-area{flex:1;overflow-y:auto;padding:0}
+.toc-sidebar{width:240px;flex-shrink:0;background:var(--card);border-left:1px solid var(--rule);overflow-y:auto;display:flex;flex-direction:column}
+.mod-header{background:var(--charcoal);color:#fff;padding:48px 56px;border-bottom:4px solid var(--accent)}
+.mod-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.mod-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,6vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95;margin-bottom:16px;color:#fff}
+.mod-subtitle{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.6;max-width:560px;margin-bottom:28px}
+.mod-meta{display:flex;gap:32px;flex-wrap:wrap}
+.mod-meta-item{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.mod-meta-item span{color:rgba(255,255,255,0.7)}
+.content-body{max-width:720px;margin:0 auto;padding:48px 40px}
+.section-block{margin-bottom:56px;scroll-margin-top:70px}
+.section-label{font-size:9px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;color:var(--charcoal);line-height:1;margin-bottom:20px}
+.body-text{font-size:15px;line-height:1.85;color:var(--mid);margin-bottom:16px}
+.highlight-box{background:var(--accent-p);border-left:4px solid var(--accent);padding:20px 24px;margin-bottom:24px}
+.highlight-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
+.red-box{background:var(--rp);border-left:4px solid var(--red);padding:20px 24px;margin-bottom:24px}
+.red-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
+
+/* STATES VISUALISER */
+.two-states{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:28px}
+.state{padding:24px;background:var(--card);border:1px solid var(--rule)}
+.state.high{border-top:4px solid var(--accent)}
+.state.low{border-top:4px solid var(--red)}
+.state-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px}
+.state.high .state-title{color:var(--accent-d)}
+.state.low .state-title{color:var(--red)}
+.state-traits{list-style:none}
+.state-traits li{font-size:13px;color:var(--mid);padding:6px 0;border-bottom:1px solid var(--rule);line-height:1.4}
+.state-traits li:last-child{border-bottom:none}
+
+/* SLIDER ASSESSMENT */
+.slider-group{margin-bottom:28px}
+.slider-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.slider-q{font-size:14px;font-weight:600;color:var(--charcoal);line-height:1.4;flex:1}
+.slider-val{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--accent);min-width:36px;text-align:right}
+.slider-track{position:relative;margin-bottom:4px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:var(--rule);border-radius:3px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.2)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid #fff}
+.slider-labels{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--light);margin-top:2px}
+
+/* CAPACITY GAUGE */
+.gauge-wrap{display:flex;gap:20px;align-items:stretch;margin-bottom:24px;flex-wrap:wrap}
+.gauge-card{flex:1;min-width:140px;background:var(--card);border:1px solid var(--rule);padding:20px;text-align:center}
+.gauge-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--light);margin-bottom:12px}
+.gauge-ring{position:relative;width:80px;height:80px;margin:0 auto 12px}
+.gauge-ring svg{width:80px;height:80px;transform:rotate(-90deg)}
+.gauge-ring .bg{fill:none;stroke:var(--rule);stroke-width:8}
+.gauge-ring .fg{fill:none;stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 0.5s}
+.gauge-num{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900}
+
+/* PHASE TRACKER */
+.phase-list{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.phase-row{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--card);border:1px solid var(--rule);cursor:pointer;transition:all 0.2s}
+.phase-row:hover{border-color:var(--accent)}
+.phase-row.active-phase{border-color:var(--accent);background:var(--accent-p)}
+.phase-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.phase-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;flex:1}
+.phase-desc{font-size:12px;color:var(--light)}
+.phase-active-badge{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-d);background:var(--accent-m);padding:3px 8px;white-space:nowrap}
+
+/* REFLECT */
+.reflect-block{margin-bottom:24px}
+.reflect-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.reflect-prompt{font-size:14px;font-weight:600;color:var(--charcoal);margin-bottom:10px;line-height:1.5}
+textarea.reflect-input{width:100%;min-height:100px;border:1px solid var(--rule);padding:14px 16px;font-family:'Barlow',sans-serif;font-size:14px;line-height:1.6;resize:vertical;background:var(--bg);color:var(--charcoal);transition:border-color 0.2s}
+textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:#fff}
+.char-count{font-size:10px;color:var(--light);text-align:right;margin-top:4px}
+
+/* EVIDENCE LOG */
+.evidence-log{margin-bottom:24px}
+.ev-entry{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.ev-num{width:28px;height:28px;background:var(--accent);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:4px}
+.ev-input{flex:1;border:1px solid var(--rule);padding:10px 14px;font-family:'Barlow',sans-serif;font-size:14px;background:var(--bg);color:var(--charcoal);transition:border-color 0.2s}
+.ev-input:focus{outline:none;border-color:var(--accent);background:#fff}
+
+/* CIRCUIT CHECK */
+.circuit-item{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:var(--card);border:1px solid var(--rule);margin-bottom:10px;cursor:pointer;transition:all 0.2s}
+.circuit-item:hover{border-color:var(--accent)}
+.circuit-item.done{border-color:var(--green);background:var(--gp)}
+.circuit-toggle{width:24px;height:24px;border-radius:50%;border:2px solid var(--rule);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s;margin-top:2px}
+.circuit-item.done .circuit-toggle{background:var(--green);border-color:var(--green);color:#fff}
+.circuit-text{font-size:14px;line-height:1.6;color:var(--mid)}
+.circuit-item.done .circuit-text{color:var(--charcoal);font-weight:600}
+
+/* PROGRESS */
+.progress-wrap{background:var(--card);border:1px solid var(--rule);padding:20px 24px;margin-bottom:32px}
+.progress-label{display:flex;justify-content:space-between;margin-bottom:8px}
+.progress-label span{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--light)}
+.progress-label strong{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--accent)}
+.progress-bar{height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width 0.5s}
+
+/* TOC */
+.toc-head{padding:20px 20px 8px;font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);border-bottom:1px solid var(--rule)}
+.toc-link{display:block;padding:10px 20px;font-size:12px;font-weight:600;color:var(--mid);text-decoration:none;border-left:2px solid transparent;transition:all 0.15s;line-height:1.4}
+.toc-link:hover{color:var(--accent-d);border-left-color:var(--accent-m)}
+.toc-link.active{color:var(--accent-d);border-left-color:var(--accent);font-weight:700}
+.toc-footer{padding:20px;margin-top:auto;border-top:1px solid var(--rule)}
+.btn-nav{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px 24px;text-decoration:none;transition:all 0.2s;border:2px solid var(--rule);color:var(--mid);background:var(--card)}
+.btn-nav:hover{border-color:var(--accent);color:var(--accent-d)}
+.btn-nav.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-nav.primary:hover{background:var(--accent-d);border-color:var(--accent-d)}
+.nav-buttons{display:flex;justify-content:space-between;padding:32px 0;border-top:1px solid var(--rule);margin-top:32px}
+.btn-download{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;border:none;background:var(--charcoal);color:#fff;cursor:pointer;transition:all 0.2s}
+.btn-download:hover{background:var(--accent)}
+@media(max-width:768px){.mod-header{padding:32px 24px}.content-body{padding:32px 20px}.toc-sidebar{display:none}.two-states{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="portal.html" class="topnav-back">← Back to Portal</a>
+  <div class="topnav-title">Life Circuitry / <span>Module 04</span></div>
+  <div class="topnav-progress">
+    <span class="nav-pct" id="navPct">0%</span>
+    <div class="nav-bar"><div class="nav-bar-fill" id="navFill" style="width:0%"></div></div>
+  </div>
+</nav>
+
+<div class="shell">
+  <div class="content-area">
+    <div class="mod-header">
+      <div class="mod-eyebrow">Module 04 of 07 — Life Circuitry Program</div>
+      <h1 class="mod-title">Foundation<br>Circuit</h1>
+      <p class="mod-subtitle">The missing layer between capacity and performance. Mapping your two states, understanding the gap, and building the evidence base that closes it.</p>
+      <div class="mod-meta">
+        <div class="mod-meta-item">Duration <span>45–60 min</span></div>
+        <div class="mod-meta-item">Sections <span>5</span></div>
+        <div class="mod-meta-item">Includes <span>Interactive Workbook</span></div>
+        <div class="mod-meta-item">Type <span>Self-Assessment + Evidence Log</span></div>
+      </div>
+    </div>
+
+    <div class="content-body">
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Module Progress</span><strong id="pctLabel">0%</strong></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      </div>
+
+      <!-- SECTION 1: TWO STATES -->
+      <div class="section-block" id="sec-states">
+        <div class="section-label">Section 01</div>
+        <h2 class="section-title">Your Two States</h2>
+        <p class="body-text">You are not one consistent person. You operate in two states — a High-Capacity Self and a Low-Capacity Self. The problem isn't the low-capacity state. The problem is not knowing which state you're in, and therefore not knowing which decisions to make, which actions to take, or which version of yourself to trust.</p>
+        <div class="highlight-box"><p><strong>The Foundation Circuit gap:</strong> The distance between who you know you can be and who you actually show up as on any given day. This module is about mapping that gap precisely — so you can close it systematically.</p></div>
+
+        <div class="two-states">
+          <div class="state high">
+            <div class="state-title">High-Capacity Self</div>
+            <ul class="state-traits">
+              <li>Clear on priorities and sequence</li>
+              <li>Acts before motivation arrives</li>
+              <li>Recovers quickly from setbacks</li>
+              <li>Decisions feel grounded</li>
+              <li>Tolerates discomfort without escaping</li>
+              <li>Evidence-based self-trust</li>
+              <li>Output matches capacity</li>
+            </ul>
+          </div>
+          <div class="state low">
+            <div class="state-title">Low-Capacity Self</div>
+            <ul class="state-traits">
+              <li>Reactive, scattered, overwhelmed</li>
+              <li>Waits to feel ready or motivated</li>
+              <li>Derailed by minor setbacks</li>
+              <li>Decisions driven by avoidance</li>
+              <li>Escapes discomfort immediately</li>
+              <li>Self-trust based on feelings</li>
+              <li>Output far below capacity</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 1.1</div>
+          <div class="reflect-prompt">Describe your High-Capacity Self in concrete, behavioural terms. What are you doing, thinking, and feeling when you're operating at your best?</div>
+          <textarea class="reflect-input" id="r1" placeholder="Be specific — what does it actually look like when you're at your best?" oninput="updateProgress();updateChar(this,'c1')"></textarea>
+          <div class="char-count" id="c1">0 characters</div>
+        </div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 1.2</div>
+          <div class="reflect-prompt">Describe your Low-Capacity Self in honest detail. What triggers the shift? What does it look like behaviourally — to you and to others?</div>
+          <textarea class="reflect-input" id="r2" placeholder="No judgment — just observation…" oninput="updateProgress();updateChar(this,'c2')"></textarea>
+          <div class="char-count" id="c2">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: CAPACITY SLIDERS -->
+      <div class="section-block" id="sec-audit">
+        <div class="section-label">Section 02</div>
+        <h2 class="section-title">Capacity Audit</h2>
+        <p class="body-text">Rate yourself honestly right now — not on a good day, not on a bad day, but as a genuine average over the last 30 days. This is your current Foundation Circuit reading.</p>
+
+        <div class="gauge-wrap" id="gaugeWrap">
+          <div class="gauge-card">
+            <div class="gauge-label">Overall Capacity</div>
+            <div class="gauge-ring">
+              <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="32"/><circle class="fg" id="gfg1" cx="40" cy="40" r="32" stroke="#5ec5cc" stroke-dasharray="201" stroke-dashoffset="201"/></svg>
+              <div class="gauge-num" id="gnum1" style="color:#5ec5cc">0</div>
+            </div>
+            <div style="font-size:11px;color:var(--light);text-align:center">average score</div>
+          </div>
+        </div>
+
+        <div id="sliderContainer">
+          <div class="slider-group">
+            <div class="slider-header">
+              <div class="slider-q">Energy — Physical and mental availability for deliberate effort</div>
+              <div class="slider-val" id="sv1">5</div>
+            </div>
+            <div class="slider-track">
+              <input type="range" min="1" max="10" value="5" id="s1" oninput="updateSlider('s1','sv1');updateProgress()">
+            </div>
+            <div class="slider-labels"><span>1 — Depleted</span><span>10 — Fully resourced</span></div>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <div class="slider-q">Focus — Ability to direct sustained attention to what matters</div>
+              <div class="slider-val" id="sv2">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="s2" oninput="updateSlider('s2','sv2');updateProgress()">
+            <div class="slider-labels"><span>1 — Constantly scattered</span><span>10 — Laser precision</span></div>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <div class="slider-q">Regulation — How well you manage emotional states under pressure</div>
+              <div class="slider-val" id="sv3">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="s3" oninput="updateSlider('s3','sv3');updateProgress()">
+            <div class="slider-labels"><span>1 — Reactive, volatile</span><span>10 — Grounded, responsive</span></div>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <div class="slider-q">Decision Quality — The clarity and consistency of your choices</div>
+              <div class="slider-val" id="sv4">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="s4" oninput="updateSlider('s4','sv4');updateProgress()">
+            <div class="slider-labels"><span>1 — Avoidant, deferred</span><span>10 — Clear, grounded</span></div>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <div class="slider-q">Output Alignment — How close your actual output is to your real capacity</div>
+              <div class="slider-val" id="sv5">5</div>
+            </div>
+            <input type="range" min="1" max="10" value="5" id="s5" oninput="updateSlider('s5','sv5');updateProgress()">
+            <div class="slider-labels"><span>1 — Far below capacity</span><span>10 — Operating at ceiling</span></div>
+          </div>
+        </div>
+
+        <div class="reflect-block" style="margin-top:20px">
+          <div class="reflect-label">Reflection 2.1</div>
+          <div class="reflect-prompt">Looking at your lowest-scoring area — what's the single most honest explanation for why it's low?</div>
+          <textarea class="reflect-input" id="r3" placeholder="What's actually happening there?" oninput="updateProgress();updateChar(this,'c3')"></textarea>
+          <div class="char-count" id="c3">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: RECOVERY PHASES -->
+      <div class="section-block" id="sec-phases">
+        <div class="section-label">Section 03</div>
+        <h2 class="section-title">Recovery Phase Tracker</h2>
+        <p class="body-text">After dropping to low-capacity, you don't jump straight back to high-capacity. There are distinct recovery phases. Knowing which phase you're in changes what actions are appropriate. Doing the wrong actions in the wrong phase extends the recovery period.</p>
+
+        <div class="phase-list">
+          <div class="phase-row" onclick="selectPhase(this,'0')" data-phase="0">
+            <div class="phase-dot" style="background:#e05555"></div>
+            <div>
+              <div class="phase-name">Phase 0 — Collapse</div>
+              <div class="phase-desc">Full withdrawal. Energy conservation. No decisions. Rest without guilt.</div>
+            </div>
+            <div class="phase-active-badge" style="display:none">CURRENT</div>
+          </div>
+          <div class="phase-row" onclick="selectPhase(this,'1')" data-phase="1">
+            <div class="phase-dot" style="background:#e67e22"></div>
+            <div>
+              <div class="phase-name">Phase 1 — Stabilise</div>
+              <div class="phase-desc">Restore basics. Sleep, food, movement. Reduce input, reduce decisions.</div>
+            </div>
+            <div class="phase-active-badge" style="display:none">CURRENT</div>
+          </div>
+          <div class="phase-row" onclick="selectPhase(this,'2')" data-phase="2">
+            <div class="phase-dot" style="background:#f5c842"></div>
+            <div>
+              <div class="phase-name">Phase 2 — Rebuild</div>
+              <div class="phase-desc">Small wins. Tiny actions. Beginning to collect evidence again.</div>
+            </div>
+            <div class="phase-active-badge" style="display:none">CURRENT</div>
+          </div>
+          <div class="phase-row" onclick="selectPhase(this,'3')" data-phase="3">
+            <div class="phase-dot" style="background:#3aabb3"></div>
+            <div>
+              <div class="phase-name">Phase 3 — Momentum</div>
+              <div class="phase-desc">Consistent output. Evidence accumulating. Self-trust returning.</div>
+            </div>
+            <div class="phase-active-badge" style="display:none">CURRENT</div>
+          </div>
+          <div class="phase-row" onclick="selectPhase(this,'4')" data-phase="4">
+            <div class="phase-dot" style="background:#27ae60"></div>
+            <div>
+              <div class="phase-name">Phase 4 — Full Capacity</div>
+              <div class="phase-desc">Operating at ceiling. High output, high clarity, high trust.</div>
+            </div>
+            <div class="phase-active-badge" style="display:none">CURRENT</div>
+          </div>
+        </div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 3.1</div>
+          <div class="reflect-prompt">Which phase are you in right now — and what's the most appropriate action for that phase? Be specific about what that means for this week.</div>
+          <textarea class="reflect-input" id="r4" placeholder="Name the phase, then name the actions…" oninput="updateProgress();updateChar(this,'c4')"></textarea>
+          <div class="char-count" id="c4">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: EVIDENCE LOG -->
+      <div class="section-block" id="sec-evidence">
+        <div class="section-label">Section 04</div>
+        <h2 class="section-title">Evidence Log</h2>
+        <p class="body-text">Self-trust isn't built on affirmations. It's built on evidence — a record of things you said you'd do, and actually did. This is the foundation of the circuit. Start collecting it here.</p>
+        <div class="highlight-box"><p><strong>The rule:</strong> Evidence must be behavioural and specific. "I showed up" is not evidence. "I sent the email I'd been avoiding for 3 weeks" is evidence.</p></div>
+
+        <div class="evidence-log" id="evidenceLog">
+          <div class="ev-entry"><div class="ev-num">1</div><input class="ev-input" id="ev1" type="text" placeholder="Something I said I'd do and actually did…" oninput="updateProgress()"></div>
+          <div class="ev-entry"><div class="ev-num">2</div><input class="ev-input" id="ev2" type="text" placeholder="Another piece of evidence…" oninput="updateProgress()"></div>
+          <div class="ev-entry"><div class="ev-num">3</div><input class="ev-input" id="ev3" type="text" placeholder="" oninput="updateProgress()"></div>
+          <div class="ev-entry"><div class="ev-num">4</div><input class="ev-input" id="ev4" type="text" placeholder="" oninput="updateProgress()"></div>
+          <div class="ev-entry"><div class="ev-num">5</div><input class="ev-input" id="ev5" type="text" placeholder="" oninput="updateProgress()"></div>
+        </div>
+
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection 4.1</div>
+          <div class="reflect-prompt">What has stopped you from collecting and acknowledging evidence before now? What has it cost you to dismiss or ignore proof of your own capability?</div>
+          <textarea class="reflect-input" id="r5" placeholder="Be honest about the habit of discounting your own wins…" oninput="updateProgress();updateChar(this,'c5')"></textarea>
+          <div class="char-count" id="c5">0 characters</div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: CIRCUIT CHECK -->
+      <div class="section-block" id="sec-circuit">
+        <div class="section-label">Section 05 — Circuit Check</div>
+        <h2 class="section-title">Module Diagnostic</h2>
+        <p class="body-text">Confirm you've worked through this module honestly before moving on.</p>
+
+        <div id="circuitList">
+          <div class="circuit-item" onclick="toggleCircuit(this)">
+            <div class="circuit-toggle">✓</div>
+            <div class="circuit-text">I described both my High and Low-Capacity states in concrete behavioural terms</div>
+          </div>
+          <div class="circuit-item" onclick="toggleCircuit(this)">
+            <div class="circuit-toggle">✓</div>
+            <div class="circuit-text">I completed the Capacity Audit honestly for the last 30 days</div>
+          </div>
+          <div class="circuit-item" onclick="toggleCircuit(this)">
+            <div class="circuit-toggle">✓</div>
+            <div class="circuit-text">I identified my current Recovery Phase</div>
+          </div>
+          <div class="circuit-item" onclick="toggleCircuit(this)">
+            <div class="circuit-toggle">✓</div>
+            <div class="circuit-text">I recorded at least 3 pieces of real behavioural evidence</div>
+          </div>
+          <div class="circuit-item" onclick="toggleCircuit(this)">
+            <div class="circuit-toggle">✓</div>
+            <div class="circuit-text">I identified the specific action appropriate for my current phase this week</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOWNLOAD -->
+      <div style="background:var(--charcoal);padding:28px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px">Export Your Work</div>
+          <div style="font-size:15px;font-weight:600;color:#fff">Download your Foundation Circuit audit &amp; evidence log as PDF</div>
+        </div>
+        <button class="btn-download" onclick="downloadPDF()">⬇ Download PDF</button>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="module-3.html" class="btn-nav">← Module 03: Conceptual Landscape</a>
+        <a href="module-5.html" class="btn-nav primary">Module 05: Identity →</a>
+      </div>
+    </div>
+  </div>
+
+  <aside class="toc-sidebar">
+    <div class="toc-head">In This Module</div>
+    <a href="#sec-states" class="toc-link active" onclick="setToc(this)">01 — Your Two States</a>
+    <a href="#sec-audit" class="toc-link" onclick="setToc(this)">02 — Capacity Audit</a>
+    <a href="#sec-phases" class="toc-link" onclick="setToc(this)">03 — Recovery Phases</a>
+    <a href="#sec-evidence" class="toc-link" onclick="setToc(this)">04 — Evidence Log</a>
+    <a href="#sec-circuit" class="toc-link" onclick="setToc(this)">05 — Circuit Check</a>
+    <div class="toc-footer">
+      <button class="btn-download" style="width:100%" onclick="downloadPDF()">⬇ Download PDF</button>
+    </div>
+  </aside>
+</div>
+
+<script>
+const MOD_KEY = 'lc_mod4';
+
+function updateSlider(sid, vid){
+  const v = document.getElementById(sid).value;
+  document.getElementById(vid).textContent = v;
+  updateGauge();
+}
+
+function updateGauge(){
+  const vals = ['s1','s2','s3','s4','s5'].map(id=>parseInt(document.getElementById(id).value));
+  const avg = Math.round(vals.reduce((a,b)=>a+b,0)/vals.length);
+  document.getElementById('gnum1').textContent = avg;
+  const circ = 201;
+  const offset = circ - (avg/10)*circ;
+  document.getElementById('gfg1').style.strokeDashoffset = offset;
+  const col = avg >= 7 ? '#27ae60' : avg >= 4 ? '#5ec5cc' : '#e05555';
+  document.getElementById('gfg1').style.stroke = col;
+  document.getElementById('gnum1').style.color = col;
+}
+
+function selectPhase(el, phase){
+  document.querySelectorAll('.phase-row').forEach(r=>{
+    r.classList.remove('active-phase');
+    r.querySelector('.phase-active-badge').style.display='none';
+  });
+  el.classList.add('active-phase');
+  el.querySelector('.phase-active-badge').style.display='block';
+  updateProgress(); save();
+}
+
+function toggleCircuit(el){el.classList.toggle('done');updateProgress();save()}
+
+function updateChar(ta, cid){
+  const el = document.getElementById(cid);
+  if(el) el.textContent = ta.value.length + ' characters';
+}
+
+function calcPct(){
+  let score=0,max=0;
+  ['r1','r2','r3','r4','r5'].forEach(id=>{max+=10;if((document.getElementById(id).value||'').length>20)score+=10});
+  // sliders moved from default
+  const def = ['s1','s2','s3','s4','s5'].filter(id=>parseInt(document.getElementById(id).value)!==5).length;
+  max+=10; if(def>=3) score+=10;
+  // phase selected
+  max+=10; if(document.querySelector('.phase-row.active-phase')) score+=10;
+  // evidence
+  const evs = ['ev1','ev2','ev3','ev4','ev5'].filter(id=>(document.getElementById(id).value||'').trim().length>5).length;
+  max+=15; score+=Math.min(evs,3)*5;
+  // circuit
+  const done = document.querySelectorAll('.circuit-item.done').length;
+  max+=25; score+=done*5;
+  return Math.round((score/max)*100);
+}
+
+function updateProgress(){
+  const pct=calcPct();
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('pctLabel').textContent=pct+'%';
+  document.getElementById('navFill').style.width=pct+'%';
+  document.getElementById('navPct').textContent=pct+'%';
+  save();
+}
+
+function save(){
+  const d={};
+  ['r1','r2','r3','r4','r5'].forEach(id=>d[id]=document.getElementById(id).value);
+  ['s1','s2','s3','s4','s5'].forEach(id=>d[id]=document.getElementById(id).value);
+  ['ev1','ev2','ev3','ev4','ev5'].forEach(id=>d[id]=document.getElementById(id).value);
+  d.circuit=[...document.querySelectorAll('.circuit-item')].map(el=>el.classList.contains('done'));
+  d.phase=document.querySelector('.phase-row.active-phase')?.dataset.phase||null;
+  localStorage.setItem(MOD_KEY,JSON.stringify(d));
+  const prog=JSON.parse(localStorage.getItem('lc_progress')||'{}');
+  prog.mod4=calcPct();
+  localStorage.setItem('lc_progress',JSON.stringify(prog));
+}
+
+function load(){
+  const d=JSON.parse(localStorage.getItem(MOD_KEY)||'{}');
+  ['r1','r2','r3','r4','r5'].forEach(id=>{if(d[id]){document.getElementById(id).value=d[id];updateChar(document.getElementById(id),'c'+id.slice(1))}});
+  ['s1','s2','s3','s4','s5'].forEach((id,i)=>{if(d[id]){document.getElementById(id).value=d[id];document.getElementById('sv'+(i+1)).textContent=d[id]}});
+  ['ev1','ev2','ev3','ev4','ev5'].forEach(id=>{if(d[id]) document.getElementById(id).value=d[id]});
+  if(d.circuit){const items=document.querySelectorAll('.circuit-item');d.circuit.forEach((v,i)=>{if(v&&items[i])items[i].classList.add('done')})}
+  if(d.phase!==undefined&&d.phase!==null){const el=document.querySelector(`[data-phase="${d.phase}"]`);if(el){el.classList.add('active-phase');el.querySelector('.phase-active-badge').style.display='block'}}
+  updateGauge(); updateProgress();
+}
+
+function setToc(el){document.querySelectorAll('.toc-link').forEach(l=>l.classList.remove('active'));el.classList.add('active')}
+
+function downloadPDF(){
+  const d={};
+  ['r1','r2','r3','r4','r5'].forEach(id=>d[id]=document.getElementById(id).value);
+  const evItems=['ev1','ev2','ev3','ev4','ev5'].map(id=>document.getElementById(id).value).filter(v=>v.trim());
+  const phase=document.querySelector('.phase-row.active-phase')?.querySelector('.phase-name')?.textContent||'—';
+  const scores=['s1','s2','s3','s4','s5'].map(id=>document.getElementById(id).value);
+  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Module 04 — Foundation Circuit</title>
+  <style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;color:#1a1a1a;line-height:1.6}
+  h1{font-size:28px;border-bottom:3px solid #5ec5cc;padding-bottom:12px}
+  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#5ec5cc;margin-top:28px}
+  h3{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-top:16px}
+  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #5ec5cc}
+  .score-row{display:flex;gap:10px;margin:8px 0}
+  .score-item{background:#eaf7f8;padding:8px 12px;font-size:12px;font-weight:bold;flex:1;text-align:center}
+  .ev-item{background:#eaf7f8;padding:8px 12px;margin:4px 0;font-size:13px;border-left:3px solid #5ec5cc}
+  .footer{margin-top:40px;font-size:11px;color:#aaa;border-top:1px solid #eee;padding-top:12px}
+  </style></head><body>
+  <h1>Module 04: Foundation Circuit</h1>
+  <p style="background:#eaf7f8;border-color:#5ec5cc"><strong>Generated:</strong> ${new Date().toLocaleDateString()} | <strong>Current Phase:</strong> ${phase}</p>
+  <h2>Capacity Audit Scores</h2>
+  <div class="score-row">
+    <div class="score-item">Energy<br><strong>${scores[0]}/10</strong></div>
+    <div class="score-item">Focus<br><strong>${scores[1]}/10</strong></div>
+    <div class="score-item">Regulation<br><strong>${scores[2]}/10</strong></div>
+    <div class="score-item">Decisions<br><strong>${scores[3]}/10</strong></div>
+    <div class="score-item">Output<br><strong>${scores[4]}/10</strong></div>
+  </div>
+  <h2>Reflections</h2>
+  <h3>1.1 — My High-Capacity Self</h3><p>${d.r1||'—'}</p>
+  <h3>1.2 — My Low-Capacity Self</h3><p>${d.r2||'—'}</p>
+  <h3>2.1 — My lowest-scoring area (honest explanation)</h3><p>${d.r3||'—'}</p>
+  <h3>3.1 — My current phase and appropriate actions</h3><p>${d.r4||'—'}</p>
+  <h3>4.1 — Why I've dismissed evidence before</h3><p>${d.r5||'—'}</p>
+  <h2>My Evidence Log (${evItems.length} items)</h2>
+  ${evItems.map((e,i)=>`<div class="ev-item">${i+1}. ${e}</div>`).join('')}
+  <div class="footer">Life Circuitry — Think Small, Start Horribly — thinksmallstarthorribly.com</div>
+  </body></html>`;
+  const w=window.open('','_blank');w.document.write(html);w.document.close();setTimeout(()=>w.print(),500);
+}
+
+window.addEventListener('DOMContentLoaded',load);
+</script>
+</body>
+</html>
