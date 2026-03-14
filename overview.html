@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Think Small — System Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --teal:#5ec5cc;--teal-d:#3aabb3;--teal-glow:rgba(94,197,204,0.15);
+  --yellow:#f5c842;--red:#e05555;--green:#27ae60;
+  --purple:#9b59b6;--orange:#e67e22;
+  --charcoal:#111;--dark:#1a1a1a;--mid:#333;
+  --ink:#0d0d0d;--smoke:rgba(255,255,255,0.06);
+  --rule:rgba(255,255,255,0.08);
+  --dim:rgba(255,255,255,0.35);--faint:rgba(255,255,255,0.18);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Barlow',sans-serif;
+  background:var(--charcoal);
+  color:#fff;
+  margin:0;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ─── NAV ─── */
+nav{
+  height:52px;padding:0 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--rule);
+  position:sticky;top:0;z-index:99;
+  background:rgba(17,17,17,0.92);
+  backdrop-filter:blur(12px);
+}
+.nav-logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:15px;font-weight:900;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--teal);text-decoration:none;
+}
+.nav-logo span{color:var(--faint)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{
+  font-size:10px;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--dim);
+  text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:#fff}
+.nav-links a.cta{
+  color:var(--teal);border:1px solid rgba(94,197,204,0.3);
+  padding:6px 14px;transition:all 0.2s;
+}
+.nav-links a.cta:hover{background:var(--teal-glow)}
+
+/* ─── HERO BAND ─── */
+.hero{
+  padding:72px 48px 64px;
+  border-bottom:1px solid var(--rule);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 60% 50%, rgba(94,197,204,0.07) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.hero-eyebrow{
+  font-size:10px;font-weight:800;letter-spacing:0.35em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:14px;
+}
+.hero-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(52px,7vw,96px);
+  font-weight:900;text-transform:uppercase;
+  line-height:0.88;letter-spacing:-0.01em;
+  margin-bottom:20px;
+}
+.hero-title em{color:var(--teal);font-style:normal;display:block}
+.hero-sub{
+  font-size:15px;line-height:1.75;
+  color:var(--dim);max-width:480px;
+  border-left:2px solid var(--teal);
+  padding-left:18px;
+}
+.hero-stat-block{
+  display:flex;flex-direction:column;gap:2px;
+  min-width:180px;
+}
+.hero-stat{
+  background:var(--smoke);border:1px solid var(--rule);
+  padding:16px 20px;
+}
+.hero-stat-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:36px;font-weight:900;color:var(--teal);line-height:1;
+}
+.hero-stat-label{
+  font-size:10px;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--dim);margin-top:4px;
+}
+
+/* ─── MAIN CANVAS ─── */
+.canvas{max-width:1200px;margin:0 auto;padding:60px 48px 80px}
+
+/* ─── SECTION LABEL ─── */
+.sec-label{
+  font-size:9px;font-weight:800;letter-spacing:0.3em;
+  text-transform:uppercase;color:rgba(255,255,255,0.2);
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:20px;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+
+/* ─── FLOW ARROW ─── */
+.flow{
+  display:flex;align-items:center;gap:0;
+  margin:18px 0;
+}
+.flow-line{flex:1;height:1px;background:repeating-linear-gradient(90deg,rgba(94,197,204,0.25) 0,rgba(94,197,204,0.25) 5px,transparent 5px,transparent 10px)}
+.flow-text{
+  font-size:9px;font-weight:800;letter-spacing:0.2em;
+  text-transform:uppercase;color:rgba(94,197,204,0.5);
+  padding:0 16px;white-space:nowrap;
+}
+.flow-arrow{color:var(--teal);font-size:14px;line-height:1}
+
+/* ─── BIG FUNNEL — Phase strip ─── */
+.phase-strip{
+  display:flex;align-items:stretch;gap:2px;
+  margin-bottom:2px;
+}
+.phase-block{
+  flex:1;padding:22px 18px 20px;
+  background:var(--smoke);border:1px solid var(--rule);
+  position:relative;cursor:default;
+  transition:border-color 0.2s,background 0.2s;
+  min-width:0;
+}
+.phase-block:hover{border-color:rgba(94,197,204,0.3);background:rgba(255,255,255,0.04)}
+.phase-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px;font-weight:900;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--faint);
+  margin-bottom:10px;
+}
+.phase-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:18px;font-weight:900;text-transform:uppercase;
+  letter-spacing:0.04em;line-height:1.05;
+  margin-bottom:10px;
+}
+.phase-desc{
+  font-size:11px;line-height:1.6;color:var(--dim);
+}
+.phase-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:8px;font-weight:800;letter-spacing:0.15em;
+  text-transform:uppercase;margin-top:10px;
+  padding:3px 8px;
+}
+.phase-badge.live{background:rgba(39,174,96,0.12);color:#27ae60;border:1px solid rgba(39,174,96,0.25)}
+.phase-badge.partial{background:rgba(245,200,66,0.1);color:#f5c842;border:1px solid rgba(245,200,66,0.2)}
+.phase-badge.planned{background:rgba(230,126,34,0.1);color:#e67e22;border:1px solid rgba(230,126,34,0.2)}
+.phase-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+
+/* accent colours per phase */
+.ph-1::before{background:var(--orange)}
+.ph-2::before{background:var(--teal)}
+.ph-3::before{background:var(--yellow)}
+.ph-4::before{background:var(--teal)}
+.ph-5::before{background:var(--purple)}
+.ph-6::before{background:var(--green)}
+
+/* ─── MODULE GRID ─── */
+.module-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:2px;
+}
+.mod{
+  padding:18px 14px 16px;
+  background:var(--smoke);border:1px solid var(--rule);
+  position:relative;
+  transition:border-color 0.2s,transform 0.15s;
+}
+.mod:hover{border-color:rgba(255,255,255,0.18);transform:translateY(-2px)}
+.mod::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.mod-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:28px;font-weight:900;line-height:1;
+  margin-bottom:6px;opacity:0.18;
+}
+.mod-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px;font-weight:900;text-transform:uppercase;
+  letter-spacing:0.03em;line-height:1.15;margin-bottom:6px;
+}
+.mod-hook{font-size:10px;line-height:1.5;color:var(--dim)}
+
+/* module accent colours */
+.m1::before{background:var(--teal)}.m1 .mod-num{color:var(--teal)}
+.m2::before{background:var(--red)}.m2 .mod-num{color:var(--red)}
+.m3::before{background:var(--yellow)}.m3 .mod-num{color:var(--yellow)}
+.m4::before{background:var(--teal)}.m4 .mod-num{color:var(--teal)}
+.m5::before{background:var(--purple)}.m5 .mod-num{color:var(--purple)}
+.m6::before{background:var(--orange)}.m6 .mod-num{color:var(--orange)}
+.m7::before{background:var(--green)}.m7 .mod-num{color:var(--green)}
+
+/* ─── FEATURE PILLS ROW ─── */
+.pill-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pill{
+  font-size:9px;font-weight:800;letter-spacing:0.12em;
+  text-transform:uppercase;padding:4px 10px;
+  background:var(--smoke);border:1px solid var(--rule);
+  color:var(--dim);white-space:nowrap;
+}
+.pill.teal{background:rgba(94,197,204,0.1);border-color:rgba(94,197,204,0.2);color:var(--teal)}
+
+/* ─── THREE-COLUMN DETAIL ─── */
+.detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px}
+.detail-col{
+  background:var(--smoke);border:1px solid var(--rule);
+  padding:24px 22px;position:relative;
+}
+.detail-col::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.dc-teal::before{background:var(--teal)}
+.dc-yellow::before{background:var(--yellow)}
+.dc-orange::before{background:var(--orange)}
+.detail-col-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:16px;font-weight:900;text-transform:uppercase;
+  letter-spacing:0.05em;margin-bottom:14px;
+}
+.detail-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.detail-list li{
+  font-size:12px;line-height:1.5;color:var(--dim);
+  padding-left:14px;position:relative;
+}
+.detail-list li::before{
+  content:'';position:absolute;left:0;top:7px;
+  width:5px;height:1px;background:var(--teal);
+}
+
+/* ─── JOURNEY TIMELINE ─── */
+.journey{
+  display:flex;align-items:flex-start;gap:0;
+  position:relative;margin:28px 0;
+}
+.journey::before{
+  content:'';position:absolute;
+  top:22px;left:22px;right:22px;height:1px;
+  background:repeating-linear-gradient(90deg,rgba(94,197,204,0.3) 0,rgba(94,197,204,0.3) 6px,transparent 6px,transparent 14px);
+  z-index:0;
+}
+.j-step{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  text-align:center;position:relative;z-index:1;padding:0 8px;
+}
+.j-dot{
+  width:44px;height:44px;border-radius:50%;
+  border:2px solid var(--teal);
+  background:var(--charcoal);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:14px;font-weight:900;color:var(--teal);
+  margin-bottom:12px;flex-shrink:0;
+  transition:background 0.2s;
+}
+.j-step:hover .j-dot{background:var(--teal-glow)}
+.j-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:12px;font-weight:900;text-transform:uppercase;
+  letter-spacing:0.05em;line-height:1.2;margin-bottom:5px;
+}
+.j-sub{font-size:10px;line-height:1.5;color:var(--dim)}
+
+/* ─── QUOTE BAND ─── */
+.quote-band{
+  background:linear-gradient(135deg,rgba(94,197,204,0.08) 0%,rgba(94,197,204,0.02) 100%);
+  border:1px solid rgba(94,197,204,0.2);
+  padding:32px 40px;margin:24px 0;
+  position:relative;overflow:hidden;
+}
+.quote-band::before{
+  content:'\201C';
+  position:absolute;right:32px;top:-8px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:120px;font-weight:900;
+  color:rgba(94,197,204,0.06);line-height:1;
+  pointer-events:none;
+}
+.quote-text{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(20px,3vw,30px);
+  font-weight:700;line-height:1.25;
+  color:#fff;max-width:700px;
+  font-style:italic;
+}
+.quote-attr{
+  font-size:11px;font-weight:700;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--teal);margin-top:12px;
+}
+
+/* ─── GAP CALLOUT ─── */
+.gap-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px}
+.gap-card{
+  padding:22px 20px;
+  border:1px dashed rgba(230,126,34,0.3);
+  background:rgba(230,126,34,0.04);
+  position:relative;
+}
+.gap-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:48px;font-weight:900;line-height:1;
+  color:rgba(230,126,34,0.15);
+  position:absolute;top:14px;right:16px;
+}
+.gap-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:16px;font-weight:900;text-transform:uppercase;
+  letter-spacing:0.05em;margin-bottom:8px;color:#e67e22;
+}
+.gap-body{font-size:12px;line-height:1.6;color:var(--dim)}
+
+/* ─── METRIC ROW ─── */
+.metric-row{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:2px;margin-bottom:2px;
+}
+.metric{
+  background:var(--smoke);border:1px solid var(--rule);
+  padding:20px 18px;text-align:center;
+}
+.metric-val{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:36px;font-weight:900;line-height:1;
+  color:var(--teal);margin-bottom:4px;
+}
+.metric-label{
+  font-size:9px;font-weight:800;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--dim);
+}
+
+/* ─── FOOTER ─── */
+footer{
+  border-top:1px solid var(--rule);
+  padding:24px 48px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.ft-brand{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:12px;font-weight:800;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--faint);
+}
+.ft-links{display:flex;gap:20px}
+.ft-links a{
+  font-size:10px;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--dim);
+  text-decoration:none;transition:color 0.2s;
+}
+.ft-links a:hover{color:var(--teal)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1000px){
+  .phase-strip{flex-wrap:wrap}
+  .phase-block{flex:1 1 calc(33% - 2px);min-width:160px}
+  .module-grid{grid-template-columns:repeat(4,1fr)}
+  .metric-row{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:700px){
+  nav{padding:0 24px}
+  .hero{padding:48px 24px 40px}
+  .hero-inner{grid-template-columns:1fr;gap:32px}
+  .hero-stat-block{flex-direction:row;flex-wrap:wrap;gap:2px}
+  .hero-stat{flex:1;min-width:100px}
+  .canvas{padding:40px 24px 64px}
+  .phase-block{flex:1 1 100%}
+  .module-grid{grid-template-columns:1fr 1fr}
+  .detail-grid,.gap-row{grid-template-columns:1fr}
+  .metric-row{grid-template-columns:repeat(2,1fr)}
+  .journey{flex-wrap:wrap;gap:20px}
+  .journey::before{display:none}
+  .j-step{flex:1 1 30%;align-items:flex-start;text-align:left}
+  .j-dot{margin-bottom:8px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="portal.html" class="nav-logo">Life Circuitry <span>/ Think Small</span></a>
+  <div class="nav-links">
+    <a href="roadmap.html">Full Roadmap</a>
+    <a href="index.html" class="cta">Sales Page</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Think Small, Start Horribly — System Overview</div>
+      <h1 class="hero-title">The<br>Education<br><em>Ecosystem</em></h1>
+      <p class="hero-sub">One programme. Seven modules. A complete system for people who are capable but stuck — from first contact to transformation.</p>
+    </div>
+    <div class="hero-stat-block">
+      <div class="hero-stat">
+        <div class="hero-stat-num">7</div>
+        <div class="hero-stat-label">Interactive Modules</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">$97</div>
+        <div class="hero-stat-label">One-Time Price</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">30</div>
+        <div class="hero-stat-label">Day Guarantee</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">∞</div>
+        <div class="hero-stat-label">Lifetime Access</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="canvas">
+
+  <!-- ══════════════════════════════════
+       SECTION 1 — THE JOURNEY
+  ══════════════════════════════════ -->
+  <div class="sec-label">01 — The Customer Journey</div>
+
+  <div class="journey">
+    <div class="j-step">
+      <div class="j-dot">1</div>
+      <div class="j-label">Discovers</div>
+      <div class="j-sub">Social content, word of mouth, referral</div>
+    </div>
+    <div class="j-step">
+      <div class="j-dot">2</div>
+      <div class="j-label">Sales Page</div>
+      <div class="j-sub">Reads. Recognises the problem. Decides.</div>
+    </div>
+    <div class="j-step">
+      <div class="j-dot">3</div>
+      <div class="j-label">Pays $97</div>
+      <div class="j-sub">PayPal or bank transfer. Code issued by Alex.</div>
+    </div>
+    <div class="j-step">
+      <div class="j-dot">4</div>
+      <div class="j-label">Access Gate</div>
+      <div class="j-sub">Enters code. Session saved to device.</div>
+    </div>
+    <div class="j-step">
+      <div class="j-dot">5</div>
+      <div class="j-label">Portal</div>
+      <div class="j-sub">Dashboard. 7 modules. Lifetime access.</div>
+    </div>
+    <div class="j-step">
+      <div class="j-dot">6</div>
+      <div class="j-label">Works Through</div>
+      <div class="j-sub">Diagnostics, reflections, PDF exports.</div>
+    </div>
+    <div class="j-step">
+      <div class="j-dot">7</div>
+      <div class="j-label">Transformation</div>
+      <div class="j-sub">Unblocked. Returns. Refers others.</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       KEY METRICS BAR
+  ══════════════════════════════════ -->
+  <div class="sec-label" style="margin-top:40px">02 — At a Glance</div>
+  <div class="metric-row">
+    <div class="metric">
+      <div class="metric-val">7</div>
+      <div class="metric-label">Modules</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">20+</div>
+      <div class="metric-label">Frameworks &amp; Diagnostics</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">6–8h</div>
+      <div class="metric-label">Total Programme Time</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">$97</div>
+      <div class="metric-label">One-Time Investment</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">0</div>
+      <div class="metric-label">Videos. Pure interaction.</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PHASE FUNNEL
+  ══════════════════════════════════ -->
+  <div class="sec-label" style="margin-top:40px">03 — The System Phases</div>
+
+  <div class="phase-strip">
+    <div class="phase-block ph-1">
+      <div class="phase-num">Phase 01</div>
+      <div class="phase-name">Awareness</div>
+      <div class="phase-desc">Content that names the problem before the person can. Reactive Adaptation. The Foundation Gap. Short-form, opinion-led.</div>
+      <div class="phase-badge planned">Building</div>
+    </div>
+    <div class="phase-block ph-2">
+      <div class="phase-num">Phase 02</div>
+      <div class="phase-name">Sales</div>
+      <div class="phase-desc">Full-length sales page. Mechanism, proof, guarantee, $97 pricing. PayPal or bank transfer modal.</div>
+      <div class="phase-badge live">Live</div>
+    </div>
+    <div class="phase-block ph-3">
+      <div class="phase-num">Phase 03</div>
+      <div class="phase-name">Onboarding</div>
+      <div class="phase-desc">Manual code delivery via email. Access gate at access.html. Session stored locally — no account required.</div>
+      <div class="phase-badge partial">Manual</div>
+    </div>
+    <div class="phase-block ph-4">
+      <div class="phase-num">Phase 04</div>
+      <div class="phase-name">Portal</div>
+      <div class="phase-desc">Programme dashboard. 7 module cards with progress tracking. Document Library. All data stays on-device.</div>
+      <div class="phase-badge live">Live</div>
+    </div>
+    <div class="phase-block ph-5">
+      <div class="phase-num">Phase 05</div>
+      <div class="phase-name">Modules</div>
+      <div class="phase-desc">7 interactive modules. Each has diagnostics, reflections, and PDF export. 45–90 min each.</div>
+      <div class="phase-badge live">Live</div>
+    </div>
+    <div class="phase-block ph-6">
+      <div class="phase-num">Phase 06</div>
+      <div class="phase-name">Retention</div>
+      <div class="phase-desc">Lifetime access — return to modules as circumstances change. 1:1 coaching upsell available on enquiry.</div>
+      <div class="phase-badge live">Live</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       7 MODULE GRID
+  ══════════════════════════════════ -->
+  <div class="sec-label" style="margin-top:40px">04 — The 7 Modules</div>
+  <div class="module-grid">
+    <div class="mod m1">
+      <div class="mod-num">01</div>
+      <div class="mod-name">The Momentum Formula</div>
+      <div class="mod-hook">Action before motivation. Start protocol. Evidence log. The inversion principle.</div>
+    </div>
+    <div class="mod m2">
+      <div class="mod-num">02</div>
+      <div class="mod-name">The Stuck Framework</div>
+      <div class="mod-hook">Map the loop. Find the threshold. Locate the actual problem — not the symptom.</div>
+    </div>
+    <div class="mod m3">
+      <div class="mod-num">03</div>
+      <div class="mod-name">Conceptual Landscape</div>
+      <div class="mod-hook">20 named barriers across 4 groups. The Bridge. Your specific blockers, identified.</div>
+    </div>
+    <div class="mod m4">
+      <div class="mod-num">04</div>
+      <div class="mod-name">Foundation Circuit</div>
+      <div class="mod-hook">Two states. Capacity audit. Recovery tracker. The circuit you return to.</div>
+    </div>
+    <div class="mod m5">
+      <div class="mod-num">05</div>
+      <div class="mod-name">Version of Self</div>
+      <div class="mod-hook">Mindset audit. Values selector. Identity statement builder. Who you're operating as.</div>
+    </div>
+    <div class="mod m6">
+      <div class="mod-num">06</div>
+      <div class="mod-name">The Marketplace</div>
+      <div class="mod-hook">Hierarchy of Value. 5 principles. Competitive advantage map. Where you actually stand.</div>
+    </div>
+    <div class="mod m7">
+      <div class="mod-num">07</div>
+      <div class="mod-name">Early Learning Phase</div>
+      <div class="mod-hook">Re-entry audit. 4 corrections. The practice framework. How you lock in the change.</div>
+    </div>
+  </div>
+
+  <!-- ── MODULE FEATURE PILLS ── -->
+  <div class="pill-row" style="margin-top:4px">
+    <span class="pill teal">Interactive Diagnostics</span>
+    <span class="pill teal">Reflection Prompts</span>
+    <span class="pill teal">PDF Export</span>
+    <span class="pill teal">Auto-Save (localStorage)</span>
+    <span class="pill teal">Source PDF Library</span>
+    <span class="pill">Video — Planned</span>
+    <span class="pill">Community — Planned</span>
+    <span class="pill">Certificates — Planned</span>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CORE IP QUOTE
+  ══════════════════════════════════ -->
+  <div class="quote-band" style="margin-top:40px">
+    <div class="quote-text">"The gap isn't a character flaw. It's an undiagnosed structural problem."</div>
+    <div class="quote-attr">The Foundation Premise — Life Circuitry</div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       WHAT'S INSIDE THE PLATFORM
+  ══════════════════════════════════ -->
+  <div class="sec-label" style="margin-top:40px">05 — Platform Architecture</div>
+  <div class="detail-grid">
+    <div class="detail-col dc-teal">
+      <div class="detail-col-title">What's Built &amp; Live</div>
+      <ul class="detail-list">
+        <li>Sales page — full conversion sequence</li>
+        <li>Access gate — code-based entry</li>
+        <li>Portal dashboard — progress tracking</li>
+        <li>7 complete interactive modules</li>
+        <li>Document Library — all source PDFs</li>
+        <li>Admin panel — code management &amp; revenue tracking</li>
+        <li>GitHub Pages hosting (zero cost)</li>
+        <li>Mobile/PWA compatible</li>
+        <li>30-day money-back guarantee</li>
+      </ul>
+    </div>
+    <div class="detail-col dc-yellow">
+      <div class="detail-col-title">Manual / Partial</div>
+      <ul class="detail-list">
+        <li>Payment fulfilment — Alex sends code manually</li>
+        <li>Welcome email — written template, manual send</li>
+        <li>1:1 coaching — enquiry only, no booking</li>
+        <li>Word-of-mouth referrals — happening informally</li>
+        <li>Social content — not yet systematic</li>
+        <li>Custom domain — not yet connected</li>
+      </ul>
+    </div>
+    <div class="detail-col dc-orange">
+      <div class="detail-col-title">Next Priorities</div>
+      <ul class="detail-list">
+        <li>Custom domain (~$12/yr, highest ROI fix)</li>
+        <li>Stripe / Gumroad — automated payment + code delivery</li>
+        <li>Video walkthroughs per module</li>
+        <li>Email list + newsletter system</li>
+        <li>Social content strategy (surfaces the mechanism)</li>
+        <li>Community layer (Slack / Discord / Circle)</li>
+        <li>Completion certificates</li>
+        <li>Advanced / next-stage programme</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       THE THREE GAPS
+  ══════════════════════════════════ -->
+  <div class="sec-label" style="margin-top:40px">06 — The Three Biggest Gaps Right Now</div>
+  <div class="gap-row">
+    <div class="gap-card">
+      <div class="gap-num">1</div>
+      <div class="gap-title">No Automated Payment</div>
+      <div class="gap-body">Every sale requires Alex to manually send a code. One Stripe or Gumroad integration eliminates this entirely — payment lands, code fires, buyer is in within minutes.</div>
+    </div>
+    <div class="gap-card">
+      <div class="gap-num">2</div>
+      <div class="gap-title">No Traffic</div>
+      <div class="gap-body">The sales page converts. Nobody's seeing it. The entire awareness phase is unbuilt. This is the actual constraint on revenue — not the product, not the price.</div>
+    </div>
+    <div class="gap-card">
+      <div class="gap-num">3</div>
+      <div class="gap-title">No Custom Domain</div>
+      <div class="gap-body">thinksmallstarthorribly.github.io/foundation-circuit works but signals amateur. A $12/year domain is the single fastest credibility upgrade available right now.</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CLOSING QUOTE
+  ══════════════════════════════════ -->
+  <div class="quote-band" style="margin-top:40px">
+    <div class="quote-text">"You've been depositing into your competence bank your entire life. It's time to make a withdrawal."</div>
+    <div class="quote-attr">Alex Cooper — Life Circuitry Core IP</div>
+  </div>
+
+</div><!-- /canvas -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="ft-brand">Think Small, Start Horribly &mdash; Life Circuitry &copy; 2026</div>
+  <div class="ft-links">
+    <a href="roadmap.html">Full Roadmap</a>
+    <a href="portal.html">Portal</a>
+    <a href="index.html">Sales Page</a>
+    <a href="https://thinksmallstarthorribly.github.io/foundation-circuit/" target="_blank">Live Site &rarr;</a>
+  </div>
+</footer>
+
+</body>
+</html>
