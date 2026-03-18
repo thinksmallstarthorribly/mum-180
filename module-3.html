@@ -477,7 +477,7 @@ textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:
 
 // ── ACCESS GATE ──────────────────────────────────────────────────────────────
 (function(){
-  const S='lc_access', D=7*24*60*60*1000;
+  const S='mum180_access', D=7*24*60*60*1000;
   try{
     const s=JSON.parse(localStorage.getItem(S)||'null');
     if(!s||Date.now()-s.ts>D){localStorage.removeItem(S);window.location.replace('access.html');}
