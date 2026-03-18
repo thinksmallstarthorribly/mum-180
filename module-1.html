@@ -3,20 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 01: The Momentum Formula | Mum 180</title>
+<title>Module 01: The Lie You Were Told | Mum 180</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --accent:#d4827a;--accent-d:#b86b64;--accent-p:#fdf5f4;--accent-m:#f0d5d2;
-  --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
   --charcoal:#1a1a1a;--mid:#444;--light:#888;
   --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
 }
 html,body{height:100%;font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg)}
 body{display:flex;flex-direction:column}
-
-/* ── NAV ── */
 .topnav{background:var(--charcoal);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
 .topnav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
 .topnav-back:hover{color:var(--accent)}
@@ -26,620 +23,250 @@ body{display:flex;flex-direction:column}
 .nav-pct{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:var(--accent)}
 .nav-bar{width:120px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden}
 .nav-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.4s}
-
-/* ── LAYOUT ── */
 .shell{display:flex;flex:1;min-height:0;overflow:hidden}
-.content-area{flex:1;overflow-y:auto;padding:0}
-.toc-sidebar{width:240px;flex-shrink:0;background:var(--card);border-left:1px solid var(--rule);overflow-y:auto;display:flex;flex-direction:column}
-
-/* ── MODULE HEADER ── */
-.mod-header{background:var(--charcoal);color:var(--white);padding:48px 56px;border-bottom:4px solid var(--accent)}
-.mod-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.toc-sidebar{width:220px;background:var(--charcoal);flex-shrink:0;overflow-y:auto;padding:24px 0}
+.toc-header{font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 20px 12px}
+.toc-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;border-left:2px solid transparent;transition:all 0.15s;text-decoration:none}
+.toc-item:hover{background:rgba(255,255,255,0.04)}
+.toc-item.active{border-left-color:var(--accent);background:rgba(212,130,122,0.08)}
+.toc-num{font-size:10px;font-weight:800;font-family:monospace;color:rgba(255,255,255,0.2);min-width:20px}
+.toc-item.active .toc-num{color:var(--accent)}
+.toc-text{font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);line-height:1.3}
+.toc-item.active .toc-text{color:#fff}
+.content-area{flex:1;overflow-y:auto}
+.mod-header{background:var(--charcoal);padding:48px 56px;color:#fff}
+.mod-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 .mod-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,6vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95;margin-bottom:16px;color:#fff}
-.mod-subtitle{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.6;max-width:560px;margin-bottom:28px}
-.mod-meta{display:flex;gap:32px;flex-wrap:wrap}
-.mod-meta-item{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
-.mod-meta-item span{color:rgba(255,255,255,0.7)}
-
-/* ── CONTENT SECTIONS ── */
-.content-body{max-width:720px;margin:0 auto;padding:48px 40px}
-
-.section-block{margin-bottom:56px;scroll-margin-top:70px}
-.section-label{font-size:9px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.mod-subtitle{font-size:17px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:620px;margin-bottom:24px}
+.mod-meta{display:flex;gap:24px;flex-wrap:wrap}
+.mod-meta-item{font-size:12px;color:rgba(255,255,255,0.3);font-weight:600}
+.mod-meta-item span{color:rgba(255,255,255,0.6)}
+.content-body{max-width:760px;margin:0 auto;padding:48px 56px}
+.section-block{margin-bottom:64px;scroll-margin-top:80px}
+.section-label{font-size:9px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .section-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;color:var(--charcoal);line-height:1;margin-bottom:20px}
-.body-text{font-size:15px;line-height:1.85;color:var(--mid);margin-bottom:16px}
-.body-text strong{color:var(--charcoal);font-weight:700}
-
-/* ── PULLQUOTE ── */
-.pullquote{border-left:4px solid var(--accent);background:var(--accent-p);padding:20px 24px;margin:24px 0}
-.pq-text{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;color:var(--charcoal);line-height:1.3;letter-spacing:0.02em;margin-bottom:8px}
-.pq-attr{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-d)}
-.pullquote.red{border-left-color:var(--red);background:var(--rp)}
-.pullquote.red .pq-text{color:var(--red)}
-.pullquote.red .pq-attr{color:var(--red)}
-
-/* ── INTERACTIVE ELEMENTS ── */
-
-/* Reflection Box */
-.reflect-box{border:2px dashed var(--accent-m);background:var(--accent-p);padding:24px;margin:24px 0}
-.reflect-label{font-size:9px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-d);margin-bottom:10px}
-.reflect-question{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;color:var(--charcoal);line-height:1.3;margin-bottom:14px;letter-spacing:0.02em}
-.reflect-input{width:100%;min-height:100px;background:rgba(255,255,255,0.7);border:1.5px solid var(--accent-m);padding:14px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--charcoal);line-height:1.6;resize:vertical;outline:none;transition:border-color 0.2s}
-.reflect-input:focus{border-color:var(--accent);background:var(--white)}
-.reflect-input::placeholder{color:rgba(26,26,26,0.3)}
-
-/* Slider Rating */
-.slider-block{background:var(--card);border:1.5px solid var(--rule);padding:24px;margin:12px 0}
-.slider-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
-.slider-label{font-size:14px;font-weight:700;color:var(--charcoal);line-height:1.4;flex:1;padding-right:16px}
-.slider-value{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--accent);line-height:1;min-width:32px;text-align:right}
-.slider-track{position:relative;margin-bottom:8px}
-input[type=range]{width:100%;-webkit-appearance:none;height:6px;border-radius:3px;background:var(--rule);outline:none;cursor:pointer}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid var(--white);box-shadow:0 2px 6px rgba(0,0,0,0.15);transition:transform 0.1s}
-input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
-.slider-ends{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--light);margin-top:4px}
-
-/* Rating scale (1-5 buttons) */
-.rating-block{background:var(--card);border:1.5px solid var(--rule);padding:20px 24px;margin:8px 0}
-.rating-q{font-size:14px;font-weight:700;color:var(--charcoal);margin-bottom:14px;line-height:1.5}
-.rating-options{display:flex;gap:8px}
-.rating-btn{flex:1;padding:10px 4px;background:var(--bg);border:2px solid var(--rule);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:var(--light);cursor:pointer;transition:all 0.15s;text-align:center}
-.rating-btn:hover{border-color:var(--accent);color:var(--accent)}
-.rating-btn.selected{background:var(--accent);border-color:var(--accent);color:var(--white)}
-.rating-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--light);margin-top:6px;font-weight:600;letter-spacing:0.05em}
-
-/* Checklist */
-.checklist{display:flex;flex-direction:column;gap:4px;margin:20px 0}
-.check-item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--card);border:1.5px solid var(--rule);cursor:pointer;transition:all 0.15s}
-.check-item:hover{border-color:var(--accent-m);background:var(--accent-p)}
-.check-item.checked{background:var(--accent-p);border-color:var(--accent)}
-.check-box{width:20px;height:20px;border:2px solid var(--rule);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.15s;margin-top:1px}
-.check-item.checked .check-box{background:var(--accent);border-color:var(--accent);color:white}
-.check-text{font-size:14px;line-height:1.5;color:var(--mid);flex:1}
-.check-item.checked .check-text{color:var(--charcoal)}
-
-/* Two-column comparison */
-.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:24px 0}
-.compare-col{padding:24px}
-.compare-col.bad{background:var(--rp);border:2px solid #f0b0b0}
-.compare-col.good{background:var(--accent-p);border:2px solid var(--accent)}
-.compare-label{font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:14px}
-.compare-col.bad .compare-label{color:var(--red)}
-.compare-col.good .compare-label{color:var(--accent-d)}
-.compare-item{font-size:13px;line-height:1.6;color:var(--mid);padding:6px 0 6px 16px;border-bottom:1px solid rgba(0,0,0,0.05);position:relative}
-.compare-item::before{content:'→';position:absolute;left:0;font-size:11px;font-weight:800}
-.compare-col.bad .compare-item::before{color:var(--red)}
-.compare-col.good .compare-item::before{color:var(--accent)}
-
-/* Scored Audit */
-.audit-block{background:var(--card);border:2px solid var(--rule);padding:28px;margin:24px 0}
-.audit-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:6px}
-.audit-desc{font-size:13px;color:var(--light);margin-bottom:24px;line-height:1.6}
-.audit-question{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--rule);gap:16px}
-.audit-question:last-of-type{border-bottom:none}
-.audit-q-text{font-size:14px;color:var(--charcoal);font-weight:600;flex:1;line-height:1.4}
-.audit-score{display:flex;gap:4px}
-.audit-btn{width:32px;height:32px;background:var(--bg);border:1.5px solid var(--rule);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--light);cursor:pointer;transition:all 0.12s;flex-shrink:0}
-.audit-btn:hover{border-color:var(--accent);color:var(--accent)}
-.audit-btn.on{background:var(--accent);border-color:var(--accent);color:var(--white)}
-.audit-result{margin-top:20px;padding:20px;background:var(--accent-p);border-top:3px solid var(--accent);display:none}
-.audit-result.show{display:block}
-.audit-result-score{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:var(--accent);line-height:1}
-.audit-result-label{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-d);margin-bottom:8px}
-.audit-result-text{font-size:14px;color:var(--mid);line-height:1.6}
-
-/* Progress complete banner */
-.complete-banner{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-d) 100%);padding:32px;margin:40px 0;display:none}
+.body-text{font-size:16px;line-height:1.8;color:var(--mid);margin-bottom:16px}
+.pullquote{background:var(--charcoal);padding:28px 32px;margin:28px 0;border-left:4px solid var(--accent)}
+.pq-text{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;color:#fff;line-height:1.3}
+.reflect-block{background:var(--accent-p);border:1px solid var(--accent-m);padding:28px;margin:24px 0}
+.reflect-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-d);margin-bottom:8px}
+.reflect-prompt{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.4}
+.reflect-box{width:100%;min-height:100px;padding:12px;border:1px solid var(--accent-m);background:#fff;font-family:inherit;font-size:14px;line-height:1.6;color:var(--charcoal);resize:vertical}
+.reflect-box:focus{outline:none;border-color:var(--accent)}
+.checklist{list-style:none;margin:16px 0}
+.checklist li{padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start}
+.checklist li::before{content:"→";color:var(--accent);font-weight:900;flex-shrink:0}
+.next-module{background:var(--charcoal);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.nm-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.nm-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:#fff}
+.nm-btn{font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;background:var(--accent);color:#fff;text-decoration:none;white-space:nowrap;transition:background 0.2s}
+.nm-btn:hover{background:var(--accent-d)}
+.complete-banner{display:none;background:#27ae60;color:#fff;padding:16px 24px;text-align:center;font-weight:700;font-size:14px;letter-spacing:0.05em}
 .complete-banner.show{display:block}
-.complete-banner h3{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;color:var(--charcoal);margin-bottom:8px}
-.complete-banner p{font-size:15px;color:rgba(26,26,26,0.7);margin-bottom:20px;line-height:1.6}
-.complete-actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn-export{display:inline-flex;align-items:center;gap:8px;background:var(--charcoal);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;padding:14px 28px;border:none;cursor:pointer;text-decoration:none;transition:all 0.2s}
-.btn-export:hover{background:#333}
-.btn-next{display:inline-flex;align-items:center;gap:8px;background:rgba(26,26,26,0.15);color:var(--charcoal);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;padding:14px 28px;border:none;cursor:pointer;text-decoration:none;transition:all 0.2s}
-.btn-next:hover{background:rgba(26,26,26,0.25)}
-
-/* TOC */
-.toc-header{padding:20px 16px 12px;font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);border-bottom:1px solid var(--rule)}
-.toc-item{display:flex;align-items:flex-start;gap:10px;padding:10px 16px;font-size:12px;font-weight:600;color:var(--light);cursor:pointer;transition:all 0.15s;border-left:2px solid transparent;text-decoration:none}
-.toc-item:hover{color:var(--charcoal);border-left-color:var(--accent-m)}
-.toc-item.active{color:var(--accent-d);border-left-color:var(--accent);font-weight:700}
-.toc-dot{width:6px;height:6px;border-radius:50%;background:var(--rule);flex-shrink:0;margin-top:3px;transition:background 0.2s}
-.toc-item.active .toc-dot,.toc-item.done .toc-dot{background:var(--accent)}
-.toc-item.done{color:var(--accent-d)}
-
-/* Save indicator */
-.save-badge{position:fixed;bottom:20px;right:20px;background:var(--charcoal);color:rgba(255,255,255,0.8);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:8px 16px;border-radius:2px;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:200}
+.save-badge{position:fixed;bottom:24px;right:24px;background:var(--charcoal);color:#fff;padding:10px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0;transition:opacity 0.3s;pointer-events:none}
 .save-badge.show{opacity:1}
-
 @media(max-width:768px){.toc-sidebar{display:none}.content-body{padding:32px 20px}.mod-header{padding:36px 24px}}
-@media print{.topnav,.toc-sidebar,.save-badge{display:none!important}.content-body{max-width:none;padding:20px}}
-    </style>
+</style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav class="topnav">
   <a href="portal.html" class="topnav-back">← Dashboard</a>
-  <div class="topnav-title">Module <span>01</span> · The Momentum Formula</div>
+  <div class="topnav-title">Module <span>01</span> · The Lie You Were Told</div>
   <div class="topnav-progress">
     <div class="nav-pct" id="nav-pct">0%</div>
     <div class="nav-bar"><div class="nav-bar-fill" id="nav-bar-fill" style="width:0%"></div></div>
   </div>
 </nav>
-
+<div class="complete-banner" id="complete-banner">✓ Module 01 complete — great work.</div>
+<div class="save-badge" id="save-badge">Saved ✓</div>
 <div class="shell">
+  <nav class="toc-sidebar">
+    <div class="toc-header">In This Module</div>
+    <a class="toc-item" id="toc-s1" href="#s1" onclick="tocClick(1)">
+      <div class="toc-num">01</div>
+      <div class="toc-text">The Bad Data</div>
+    </a>
+    <a class="toc-item" id="toc-s2" href="#s2" onclick="tocClick(2)">
+      <div class="toc-num">02</div>
+      <div class="toc-text">Accountability Reframed</div>
+    </a>
+    <a class="toc-item" id="toc-s3" href="#s3" onclick="tocClick(3)">
+      <div class="toc-num">03</div>
+      <div class="toc-text">The Primary Goal</div>
+    </a>
+    <a class="toc-item" id="toc-s4" href="#s4" onclick="tocClick(4)">
+      <div class="toc-num">04</div>
+      <div class="toc-text">Reflection</div>
+    </a>
+  </nav>
   <div class="content-area">
-
-    <!-- MODULE HEADER -->
     <div class="mod-header">
-      <div class="mod-eyebrow">Module 01 of 07 — Mum 180 Program</div>
-      <h1 class="mod-title">The Momentum<br>Formula</h1>
-      <p class="mod-subtitle">Action before motivation. The framework that explains why you can't wait to feel ready and what to do instead.</p>
+      <div class="mod-eyebrow">Module 01 of 06 — Mum 180</div>
+      <h1 class="mod-title">The Lie You<br>Were Told</h1>
+      <p class="mod-subtitle">The accountability reframe. The single piece of bad data that is running your exhaustion — and why it is not true.</p>
       <div class="mod-meta">
-        <div class="mod-meta-item">Time: <span>60–90 min</span></div>
-        <div class="mod-meta-item">Sections: <span>6</span></div>
-        <div class="mod-meta-item">Tools: <span>Momentum Audit · Action Map · Start Protocol</span></div>
+        <div class="mod-meta-item">Time: <span>30–40 min</span></div>
+        <div class="mod-meta-item">Sections: <span>4</span></div>
       </div>
     </div>
-
     <div class="content-body">
-
-      <!-- SECTION 1: THE CORE TRUTH -->
       <div class="section-block" id="s1">
-        <div class="section-label">Section 1 of 6</div>
-        <div class="section-title">Motivation Doesn't Work the Way You Think</div>
-        <p class="body-text">Everything you've been told about motivation is backwards. The model most people operate from says: <strong>feel motivated → take action → get results</strong>. Wait until you feel ready. Wait until the inspiration hits. Wait until conditions are right.</p>
-        <p class="body-text">That model is responsible for more stagnation than almost any other single belief. Because the feeling you're waiting for is almost never coming first. The sequence is wrong. Entirely, structurally, neuroscientifically wrong.</p>
-        <div class="pullquote">
-          <div class="pq-text">"Motivation does not come before action. Action comes before motivation."</div>
-          <div class="pq-attr">Anonymous · Mum 180 · The Momentum Formula</div>
-        </div>
-        <p class="body-text">The Latin root of motivation is <em>movere</em> — to move. The word itself tells you the sequence. You move first. The momentum, the drive, the motivation — those are the <strong>byproducts</strong> of moving. Not the prerequisites.</p>
-        <p class="body-text">This isn't a motivational statement. It's a functional description of how the brain actually works. Dopamine — the neurotransmitter associated with drive and motivation — is released in anticipation of reward, and most powerfully in response to progress. Not in response to thinking about progress. In response to <strong>actual movement</strong>.</p>
-
-        <div class="reflect-box">
-          <div class="reflect-label">Reflect · Your Pattern</div>
-          <div class="reflect-question">Think of something you've been waiting to feel motivated about. How long have you been waiting? What have you been waiting for?</div>
-          <textarea class="reflect-input" id="r1" placeholder="Write honestly here — this is your working document..." onchange="save()"></textarea>
-        </div>
+        <div class="section-label">Section 1</div>
+        <div class="section-title">The Bad Data</div>
+        <p class="body-text">From the moment you became a mum, you were handed a story. It sounded noble. It felt right. And it has been quietly running your life ever since.</p><p class="body-text">The story goes like this: <strong>when you become a mother, your life stops and you become accountable for your child.</strong></p><p class="body-text">You absorbed it from your own parents. From the culture. From every message about what a "good mum" looks like. And the reason it feels so right is that it sounds like love. Sacrifice. Devotion.</p><p class="body-text">But it is not true. And the gap between that story and reality is where your exhaustion lives.</p><div class="pullquote"><div class="pq-text">You cannot be accountable for another human being. You simply can't.</div></div>
       </div>
-
-      <!-- SECTION 2: THE CONFIDENCE PHASE -->
       <div class="section-block" id="s2">
-        <div class="section-label">Section 2 of 6</div>
-        <div class="section-title">The Confidence Phase</div>
-        <p class="body-text">When you begin a new action — any action — the first experience is always the same. It's uncomfortable. The performance is below what you expect from yourself. The feedback is unflattering. This is not failure. This is <strong>the initial push</strong> — the highest-resistance phase of any task, and the one that determines everything that follows.</p>
-        <p class="body-text">Most people stop here. They interpret the discomfort as evidence that they're wrong about their ability, wrong about the direction, or wrong about the whole thing. They retreat to the planning phase — which feels productive but creates no evidence. And the loop begins again.</p>
-
-        <div class="compare-grid">
-          <div class="compare-col bad">
-            <div class="compare-label">The Wrong Sequence</div>
-            <div class="compare-item">Wait to feel ready</div>
-            <div class="compare-item">Plan more instead of starting</div>
-            <div class="compare-item">Quit when it feels uncomfortable</div>
-            <div class="compare-item">Interpret struggle as incompetence</div>
-            <div class="compare-item">Reset. New plan. Same loop.</div>
-          </div>
-          <div class="compare-col good">
-            <div class="compare-label">The Momentum Sequence</div>
-            <div class="compare-item">Start small — reduce the barrier</div>
-            <div class="compare-item">Take the action, observe the result</div>
-            <div class="compare-item">Allow the discomfort — it's structural</div>
-            <div class="compare-item">Build evidence of achievement</div>
-            <div class="compare-item">Confidence follows the evidence</div>
-          </div>
-        </div>
-
-        <p class="body-text">The confidence that comes from <strong>completing high-probability tasks</strong> — things you know you can do — is different from confidence built from motivation or affirmation. It's built from evidence. And evidence doesn't disappear when the feeling does.</p>
-
-        <div class="reflect-box">
-          <div class="reflect-label">Reflect · Your Initial Push</div>
-          <div class="reflect-question">Where in the wrong sequence do you most commonly stop? What does the retreat to planning look like for you specifically?</div>
-          <textarea class="reflect-input" id="r2" placeholder="Be specific — what does your loop actually look like?" onchange="save()"></textarea>
-        </div>
+        <div class="section-label">Section 2</div>
+        <div class="section-title">Accountability Reframed</div>
+        <p class="body-text">Think about what accountability actually means. It means you are responsible for an outcome. You control it. If it goes wrong, it is on you.</p><p class="body-text">Now apply that to another human being. A person with their own mind, their own choices, their own life. Can you actually be accountable for that? No. You cannot.</p><p class="body-text">If it were true that you are accountable for your child, absent parents would not exist. A parent who leaves would simply be... taking their accountability with them, like a bag they packed. The child would be fine.</p><p class="body-text">That is obviously not how it works. Because the child is not the accountability. <strong>The commitment is the accountability.</strong></p><ul class="checklist"><li>You cannot control another person's thoughts, choices, or outcomes</li>
+<li>What you ARE accountable for is the commitment you made</li>
+<li>The commitment: to keep them safe, raise them well, and prepare them</li>
+<li>That commitment does not require you to disappear</li></ul>
       </div>
-
-      <!-- SECTION 3: TIME -->
       <div class="section-block" id="s3">
-        <div class="section-label">Section 3 of 6</div>
-        <div class="section-title">Time Is the Only Non-Renewable Resource</div>
-        <p class="body-text">Time is the only input in this equation that cannot be recovered. Every other resource — money, energy, attention, skill — can be built, rebuilt, or replaced. Time passes regardless of what you do with it. The month you spent planning instead of starting is gone either way.</p>
-        <div class="pullquote">
-          <div class="pq-text">"Time is going to pass regardless of what you choose to do with it."</div>
-          <div class="pq-attr">Think Small, Start Horribly · Anonymous</div>
-        </div>
-        <p class="body-text">This is not meant to create urgency-based panic. It's meant to recalibrate what "thinking about it" actually costs. The cost is not theoretical. It's real time, passing in real life, while the gap between who you are and what you're doing stays exactly the same.</p>
-        <p class="body-text">The Momentum Formula is simple: <strong>quality actions, applied consistently, over time</strong>. None of the three elements can be replaced by the others. High quality actions done once build nothing. Consistent low-quality actions build habits but not results. The compound effect only activates when all three are present.</p>
-
-        <div class="audit-block" id="time-audit">
-          <div class="audit-title">Time Audit</div>
-          <div class="audit-desc">Rate yourself honestly on each statement. 1 = Not at all true · 5 = Completely true</div>
-
-          <div class="audit-question">
-            <div class="audit-q-text">I know specifically what I need to be working on right now</div>
-            <div class="audit-score" data-q="ta1">
-              <button class="audit-btn" data-v="1" onclick="auditClick(this,'ta1')">1</button>
-              <button class="audit-btn" data-v="2" onclick="auditClick(this,'ta1')">2</button>
-              <button class="audit-btn" data-v="3" onclick="auditClick(this,'ta1')">3</button>
-              <button class="audit-btn" data-v="4" onclick="auditClick(this,'ta1')">4</button>
-              <button class="audit-btn" data-v="5" onclick="auditClick(this,'ta1')">5</button>
-            </div>
-          </div>
-          <div class="audit-question">
-            <div class="audit-q-text">I take action on priorities before they become urgent</div>
-            <div class="audit-score" data-q="ta2">
-              <button class="audit-btn" data-v="1" onclick="auditClick(this,'ta2')">1</button>
-              <button class="audit-btn" data-v="2" onclick="auditClick(this,'ta2')">2</button>
-              <button class="audit-btn" data-v="3" onclick="auditClick(this,'ta2')">3</button>
-              <button class="audit-btn" data-v="4" onclick="auditClick(this,'ta2')">4</button>
-              <button class="audit-btn" data-v="5" onclick="auditClick(this,'ta2')">5</button>
-            </div>
-          </div>
-          <div class="audit-question">
-            <div class="audit-q-text">My daily actions are mostly connected to my bigger goals</div>
-            <div class="audit-score" data-q="ta3">
-              <button class="audit-btn" data-v="1" onclick="auditClick(this,'ta3')">1</button>
-              <button class="audit-btn" data-v="2" onclick="auditClick(this,'ta3')">2</button>
-              <button class="audit-btn" data-v="3" onclick="auditClick(this,'ta3')">3</button>
-              <button class="audit-btn" data-v="4" onclick="auditClick(this,'ta3')">4</button>
-              <button class="audit-btn" data-v="5" onclick="auditClick(this,'ta3')">5</button>
-            </div>
-          </div>
-          <div class="audit-question">
-            <div class="audit-q-text">I review my own performance and adjust without external prompting</div>
-            <div class="audit-score" data-q="ta4">
-              <button class="audit-btn" data-v="1" onclick="auditClick(this,'ta4')">1</button>
-              <button class="audit-btn" data-v="2" onclick="auditClick(this,'ta4')">2</button>
-              <button class="audit-btn" data-v="3" onclick="auditClick(this,'ta4')">3</button>
-              <button class="audit-btn" data-v="4" onclick="auditClick(this,'ta4')">4</button>
-              <button class="audit-btn" data-v="5" onclick="auditClick(this,'ta4')">5</button>
-            </div>
-          </div>
-
-          <div class="audit-result" id="ta-result">
-            <div class="audit-result-label">Your Time Audit Score</div>
-            <div class="audit-result-score" id="ta-score">—</div>
-            <div class="audit-result-text" id="ta-text"></div>
-          </div>
-        </div>
+        <div class="section-label">Section 3</div>
+        <div class="section-title">The Primary Goal</div>
+        <p class="body-text">Here is what the commitment actually asks of you.</p><div class="pullquote"><div class="pq-text">The primary role of a parent is to prepare the child for the expectations of the adult world and give them enough tools to deal with the challenges when they get there.</div></div><p class="body-text">That is it. That is the job.</p><p class="body-text">Now ask yourself: how do you prepare someone for the adult world? By modelling it. By demonstrating what it looks like to look after yourself, set standards, maintain your identity, and function as a whole person.</p><p class="body-text">You cannot teach what you are not demonstrating. A mum who has lost herself entirely is not modelling the adult world. She is modelling disappearance.</p><p class="body-text">Taking care of yourself is not in conflict with the commitment. It is required by it.</p>
       </div>
-
-      <!-- SECTION 4: MOMENTUM AUDIT -->
       <div class="section-block" id="s4">
-        <div class="section-label">Section 4 of 6</div>
-        <div class="section-title">The Momentum Audit</div>
-        <p class="body-text">Before you can build momentum, you need an honest picture of where it's breaking down. The following audit maps your current relationship with action, consistency, and evidence. It's diagnostic — not a test of your character.</p>
-
-        <div class="audit-block">
-          <div class="audit-title">Momentum Audit</div>
-          <div class="audit-desc">Rate each statement 1 (not true) to 5 (completely true). Answer based on the last 4 weeks.</div>
-
-          <div class="audit-question">
-            <div class="audit-q-text">I start tasks when I plan to, not when I feel like it</div>
-            <div class="audit-score" data-q="ma1">
-              <button class="audit-btn" data-v="1" onclick="auditClick(this,'ma1')">1</button>
-              <button class="audit-btn" data-v="2" onclick="auditClick(this,'ma1')">2</button>
-              <button class="audit-btn" data-v="3" onclick="auditClick(this,'ma1')">3</button>
-              <button class="audit-btn" data-v="4" onclick="auditClick(this,'ma1')">4</button>
-              <button class="audit-btn" data-v="5" onclick="auditClick(this,'ma1')">5</button>
-            </div>
-          </div>
-          <div class="audit-question">
-            <div class="audit-q-text">I follow through on the majority of commitments I make to myself</div>
-            <div class="audit-score" data-q="ma2">
-              <button class="audit-btn" data-v="1" onclick="auditClick(this,'ma2')">1</button>
-              <button class="audit-btn" data-v="2" onclick="auditClick(this,'ma2')">2</button>
-              <button class="audit-btn" data-v="3" onclick="auditClick(this,'ma2')">3</button>
-              <button class="audit-btn" data-v="4" onclick="auditClick(this,'ma2')">4</button>
-              <button class="audit-btn" data-v="5" onclick="auditClick(this,'ma2')">5</button>
-            </div>
-          </div>
-          <div class="audit-question">
-            <div class="audit-q-text">When I hit resistance, I push through rather than stop and reset</div>
-            <div class="audit-score" data-q="ma3">
-              <button class="audit-btn" data-v="1" onclick="auditClick(this,'ma3')">1</button>
-              <button class="audit-btn" data-v="2" onclick="auditClick(this,'ma3')">2</button>
-              <button class="audit-btn" data-v="3" onclick="auditClick(this,'ma3')">3</button>
-              <button class="audit-btn" data-v="4" onclick="auditClick(this,'ma3')">4</button>
-              <button class="audit-btn" data-v="5" onclick="auditClick(this,'ma3')">5</button>
-            </div>
-          </div>
-          <div class="audit-question">
-            <div class="audit-q-text">I can point to specific evidence of achievement from the last 30 days</div>
-            <div class="audit-score" data-q="ma4">
-              <button class="audit-btn" data-v="1" onclick="auditClick(this,'ma4')">1</button>
-              <button class="audit-btn" data-v="2" onclick="auditClick(this,'ma4')">2</button>
-              <button class="audit-btn" data-v="3" onclick="auditClick(this,'ma4')">3</button>
-              <button class="audit-btn" data-v="4" onclick="auditClick(this,'ma4')">4</button>
-              <button class="audit-btn" data-v="5" onclick="auditClick(this,'ma4')">5</button>
-            </div>
-          </div>
-          <div class="audit-question">
-            <div class="audit-q-text">My level of action is consistent week-to-week, not boom-and-bust</div>
-            <div class="audit-score" data-q="ma5">
-              <button class="audit-btn" data-v="1" onclick="auditClick(this,'ma5')">1</button>
-              <button class="audit-btn" data-v="2" onclick="auditClick(this,'ma5')">2</button>
-              <button class="audit-btn" data-v="3" onclick="auditClick(this,'ma5')">3</button>
-              <button class="audit-btn" data-v="4" onclick="auditClick(this,'ma5')">4</button>
-              <button class="audit-btn" data-v="5" onclick="auditClick(this,'ma5')">5</button>
-            </div>
-          </div>
-
-          <div class="audit-result" id="ma-result">
-            <div class="audit-result-label">Your Momentum Score</div>
-            <div class="audit-result-score" id="ma-score">—</div>
-            <div class="audit-result-text" id="ma-text"></div>
-          </div>
+        <div class="section-label">Section 4</div>
+        <div class="section-title">Reflection</div>
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What story have you been telling yourself about what being a good mum means? Where do you think it came from?</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">In your own words: what is the commitment you actually made? Not the story — the real commitment.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What is one thing you have stopped doing for yourself since becoming a mum that you used to value?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 
-      <!-- SECTION 5: START PROTOCOL -->
-      <div class="section-block" id="s5">
-        <div class="section-label">Section 5 of 6</div>
-        <div class="section-title">Build Your Start Protocol</div>
-        <p class="body-text">The purpose of a start protocol is to eliminate the decision about whether to start. When starting requires a decision, you're subject to the conditions of that moment — how you feel, what else is demanding attention, how clear or unclear the task seems. A protocol removes the decision entirely.</p>
-        <p class="body-text"><strong>Think small.</strong> The size of the starting action is almost irrelevant compared to the consistency of starting it. A five-minute commitment you actually keep builds more self-trust than a two-hour plan you don't.</p>
-
-        <div class="reflect-box">
-          <div class="reflect-label">Build · Your Start Protocol</div>
-          <div class="reflect-question">What is the ONE thing you keep not starting? Define it clearly.</div>
-          <textarea class="reflect-input" id="r3" placeholder="Be specific. Not 'get fit' — 'do 10 push-ups every morning before coffee'" onchange="save()"></textarea>
-        </div>
-
-        <div class="slider-block">
-          <div class="slider-header">
-            <div class="slider-label">How small can you make the starting action? (1 = Still too big, 10 = Genuinely impossible to skip)</div>
-            <div class="slider-value" id="sv1">5</div>
-          </div>
-          <div class="slider-track">
-            <input type="range" min="1" max="10" value="5" id="s1-slider" oninput="updateSlider('sv1',this.value);save()">
-          </div>
-          <div class="slider-ends"><span>Still too big</span><span>Can't say no to this</span></div>
-        </div>
-
-        <div class="reflect-box">
-          <div class="reflect-label">Build · The Protocol</div>
-          <div class="reflect-question">Write your start protocol: When [trigger], I will [action], for [duration]. Make it so small it's almost embarrassing.</div>
-          <textarea class="reflect-input" id="r4" placeholder="When I sit down with my morning coffee, I will write one sentence, for 2 minutes." onchange="save()"></textarea>
-        </div>
-
-        <div class="reflect-box">
-          <div class="reflect-label">Build · Evidence List</div>
-          <div class="reflect-question">List 5 things you've already done that prove you're capable of taking action and following through. These are your anchors.</div>
-          <textarea class="reflect-input" id="r5" placeholder="1. &#10;2. &#10;3. &#10;4. &#10;5." style="min-height:140px" onchange="save()"></textarea>
-        </div>
+      <div class="next-module">
+        <div><div class="nm-label">Next</div><div class="nm-title">Guilty & Selfish</div></div>
+        <a href="module-2.html" class="nm-btn">Continue →</a>
       </div>
-
-      <!-- SECTION 6: THE FORMULA -->
-      <div class="section-block" id="s6">
-        <div class="section-label">Section 6 of 6</div>
-        <div class="section-title">The Formula in Practice</div>
-        <p class="body-text">The Momentum Formula is not a strategy. It's a diagnostic. When momentum is absent, something in the formula is broken — and it's usually one of three things: the quality of actions is low, the consistency is low, or the time horizon is too short.</p>
-        <p class="body-text">The most common failure is <strong>high quality + inconsistent + short time horizon</strong>. People work intensely for a period, stop, reset, and interpret the absence of results as evidence the direction is wrong. It's almost never the direction. It's almost always the consistency over time.</p>
-
-        <div class="pullquote">
-          <div class="pq-text">"The version of you who moves consistently will always outperform the version who moves brilliantly but intermittently."</div>
-          <div class="pq-attr">Anonymous · Mum 180</div>
-        </div>
-
-        <!-- Final reflection -->
-        <div class="reflect-box">
-          <div class="reflect-label">Commit · Your Momentum Declaration</div>
-          <div class="reflect-question">In one paragraph: what specifically are you going to do differently as a result of this module? Name the action, the frequency, and the time horizon.</div>
-          <textarea class="reflect-input" id="r6" style="min-height:120px" placeholder="I am going to... every day / week... for the next... Starting..." onchange="save()"></textarea>
-        </div>
-
-        <!-- Module complete -->
-        <div class="complete-banner" id="complete-banner">
-          <h3>Module 01 Complete ✓</h3>
-          <p>You've worked through The Momentum Formula. Your reflections and audit scores are saved. Download a PDF summary of your work, or move on to Module 02: The Stuck Framework.</p>
-          <div class="complete-actions">
-            <button class="btn-export" onclick="exportPDF()">↓ Download PDF Summary</button>
-            <a href="module-2.html" class="btn-next">Module 02: The Stuck Framework →</a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /content-body -->
-  </div><!-- /content-area -->
-
-  <!-- TOC SIDEBAR -->
-  <div class="toc-sidebar">
-    <div class="toc-header">In This Module</div>
-    <a class="toc-item active" href="#s1" id="toc-s1" onclick="tocClick(1)">
-      <div class="toc-dot"></div>Motivation Myth
-    </a>
-    <a class="toc-item" href="#s2" id="toc-s2" onclick="tocClick(2)">
-      <div class="toc-dot"></div>The Confidence Phase
-    </a>
-    <a class="toc-item" href="#s3" id="toc-s3" onclick="tocClick(3)">
-      <div class="toc-dot"></div>Time Audit
-    </a>
-    <a class="toc-item" href="#s4" id="toc-s4" onclick="tocClick(4)">
-      <div class="toc-dot"></div>Momentum Audit
-    </a>
-    <a class="toc-item" href="#s5" id="toc-s5" onclick="tocClick(5)">
-      <div class="toc-dot"></div>Start Protocol
-    </a>
-    <a class="toc-item" href="#s6" id="toc-s6" onclick="tocClick(6)">
-      <div class="toc-dot"></div>The Formula
-    </a>
+    </div>
   </div>
-
-</div><!-- /shell -->
-
-<div class="save-badge" id="save-badge">Saved ✓</div>
-
+</div>
+      <div class="section-block" id="s1">
+        <div class="section-label">Section 1</div>
+        <div class="section-title">The Bad Data</div>
+        <p class="body-text">From the moment you became a mum, you were handed a story. It sounded noble. It felt right. And it has been quietly running your life ever since.</p><p class="body-text">The story goes like this: <strong>when you become a mother, your life stops and you become accountable for your child.</strong></p><p class="body-text">You absorbed it from your own parents. From the culture. From every message about what a "good mum" looks like. And the reason it feels so right is that it sounds like love. Sacrifice. Devotion.</p><p class="body-text">But it is not true. And the gap between that story and reality is where your exhaustion lives.</p><div class="pullquote"><div class="pq-text">You cannot be accountable for another human being. You simply can't.</div></div>
+      </div>
+      <div class="section-block" id="s2">
+        <div class="section-label">Section 2</div>
+        <div class="section-title">Accountability Reframed</div>
+        <p class="body-text">Think about what accountability actually means. It means you are responsible for an outcome. You control it. If it goes wrong, it is on you.</p><p class="body-text">Now apply that to another human being. A person with their own mind, their own choices, their own life. Can you actually be accountable for that? No. You cannot.</p><p class="body-text">If it were true that you are accountable for your child, absent parents would not exist. A parent who leaves would simply be... taking their accountability with them, like a bag they packed. The child would be fine.</p><p class="body-text">That is obviously not how it works. Because the child is not the accountability. <strong>The commitment is the accountability.</strong></p><ul class="checklist"><li>You cannot control another person's thoughts, choices, or outcomes</li>
+<li>What you ARE accountable for is the commitment you made</li>
+<li>The commitment: to keep them safe, raise them well, and prepare them</li>
+<li>That commitment does not require you to disappear</li></ul>
+      </div>
+      <div class="section-block" id="s3">
+        <div class="section-label">Section 3</div>
+        <div class="section-title">The Primary Goal</div>
+        <p class="body-text">Here is what the commitment actually asks of you.</p><div class="pullquote"><div class="pq-text">The primary role of a parent is to prepare the child for the expectations of the adult world and give them enough tools to deal with the challenges when they get there.</div></div><p class="body-text">That is it. That is the job.</p><p class="body-text">Now ask yourself: how do you prepare someone for the adult world? By modelling it. By demonstrating what it looks like to look after yourself, set standards, maintain your identity, and function as a whole person.</p><p class="body-text">You cannot teach what you are not demonstrating. A mum who has lost herself entirely is not modelling the adult world. She is modelling disappearance.</p><p class="body-text">Taking care of yourself is not in conflict with the commitment. It is required by it.</p>
+      </div>
+      <div class="section-block" id="s4">
+        <div class="section-label">Section 4</div>
+        <div class="section-title">Reflection</div>
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What story have you been telling yourself about what being a good mum means? Where do you think it came from?</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">In your own words: what is the commitment you actually made? Not the story — the real commitment.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What is one thing you have stopped doing for yourself since becoming a mum that you used to value?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div>
+      </div>
 <script>
-
-// ── ACCESS GATE ──────────────────────────────────────────────────────────────
 (function(){
-  const S='mum180_access', D=7*24*60*60*1000;
+  const S='mum180_access', D=30*24*60*60*1000;
   try{
     const s=JSON.parse(localStorage.getItem(S)||'null');
     if(!s||Date.now()-s.ts>D){localStorage.removeItem(S);window.location.replace('access.html');}
   }catch(e){window.location.replace('access.html');}
 })();
-// ─────────────────────────────────────────────────────────────────────────────
-const MOD = 1;
-const KEY = `lc_m${MOD}`;
-const TOTAL_FIELDS = 6; // reflect boxes
 
-// Load saved data
-function load() {
-  const d = JSON.parse(localStorage.getItem(KEY) || '{}');
-  ['r1','r2','r3','r4','r5','r6'].forEach(id => {
-    if (d[id] !== undefined) {
-      const el = document.getElementById(id);
-      if (el) el.value = d[id];
-    }
-  });
-  if (d['s1-slider']) {
-    document.getElementById('s1-slider').value = d['s1-slider'];
-    document.getElementById('sv1').textContent = d['s1-slider'];
-  }
-  // Audit buttons
-  ['ta1','ta2','ta3','ta4','ma1','ma2','ma3','ma4','ma5'].forEach(q => {
-    if (d[q]) {
-      const btn = document.querySelector(`[data-q="${q}"] [data-v="${d[q]}"]`);
-      if (btn) { btn.classList.add('on'); }
-    }
+const MOD = 1;
+const KEY = 'm180_mod' + MOD;
+
+function load(){
+  const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+  document.querySelectorAll('.reflect-box').forEach(el => {
+    if(d[el.id]) el.value = d[el.id];
   });
   calcProgress();
-  updateAuditResults();
 }
 
-// Save data
 let saveTimer;
-function save() {
+function save(){
   clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => {
+  saveTimer = setTimeout(()=>{
     const d = {};
-    ['r1','r2','r3','r4','r5','r6'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) d[id] = el.value;
-    });
-    d['s1-slider'] = document.getElementById('s1-slider').value;
-    ['ta1','ta2','ta3','ta4','ma1','ma2','ma3','ma4','ma5'].forEach(q => {
-      const on = document.querySelector(`[data-q="${q}"] .on`);
-      if (on) d[q] = on.getAttribute('data-v');
-    });
+    document.querySelectorAll('.reflect-box').forEach(el => { d[el.id] = el.value; });
     localStorage.setItem(KEY, JSON.stringify(d));
     calcProgress();
     showSaved();
   }, 500);
 }
 
-function showSaved() {
+function showSaved(){
   const b = document.getElementById('save-badge');
   b.classList.add('show');
-  setTimeout(() => b.classList.remove('show'), 2000);
+  setTimeout(()=>b.classList.remove('show'), 2000);
 }
 
-function calcProgress() {
-  const d = JSON.parse(localStorage.getItem(KEY) || '{}');
-  let filled = 0;
-  ['r1','r2','r3','r4','r5','r6'].forEach(id => { if (d[id] && d[id].trim().length > 10) filled++; });
-  const auditFilled = ['ta1','ta2','ta3','ta4','ma1','ma2','ma3','ma4','ma5'].filter(q => d[q]).length;
-  const total = 6 + 9;
-  const done = filled + auditFilled;
-  const pct = Math.min(100, Math.round((done / total) * 100));
-  localStorage.setItem(`lc_m${MOD}_progress`, pct);
-  // Sync to unified portal progress object
-  const _prog = JSON.parse(localStorage.getItem('lc_progress') || '{}');
-  _prog[`mod${MOD}`] = pct;
-  localStorage.setItem('lc_progress', JSON.stringify(_prog));
+function calcProgress(){
+  const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+  const boxes = document.querySelectorAll('.reflect-box');
+  const filled = [...boxes].filter(el => d[el.id] && d[el.id].trim().length > 10).length;
+  const pct = boxes.length > 0 ? Math.min(100, Math.round((filled/boxes.length)*100)) : 0;
+  // Save to portal progress object
+  const prog = JSON.parse(localStorage.getItem('m180_progress')||'{}');
+  prog['mod'+MOD] = pct;
+  localStorage.setItem('m180_progress', JSON.stringify(prog));
+  // Also update unified module key for portal to read
+  const modData = JSON.parse(localStorage.getItem(KEY)||'{}');
+  modData.progress = pct;
+  localStorage.setItem(KEY, JSON.stringify(modData));
   document.getElementById('nav-pct').textContent = pct + '%';
   document.getElementById('nav-bar-fill').style.width = pct + '%';
-  if (pct >= 80) {
-    document.getElementById('complete-banner').classList.add('show');
-  }
-  // Log activity
-  if (pct > 0) {
-    const log = JSON.parse(localStorage.getItem('lc_activity') || '[]');
-    const entry = {text: `Module 01 — ${pct}% complete`, color: '#d4827a', time: new Date().toLocaleDateString()};
-    const last = log[log.length-1];
-    if (!last || last.text !== entry.text) { log.push(entry); localStorage.setItem('lc_activity', JSON.stringify(log.slice(-20))); }
-  }
+  if(pct >= 80) document.getElementById('complete-banner').classList.add('show');
 }
 
-function updateSlider(id, val) {
-  document.getElementById(id).textContent = val;
+function tocClick(n){
+  document.querySelectorAll('.toc-item').forEach(t=>t.classList.remove('active'));
+  const el = document.getElementById('toc-s'+n);
+  if(el) el.classList.add('active');
 }
 
-function auditClick(btn, q) {
-  document.querySelectorAll(`[data-q="${q}"] .audit-btn`).forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  save();
-  updateAuditResults();
-}
-
-function updateAuditResults() {
-  const d = JSON.parse(localStorage.getItem(KEY) || '{}');
-
-  // Time audit
-  const taQs = ['ta1','ta2','ta3','ta4'];
-  const taVals = taQs.map(q => parseInt(d[q] || 0));
-  const taFilled = taVals.filter(v => v > 0).length;
-  if (taFilled === taQs.length) {
-    const taTotal = taVals.reduce((a,b) => a+b, 0);
-    const taMax = taQs.length * 5;
-    document.getElementById('ta-score').textContent = taTotal + '/' + taMax;
-    const tapct = Math.round((taTotal/taMax)*100);
-    let taText = tapct >= 75 ? 'Strong time awareness. Your actions are well-connected to your goals.' :
-                 tapct >= 50 ? 'Moderate. There are gaps between your intentions and your daily actions.' :
-                 'Significant disconnect between goals and actions. This is where to focus first.';
-    document.getElementById('ta-text').textContent = taText;
-    document.getElementById('ta-result').classList.add('show');
-  }
-
-  // Momentum audit
-  const maQs = ['ma1','ma2','ma3','ma4','ma5'];
-  const maVals = maQs.map(q => parseInt(d[q] || 0));
-  const maFilled = maVals.filter(v => v > 0).length;
-  if (maFilled === maQs.length) {
-    const maTotal = maVals.reduce((a,b) => a+b, 0);
-    const maMax = maQs.length * 5;
-    document.getElementById('ma-score').textContent = maTotal + '/' + maMax;
-    const mapct = Math.round((maTotal/maMax)*100);
-    let maText = mapct >= 75 ? 'Strong momentum foundation. Focus on maintaining quality and extending time horizon.' :
-                 mapct >= 50 ? 'Momentum exists but is inconsistent. Consistency is the priority — reduce the size of actions to increase frequency.' :
-                 'Momentum is low across the board. Start with the smallest possible action and focus entirely on showing up, not performing.';
-    document.getElementById('ma-text').textContent = maText;
-    document.getElementById('ma-result').classList.add('show');
-  }
-}
-
-function tocClick(n) {
-  document.querySelectorAll('.toc-item').forEach(t => t.classList.remove('active'));
-  document.getElementById(`toc-s${n}`).classList.add('active');
-}
-
-// Scroll spy
-function setupScrollSpy() {
-  const sections = [1,2,3,4,5,6].map(n => document.getElementById(`s${n}`));
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        const n = id.replace('s','');
-        document.querySelectorAll('.toc-item').forEach(t => t.classList.remove('active'));
-        const tocEl = document.getElementById(`toc-s${n}`);
-        if (tocEl) tocEl.classList.add('active');
+function setupScrollSpy(){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const n = e.target.id.replace('s','');
+        document.querySelectorAll('.toc-item').forEach(t=>t.classList.remove('active'));
+        const toc = document.getElementById('toc-s'+n);
+        if(toc) toc.classList.add('active');
       }
     });
-  }, { threshold: 0.3 });
-  sections.forEach(s => { if(s) observer.observe(s); });
+  }, {threshold:0.3});
+  document.querySelectorAll('.section-block').forEach(s=>obs.observe(s));
 }
 
-function exportPDF() {
-  window.print();
-}
-
-// Init
 load();
 setupScrollSpy();
+document.querySelectorAll('.reflect-box').forEach(el=>el.addEventListener('input', save));
 </script>
 </body>
 </html>

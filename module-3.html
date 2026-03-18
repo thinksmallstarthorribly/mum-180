@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 03: Escaping the Conceptual Landscape | Mum 180</title>
+<title>Module 03: The Oxygen Mask | Mum 180</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --accent:#d4827a;--accent-d:#b86b64;--accent-p:#fdf5f4;--accent-m:#f0d5d2;
-  --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
-  --green:#27ae60;--gp:#e9f7ef;
-  --purple:#9b59b6;--pp:#f5eef8;
   --charcoal:#1a1a1a;--mid:#444;--light:#888;
   --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
 }
@@ -27,595 +24,251 @@ body{display:flex;flex-direction:column}
 .nav-bar{width:120px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden}
 .nav-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.4s}
 .shell{display:flex;flex:1;min-height:0;overflow:hidden}
-.content-area{flex:1;overflow-y:auto;padding:0}
-.toc-sidebar{width:240px;flex-shrink:0;background:var(--card);border-left:1px solid var(--rule);overflow-y:auto;display:flex;flex-direction:column}
-.mod-header{background:var(--charcoal);color:#fff;padding:48px 56px;border-bottom:4px solid var(--accent)}
-.mod-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.toc-sidebar{width:220px;background:var(--charcoal);flex-shrink:0;overflow-y:auto;padding:24px 0}
+.toc-header{font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 20px 12px}
+.toc-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;border-left:2px solid transparent;transition:all 0.15s;text-decoration:none}
+.toc-item:hover{background:rgba(255,255,255,0.04)}
+.toc-item.active{border-left-color:var(--accent);background:rgba(212,130,122,0.08)}
+.toc-num{font-size:10px;font-weight:800;font-family:monospace;color:rgba(255,255,255,0.2);min-width:20px}
+.toc-item.active .toc-num{color:var(--accent)}
+.toc-text{font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);line-height:1.3}
+.toc-item.active .toc-text{color:#fff}
+.content-area{flex:1;overflow-y:auto}
+.mod-header{background:var(--charcoal);padding:48px 56px;color:#fff}
+.mod-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 .mod-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,6vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95;margin-bottom:16px;color:#fff}
-.mod-subtitle{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.6;max-width:560px;margin-bottom:28px}
-.mod-meta{display:flex;gap:32px;flex-wrap:wrap}
-.mod-meta-item{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
-.mod-meta-item span{color:rgba(255,255,255,0.7)}
-.content-body{max-width:720px;margin:0 auto;padding:48px 40px}
-.section-block{margin-bottom:56px;scroll-margin-top:70px}
-.section-label{font-size:9px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.mod-subtitle{font-size:17px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:620px;margin-bottom:24px}
+.mod-meta{display:flex;gap:24px;flex-wrap:wrap}
+.mod-meta-item{font-size:12px;color:rgba(255,255,255,0.3);font-weight:600}
+.mod-meta-item span{color:rgba(255,255,255,0.6)}
+.content-body{max-width:760px;margin:0 auto;padding:48px 56px}
+.section-block{margin-bottom:64px;scroll-margin-top:80px}
+.section-label{font-size:9px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .section-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;color:var(--charcoal);line-height:1;margin-bottom:20px}
-.body-text{font-size:15px;line-height:1.85;color:var(--mid);margin-bottom:16px}
-.card{background:var(--card);border:1px solid var(--rule);padding:28px;margin-bottom:20px}
-.card-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px}
-.highlight-box{background:var(--accent-p);border-left:4px solid var(--accent);padding:20px 24px;margin-bottom:24px}
-.highlight-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
-.red-box{background:var(--rp);border-left:4px solid var(--red);padding:20px 24px;margin-bottom:24px}
-.red-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
-.yellow-box{background:var(--yp);border-left:4px solid var(--yellow);padding:20px 24px;margin-bottom:24px}
-.yellow-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
-
-/* BARRIER GRID */
-.barrier-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-@media(max-width:560px){.barrier-grid{grid-template-columns:1fr}}
-.barrier-card{background:var(--card);border:1px solid var(--rule);padding:16px 18px;cursor:pointer;transition:all 0.2s;position:relative;border-radius:2px}
-.barrier-card:hover{border-color:var(--accent);box-shadow:0 2px 12px rgba(94,197,204,0.12)}
-.barrier-card.active{border-color:var(--accent);background:var(--accent-p)}
-.barrier-card.identified{border-color:var(--red);background:var(--rp)}
-.barrier-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
-.barrier-desc{font-size:12px;color:var(--light);line-height:1.5}
-.barrier-check{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
-.barrier-card.identified .barrier-check{opacity:1}
-.barrier-group-label{font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);padding:8px 0 6px;border-bottom:1px solid var(--rule);margin-bottom:12px}
-
-/* REFLECTION */
-.reflect-block{margin-bottom:24px}
-.reflect-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.reflect-prompt{font-size:14px;font-weight:600;color:var(--charcoal);margin-bottom:10px;line-height:1.5}
-textarea.reflect-input{width:100%;min-height:100px;border:1px solid var(--rule);padding:14px 16px;font-family:'Barlow',sans-serif;font-size:14px;line-height:1.6;resize:vertical;background:var(--bg);color:var(--charcoal);transition:border-color 0.2s}
-textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:#fff}
-.char-count{font-size:10px;color:var(--light);text-align:right;margin-top:4px}
-
-/* BRIDGE STEPS */
-.bridge-step{display:flex;gap:20px;padding:24px;background:var(--card);border:1px solid var(--rule);margin-bottom:16px}
-.bridge-num{width:44px;height:44px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;flex-shrink:0}
-.bridge-content{flex:1}
-.bridge-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
-.bridge-desc{font-size:14px;color:var(--mid);line-height:1.6;margin-bottom:12px}
-
-/* CIRCUIT CHECK */
-.circuit-item{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:var(--card);border:1px solid var(--rule);margin-bottom:10px;cursor:pointer;transition:all 0.2s}
-.circuit-item:hover{border-color:var(--accent)}
-.circuit-item.done{border-color:var(--green);background:var(--gp)}
-.circuit-toggle{width:24px;height:24px;border-radius:50%;border:2px solid var(--rule);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s;margin-top:2px}
-.circuit-item.done .circuit-toggle{background:var(--green);border-color:var(--green);color:#fff}
-.circuit-text{font-size:14px;line-height:1.6;color:var(--mid)}
-.circuit-item.done .circuit-text{color:var(--charcoal);font-weight:600}
-
-/* PROGRESS */
-.progress-wrap{background:var(--card);border:1px solid var(--rule);padding:20px 24px;margin-bottom:32px}
-.progress-label{display:flex;justify-content:space-between;margin-bottom:8px}
-.progress-label span{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--light)}
-.progress-label strong{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--accent)}
-.progress-bar{height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width 0.5s}
-
-/* TOC */
-.toc-head{padding:20px 20px 8px;font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);border-bottom:1px solid var(--rule)}
-.toc-link{display:block;padding:10px 20px;font-size:12px;font-weight:600;color:var(--mid);text-decoration:none;border-left:2px solid transparent;transition:all 0.15s;line-height:1.4}
-.toc-link:hover{color:var(--accent-d);border-left-color:var(--accent-m)}
-.toc-link.active{color:var(--accent-d);border-left-color:var(--accent);font-weight:700}
-.toc-footer{padding:20px;margin-top:auto;border-top:1px solid var(--rule)}
-
-/* NEXT/PREV */
-.nav-buttons{display:flex;justify-content:space-between;align-items:center;padding:32px 0;border-top:1px solid var(--rule);margin-top:32px}
-.btn-nav{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px 24px;text-decoration:none;transition:all 0.2s;border:2px solid var(--rule);color:var(--mid);background:var(--card)}
-.btn-nav:hover{border-color:var(--accent);color:var(--accent-d)}
-.btn-nav.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-.btn-nav.primary:hover{background:var(--accent-d);border-color:var(--accent-d)}
-.btn-download{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;border:none;background:var(--charcoal);color:#fff;cursor:pointer;transition:all 0.2s}
-.btn-download:hover{background:var(--accent)}
-
-/* SUMMARY SCORE */
-.score-board{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
-@media(max-width:600px){.score-board{grid-template-columns:1fr 1fr}}
-.score-cell{background:var(--card);border:1px solid var(--rule);padding:16px;text-align:center}
-.score-num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;line-height:1;margin-bottom:4px}
-.score-lbl{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--light)}
-.score-cell.red .score-num{color:var(--red)}
-.score-cell.teal .score-num{color:var(--accent)}
-
-@media(max-width:768px){
-  .mod-header{padding:32px 24px}
-  .content-body{padding:32px 20px}
-  .toc-sidebar{display:none}
-  .barrier-grid{grid-template-columns:1fr}
-}
-    </style>
+.body-text{font-size:16px;line-height:1.8;color:var(--mid);margin-bottom:16px}
+.pullquote{background:var(--charcoal);padding:28px 32px;margin:28px 0;border-left:4px solid var(--accent)}
+.pq-text{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;color:#fff;line-height:1.3}
+.reflect-block{background:var(--accent-p);border:1px solid var(--accent-m);padding:28px;margin:24px 0}
+.reflect-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-d);margin-bottom:8px}
+.reflect-prompt{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.4}
+.reflect-box{width:100%;min-height:100px;padding:12px;border:1px solid var(--accent-m);background:#fff;font-family:inherit;font-size:14px;line-height:1.6;color:var(--charcoal);resize:vertical}
+.reflect-box:focus{outline:none;border-color:var(--accent)}
+.checklist{list-style:none;margin:16px 0}
+.checklist li{padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start}
+.checklist li::before{content:"→";color:var(--accent);font-weight:900;flex-shrink:0}
+.next-module{background:var(--charcoal);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.nm-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.nm-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:#fff}
+.nm-btn{font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;background:var(--accent);color:#fff;text-decoration:none;white-space:nowrap;transition:background 0.2s}
+.nm-btn:hover{background:var(--accent-d)}
+.complete-banner{display:none;background:#27ae60;color:#fff;padding:16px 24px;text-align:center;font-weight:700;font-size:14px;letter-spacing:0.05em}
+.complete-banner.show{display:block}
+.save-badge{position:fixed;bottom:24px;right:24px;background:var(--charcoal);color:#fff;padding:10px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0;transition:opacity 0.3s;pointer-events:none}
+.save-badge.show{opacity:1}
+@media(max-width:768px){.toc-sidebar{display:none}.content-body{padding:32px 20px}.mod-header{padding:36px 24px}}
+</style>
 </head>
 <body>
-
-<!-- TOP NAV -->
 <nav class="topnav">
-  <a href="portal.html" class="topnav-back">← Back to Portal</a>
-  <div class="topnav-title">Mum 180 / <span>Module 03</span></div>
+  <a href="portal.html" class="topnav-back">← Dashboard</a>
+  <div class="topnav-title">Module <span>03</span> · The Oxygen Mask</div>
   <div class="topnav-progress">
-    <span class="nav-pct" id="navPct">0%</span>
-    <div class="nav-bar"><div class="nav-bar-fill" id="navFill" style="width:0%"></div></div>
+    <div class="nav-pct" id="nav-pct">0%</div>
+    <div class="nav-bar"><div class="nav-bar-fill" id="nav-bar-fill" style="width:0%"></div></div>
   </div>
 </nav>
-
+<div class="complete-banner" id="complete-banner">✓ Module 03 complete — great work.</div>
+<div class="save-badge" id="save-badge">Saved ✓</div>
 <div class="shell">
-  <!-- MAIN CONTENT -->
+  <nav class="toc-sidebar">
+    <div class="toc-header">In This Module</div>
+    <a class="toc-item" id="toc-s1" href="#s1" onclick="tocClick(1)">
+      <div class="toc-num">01</div>
+      <div class="toc-text">The Analogy</div>
+    </a>
+    <a class="toc-item" id="toc-s2" href="#s2" onclick="tocClick(2)">
+      <div class="toc-num">02</div>
+      <div class="toc-text">Permission</div>
+    </a>
+    <a class="toc-item" id="toc-s3" href="#s3" onclick="tocClick(3)">
+      <div class="toc-num">03</div>
+      <div class="toc-text">What This Looks Like</div>
+    </a>
+    <a class="toc-item" id="toc-s4" href="#s4" onclick="tocClick(4)">
+      <div class="toc-num">04</div>
+      <div class="toc-text">Reflection</div>
+    </a>
+  </nav>
   <div class="content-area">
     <div class="mod-header">
-      <div class="mod-eyebrow">Module 03 of 07 — Mum 180 Program</div>
-      <h1 class="mod-title">Escaping the<br>Conceptual Landscape</h1>
-      <p class="mod-subtitle">20 barriers. Four groups. One bridge from planning to real action — and how to cross it without relying on motivation or willpower.</p>
+      <div class="mod-eyebrow">Module 03 of 06 — Mum 180</div>
+      <h1 class="mod-title">The Oxygen<br>Mask</h1>
+      <p class="mod-subtitle">Permission to put yourself first. Why it is not selfish — it is the most responsible thing you can do.</p>
       <div class="mod-meta">
-        <div class="mod-meta-item">Duration <span>45–60 min</span></div>
-        <div class="mod-meta-item">Sections <span>6</span></div>
-        <div class="mod-meta-item">Barriers Mapped <span>20</span></div>
-        <div class="mod-meta-item">Type <span>Diagnostic + Reflection</span></div>
+        <div class="mod-meta-item">Time: <span>25–35 min</span></div>
+        <div class="mod-meta-item">Sections: <span>4</span></div>
       </div>
     </div>
-
     <div class="content-body">
-      <!-- PROGRESS -->
-      <div class="progress-wrap">
-        <div class="progress-label"><span>Module Progress</span><strong id="pctLabel">0%</strong></div>
-        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="section-block" id="s1">
+        <div class="section-label">Section 1</div>
+        <div class="section-title">The Oxygen Mask</div>
+        <p class="body-text">You have heard the safety announcement. The plane loses pressure. Oxygen masks drop. You are told: put on your own mask before assisting others.</p><p class="body-text">It sounds counterintuitive the first time you hear it. You want to help the person next to you. The child in the seat beside you. Why would you put your own mask on first?</p><p class="body-text">Because if you put theirs on first, they stay alive just long enough to watch you lose consciousness in front of them. And then they have no one.</p><div class="pullquote"><div class="pq-text">You must serve your own life first before you can be of any service to the commitments you have made.</div></div><p class="body-text">This is not a metaphor about being selfish. It is a description of how capacity works. You cannot give what you do not have.</p>
       </div>
-
-      <!-- SECTION 1: THE TRAP -->
-      <div class="section-block" id="sec-trap">
-        <div class="section-label">Section 01</div>
-        <h2 class="section-title">The Trap</h2>
-        <p class="body-text">You've read the books. You've watched the videos. You know the theory — the frameworks, the models, the processes. And yet, nothing has actually changed. This is the Conceptual Landscape: a comfortable place where knowing feels like doing, and planning feels like progress.</p>
-        <div class="red-box"><p><strong>The core trap:</strong> The more you consume content about how to change, the more you feel like you're making progress — without actually doing anything different. Information becomes a substitute for action.</p></div>
-        <p class="body-text">The Conceptual Landscape isn't a failure of knowledge. It's a failure of translation. You understand the concepts perfectly. You just can't seem to get them into your body, your habits, your real daily life. That gap — between knowing and doing — is where most people live permanently.</p>
-        <div class="highlight-box"><p><strong>The question this module answers:</strong> What specific psychological barriers are keeping you in the Conceptual Landscape, and how do you build the bridge to cross into the Practical one?</p></div>
-
+      <div class="section-block" id="s2">
+        <div class="section-label">Section 2</div>
+        <div class="section-title">Full Permission</div>
+        <p class="body-text">This module is giving you something formal. Permission. Not permission to be irresponsible. Not permission to abandon anyone. Permission to exist as a full human being.</p><p class="body-text">Taking care of yourself is not a reward you earn after you have done everything else. It is not a luxury for mothers who have it easy. It is a baseline requirement — for you, and for the children who are watching you navigate the world.</p><p class="body-text">They are learning from you right now. Not from what you tell them. From what you do. From how you treat yourself. From whether you have any standards for your own care and your own time.</p><ul class="checklist"><li>Your needs are not optional extras</li>
+<li>Rest is not laziness — it is maintenance</li>
+<li>Taking time for yourself models self-respect to your children</li>
+<li>You cannot demonstrate what you do not practise</li>
+<li>The most responsible thing you can do is look after yourself</li></ul>
+      </div>
+      <div class="section-block" id="s3">
+        <div class="section-label">Section 3</div>
+        <div class="section-title">What This Actually Looks Like</div>
+        <p class="body-text">This is not about holidays or spa days. It does not require money or hours of free time. It requires a decision — a genuine, internal decision that your wellbeing is non-negotiable.</p><p class="body-text">That decision looks different for everyone. It might be 20 minutes of quiet in the morning. It might be a walk. It might be saying no to something that is draining you. It might be as simple as sitting down to eat a meal instead of standing over the sink.</p><p class="body-text">The size of the act does not matter. The decision behind it does.</p><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">Name one thing — small or large — that you have been denying yourself. What is it, and why have you been denying it?</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div>
+      </div>
+      <div class="section-block" id="s4">
+        <div class="section-label">Section 4</div>
+        <div class="section-title">Reflection</div>
         <div class="reflect-block">
-          <div class="reflect-label">Reflection 1.1</div>
-          <div class="reflect-prompt">Describe a time you knew exactly what you needed to do, but couldn't make yourself do it. What was happening internally?</div>
-          <textarea class="reflect-input" id="r1" placeholder="Write openly — this is for you…" oninput="updateProgress();updateChar(this,'c1')"></textarea>
-          <div class="char-count" id="c1">0 characters</div>
-        </div>
-
-        <div class="reflect-block">
-          <div class="reflect-label">Reflection 1.2</div>
-          <div class="reflect-prompt">How long have you been "getting ready to start"? What has that cost you — in time, in momentum, in self-trust?</div>
-          <textarea class="reflect-input" id="r2" placeholder="Be honest with yourself…" oninput="updateProgress();updateChar(this,'c2')"></textarea>
-          <div class="char-count" id="c2">0 characters</div>
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">Do you believe, genuinely, that taking care of yourself is part of your commitment as a mother? What comes up when you try to accept that?</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What would you need to let go of — what belief or habit — to start putting your mask on first?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 
-      <!-- SECTION 2: STARTING BARRIERS -->
-      <div class="section-block" id="sec-starting">
-        <div class="section-label">Section 02</div>
-        <h2 class="section-title">Barriers to Starting</h2>
-        <p class="body-text">These five barriers prevent you from taking the first step. They're not character flaws — they're patterns. Recognise which ones you're running, and you can interrupt them.</p>
-        <div class="barrier-group-label">Group 1 — Starting Barriers (click any that apply to you right now)</div>
-        <div class="barrier-grid" id="group1">
-          <div class="barrier-card" data-id="overwhelm" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Overwhelm</div>
-            <div class="barrier-desc">Too much to do — can't figure out where to start, so you don't start at all</div>
-          </div>
-          <div class="barrier-card" data-id="disorganised" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Disorganised Thoughts</div>
-            <div class="barrier-desc">Ideas scattered — no clear order, no clear next step, mental fog</div>
-          </div>
-          <div class="barrier-card" data-id="indecisive" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Indecisiveness</div>
-            <div class="barrier-desc">Paralysed by options — waiting for certainty before committing to a direction</div>
-          </div>
-          <div class="barrier-card" data-id="procrastination" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Procrastination</div>
-            <div class="barrier-desc">Delaying action through low-value tasks, research loops, or avoidance rituals</div>
-          </div>
-          <div class="barrier-card" data-id="perfectionism" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Perfectionism</div>
-            <div class="barrier-desc">Won't start until conditions are perfect — which they never are</div>
-          </div>
-        </div>
-
-        <div class="reflect-block" style="margin-top:20px">
-          <div class="reflect-label">Reflection 2.1</div>
-          <div class="reflect-prompt">Of the starting barriers you identified above — what's the story you tell yourself to justify them?</div>
-          <textarea class="reflect-input" id="r3" placeholder="What do you say to yourself when you're stuck?…" oninput="updateProgress();updateChar(this,'c3')"></textarea>
-          <div class="char-count" id="c3">0 characters</div>
-        </div>
+      <div class="next-module">
+        <div><div class="nm-label">Next</div><div class="nm-title">The Trap You Set for Yourself</div></div>
+        <a href="module-4.html" class="nm-btn">Continue →</a>
       </div>
-
-      <!-- SECTION 3: CONTINUING BARRIERS -->
-      <div class="section-block" id="sec-continuing">
-        <div class="section-label">Section 03</div>
-        <h2 class="section-title">Barriers to Continuing</h2>
-        <p class="body-text">You manage to start, but you can't sustain. These five barriers kill momentum after the initial push fades. Without addressing them, every new attempt follows the same arc: excitement → resistance → quit.</p>
-        <div class="barrier-group-label">Group 2 — Continuing Barriers</div>
-        <div class="barrier-grid" id="group2">
-          <div class="barrier-card" data-id="instant-gratification" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Instant Gratification</div>
-            <div class="barrier-desc">Choosing immediate comfort over delayed reward — the short-term wins</div>
-          </div>
-          <div class="barrier-card" data-id="distraction" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Distraction</div>
-            <div class="barrier-desc">Attention pulled away by anything more stimulating than the hard work</div>
-          </div>
-          <div class="barrier-card" data-id="no-momentum" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Lack of Momentum</div>
-            <div class="barrier-desc">No evidence of progress — each session feels like starting from zero</div>
-          </div>
-          <div class="barrier-card" data-id="low-motivation" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Low Motivation</div>
-            <div class="barrier-desc">Waiting to feel motivated before acting — which inverts the real process</div>
-          </div>
-          <div class="barrier-card" data-id="avoidance" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Avoidance</div>
-            <div class="barrier-desc">Steering away from anything that triggers discomfort, uncertainty, or exposure</div>
-          </div>
-        </div>
-
-        <div class="reflect-block" style="margin-top:20px">
-          <div class="reflect-label">Reflection 3.1</div>
-          <div class="reflect-prompt">What does your quitting pattern look like? How far do you usually get before you stop — and what's the trigger?</div>
-          <textarea class="reflect-input" id="r4" placeholder="Trace your pattern honestly…" oninput="updateProgress();updateChar(this,'c4')"></textarea>
-          <div class="char-count" id="c4">0 characters</div>
-        </div>
-      </div>
-
-      <!-- SECTION 4: THINKING BARRIERS -->
-      <div class="section-block" id="sec-thinking">
-        <div class="section-label">Section 04</div>
-        <h2 class="section-title">Barriers That Distort Your Thinking</h2>
-        <p class="body-text">These barriers don't stop you from acting — they corrupt the lens through which you interpret your actions and your results. You could be doing well and still believe you're failing.</p>
-        <div class="barrier-group-label">Group 3 — Thinking Barriers</div>
-        <div class="barrier-grid" id="group3">
-          <div class="barrier-card" data-id="confidence" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Confidence / Self-Worth</div>
-            <div class="barrier-desc">Conflating performance with identity — bad results mean you're a bad person</div>
-          </div>
-          <div class="barrier-card" data-id="neg-self-talk" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Negative Self-Talk</div>
-            <div class="barrier-desc">Automatic internal commentary that frames you as incapable or unworthy</div>
-          </div>
-          <div class="barrier-card" data-id="fear-failure" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Fear of Failure</div>
-            <div class="barrier-desc">Avoiding attempts to avoid evidence that you can't do it</div>
-          </div>
-          <div class="barrier-card" data-id="fear-success" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Fear of Success</div>
-            <div class="barrier-desc">Sabotaging progress because more success = more visibility, pressure, expectation</div>
-          </div>
-          <div class="barrier-card" data-id="problem-admiration" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Problem Admiration</div>
-            <div class="barrier-desc">Spending more time studying the problem than solving it — mistaking analysis for action</div>
-          </div>
-        </div>
-
-        <div class="reflect-block" style="margin-top:20px">
-          <div class="reflect-label">Reflection 4.1</div>
-          <div class="reflect-prompt">Which thinking barrier is most active for you right now? Write about a recent situation where you caught it operating.</div>
-          <textarea class="reflect-input" id="r5" placeholder="Be specific — name the thought, the situation, the response…" oninput="updateProgress();updateChar(this,'c5')"></textarea>
-          <div class="char-count" id="c5">0 characters</div>
-        </div>
-      </div>
-
-      <!-- SECTION 5: ADAPTING BARRIERS -->
-      <div class="section-block" id="sec-adapting">
-        <div class="section-label">Section 05</div>
-        <h2 class="section-title">Barriers That Keep You Rigid</h2>
-        <p class="body-text">These barriers prevent you from responding to feedback. You can't adjust what you can't feel. These patterns lock you into a single approach — even when it's clearly not working.</p>
-        <div class="barrier-group-label">Group 4 — Adapting Barriers</div>
-        <div class="barrier-grid" id="group4">
-          <div class="barrier-card" data-id="resist-change" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Resistance to Change</div>
-            <div class="barrier-desc">Comfort in the familiar — even when the familiar is producing poor results</div>
-          </div>
-          <div class="barrier-card" data-id="low-resilience" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Low Resilience</div>
-            <div class="barrier-desc">Difficulty recovering from setbacks — one failure derails the whole effort</div>
-          </div>
-          <div class="barrier-card" data-id="emotional-dysreg" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Emotional Dysregulation</div>
-            <div class="barrier-desc">Emotions dictating decisions rather than informing them</div>
-          </div>
-          <div class="barrier-card" data-id="cognitive-rigidity" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Cognitive Rigidity</div>
-            <div class="barrier-desc">Locked into one way of thinking — can't see alternative approaches</div>
-          </div>
-          <div class="barrier-card" data-id="no-imagination" onclick="toggleBarrier(this)">
-            <div class="barrier-check">✓</div>
-            <div class="barrier-name">Imagination Out of Practice</div>
-            <div class="barrier-desc">Lost the ability to genuinely envision a different future or different approach</div>
-          </div>
-        </div>
-
-        <div class="reflect-block" style="margin-top:20px">
-          <div class="reflect-label">Reflection 5.1</div>
-          <div class="reflect-prompt">When was the last time you genuinely changed your approach because the evidence told you to — not because you felt like it?</div>
-          <textarea class="reflect-input" id="r6" placeholder="Think about a real example…" oninput="updateProgress();updateChar(this,'c6')"></textarea>
-          <div class="char-count" id="c6">0 characters</div>
-        </div>
-      </div>
-
-      <!-- SECTION 6: THE BRIDGE -->
-      <div class="section-block" id="sec-bridge">
-        <div class="section-label">Section 06</div>
-        <h2 class="section-title">The Bridge</h2>
-        <p class="body-text">The Bridge is a three-step method for moving from the Conceptual Landscape into the Practical one. It doesn't require motivation, willpower, or a perfect plan. It requires three honest moves.</p>
-
-        <div class="bridge-step">
-          <div class="bridge-num">1</div>
-          <div class="bridge-content">
-            <div class="bridge-title">Zoom Out</div>
-            <div class="bridge-desc">Step back from the immediate emotion, urgency, or avoidance response. See the pattern from a distance. What is actually happening here — behaviourally — not what it feels like?</div>
-            <div class="reflect-block">
-              <div class="reflect-prompt">Apply Zoom Out now: Looking at your behaviour over the last 30 days, what pattern do you see that you haven't been honest about?</div>
-              <textarea class="reflect-input" id="r7" placeholder="Name the pattern, not the feelings…" oninput="updateProgress();updateChar(this,'c7')"></textarea>
-              <div class="char-count" id="c7">0 characters</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bridge-step">
-          <div class="bridge-num">2</div>
-          <div class="bridge-content">
-            <div class="bridge-title">Honesty</div>
-            <div class="bridge-desc">The most uncomfortable step. Acknowledge what you actually need to do — without softening it, without conditions, without "but first I need to…". Just the honest next step.</div>
-            <div class="reflect-block">
-              <div class="reflect-prompt">What is the one honest thing you need to do that you've been avoiding? No justifications — just the thing.</div>
-              <textarea class="reflect-input" id="r8" placeholder="Keep it simple and specific…" oninput="updateProgress();updateChar(this,'c8')"></textarea>
-              <div class="char-count" id="c8">0 characters</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bridge-step">
-          <div class="bridge-num">3</div>
-          <div class="bridge-content">
-            <div class="bridge-title">Zoom In</div>
-            <div class="bridge-desc">Now make it microscopic. Not "start the business" — but "write one sentence of the offer." The smallest possible action that counts as movement. Do that. Only that.</div>
-            <div class="reflect-block">
-              <div class="reflect-prompt">What is the smallest possible action you could take today — something so small it feels almost embarrassing?</div>
-              <textarea class="reflect-input" id="r9" placeholder="Smaller than you think you need…" oninput="updateProgress();updateChar(this,'c9')"></textarea>
-              <div class="char-count" id="c9">0 characters</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CIRCUIT CHECK -->
-      <div class="section-block" id="sec-circuit">
-        <div class="section-label">Circuit Check</div>
-        <h2 class="section-title">Module Diagnostic</h2>
-        <p class="body-text">Before moving on, confirm you've connected the circuit on this module. Check each item when you've genuinely completed it.</p>
-
-        <div id="circuitList">
-          <div class="circuit-item" onclick="toggleCircuit(this)">
-            <div class="circuit-toggle">✓</div>
-            <div class="circuit-text">I identified my active barriers from all four groups</div>
-          </div>
-          <div class="circuit-item" onclick="toggleCircuit(this)">
-            <div class="circuit-toggle">✓</div>
-            <div class="circuit-text">I wrote honestly about my quitting pattern and its trigger</div>
-          </div>
-          <div class="circuit-item" onclick="toggleCircuit(this)">
-            <div class="circuit-toggle">✓</div>
-            <div class="circuit-text">I completed all three steps of The Bridge with real examples</div>
-          </div>
-          <div class="circuit-item" onclick="toggleCircuit(this)">
-            <div class="circuit-toggle">✓</div>
-            <div class="circuit-text">I identified my single honest next action</div>
-          </div>
-          <div class="circuit-item" onclick="toggleCircuit(this)">
-            <div class="circuit-toggle">✓</div>
-            <div class="circuit-text">I'm committed to taking the smallest possible action today</div>
-          </div>
-        </div>
-
-        <div style="margin-top:24px">
-          <div id="scoreBoard" class="score-board">
-            <div class="score-cell red"><div class="score-num" id="barrierCount">0</div><div class="score-lbl">Barriers<br>Identified</div></div>
-            <div class="score-cell teal"><div class="score-num" id="reflectCount">0</div><div class="score-lbl">Reflections<br>Written</div></div>
-            <div class="score-cell teal"><div class="score-num" id="circuitCount">0</div><div class="score-lbl">Circuit<br>Checks</div></div>
-            <div class="score-cell teal"><div class="score-num" id="totalPct">0%</div><div class="score-lbl">Module<br>Complete</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DOWNLOAD -->
-      <div style="background:var(--charcoal);padding:28px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap">
-        <div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px">Export Your Work</div>
-          <div style="font-size:15px;font-weight:600;color:#fff">Download a PDF summary of your reflections &amp; barrier map</div>
-        </div>
-        <button class="btn-download" onclick="downloadPDF()">⬇ Download PDF</button>
-      </div>
-
-      <!-- NAV BUTTONS -->
-      <div class="nav-buttons">
-        <a href="module-2.html" class="btn-nav">← Module 02: Stuck Framework</a>
-        <a href="module-4.html" class="btn-nav primary">Module 04: Mum 180 →</a>
-      </div>
-
     </div>
   </div>
-
-  <!-- TOC SIDEBAR -->
-  <aside class="toc-sidebar">
-    <div class="toc-head">In This Module</div>
-    <a href="#sec-trap" class="toc-link active" onclick="setToc(this)">01 — The Trap</a>
-    <a href="#sec-starting" class="toc-link" onclick="setToc(this)">02 — Barriers to Starting</a>
-    <a href="#sec-continuing" class="toc-link" onclick="setToc(this)">03 — Barriers to Continuing</a>
-    <a href="#sec-thinking" class="toc-link" onclick="setToc(this)">04 — Thinking Barriers</a>
-    <a href="#sec-adapting" class="toc-link" onclick="setToc(this)">05 — Adapting Barriers</a>
-    <a href="#sec-bridge" class="toc-link" onclick="setToc(this)">06 — The Bridge</a>
-<a href="#sec-circuit" class="toc-link" onclick="setToc(this)">Circuit Check</a>
-    <div class="toc-footer">
-      <button class="btn-download" style="width:100%" onclick="downloadPDF()">⬇ Download PDF</button>
-    </div>
-  </aside>
 </div>
-
+      <div class="section-block" id="s1">
+        <div class="section-label">Section 1</div>
+        <div class="section-title">The Oxygen Mask</div>
+        <p class="body-text">You have heard the safety announcement. The plane loses pressure. Oxygen masks drop. You are told: put on your own mask before assisting others.</p><p class="body-text">It sounds counterintuitive the first time you hear it. You want to help the person next to you. The child in the seat beside you. Why would you put your own mask on first?</p><p class="body-text">Because if you put theirs on first, they stay alive just long enough to watch you lose consciousness in front of them. And then they have no one.</p><div class="pullquote"><div class="pq-text">You must serve your own life first before you can be of any service to the commitments you have made.</div></div><p class="body-text">This is not a metaphor about being selfish. It is a description of how capacity works. You cannot give what you do not have.</p>
+      </div>
+      <div class="section-block" id="s2">
+        <div class="section-label">Section 2</div>
+        <div class="section-title">Full Permission</div>
+        <p class="body-text">This module is giving you something formal. Permission. Not permission to be irresponsible. Not permission to abandon anyone. Permission to exist as a full human being.</p><p class="body-text">Taking care of yourself is not a reward you earn after you have done everything else. It is not a luxury for mothers who have it easy. It is a baseline requirement — for you, and for the children who are watching you navigate the world.</p><p class="body-text">They are learning from you right now. Not from what you tell them. From what you do. From how you treat yourself. From whether you have any standards for your own care and your own time.</p><ul class="checklist"><li>Your needs are not optional extras</li>
+<li>Rest is not laziness — it is maintenance</li>
+<li>Taking time for yourself models self-respect to your children</li>
+<li>You cannot demonstrate what you do not practise</li>
+<li>The most responsible thing you can do is look after yourself</li></ul>
+      </div>
+      <div class="section-block" id="s3">
+        <div class="section-label">Section 3</div>
+        <div class="section-title">What This Actually Looks Like</div>
+        <p class="body-text">This is not about holidays or spa days. It does not require money or hours of free time. It requires a decision — a genuine, internal decision that your wellbeing is non-negotiable.</p><p class="body-text">That decision looks different for everyone. It might be 20 minutes of quiet in the morning. It might be a walk. It might be saying no to something that is draining you. It might be as simple as sitting down to eat a meal instead of standing over the sink.</p><p class="body-text">The size of the act does not matter. The decision behind it does.</p><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">Name one thing — small or large — that you have been denying yourself. What is it, and why have you been denying it?</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div>
+      </div>
+      <div class="section-block" id="s4">
+        <div class="section-label">Section 4</div>
+        <div class="section-title">Reflection</div>
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">Do you believe, genuinely, that taking care of yourself is part of your commitment as a mother? What comes up when you try to accept that?</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What would you need to let go of — what belief or habit — to start putting your mask on first?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div>
+      </div>
 <script>
-
-// ── ACCESS GATE ──────────────────────────────────────────────────────────────
 (function(){
-  const S='mum180_access', D=7*24*60*60*1000;
+  const S='mum180_access', D=30*24*60*60*1000;
   try{
     const s=JSON.parse(localStorage.getItem(S)||'null');
     if(!s||Date.now()-s.ts>D){localStorage.removeItem(S);window.location.replace('access.html');}
   }catch(e){window.location.replace('access.html');}
 })();
-// ─────────────────────────────────────────────────────────────────────────────
-const MOD_KEY = 'lc_mod3';
+
+const MOD = 3;
+const KEY = 'm180_mod' + MOD;
 
 function load(){
-  const d = JSON.parse(localStorage.getItem(MOD_KEY)||'{}');
-  // Reflections
-  ['r1','r2','r3','r4','r5','r6','r7','r8','r9'].forEach(id=>{
-    if(d[id]){document.getElementById(id).value=d[id];updateChar(document.getElementById(id),'c'+id.slice(1))}
+  const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+  document.querySelectorAll('.reflect-box').forEach(el => {
+    if(d[el.id]) el.value = d[el.id];
   });
-  // Barriers
-  if(d.barriers){
-    d.barriers.forEach(bid=>{
-      const el = document.querySelector(`[data-id="${bid}"]`);
-      if(el) el.classList.add('identified');
-    });
-  }
-  // Circuit checks
-  if(d.circuit){
-    const items = document.querySelectorAll('.circuit-item');
-    d.circuit.forEach((v,i)=>{if(v && items[i]) items[i].classList.add('done')});
-  }
-  updateProgress();
+  calcProgress();
 }
 
+let saveTimer;
 function save(){
-  const d = {};
-  ['r1','r2','r3','r4','r5','r6','r7','r8','r9'].forEach(id=>{
-    d[id]=document.getElementById(id).value;
-  });
-  d.barriers = [...document.querySelectorAll('.barrier-card.identified')].map(el=>el.dataset.id);
-  d.circuit = [...document.querySelectorAll('.circuit-item')].map(el=>el.classList.contains('done'));
-  localStorage.setItem(MOD_KEY, JSON.stringify(d));
-  // Save to portal progress
-  const prog = JSON.parse(localStorage.getItem('lc_progress')||'{}');
-  prog.mod3 = calcPct();
-  localStorage.setItem('lc_progress', JSON.stringify(prog));
-  // Log activity
-  const _pct2 = calcPct();
-  if(_pct2 > 0){
-    const _log = JSON.parse(localStorage.getItem('lc_activity')||'[]');
-    const _entry = {text:'Module 03 — '+_pct2+'% complete',color:'#f5c842',time:new Date().toLocaleDateString()};
-    const _last = _log[_log.length-1];
-    if(!_last||_last.text!==_entry.text){_log.push(_entry);localStorage.setItem('lc_activity',JSON.stringify(_log.slice(-20)));}  }
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(()=>{
+    const d = {};
+    document.querySelectorAll('.reflect-box').forEach(el => { d[el.id] = el.value; });
+    localStorage.setItem(KEY, JSON.stringify(d));
+    calcProgress();
+    showSaved();
+  }, 500);
 }
 
-function toggleBarrier(el){
-  el.classList.toggle('identified');
-  updateProgress();
-  save();
+function showSaved(){
+  const b = document.getElementById('save-badge');
+  b.classList.add('show');
+  setTimeout(()=>b.classList.remove('show'), 2000);
 }
 
-function toggleCircuit(el){
-  el.classList.toggle('done');
-  updateProgress();
-  save();
+function calcProgress(){
+  const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+  const boxes = document.querySelectorAll('.reflect-box');
+  const filled = [...boxes].filter(el => d[el.id] && d[el.id].trim().length > 10).length;
+  const pct = boxes.length > 0 ? Math.min(100, Math.round((filled/boxes.length)*100)) : 0;
+  // Save to portal progress object
+  const prog = JSON.parse(localStorage.getItem('m180_progress')||'{}');
+  prog['mod'+MOD] = pct;
+  localStorage.setItem('m180_progress', JSON.stringify(prog));
+  // Also update unified module key for portal to read
+  const modData = JSON.parse(localStorage.getItem(KEY)||'{}');
+  modData.progress = pct;
+  localStorage.setItem(KEY, JSON.stringify(modData));
+  document.getElementById('nav-pct').textContent = pct + '%';
+  document.getElementById('nav-bar-fill').style.width = pct + '%';
+  if(pct >= 80) document.getElementById('complete-banner').classList.add('show');
 }
 
-function updateChar(ta, cid){
-  const el = document.getElementById(cid);
-  if(el) el.textContent = ta.value.length + ' characters';
+function tocClick(n){
+  document.querySelectorAll('.toc-item').forEach(t=>t.classList.remove('active'));
+  const el = document.getElementById('toc-s'+n);
+  if(el) el.classList.add('active');
 }
 
-function calcPct(){
-  let score = 0, max = 0;
-  // 9 reflections with content
-  ['r1','r2','r3','r4','r5','r6','r7','r8','r9'].forEach(id=>{
-    max+=10; if((document.getElementById(id).value||'').length>20) score+=10;
-  });
-  // Barriers identified (any)
-  max+=10; if(document.querySelectorAll('.barrier-card.identified').length>0) score+=10;
-  // Circuit checks
-  const done = document.querySelectorAll('.circuit-item.done').length;
-  max+=25; score += done*5;
-  return Math.round((score/max)*100);
+function setupScrollSpy(){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const n = e.target.id.replace('s','');
+        document.querySelectorAll('.toc-item').forEach(t=>t.classList.remove('active'));
+        const toc = document.getElementById('toc-s'+n);
+        if(toc) toc.classList.add('active');
+      }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.section-block').forEach(s=>obs.observe(s));
 }
 
-function updateProgress(){
-  const pct = calcPct();
-  document.getElementById('progressFill').style.width = pct+'%';
-  document.getElementById('pctLabel').textContent = pct+'%';
-  document.getElementById('navFill').style.width = pct+'%';
-  document.getElementById('navPct').textContent = pct+'%';
-  // Update score board
-  document.getElementById('barrierCount').textContent = document.querySelectorAll('.barrier-card.identified').length;
-  const reflectDone = ['r1','r2','r3','r4','r5','r6','r7','r8','r9'].filter(id=>(document.getElementById(id).value||'').length>20).length;
-  document.getElementById('reflectCount').textContent = reflectDone;
-  document.getElementById('circuitCount').textContent = document.querySelectorAll('.circuit-item.done').length;
-  document.getElementById('totalPct').textContent = pct+'%';
-  save();
-}
-
-function setToc(el){
-  document.querySelectorAll('.toc-link').forEach(l=>l.classList.remove('active'));
-  el.classList.add('active');
-}
-
-function downloadPDF(){
-  const d = {};
-  ['r1','r2','r3','r4','r5','r6','r7','r8','r9'].forEach(id=>{d[id]=document.getElementById(id).value});
-  const barriers = [...document.querySelectorAll('.barrier-card.identified')].map(el=>el.querySelector('.barrier-name').textContent);
-  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Module 03 — Escaping the Conceptual Landscape</title>
-  <style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;color:#1a1a1a;line-height:1.6}
-  h1{font-size:28px;border-bottom:3px solid #d4827a;padding-bottom:12px}
-  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#d4827a;margin-top:28px}
-  h3{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-top:16px}
-  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #d4827a}
-  .barrier{display:inline-block;background:#fdf1f1;border:1px solid #e05555;padding:4px 10px;margin:4px;font-size:12px;font-weight:bold}
-  .footer{margin-top:40px;font-size:11px;color:#aaa;border-top:1px solid #eee;padding-top:12px}
-  </style></head><body>
-  <h1>Module 03: Escaping the Conceptual Landscape</h1>
-  <p style="background:#fdf5f4;border-color:#d4827a"><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
-  <h2>My Active Barriers (${barriers.length} identified)</h2>
-  ${barriers.map(b=>`<span class="barrier">${b}</span>`).join('')}
-  <h2>Reflections</h2>
-  <h3>1.1 — A time I knew what to do but couldn't act</h3><p>${d.r1||'—'}</p>
-  <h3>1.2 — The cost of "getting ready to start"</h3><p>${d.r2||'—'}</p>
-  <h3>2.1 — The story I tell myself to justify barriers</h3><p>${d.r3||'—'}</p>
-  <h3>3.1 — My quitting pattern and trigger</h3><p>${d.r4||'—'}</p>
-  <h3>4.1 — My most active thinking barrier</h3><p>${d.r5||'—'}</p>
-  <h3>5.1 — The last time I genuinely changed my approach</h3><p>${d.r6||'—'}</p>
-  <h2>The Bridge — My Three Steps</h2>
-  <h3>Step 1: Zoom Out (my honest pattern)</h3><p>${d.r7||'—'}</p>
-  <h3>Step 2: Honesty (the one thing I've been avoiding)</h3><p>${d.r8||'—'}</p>
-  <h3>Step 3: Zoom In (my smallest possible action today)</h3><p>${d.r9||'—'}</p>
-  <div class="footer">Mum 180 — Think Small, Start Horribly — thinksmallstarthorribly.com</div>
-  </body></html>`;
-  const w = window.open('','_blank');
-  w.document.write(html);
-  w.document.close();
-  setTimeout(()=>w.print(),500);
-}
-
-window.addEventListener('DOMContentLoaded', load);
+load();
+setupScrollSpy();
+document.querySelectorAll('.reflect-box').forEach(el=>el.addEventListener('input', save));
 </script>
 </body>
 </html>

@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 06: The Marketplace | Mum 180</title>
+<title>Module 06: What Now | Mum 180</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --accent:#d4827a;--accent-d:#b86b64;--accent-p:#fdf5f4;
-  --orange:#e67e22;--op:#fef3e8;
-  --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
-  --green:#27ae60;--gp:#e9f7ef;
+  --accent:#d4827a;--accent-d:#b86b64;--accent-p:#fdf5f4;--accent-m:#f0d5d2;
   --charcoal:#1a1a1a;--mid:#444;--light:#888;
   --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
 }
@@ -19,457 +16,289 @@ html,body{height:100%;font-family:'Barlow',sans-serif;color:var(--charcoal);back
 body{display:flex;flex-direction:column}
 .topnav{background:var(--charcoal);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
 .topnav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
-.topnav-back:hover{color:var(--orange)}
+.topnav-back:hover{color:var(--accent)}
 .topnav-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4)}
-.topnav-title span{color:var(--orange)}
+.topnav-title span{color:var(--accent)}
 .topnav-progress{display:flex;align-items:center;gap:12px}
-.nav-pct{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:var(--orange)}
+.nav-pct{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:var(--accent)}
 .nav-bar{width:120px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden}
-.nav-bar-fill{height:100%;background:var(--orange);border-radius:2px;transition:width 0.4s}
+.nav-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.4s}
 .shell{display:flex;flex:1;min-height:0;overflow:hidden}
+.toc-sidebar{width:220px;background:var(--charcoal);flex-shrink:0;overflow-y:auto;padding:24px 0}
+.toc-header{font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 20px 12px}
+.toc-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;border-left:2px solid transparent;transition:all 0.15s;text-decoration:none}
+.toc-item:hover{background:rgba(255,255,255,0.04)}
+.toc-item.active{border-left-color:var(--accent);background:rgba(212,130,122,0.08)}
+.toc-num{font-size:10px;font-weight:800;font-family:monospace;color:rgba(255,255,255,0.2);min-width:20px}
+.toc-item.active .toc-num{color:var(--accent)}
+.toc-text{font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);line-height:1.3}
+.toc-item.active .toc-text{color:#fff}
 .content-area{flex:1;overflow-y:auto}
-.toc-sidebar{width:240px;flex-shrink:0;background:var(--card);border-left:1px solid var(--rule);overflow-y:auto;display:flex;flex-direction:column}
-.mod-header{background:var(--charcoal);color:#fff;padding:48px 56px;border-bottom:4px solid var(--orange)}
-.mod-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.mod-header{background:var(--charcoal);padding:48px 56px;color:#fff}
+.mod-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 .mod-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,6vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95;margin-bottom:16px;color:#fff}
-.mod-subtitle{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.6;max-width:560px;margin-bottom:28px}
-.mod-meta{display:flex;gap:32px;flex-wrap:wrap}
-.mod-meta-item{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
-.mod-meta-item span{color:rgba(255,255,255,0.7)}
-.content-body{max-width:720px;margin:0 auto;padding:48px 40px}
-.section-block{margin-bottom:56px;scroll-margin-top:70px}
-.section-label{font-size:9px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.mod-subtitle{font-size:17px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:620px;margin-bottom:24px}
+.mod-meta{display:flex;gap:24px;flex-wrap:wrap}
+.mod-meta-item{font-size:12px;color:rgba(255,255,255,0.3);font-weight:600}
+.mod-meta-item span{color:rgba(255,255,255,0.6)}
+.content-body{max-width:760px;margin:0 auto;padding:48px 56px}
+.section-block{margin-bottom:64px;scroll-margin-top:80px}
+.section-label{font-size:9px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .section-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;color:var(--charcoal);line-height:1;margin-bottom:20px}
-.body-text{font-size:15px;line-height:1.85;color:var(--mid);margin-bottom:16px}
-.highlight-box{background:var(--op);border-left:4px solid var(--orange);padding:20px 24px;margin-bottom:24px}
-.highlight-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
-.teal-box{background:var(--accent-p);border-left:4px solid var(--accent);padding:20px 24px;margin-bottom:24px}
-.teal-box p{font-size:15px;line-height:1.7;color:var(--charcoal)}
-
-/* MARKETPLACE PRINCIPLES */
-.principle-list{display:flex;flex-direction:column;gap:0;margin-bottom:28px;border:1px solid var(--rule)}
-.principle-row{padding:20px 24px;border-bottom:1px solid var(--rule);cursor:pointer;transition:all 0.2s;display:flex;gap:20px;align-items:flex-start}
-.principle-row:last-child{border-bottom:none}
-.principle-row:hover{background:var(--op)}
-.principle-row.selected{background:var(--op);border-left:4px solid var(--orange)}
-.p-num{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--orange);min-width:32px;line-height:1}
-.p-body{flex:1}
-.p-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
-.p-desc{font-size:13px;color:var(--mid);line-height:1.5}
-.p-check{width:20px;height:20px;border-radius:50%;border:2px solid var(--rule);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:4px;transition:all 0.2s}
-.principle-row.selected .p-check{background:var(--orange);border-color:var(--orange);color:#fff}
-
-/* HIERARCHY OF VALUE */
-.hierarchy{display:flex;flex-direction:column;gap:0;margin-bottom:28px}
-.hier-level{display:flex;gap:16px;padding:18px 20px;border:1px solid var(--rule);margin-bottom:-1px;cursor:pointer;transition:all 0.2s;align-items:flex-start;position:relative}
-.hier-level:hover{border-color:var(--orange);z-index:1}
-.hier-level.current{border-color:var(--orange);background:var(--op);z-index:2}
-.hier-badge{position:absolute;top:12px;right:12px;font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);background:var(--op);padding:3px 8px;border:1px solid var(--orange);display:none}
-.hier-level.current .hier-badge{display:block}
-.hier-num{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;line-height:1;min-width:32px}
-.hier-body{flex:1}
-.hier-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
-.hier-desc{font-size:12px;color:var(--mid);line-height:1.5}
-
-/* VALUE AUDIT */
-.audit-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:24px}
-@media(max-width:560px){.audit-grid{grid-template-columns:1fr}}
-.audit-cell{background:var(--card);padding:16px}
-.audit-cell-head{font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);margin-bottom:8px}
-.audit-input{width:100%;border:none;border-bottom:1px solid var(--rule);padding:4px 0;font-family:'Barlow',sans-serif;font-size:13px;color:var(--charcoal);background:transparent}
-.audit-input:focus{outline:none;border-bottom-color:var(--orange)}
-
-/* REFLECT */
-.reflect-block{margin-bottom:24px}
-.reflect-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.reflect-prompt{font-size:14px;font-weight:600;color:var(--charcoal);margin-bottom:10px;line-height:1.5}
-textarea.reflect-input{width:100%;min-height:100px;border:1px solid var(--rule);padding:14px 16px;font-family:'Barlow',sans-serif;font-size:14px;line-height:1.6;resize:vertical;background:var(--bg);color:var(--charcoal);transition:border-color 0.2s}
-textarea.reflect-input:focus{outline:none;border-color:var(--orange);background:#fff}
-.char-count{font-size:10px;color:var(--light);text-align:right;margin-top:4px}
-
-/* CIRCUIT CHECK */
-.circuit-item{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:var(--card);border:1px solid var(--rule);margin-bottom:10px;cursor:pointer;transition:all 0.2s}
-.circuit-item:hover{border-color:var(--orange)}
-.circuit-item.done{border-color:var(--green);background:var(--gp)}
-.circuit-toggle{width:24px;height:24px;border-radius:50%;border:2px solid var(--rule);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s;margin-top:2px}
-.circuit-item.done .circuit-toggle{background:var(--green);border-color:var(--green);color:#fff}
-.circuit-text{font-size:14px;line-height:1.6;color:var(--mid)}
-.circuit-item.done .circuit-text{color:var(--charcoal);font-weight:600}
-
-/* PROGRESS */
-.progress-wrap{background:var(--card);border:1px solid var(--rule);padding:20px 24px;margin-bottom:32px}
-.progress-label{display:flex;justify-content:space-between;margin-bottom:8px}
-.progress-label span{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--light)}
-.progress-label strong{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--orange)}
-.progress-bar{height:6px;background:var(--rule);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:var(--orange);border-radius:3px;transition:width 0.5s}
-
-.toc-head{padding:20px 20px 8px;font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);border-bottom:1px solid var(--rule)}
-.toc-link{display:block;padding:10px 20px;font-size:12px;font-weight:600;color:var(--mid);text-decoration:none;border-left:2px solid transparent;transition:all 0.15s;line-height:1.4}
-.toc-link:hover{color:var(--orange);border-left-color:var(--op)}
-.toc-link.active{color:var(--orange);border-left-color:var(--orange);font-weight:700}
-.toc-footer{padding:20px;margin-top:auto;border-top:1px solid var(--rule)}
-.btn-nav{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:14px 24px;text-decoration:none;transition:all 0.2s;border:2px solid var(--rule);color:var(--mid);background:var(--card)}
-.btn-nav:hover{border-color:var(--accent);color:var(--accent-d)}
-.btn-nav.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-.btn-nav.primary:hover{background:var(--accent-d);border-color:var(--accent-d)}
-.nav-buttons{display:flex;justify-content:space-between;padding:32px 0;border-top:1px solid var(--rule);margin-top:32px}
-.btn-download{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;border:none;background:var(--charcoal);color:#fff;cursor:pointer;transition:all 0.2s}
-.btn-download:hover{background:var(--orange)}
-@media(max-width:768px){.mod-header{padding:32px 24px}.content-body{padding:32px 20px}.toc-sidebar{display:none}}
-    </style>
+.body-text{font-size:16px;line-height:1.8;color:var(--mid);margin-bottom:16px}
+.pullquote{background:var(--charcoal);padding:28px 32px;margin:28px 0;border-left:4px solid var(--accent)}
+.pq-text{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;color:#fff;line-height:1.3}
+.reflect-block{background:var(--accent-p);border:1px solid var(--accent-m);padding:28px;margin:24px 0}
+.reflect-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-d);margin-bottom:8px}
+.reflect-prompt{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.4}
+.reflect-box{width:100%;min-height:100px;padding:12px;border:1px solid var(--accent-m);background:#fff;font-family:inherit;font-size:14px;line-height:1.6;color:var(--charcoal);resize:vertical}
+.reflect-box:focus{outline:none;border-color:var(--accent)}
+.checklist{list-style:none;margin:16px 0}
+.checklist li{padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start}
+.checklist li::before{content:"→";color:var(--accent);font-weight:900;flex-shrink:0}
+.next-module{background:var(--charcoal);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.nm-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.nm-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:#fff}
+.nm-btn{font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;background:var(--accent);color:#fff;text-decoration:none;white-space:nowrap;transition:background 0.2s}
+.nm-btn:hover{background:var(--accent-d)}
+.complete-banner{display:none;background:#27ae60;color:#fff;padding:16px 24px;text-align:center;font-weight:700;font-size:14px;letter-spacing:0.05em}
+.complete-banner.show{display:block}
+.save-badge{position:fixed;bottom:24px;right:24px;background:var(--charcoal);color:#fff;padding:10px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0;transition:opacity 0.3s;pointer-events:none}
+.save-badge.show{opacity:1}
+@media(max-width:768px){.toc-sidebar{display:none}.content-body{padding:32px 20px}.mod-header{padding:36px 24px}}
+</style>
 </head>
 <body>
-
 <nav class="topnav">
-  <a href="portal.html" class="topnav-back">← Back to Portal</a>
-  <div class="topnav-title">Mum 180 / <span>Module 06</span></div>
+  <a href="portal.html" class="topnav-back">← Dashboard</a>
+  <div class="topnav-title">Module <span>06</span> · What Now</div>
   <div class="topnav-progress">
-    <span class="nav-pct" id="navPct">0%</span>
-    <div class="nav-bar"><div class="nav-bar-fill" id="navFill" style="width:0%"></div></div>
+    <div class="nav-pct" id="nav-pct">0%</div>
+    <div class="nav-bar"><div class="nav-bar-fill" id="nav-bar-fill" style="width:0%"></div></div>
   </div>
 </nav>
-
+<div class="complete-banner" id="complete-banner">✓ Module 06 complete — great work.</div>
+<div class="save-badge" id="save-badge">Saved ✓</div>
 <div class="shell">
+  <nav class="toc-sidebar">
+    <div class="toc-header">In This Module</div>
+    <a class="toc-item" id="toc-s1" href="#s1" onclick="tocClick(1)">
+      <div class="toc-num">01</div>
+      <div class="toc-text">Accept Your Reality</div>
+    </a>
+    <a class="toc-item" id="toc-s2" href="#s2" onclick="tocClick(2)">
+      <div class="toc-num">02</div>
+      <div class="toc-text">Change Your Self-Talk</div>
+    </a>
+    <a class="toc-item" id="toc-s3" href="#s3" onclick="tocClick(3)">
+      <div class="toc-num">03</div>
+      <div class="toc-text">The Rulebook</div>
+    </a>
+    <a class="toc-item" id="toc-s4" href="#s4" onclick="tocClick(4)">
+      <div class="toc-num">04</div>
+      <div class="toc-text">Act Accordingly</div>
+    </a>
+    <a class="toc-item" id="toc-s5" href="#s5" onclick="tocClick(5)">
+      <div class="toc-num">05</div>
+      <div class="toc-text">Reflection</div>
+    </a>
+  </nav>
   <div class="content-area">
     <div class="mod-header">
-      <div class="mod-eyebrow">Module 06 of 07 — Mum 180 Program</div>
-      <h1 class="mod-title">The Marketplace &<br>Hierarchy of Value</h1>
-      <p class="mod-subtitle">Five marketplace principles. Five stages of value. Understanding where you are, where you're going, and what the gap between them actually costs you.</p>
+      <div class="mod-eyebrow">Module 06 of 06 — Mum 180</div>
+      <h1 class="mod-title">What<br>Now</h1>
+      <p class="mod-subtitle">The prescription. Accept your reality. Change your self-talk. Act accordingly. This is where it all becomes real.</p>
       <div class="mod-meta">
-        <div class="mod-meta-item">Duration <span>45–60 min</span></div>
-        <div class="mod-meta-item">Sections <span>5</span></div>
-        <div class="mod-meta-item">Type <span>Strategic Audit</span></div>
-        <div class="mod-meta-item">Includes <span>Value Audit Grid</span></div>
+        <div class="mod-meta-item">Time: <span>40–50 min</span></div>
+        <div class="mod-meta-item">Sections: <span>5</span></div>
       </div>
     </div>
-
     <div class="content-body">
-      <div class="progress-wrap">
-        <div class="progress-label"><span>Module Progress</span><strong id="pctLabel">0%</strong></div>
-        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-      </div>
-
-      <!-- SECTION 1: MARKETPLACE -->
-      <div class="section-block" id="sec-marketplace">
-        <div class="section-label">Section 01</div>
-        <h2 class="section-title">The Marketplace</h2>
-        <p class="body-text">You operate in a marketplace — whether you're aware of it or not. The marketplace doesn't care about your effort, your intentions, or your history. It responds to one thing: the value you create and deliver. Understanding the rules of the marketplace is not optional. Refusing to engage with them doesn't protect you. It just makes you invisible.</p>
-        <div class="highlight-box"><p><strong>The five marketplace principles:</strong> These are the operating laws of any market you participate in. Select the ones where your current understanding or behaviour has the biggest gap.</p></div>
-
-        <div class="principle-list">
-          <div class="principle-row" onclick="togglePrinciple(this)">
-            <div class="p-check">✓</div>
-            <div class="p-num">1</div>
-            <div class="p-body">
-              <div class="p-name">Value Creation</div>
-              <div class="p-desc">The marketplace rewards those who create genuine value for others — not those who simply work hard or have good intentions.</div>
-            </div>
-          </div>
-          <div class="principle-row" onclick="togglePrinciple(this)">
-            <div class="p-check">✓</div>
-            <div class="p-num">2</div>
-            <div class="p-body">
-              <div class="p-name">Personal Responsibility</div>
-              <div class="p-desc">You are the variable. The marketplace doesn't owe you results. Your outcomes are a direct reflection of the value you're creating and delivering.</div>
-            </div>
-          </div>
-          <div class="principle-row" onclick="togglePrinciple(this)">
-            <div class="p-check">✓</div>
-            <div class="p-num">3</div>
-            <div class="p-body">
-              <div class="p-name">Dynamic Marketplace</div>
-              <div class="p-desc">The marketplace changes constantly. What worked before may not work now. Adaptability and real-time adjustment are competitive advantages.</div>
-            </div>
-          </div>
-          <div class="principle-row" onclick="togglePrinciple(this)">
-            <div class="p-check">✓</div>
-            <div class="p-num">4</div>
-            <div class="p-body">
-              <div class="p-name">Trading on Value</div>
-              <div class="p-desc">Every transaction — job, client, relationship — involves an exchange of value. Your ability to articulate, demonstrate, and deliver that value determines your position.</div>
-            </div>
-          </div>
-          <div class="principle-row" onclick="togglePrinciple(this)">
-            <div class="p-check">✓</div>
-            <div class="p-num">5</div>
-            <div class="p-body">
-              <div class="p-name">Competitive Advantage</div>
-              <div class="p-desc">Your competitive advantage is the unique intersection of what you do well, what others need, and what most others can't or won't deliver.</div>
-            </div>
-          </div>
+      <div class="section-block" id="s1">
+        <div class="section-label">Section 1</div>
+        <div class="section-title">Accept Your Current Reality</div>
+        <p class="body-text">This is Rule One. You cannot make meaningful change from a position of denial.</p><p class="body-text">You must accept the current circumstances of your life — honestly, clearly, without softening them. Not to wallow. Not to punish yourself. But because you cannot change what you will not acknowledge.</p><p class="body-text">That acceptance is going to create an emotional event. It is supposed to. Emotional events are not problems to be avoided — they are the mechanism of real change.</p><div class="pullquote"><div class="pq-text">Emotional events are required to create lasting behavioural change.</div></div><p class="body-text">You are not perfect. We said it out loud. You are not perfect, and that is not unique to you. You are a human being. On some days, we feel far more human than we would like. All of us — at some point — need help.</p><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">Write an honest assessment of where you are right now. No judgment. No softening. Just the truth of your current situation.</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
-
+      </div>
+      <div class="section-block" id="s2">
+        <div class="section-label">Section 2</div>
+        <div class="section-title">Change How You Talk to Yourself</div>
+        <p class="body-text">You are the person you communicate with the most. Every day, thousands of thoughts. A running commentary on what you are doing, how you are doing it, whether you are doing it right.</p><p class="body-text">Most of that commentary was written a long time ago, by circumstances and experiences and people who were not careful with you. It is running on autopilot.</p><p class="body-text">The things you think about the most will express themselves in your actions, behaviours, and the results you see. If the dominant internal narrative is one of inadequacy, that will leak.</p><ul class="checklist"><li>You must change the way you think about yourself</li>
+<li>You must change the way you speak about yourself — to yourself and to others</li>
+<li>This is not positive thinking — it is accuracy</li>
+<li>You are more capable than the story you have been telling</li>
+<li>The story is not permanent. It is not fact. It is a habit.</li></ul><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What does your internal commentary say about you as a mum? Write it down — the actual words, even if they are harsh. Then write what is actually true.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div>
+      </div>
+      <div class="section-block" id="s3">
+        <div class="section-label">Section 3</div>
+        <div class="section-title">There Is a Rulebook</div>
+        <p class="body-text">One last piece of bad data to dismantle: the idea that there is no rulebook on parenting.</p><p class="body-text">It is a common thing people say. <em>Every child is different. There is no manual. You just figure it out as you go.</em></p><p class="body-text">That is not quite right. There are fundamental principles of parenting — of human development, of attachment, of self-regulation — that apply regardless of the specific child or the specific circumstances.</p><div class="pullquote"><div class="pq-text">"There's no rulebook on being a parent." Bullshit. It's called a library — and we have them now in our pocket.</div></div><p class="body-text">The information is there. The guidance is there. You are not figuring this out alone in the dark. You have access to more knowledge about human development and parenting than any generation before you.</p><p class="body-text">The gap is not information. The gap is you applying what you know to yourself first.</p>
+      </div>
+      <div class="section-block" id="s4">
+        <div class="section-label">Section 4</div>
+        <div class="section-title">You Must Then Act Accordingly</div>
+        <p class="body-text">Everything in this course has been building to one simple instruction.</p><p class="body-text">You now understand the bad data. You know the G&S loop. You have permission to put the mask on first. You know the trap of away thinking. You have seen Michelle in the mirror. You have accepted your current reality and started to examine how you speak to yourself.</p><p class="body-text">Now act accordingly.</p><p class="body-text">Not tomorrow. Not when things calm down. Not when you feel ready. The readiness does not come first. You already know that.</p><div class="pullquote"><div class="pq-text">Easy to understand. Complicated to do. That is why we are here — to offer guidance along the way.</div></div><p class="body-text">The course is a beginning, not an end. Keep doing the mirror exercise. Keep updating the story. Keep noticing the G&S loop when it shows up and naming it for what it is — bad data — instead of truth.</p>
+      </div>
+      <div class="section-block" id="s5">
+        <div class="section-label">Section 5</div>
+        <div class="section-title">Final Reflection</div>
         <div class="reflect-block">
-          <div class="reflect-label">Reflection 1.1</div>
-          <div class="reflect-prompt">Which marketplace principle do you most resist, avoid, or disagree with? What does that resistance tell you about where your value gap actually is?</div>
-          <textarea class="reflect-input" id="r1" placeholder="Name the resistance — and what it's protecting you from facing…" oninput="updateProgress();updateChar(this,'c1')"></textarea>
-          <div class="char-count" id="c1">0 characters</div>
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What is the most important thing this course has shifted for you? Even slightly. What has changed?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What is the one commitment you are making to yourself coming out of this programme? Make it specific.</div>
+          <textarea class="reflect-box" id="r4" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">Write a message to yourself — to the version of you who shows up in the mirror. What do you want to say to her?</div>
+          <textarea class="reflect-box" id="r5" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 
-      <!-- SECTION 2: HIERARCHY OF VALUE -->
-      <div class="section-block" id="sec-hierarchy">
-        <div class="section-label">Section 02</div>
-        <h2 class="section-title">Hierarchy of Value</h2>
-        <p class="body-text">There are five stages of perceived value in any marketplace. Most people are stuck at Stage 1 or 2 — not because they lack skill, but because they can't communicate and demonstrate their value in a way the market can read. Click on the stage that most accurately describes your current position.</p>
-
-        <div class="hierarchy">
-          <div class="hier-level" onclick="selectHier(this,'1')">
-            <div class="hier-badge">MY STAGE</div>
-            <div class="hier-num" style="color:#e05555">1</div>
-            <div class="hier-body">
-              <div class="hier-name">Recognised</div>
-              <div class="hier-desc">Others know you exist. You have presence, a profile, some awareness. But you haven't yet demonstrated specific, relevant value.</div>
-            </div>
-          </div>
-          <div class="hier-level" onclick="selectHier(this,'2')">
-            <div class="hier-badge">MY STAGE</div>
-            <div class="hier-num" style="color:#e67e22">2</div>
-            <div class="hier-body">
-              <div class="hier-name">Facilitated</div>
-              <div class="hier-desc">You can get things done for people when asked. Value delivery is reactive — you need to be prompted, directed, managed.</div>
-            </div>
-          </div>
-          <div class="hier-level" onclick="selectHier(this,'3')">
-            <div class="hier-badge">MY STAGE</div>
-            <div class="hier-num" style="color:#f5c842">3</div>
-            <div class="hier-body">
-              <div class="hier-name">Requested</div>
-              <div class="hier-desc">People specifically seek you out. Your reputation precedes you in a specific area. Value delivery is proactive and trusted.</div>
-            </div>
-          </div>
-          <div class="hier-level" onclick="selectHier(this,'4')">
-            <div class="hier-badge">MY STAGE</div>
-            <div class="hier-num" style="color:#b86b64">4</div>
-            <div class="hier-body">
-              <div class="hier-name">Preferred</div>
-              <div class="hier-desc">Given a choice, people choose you over alternatives. You have clear differentiation and strong evidence of superior outcomes.</div>
-            </div>
-          </div>
-          <div class="hier-level" onclick="selectHier(this,'5')">
-            <div class="hier-badge">MY STAGE</div>
-            <div class="hier-num" style="color:#27ae60">5</div>
-            <div class="hier-body">
-              <div class="hier-name">Standard of Excellence</div>
-              <div class="hier-desc">You define the benchmark. Others reference you. Your category leadership is established and self-reinforcing.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="reflect-block">
-          <div class="reflect-label">Reflection 2.1</div>
-          <div class="reflect-prompt">What is the specific evidence that places you at your current stage — and what is the specific gap between your current stage and the next one up?</div>
-          <textarea class="reflect-input" id="r2" placeholder="Concrete evidence for your current stage. Concrete gap to the next…" oninput="updateProgress();updateChar(this,'c2')"></textarea>
-          <div class="char-count" id="c2">0 characters</div>
-        </div>
-      </div>
-
-      <!-- SECTION 3: VALUE AUDIT -->
-      <div class="section-block" id="sec-audit">
-        <div class="section-label">Section 03</div>
-        <h2 class="section-title">Value Audit</h2>
-        <p class="body-text">A Value Audit maps the friction points between what you deliver and how the marketplace receives it. Complete each cell below honestly — this is your diagnostic, not a performance.</p>
-
-        <div class="audit-grid">
-          <div class="audit-cell">
-            <div class="audit-cell-head">What I deliver</div>
-            <input class="audit-input" id="a1" placeholder="Specifically…" oninput="updateProgress()">
-            <input class="audit-input" id="a2" style="margin-top:8px" placeholder="And…" oninput="updateProgress()">
-            <input class="audit-input" id="a3" style="margin-top:8px" placeholder="And…" oninput="updateProgress()">
-          </div>
-          <div class="audit-cell">
-            <div class="audit-cell-head">What they receive</div>
-            <input class="audit-input" id="a4" placeholder="What they actually get…" oninput="updateProgress()">
-            <input class="audit-input" id="a5" style="margin-top:8px" placeholder="" oninput="updateProgress()">
-            <input class="audit-input" id="a6" style="margin-top:8px" placeholder="" oninput="updateProgress()">
-          </div>
-          <div class="audit-cell">
-            <div class="audit-cell-head">The friction / gap</div>
-            <input class="audit-input" id="a7" placeholder="Where it breaks down…" oninput="updateProgress()">
-            <input class="audit-input" id="a8" style="margin-top:8px" placeholder="" oninput="updateProgress()">
-            <input class="audit-input" id="a9" style="margin-top:8px" placeholder="" oninput="updateProgress()">
-          </div>
-        </div>
-
-        <div class="reflect-block">
-          <div class="reflect-label">Reflection 3.1</div>
-          <div class="reflect-prompt">What is the single highest-leverage improvement you could make to close the gap between what you deliver and what the marketplace actually values?</div>
-          <textarea class="reflect-input" id="r3" placeholder="One specific, actionable shift…" oninput="updateProgress();updateChar(this,'c3')"></textarea>
-          <div class="char-count" id="c3">0 characters</div>
-        </div>
-      </div>
-
-      <!-- SECTION 4: COMPETITIVE ADVANTAGE -->
-      <div class="section-block" id="sec-advantage">
-        <div class="section-label">Section 04</div>
-        <h2 class="section-title">Your Competitive Advantage</h2>
-        <p class="body-text">Your competitive advantage exists at the intersection of three things: what you do distinctively well, what your market genuinely needs, and what most others can't or won't deliver. Most people have a competitive advantage they can't articulate — which means the market can't read it.</p>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:24px">
-          <div style="background:var(--card);padding:20px">
-            <div style="font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">What I Do Distinctively Well</div>
-            <textarea style="width:100%;min-height:80px;border:1px solid var(--rule);padding:10px;font-family:'Barlow',sans-serif;font-size:13px;resize:none;background:var(--bg)" id="ca1" placeholder="3–5 specific things…" oninput="updateProgress()"></textarea>
-          </div>
-          <div style="background:var(--card);padding:20px">
-            <div style="font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">What My Market Genuinely Needs</div>
-            <textarea style="width:100%;min-height:80px;border:1px solid var(--rule);padding:10px;font-family:'Barlow',sans-serif;font-size:13px;resize:none;background:var(--bg)" id="ca2" placeholder="The actual need, not the surface request…" oninput="updateProgress()"></textarea>
-          </div>
-          <div style="background:var(--card);padding:20px">
-            <div style="font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:10px">What Others Won't/Can't Deliver</div>
-            <textarea style="width:100%;min-height:80px;border:1px solid var(--rule);padding:10px;font-family:'Barlow',sans-serif;font-size:13px;resize:none;background:var(--bg)" id="ca3" placeholder="Your genuine differentiator…" oninput="updateProgress()"></textarea>
-          </div>
-        </div>
-
-        <div class="reflect-block">
-          <div class="reflect-label">Reflection 4.1</div>
-          <div class="reflect-prompt">Write a single sentence that describes your competitive advantage in a way a potential client, employer, or collaborator could immediately understand.</div>
-          <textarea class="reflect-input" id="r4" placeholder="One clear, specific sentence — not a mission statement…" oninput="updateProgress();updateChar(this,'c4')"></textarea>
-          <div class="char-count" id="c4">0 characters</div>
-        </div>
-      </div>
-
-      <!-- SECTION 5: CIRCUIT CHECK -->
-      <div class="section-block" id="sec-circuit">
-        <div class="section-label">Circuit Check</div>
-        <h2 class="section-title">Module Diagnostic</h2>
-        <div id="circuitList">
-          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I identified which marketplace principle I most resist — and why</div></div>
-          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I identified my current stage in the Hierarchy of Value with specific evidence</div></div>
-          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I completed the Value Audit and identified the primary friction point</div></div>
-          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I mapped my competitive advantage across all three dimensions</div></div>
-          <div class="circuit-item" onclick="toggleCircuit(this)"><div class="circuit-toggle">✓</div><div class="circuit-text">I wrote a single clear sentence describing my competitive advantage</div></div>
-        </div>
-      </div>
-
-      <div style="background:var(--charcoal);padding:28px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
-        <div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px">Export Your Work</div>
-          <div style="font-size:15px;font-weight:600;color:#fff">Download your marketplace audit &amp; value analysis as PDF</div>
-        </div>
-        <button class="btn-download" onclick="downloadPDF()">⬇ Download PDF</button>
-      </div>
-
-      <div class="nav-buttons">
-        <a href="module-5.html" class="btn-nav">← Module 05: Identity Shift</a>
-        <a href="portal.html" class="btn-nav primary">Module 07: Re-Entry →</a>
+      <div class="next-module">
+        <div><div class="nm-label">Next</div><div class="nm-title">Back to Dashboard</div></div>
+        <a href="portal.html" class="nm-btn">Continue →</a>
       </div>
     </div>
   </div>
-
-  <aside class="toc-sidebar">
-    <div class="toc-head">In This Module</div>
-    <a href="#sec-marketplace" class="toc-link active" onclick="setToc(this)">01 — The Marketplace</a>
-    <a href="#sec-hierarchy" class="toc-link" onclick="setToc(this)">02 — Hierarchy of Value</a>
-    <a href="#sec-audit" class="toc-link" onclick="setToc(this)">03 — Value Audit</a>
-    <a href="#sec-advantage" class="toc-link" onclick="setToc(this)">04 — Competitive Advantage</a>
-<a href="#sec-circuit" class="toc-link" onclick="setToc(this)">Circuit Check</a>
-    <div class="toc-footer">
-      <button class="btn-download" style="width:100%" onclick="downloadPDF()">⬇ Download PDF</button>
-    </div>
-  </aside>
 </div>
-
+      <div class="section-block" id="s1">
+        <div class="section-label">Section 1</div>
+        <div class="section-title">Accept Your Current Reality</div>
+        <p class="body-text">This is Rule One. You cannot make meaningful change from a position of denial.</p><p class="body-text">You must accept the current circumstances of your life — honestly, clearly, without softening them. Not to wallow. Not to punish yourself. But because you cannot change what you will not acknowledge.</p><p class="body-text">That acceptance is going to create an emotional event. It is supposed to. Emotional events are not problems to be avoided — they are the mechanism of real change.</p><div class="pullquote"><div class="pq-text">Emotional events are required to create lasting behavioural change.</div></div><p class="body-text">You are not perfect. We said it out loud. You are not perfect, and that is not unique to you. You are a human being. On some days, we feel far more human than we would like. All of us — at some point — need help.</p><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">Write an honest assessment of where you are right now. No judgment. No softening. Just the truth of your current situation.</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div>
+      </div>
+      <div class="section-block" id="s2">
+        <div class="section-label">Section 2</div>
+        <div class="section-title">Change How You Talk to Yourself</div>
+        <p class="body-text">You are the person you communicate with the most. Every day, thousands of thoughts. A running commentary on what you are doing, how you are doing it, whether you are doing it right.</p><p class="body-text">Most of that commentary was written a long time ago, by circumstances and experiences and people who were not careful with you. It is running on autopilot.</p><p class="body-text">The things you think about the most will express themselves in your actions, behaviours, and the results you see. If the dominant internal narrative is one of inadequacy, that will leak.</p><ul class="checklist"><li>You must change the way you think about yourself</li>
+<li>You must change the way you speak about yourself — to yourself and to others</li>
+<li>This is not positive thinking — it is accuracy</li>
+<li>You are more capable than the story you have been telling</li>
+<li>The story is not permanent. It is not fact. It is a habit.</li></ul><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What does your internal commentary say about you as a mum? Write it down — the actual words, even if they are harsh. Then write what is actually true.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div>
+      </div>
+      <div class="section-block" id="s3">
+        <div class="section-label">Section 3</div>
+        <div class="section-title">There Is a Rulebook</div>
+        <p class="body-text">One last piece of bad data to dismantle: the idea that there is no rulebook on parenting.</p><p class="body-text">It is a common thing people say. <em>Every child is different. There is no manual. You just figure it out as you go.</em></p><p class="body-text">That is not quite right. There are fundamental principles of parenting — of human development, of attachment, of self-regulation — that apply regardless of the specific child or the specific circumstances.</p><div class="pullquote"><div class="pq-text">"There's no rulebook on being a parent." Bullshit. It's called a library — and we have them now in our pocket.</div></div><p class="body-text">The information is there. The guidance is there. You are not figuring this out alone in the dark. You have access to more knowledge about human development and parenting than any generation before you.</p><p class="body-text">The gap is not information. The gap is you applying what you know to yourself first.</p>
+      </div>
+      <div class="section-block" id="s4">
+        <div class="section-label">Section 4</div>
+        <div class="section-title">You Must Then Act Accordingly</div>
+        <p class="body-text">Everything in this course has been building to one simple instruction.</p><p class="body-text">You now understand the bad data. You know the G&S loop. You have permission to put the mask on first. You know the trap of away thinking. You have seen Michelle in the mirror. You have accepted your current reality and started to examine how you speak to yourself.</p><p class="body-text">Now act accordingly.</p><p class="body-text">Not tomorrow. Not when things calm down. Not when you feel ready. The readiness does not come first. You already know that.</p><div class="pullquote"><div class="pq-text">Easy to understand. Complicated to do. That is why we are here — to offer guidance along the way.</div></div><p class="body-text">The course is a beginning, not an end. Keep doing the mirror exercise. Keep updating the story. Keep noticing the G&S loop when it shows up and naming it for what it is — bad data — instead of truth.</p>
+      </div>
+      <div class="section-block" id="s5">
+        <div class="section-label">Section 5</div>
+        <div class="section-title">Final Reflection</div>
+        <div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What is the most important thing this course has shifted for you? Even slightly. What has changed?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">What is the one commitment you are making to yourself coming out of this programme? Make it specific.</div>
+          <textarea class="reflect-box" id="r4" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">Write a message to yourself — to the version of you who shows up in the mirror. What do you want to say to her?</div>
+          <textarea class="reflect-box" id="r5" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div>
+      </div>
 <script>
-
-// ── ACCESS GATE ──────────────────────────────────────────────────────────────
 (function(){
-  const S='mum180_access', D=7*24*60*60*1000;
+  const S='mum180_access', D=30*24*60*60*1000;
   try{
     const s=JSON.parse(localStorage.getItem(S)||'null');
     if(!s||Date.now()-s.ts>D){localStorage.removeItem(S);window.location.replace('access.html');}
   }catch(e){window.location.replace('access.html');}
 })();
-// ─────────────────────────────────────────────────────────────────────────────
-const MOD_KEY='lc_mod6';
-function togglePrinciple(el){el.classList.toggle('selected');updateProgress();save()}
-function selectHier(el,level){
-  document.querySelectorAll('.hier-level').forEach(h=>{h.classList.remove('current');h.querySelector('.hier-badge').style.display='none'});
-  el.classList.add('current');el.querySelector('.hier-badge').style.display='block';
-  updateProgress();save();
-}
-function toggleCircuit(el){el.classList.toggle('done');updateProgress();save()}
-function updateChar(ta,cid){const el=document.getElementById(cid);if(el)el.textContent=ta.value.length+' characters'}
-function calcPct(){
-  let s=0,m=0;
-  ['r1','r2','r3','r4'].forEach(id=>{m+=10;if((document.getElementById(id).value||'').length>20)s+=10});
-  m+=10;if(document.querySelector('.hier-level.current'))s+=10;
-  const auditFilled=['a1','a4','a7'].filter(id=>(document.getElementById(id).value||'').trim().length>3).length;
-  m+=10;if(auditFilled>=2)s+=10;
-  const caFilled=['ca1','ca2','ca3'].filter(id=>(document.getElementById(id).value||'').trim().length>10).length;
-  m+=10;if(caFilled>=2)s+=10;
-  const done=document.querySelectorAll('.circuit-item.done').length;
-  m+=25;s+=done*5;
-  return Math.round((s/m)*100);
-}
-function updateProgress(){
-  const pct=calcPct();
-  document.getElementById('progressFill').style.width=pct+'%';
-  document.getElementById('pctLabel').textContent=pct+'%';
-  document.getElementById('navFill').style.width=pct+'%';
-  document.getElementById('navPct').textContent=pct+'%';
-  save();
-}
-function save(){
-  const d={};
-  ['r1','r2','r3','r4'].forEach(id=>d[id]=document.getElementById(id).value);
-  ['a1','a2','a3','a4','a5','a6','a7','a8','a9'].forEach(id=>d[id]=document.getElementById(id).value);
-  ['ca1','ca2','ca3'].forEach(id=>d[id]=document.getElementById(id).value);
-  d.principles=[...document.querySelectorAll('.principle-row.selected')].map(el=>el.querySelector('.p-num').textContent);
-  d.hier=document.querySelector('.hier-level.current')?.getAttribute('onclick')?.match(/'(\d+)'/)?.[1]||null;
-  d.circuit=[...document.querySelectorAll('.circuit-item')].map(el=>el.classList.contains('done'));
-  localStorage.setItem(MOD_KEY,JSON.stringify(d));
-  const prog=JSON.parse(localStorage.getItem('lc_progress')||'{}');
-  prog.mod6=calcPct();
-  localStorage.setItem('lc_progress',JSON.stringify(prog));
-  // Log activity
-  const _pct2=calcPct();
-  if(_pct2>0){
-    const _log=JSON.parse(localStorage.getItem('lc_activity')||'[]');
-    const _entry={text:'Module 06 — '+_pct2+'% complete',color:'#e67e22',time:new Date().toLocaleDateString()};
-    const _last=_log[_log.length-1];
-    if(!_last||_last.text!==_entry.text){_log.push(_entry);localStorage.setItem('lc_activity',JSON.stringify(_log.slice(-20)));}  }
-}
+
+const MOD = 6;
+const KEY = 'm180_mod' + MOD;
+
 function load(){
-  const d=JSON.parse(localStorage.getItem(MOD_KEY)||'{}');
-  ['r1','r2','r3','r4'].forEach(id=>{if(d[id]){document.getElementById(id).value=d[id];updateChar(document.getElementById(id),'c'+id.slice(1))}});
-  ['a1','a2','a3','a4','a5','a6','a7','a8','a9'].forEach(id=>{if(d[id])document.getElementById(id).value=d[id]});
-  ['ca1','ca2','ca3'].forEach(id=>{if(d[id])document.getElementById(id).value=d[id]});
-  if(d.principles){d.principles.forEach(n=>{const rows=[...document.querySelectorAll('.principle-row')];const r=rows.find(el=>el.querySelector('.p-num').textContent===n);if(r)r.classList.add('selected')})}
-  if(d.hier){const el=document.querySelector(`[onclick="selectHier(this,'${d.hier}')"]`);if(el){el.classList.add('current');el.querySelector('.hier-badge').style.display='block'}}
-  if(d.circuit){const items=document.querySelectorAll('.circuit-item');d.circuit.forEach((v,i)=>{if(v&&items[i])items[i].classList.add('done')})}
-  updateProgress();
+  const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+  document.querySelectorAll('.reflect-box').forEach(el => {
+    if(d[el.id]) el.value = d[el.id];
+  });
+  calcProgress();
 }
-function setToc(el){document.querySelectorAll('.toc-link').forEach(l=>l.classList.remove('active'));el.classList.add('active')}
-function downloadPDF(){
-  const d={};
-  ['r1','r2','r3','r4'].forEach(id=>d[id]=document.getElementById(id).value);
-  const hier=document.querySelector('.hier-level.current')?.querySelector('.hier-name')?.textContent||'—';
-  const ca1=document.getElementById('ca1').value,ca2=document.getElementById('ca2').value,ca3=document.getElementById('ca3').value;
-  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Module 06 — Marketplace</title>
-  <style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;color:#1a1a1a;line-height:1.6}
-  h1{font-size:28px;border-bottom:3px solid #e67e22;padding-bottom:12px}
-  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#e67e22;margin-top:28px}
-  h3{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-top:16px}
-  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #e67e22}
-  .footer{margin-top:40px;font-size:11px;color:#aaa;border-top:1px solid #eee;padding-top:12px}
-  </style></head><body>
-  <h1>Module 06: The Marketplace & Hierarchy of Value</h1>
-  <p style="background:#fef3e8;border-color:#e67e22"><strong>Generated:</strong> ${new Date().toLocaleDateString()} | <strong>Current Stage:</strong> ${hier}</p>
-  <h2>Competitive Advantage Map</h2>
-  <h3>What I do distinctively well</h3><p>${ca1||'—'}</p>
-  <h3>What my market genuinely needs</h3><p>${ca2||'—'}</p>
-  <h3>What others won't/can't deliver</h3><p>${ca3||'—'}</p>
-  <h2>Reflections</h2>
-  <h3>1.1 — The marketplace principle I most resist</h3><p>${d.r1||'—'}</p>
-  <h3>2.1 — Evidence for my current stage / gap to next</h3><p>${d.r2||'—'}</p>
-  <h3>3.1 — Highest-leverage improvement</h3><p>${d.r3||'—'}</p>
-  <h3>4.1 — My competitive advantage in one sentence</h3><p>${d.r4||'—'}</p>
-  <div class="footer">Mum 180 — Think Small, Start Horribly — thinksmallstarthorribly.com</div>
-  </body></html>`;
-  const w=window.open('','_blank');w.document.write(html);w.document.close();setTimeout(()=>w.print(),500);
+
+let saveTimer;
+function save(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(()=>{
+    const d = {};
+    document.querySelectorAll('.reflect-box').forEach(el => { d[el.id] = el.value; });
+    localStorage.setItem(KEY, JSON.stringify(d));
+    calcProgress();
+    showSaved();
+  }, 500);
 }
-window.addEventListener('DOMContentLoaded',load);
+
+function showSaved(){
+  const b = document.getElementById('save-badge');
+  b.classList.add('show');
+  setTimeout(()=>b.classList.remove('show'), 2000);
+}
+
+function calcProgress(){
+  const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+  const boxes = document.querySelectorAll('.reflect-box');
+  const filled = [...boxes].filter(el => d[el.id] && d[el.id].trim().length > 10).length;
+  const pct = boxes.length > 0 ? Math.min(100, Math.round((filled/boxes.length)*100)) : 0;
+  // Save to portal progress object
+  const prog = JSON.parse(localStorage.getItem('m180_progress')||'{}');
+  prog['mod'+MOD] = pct;
+  localStorage.setItem('m180_progress', JSON.stringify(prog));
+  // Also update unified module key for portal to read
+  const modData = JSON.parse(localStorage.getItem(KEY)||'{}');
+  modData.progress = pct;
+  localStorage.setItem(KEY, JSON.stringify(modData));
+  document.getElementById('nav-pct').textContent = pct + '%';
+  document.getElementById('nav-bar-fill').style.width = pct + '%';
+  if(pct >= 80) document.getElementById('complete-banner').classList.add('show');
+}
+
+function tocClick(n){
+  document.querySelectorAll('.toc-item').forEach(t=>t.classList.remove('active'));
+  const el = document.getElementById('toc-s'+n);
+  if(el) el.classList.add('active');
+}
+
+function setupScrollSpy(){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const n = e.target.id.replace('s','');
+        document.querySelectorAll('.toc-item').forEach(t=>t.classList.remove('active'));
+        const toc = document.getElementById('toc-s'+n);
+        if(toc) toc.classList.add('active');
+      }
+    });
+  }, {threshold:0.3});
+  document.querySelectorAll('.section-block').forEach(s=>obs.observe(s));
+}
+
+load();
+setupScrollSpy();
+document.querySelectorAll('.reflect-box').forEach(el=>el.addEventListener('input', save));
 </script>
 </body>
 </html>
