@@ -53,6 +53,9 @@ body{display:flex;flex-direction:column}
 .reflect-prompt{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.4}
 .reflect-box{width:100%;min-height:100px;padding:12px;border:1px solid var(--accent-m);background:#fff;font-family:inherit;font-size:14px;line-height:1.6;color:var(--charcoal);resize:vertical}
 .reflect-box:focus{outline:none;border-color:var(--accent)}
+.checklist{list-style:none;margin:16px 0}
+.checklist li{padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start}
+.checklist li::before{content:"→";color:var(--accent);font-weight:900;flex-shrink:0}
 .next-module{background:var(--charcoal);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .nm-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
 .nm-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:#fff}
@@ -81,15 +84,15 @@ body{display:flex;flex-direction:column}
     <div class="toc-header">In This Module</div>
     <a class="toc-item" id="toc-s1" href="#s1" onclick="tocClick(1)">
       <div class="toc-num">01</div>
-      <div class="toc-text">The Core Problem</div>
+      <div class="toc-text">The Bad Data</div>
     </a>
     <a class="toc-item" id="toc-s2" href="#s2" onclick="tocClick(2)">
       <div class="toc-num">02</div>
-      <div class="toc-text">The Bad Data</div>
+      <div class="toc-text">Accountability Reframed</div>
     </a>
     <a class="toc-item" id="toc-s3" href="#s3" onclick="tocClick(3)">
       <div class="toc-num">03</div>
-      <div class="toc-text">The Reframe</div>
+      <div class="toc-text">The Primary Goal</div>
     </a>
     <a class="toc-item" id="toc-s4" href="#s4" onclick="tocClick(4)">
       <div class="toc-num">04</div>
@@ -100,7 +103,7 @@ body{display:flex;flex-direction:column}
     <div class="mod-header">
       <div class="mod-eyebrow">Module 01 of 06 — Mum 180</div>
       <h1 class="mod-title">The Lie You<br>Were Told</h1>
-      <p class="mod-subtitle">The bad data running your exhaustion. Your life stops and you become accountable solely to the child. Noble idea. Not true.</p>
+      <p class="mod-subtitle">The accountability reframe. The single piece of bad data that is running your exhaustion — and why it is not true.</p>
       <div class="mod-meta">
         <div class="mod-meta-item">Time: <span>30–40 min</span></div>
         <div class="mod-meta-item">Sections: <span>4</span></div>
@@ -109,39 +112,37 @@ body{display:flex;flex-direction:column}
     <div class="content-body">
       <div class="section-block" id="s1">
         <div class="section-label">Section 1</div>
-        <div class="section-title">The Core Problem</div>
-        <p class="body-text">The core problem is that they are so low energy, they're so busy, they feel like they're getting nothing done. They can barely look after themselves, let alone anyone else — they can't even enjoy the experience of being a mum because they're stuck in the loop of doing the absolute basics.</p>
-        <p class="body-text">The gap is the intention and the expectation versus what they're actually capable of delivering on, given their capacity.</p>
-        
+        <div class="section-title">The Bad Data</div>
+        <p class="body-text">From the moment you became a mum, you were handed a story. It sounded noble. It felt right. And it has been quietly running your life ever since.</p><p class="body-text">The story goes like this: <strong>when you become a mother, your life stops and you become accountable for your child.</strong></p><p class="body-text">You absorbed it from your own parents. From the culture. From every message about what a "good mum" looks like. And the reason it feels so right is that it sounds like love. Sacrifice. Devotion.</p><p class="body-text">But it is not true. And the gap between that story and reality is where your exhaustion lives.</p><div class="pullquote"><div class="pq-text">You cannot be accountable for another human being. You simply can't.</div></div>
       </div>
       <div class="section-block" id="s2">
         <div class="section-label">Section 2</div>
-        <div class="section-title">The Bad Data</div>
-        <p class="body-text">This all stems from the core problem, which is bad data — your life stops and you become accountable solely to the child. And while this is a noble idea, it's not true fundamentally.</p>
-        <div class="pullquote"><div class="pq-text">You cannot be accountable for another human being. You simply can't. And no other human being can be accountable for you. If it was true, we wouldn't have absent parents.</div></div><p class="body-text">So why aren't you taking care of yourself? Because you bought into this bad data.</p>
-        
+        <div class="section-title">Accountability Reframed</div>
+        <p class="body-text">Think about what accountability actually means. It means you are responsible for an outcome. You control it. If it goes wrong, it is on you.</p><p class="body-text">Now apply that to another human being. A person with their own mind, their own choices, their own life. Can you actually be accountable for that? No. You cannot.</p><p class="body-text">If it were true that you are accountable for your child, absent parents would not exist. A parent who leaves would simply be... taking their accountability with them, like a bag they packed. The child would be fine.</p><p class="body-text">That is obviously not how it works. Because the child is not the accountability. <strong>The commitment is the accountability.</strong></p><ul class="checklist"><li>You cannot control another person's thoughts, choices, or outcomes</li>
+<li>What you ARE accountable for is the commitment you made</li>
+<li>The commitment: to keep them safe, raise them well, and prepare them</li>
+<li>That commitment does not require you to disappear</li></ul>
       </div>
       <div class="section-block" id="s3">
         <div class="section-label">Section 3</div>
-        <div class="section-title">The Reframe</div>
-        <p class="body-text">What you ARE accountable for is the commitment that you made to raising the child, the commitment to their health and wellbeing, and to the responsibility of delivering on the primary goal and responsibility of a parent — which is to prepare the child for the expectations of the adult world and give them enough tools to be able to deal with the challenges in the interim when they get there.</p>
-        <div class="pullquote"><div class="pq-text">Very difficult to offer that guidance and support when you can't demonstrate it competently or consistently in your own life.</div></div>
+        <div class="section-title">The Primary Goal</div>
+        <p class="body-text">Here is what the commitment actually asks of you.</p><div class="pullquote"><div class="pq-text">The primary role of a parent is to prepare the child for the expectations of the adult world and give them enough tools to deal with the challenges when they get there.</div></div><p class="body-text">That is it. That is the job.</p><p class="body-text">Now ask yourself: how do you prepare someone for the adult world? By modelling it. By demonstrating what it looks like to look after yourself, set standards, maintain your identity, and function as a whole person.</p><p class="body-text">You cannot teach what you are not demonstrating. A mum who has lost herself entirely is not modelling the adult world. She is modelling disappearance.</p><p class="body-text">Taking care of yourself is not in conflict with the commitment. It is required by it.</p>
       </div>
       <div class="section-block" id="s4">
         <div class="section-label">Section 4</div>
         <div class="section-title">Reflection</div>
         <div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Where did the idea come from that becoming a mum meant your life had to stop? When did you first take that on?</div>
-          <textarea class="reflect-box" id="r1" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">What story have you been telling yourself about what being a good mum means? Where do you think it came from?</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">In your own words — what is the commitment you actually made? Not the story. The real commitment.</div>
-          <textarea class="reflect-box" id="r2" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">In your own words: what is the commitment you actually made? Not the story — the real commitment.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
           <div class="reflect-prompt">What is one thing you have stopped doing for yourself since becoming a mum that you used to value?</div>
-          <textarea class="reflect-box" id="r3" placeholder="Write your thoughts here…"></textarea>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 
@@ -154,39 +155,37 @@ body{display:flex;flex-direction:column}
 </div>
       <div class="section-block" id="s1">
         <div class="section-label">Section 1</div>
-        <div class="section-title">The Core Problem</div>
-        <p class="body-text">The core problem is that they are so low energy, they're so busy, they feel like they're getting nothing done. They can barely look after themselves, let alone anyone else — they can't even enjoy the experience of being a mum because they're stuck in the loop of doing the absolute basics.</p>
-        <p class="body-text">The gap is the intention and the expectation versus what they're actually capable of delivering on, given their capacity.</p>
-        
+        <div class="section-title">The Bad Data</div>
+        <p class="body-text">From the moment you became a mum, you were handed a story. It sounded noble. It felt right. And it has been quietly running your life ever since.</p><p class="body-text">The story goes like this: <strong>when you become a mother, your life stops and you become accountable for your child.</strong></p><p class="body-text">You absorbed it from your own parents. From the culture. From every message about what a "good mum" looks like. And the reason it feels so right is that it sounds like love. Sacrifice. Devotion.</p><p class="body-text">But it is not true. And the gap between that story and reality is where your exhaustion lives.</p><div class="pullquote"><div class="pq-text">You cannot be accountable for another human being. You simply can't.</div></div>
       </div>
       <div class="section-block" id="s2">
         <div class="section-label">Section 2</div>
-        <div class="section-title">The Bad Data</div>
-        <p class="body-text">This all stems from the core problem, which is bad data — your life stops and you become accountable solely to the child. And while this is a noble idea, it's not true fundamentally.</p>
-        <div class="pullquote"><div class="pq-text">You cannot be accountable for another human being. You simply can't. And no other human being can be accountable for you. If it was true, we wouldn't have absent parents.</div></div><p class="body-text">So why aren't you taking care of yourself? Because you bought into this bad data.</p>
-        
+        <div class="section-title">Accountability Reframed</div>
+        <p class="body-text">Think about what accountability actually means. It means you are responsible for an outcome. You control it. If it goes wrong, it is on you.</p><p class="body-text">Now apply that to another human being. A person with their own mind, their own choices, their own life. Can you actually be accountable for that? No. You cannot.</p><p class="body-text">If it were true that you are accountable for your child, absent parents would not exist. A parent who leaves would simply be... taking their accountability with them, like a bag they packed. The child would be fine.</p><p class="body-text">That is obviously not how it works. Because the child is not the accountability. <strong>The commitment is the accountability.</strong></p><ul class="checklist"><li>You cannot control another person's thoughts, choices, or outcomes</li>
+<li>What you ARE accountable for is the commitment you made</li>
+<li>The commitment: to keep them safe, raise them well, and prepare them</li>
+<li>That commitment does not require you to disappear</li></ul>
       </div>
       <div class="section-block" id="s3">
         <div class="section-label">Section 3</div>
-        <div class="section-title">The Reframe</div>
-        <p class="body-text">What you ARE accountable for is the commitment that you made to raising the child, the commitment to their health and wellbeing, and to the responsibility of delivering on the primary goal and responsibility of a parent — which is to prepare the child for the expectations of the adult world and give them enough tools to be able to deal with the challenges in the interim when they get there.</p>
-        <div class="pullquote"><div class="pq-text">Very difficult to offer that guidance and support when you can't demonstrate it competently or consistently in your own life.</div></div>
+        <div class="section-title">The Primary Goal</div>
+        <p class="body-text">Here is what the commitment actually asks of you.</p><div class="pullquote"><div class="pq-text">The primary role of a parent is to prepare the child for the expectations of the adult world and give them enough tools to deal with the challenges when they get there.</div></div><p class="body-text">That is it. That is the job.</p><p class="body-text">Now ask yourself: how do you prepare someone for the adult world? By modelling it. By demonstrating what it looks like to look after yourself, set standards, maintain your identity, and function as a whole person.</p><p class="body-text">You cannot teach what you are not demonstrating. A mum who has lost herself entirely is not modelling the adult world. She is modelling disappearance.</p><p class="body-text">Taking care of yourself is not in conflict with the commitment. It is required by it.</p>
       </div>
       <div class="section-block" id="s4">
         <div class="section-label">Section 4</div>
         <div class="section-title">Reflection</div>
         <div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Where did the idea come from that becoming a mum meant your life had to stop? When did you first take that on?</div>
-          <textarea class="reflect-box" id="r1" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">What story have you been telling yourself about what being a good mum means? Where do you think it came from?</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">In your own words — what is the commitment you actually made? Not the story. The real commitment.</div>
-          <textarea class="reflect-box" id="r2" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">In your own words: what is the commitment you actually made? Not the story — the real commitment.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
           <div class="reflect-prompt">What is one thing you have stopped doing for yourself since becoming a mum that you used to value?</div>
-          <textarea class="reflect-box" id="r3" placeholder="Write your thoughts here…"></textarea>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 <script>
@@ -213,7 +212,7 @@ let saveTimer;
 function save(){
   clearTimeout(saveTimer);
   saveTimer = setTimeout(()=>{
-    const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+    const d = {};
     document.querySelectorAll('.reflect-box').forEach(el => { d[el.id] = el.value; });
     localStorage.setItem(KEY, JSON.stringify(d));
     calcProgress();
@@ -232,6 +231,11 @@ function calcProgress(){
   const boxes = document.querySelectorAll('.reflect-box');
   const filled = [...boxes].filter(el => d[el.id] && d[el.id].trim().length > 10).length;
   const pct = boxes.length > 0 ? Math.min(100, Math.round((filled/boxes.length)*100)) : 0;
+  // Save to portal progress object
+  const prog = JSON.parse(localStorage.getItem('m180_progress')||'{}');
+  prog['mod'+MOD] = pct;
+  localStorage.setItem('m180_progress', JSON.stringify(prog));
+  // Also update unified module key for portal to read
   const modData = JSON.parse(localStorage.getItem(KEY)||'{}');
   modData.progress = pct;
   localStorage.setItem(KEY, JSON.stringify(modData));

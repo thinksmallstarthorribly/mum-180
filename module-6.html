@@ -53,6 +53,9 @@ body{display:flex;flex-direction:column}
 .reflect-prompt{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.4}
 .reflect-box{width:100%;min-height:100px;padding:12px;border:1px solid var(--accent-m);background:#fff;font-family:inherit;font-size:14px;line-height:1.6;color:var(--charcoal);resize:vertical}
 .reflect-box:focus{outline:none;border-color:var(--accent)}
+.checklist{list-style:none;margin:16px 0}
+.checklist li{padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start}
+.checklist li::before{content:"→";color:var(--accent);font-weight:900;flex-shrink:0}
 .next-module{background:var(--charcoal);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .nm-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
 .nm-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:#fff}
@@ -89,72 +92,75 @@ body{display:flex;flex-direction:column}
     </a>
     <a class="toc-item" id="toc-s3" href="#s3" onclick="tocClick(3)">
       <div class="toc-num">03</div>
-      <div class="toc-text">There Is a Rulebook</div>
+      <div class="toc-text">The Rulebook</div>
     </a>
     <a class="toc-item" id="toc-s4" href="#s4" onclick="tocClick(4)">
       <div class="toc-num">04</div>
       <div class="toc-text">Act Accordingly</div>
+    </a>
+    <a class="toc-item" id="toc-s5" href="#s5" onclick="tocClick(5)">
+      <div class="toc-num">05</div>
+      <div class="toc-text">Reflection</div>
     </a>
   </nav>
   <div class="content-area">
     <div class="mod-header">
       <div class="mod-eyebrow">Module 06 of 06 — Mum 180</div>
       <h1 class="mod-title">What<br>Now</h1>
-      <p class="mod-subtitle">Accept your current reality. Change how you think and speak about yourself. You must then act accordingly.</p>
+      <p class="mod-subtitle">The prescription. Accept your reality. Change your self-talk. Act accordingly. This is where it all becomes real.</p>
       <div class="mod-meta">
         <div class="mod-meta-item">Time: <span>40–50 min</span></div>
-        <div class="mod-meta-item">Sections: <span>4</span></div>
+        <div class="mod-meta-item">Sections: <span>5</span></div>
       </div>
     </div>
     <div class="content-body">
       <div class="section-block" id="s1">
         <div class="section-label">Section 1</div>
         <div class="section-title">Accept Your Current Reality</div>
-        <p class="body-text">You must accept the current circumstances of your life, honestly, in order to make meaningful change and progress.</p>
-        <p class="body-text">Am I saying it's going to be easy? No. Likely it's going to be quite difficult because it's going to create some emotional event.</p>
-        <div class="pullquote"><div class="pq-text">Emotional events are required to create lasting behavioural change. If you are serious about changing your behaviours, then you must start with yourself, your current circumstances, and some honesty.</div></div><p class="body-text">You're not perfect. There we go. We said it out loud. You are not perfect, and that is not unique to you. You're a human being, and on some days we feel far more human than we would like. All of us, at some point, need help. There's no reason to persist with something when it's clearly not working.</p>
-        <div class="reflect-block">
+        <p class="body-text">This is Rule One. You cannot make meaningful change from a position of denial.</p><p class="body-text">You must accept the current circumstances of your life — honestly, clearly, without softening them. Not to wallow. Not to punish yourself. But because you cannot change what you will not acknowledge.</p><p class="body-text">That acceptance is going to create an emotional event. It is supposed to. Emotional events are not problems to be avoided — they are the mechanism of real change.</p><div class="pullquote"><div class="pq-text">Emotional events are required to create lasting behavioural change.</div></div><p class="body-text">You are not perfect. We said it out loud. You are not perfect, and that is not unique to you. You are a human being. On some days, we feel far more human than we would like. All of us — at some point — need help.</p><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Write an honest assessment of where you are right now. No judgment. No softening. Just the truth.</div>
-          <textarea class="reflect-box" id="r1" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">Write an honest assessment of where you are right now. No judgment. No softening. Just the truth of your current situation.</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
       <div class="section-block" id="s2">
         <div class="section-label">Section 2</div>
         <div class="section-title">Change How You Talk to Yourself</div>
-        <p class="body-text">You must be able to handle the tension of having that conversation with yourself and get comfortable with recognising yourself as a person that requires care, love, and attention — in order to then give it to others.</p>
-        <p class="body-text">You're going to have to change the way that you think about yourself. You're going to have to change the way that you speak about yourself. You are the person that you communicate with the most, and the things that you think about the most will express themselves in your actions, behaviours, and inevitably the results you see.</p>
-        <p class="body-text">If the results you're seeing in your role as a parent in your adult life are not the ones you want to see, then it is up to you to change that.</p>
-        <div class="reflect-block">
+        <p class="body-text">You are the person you communicate with the most. Every day, thousands of thoughts. A running commentary on what you are doing, how you are doing it, whether you are doing it right.</p><p class="body-text">Most of that commentary was written a long time ago, by circumstances and experiences and people who were not careful with you. It is running on autopilot.</p><p class="body-text">The things you think about the most will express themselves in your actions, behaviours, and the results you see. If the dominant internal narrative is one of inadequacy, that will leak.</p><ul class="checklist"><li>You must change the way you think about yourself</li>
+<li>You must change the way you speak about yourself — to yourself and to others</li>
+<li>This is not positive thinking — it is accuracy</li>
+<li>You are more capable than the story you have been telling</li>
+<li>The story is not permanent. It is not fact. It is a habit.</li></ul><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What does your internal commentary say about you as a mum? Write it down — the actual words. Then write what is actually true.</div>
-          <textarea class="reflect-box" id="r2" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">What does your internal commentary say about you as a mum? Write it down — the actual words, even if they are harsh. Then write what is actually true.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
       <div class="section-block" id="s3">
         <div class="section-label">Section 3</div>
         <div class="section-title">There Is a Rulebook</div>
-        <p class="body-text">There is bad data out there. We hear things like: there's no rulebook on life, there's no rulebook on being a parent.</p>
-        <div class="pullquote"><div class="pq-text">Bullshit. It's called a library. And we have them now in our pocket, in a little glowing rectangle that's connected to the internet.</div></div><p class="body-text">There are fundamentally core principles around parenting that are not unique to any particular person or the detail of their life. Your primary role as a parent is to prepare that child for the expectations of the adult world and give them enough tools to be able to deal with the preliminary challenges when they get there. You need to be able to demonstrate competency in that role to ensure that outcome.</p>
-        
+        <p class="body-text">One last piece of bad data to dismantle: the idea that there is no rulebook on parenting.</p><p class="body-text">It is a common thing people say. <em>Every child is different. There is no manual. You just figure it out as you go.</em></p><p class="body-text">That is not quite right. There are fundamental principles of parenting — of human development, of attachment, of self-regulation — that apply regardless of the specific child or the specific circumstances.</p><div class="pullquote"><div class="pq-text">"There's no rulebook on being a parent." Bullshit. It's called a library — and we have them now in our pocket.</div></div><p class="body-text">The information is there. The guidance is there. You are not figuring this out alone in the dark. You have access to more knowledge about human development and parenting than any generation before you.</p><p class="body-text">The gap is not information. The gap is you applying what you know to yourself first.</p>
       </div>
       <div class="section-block" id="s4">
         <div class="section-label">Section 4</div>
-        <div class="section-title">Act Accordingly</div>
-        <p class="body-text">Easy to understand can be complicated, most often is. Luckily, that's why we're here — to offer some guidance and support along the way.</p>
-        <p class="body-text">You must then act accordingly.</p>
+        <div class="section-title">You Must Then Act Accordingly</div>
+        <p class="body-text">Everything in this course has been building to one simple instruction.</p><p class="body-text">You now understand the bad data. You know the G&S loop. You have permission to put the mask on first. You know the trap of away thinking. You have seen Michelle in the mirror. You have accepted your current reality and started to examine how you speak to yourself.</p><p class="body-text">Now act accordingly.</p><p class="body-text">Not tomorrow. Not when things calm down. Not when you feel ready. The readiness does not come first. You already know that.</p><div class="pullquote"><div class="pq-text">Easy to understand. Complicated to do. That is why we are here — to offer guidance along the way.</div></div><p class="body-text">The course is a beginning, not an end. Keep doing the mirror exercise. Keep updating the story. Keep noticing the G&S loop when it shows up and naming it for what it is — bad data — instead of truth.</p>
+      </div>
+      <div class="section-block" id="s5">
+        <div class="section-label">Section 5</div>
+        <div class="section-title">Final Reflection</div>
         <div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What is the most important thing this course has shifted for you — even slightly?</div>
-          <textarea class="reflect-box" id="r3" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">What is the most important thing this course has shifted for you? Even slightly. What has changed?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
           <div class="reflect-prompt">What is the one commitment you are making to yourself coming out of this programme? Make it specific.</div>
-          <textarea class="reflect-box" id="r4" placeholder="Write your thoughts here…"></textarea>
+          <textarea class="reflect-box" id="r4" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
           <div class="reflect-prompt">Write a message to yourself — to the version of you who shows up in the mirror. What do you want to say to her?</div>
-          <textarea class="reflect-box" id="r5" placeholder="Write your thoughts here…"></textarea>
+          <textarea class="reflect-box" id="r5" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 
@@ -168,51 +174,50 @@ body{display:flex;flex-direction:column}
       <div class="section-block" id="s1">
         <div class="section-label">Section 1</div>
         <div class="section-title">Accept Your Current Reality</div>
-        <p class="body-text">You must accept the current circumstances of your life, honestly, in order to make meaningful change and progress.</p>
-        <p class="body-text">Am I saying it's going to be easy? No. Likely it's going to be quite difficult because it's going to create some emotional event.</p>
-        <div class="pullquote"><div class="pq-text">Emotional events are required to create lasting behavioural change. If you are serious about changing your behaviours, then you must start with yourself, your current circumstances, and some honesty.</div></div><p class="body-text">You're not perfect. There we go. We said it out loud. You are not perfect, and that is not unique to you. You're a human being, and on some days we feel far more human than we would like. All of us, at some point, need help. There's no reason to persist with something when it's clearly not working.</p>
-        <div class="reflect-block">
+        <p class="body-text">This is Rule One. You cannot make meaningful change from a position of denial.</p><p class="body-text">You must accept the current circumstances of your life — honestly, clearly, without softening them. Not to wallow. Not to punish yourself. But because you cannot change what you will not acknowledge.</p><p class="body-text">That acceptance is going to create an emotional event. It is supposed to. Emotional events are not problems to be avoided — they are the mechanism of real change.</p><div class="pullquote"><div class="pq-text">Emotional events are required to create lasting behavioural change.</div></div><p class="body-text">You are not perfect. We said it out loud. You are not perfect, and that is not unique to you. You are a human being. On some days, we feel far more human than we would like. All of us — at some point — need help.</p><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Write an honest assessment of where you are right now. No judgment. No softening. Just the truth.</div>
-          <textarea class="reflect-box" id="r1" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">Write an honest assessment of where you are right now. No judgment. No softening. Just the truth of your current situation.</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
       <div class="section-block" id="s2">
         <div class="section-label">Section 2</div>
         <div class="section-title">Change How You Talk to Yourself</div>
-        <p class="body-text">You must be able to handle the tension of having that conversation with yourself and get comfortable with recognising yourself as a person that requires care, love, and attention — in order to then give it to others.</p>
-        <p class="body-text">You're going to have to change the way that you think about yourself. You're going to have to change the way that you speak about yourself. You are the person that you communicate with the most, and the things that you think about the most will express themselves in your actions, behaviours, and inevitably the results you see.</p>
-        <p class="body-text">If the results you're seeing in your role as a parent in your adult life are not the ones you want to see, then it is up to you to change that.</p>
-        <div class="reflect-block">
+        <p class="body-text">You are the person you communicate with the most. Every day, thousands of thoughts. A running commentary on what you are doing, how you are doing it, whether you are doing it right.</p><p class="body-text">Most of that commentary was written a long time ago, by circumstances and experiences and people who were not careful with you. It is running on autopilot.</p><p class="body-text">The things you think about the most will express themselves in your actions, behaviours, and the results you see. If the dominant internal narrative is one of inadequacy, that will leak.</p><ul class="checklist"><li>You must change the way you think about yourself</li>
+<li>You must change the way you speak about yourself — to yourself and to others</li>
+<li>This is not positive thinking — it is accuracy</li>
+<li>You are more capable than the story you have been telling</li>
+<li>The story is not permanent. It is not fact. It is a habit.</li></ul><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What does your internal commentary say about you as a mum? Write it down — the actual words. Then write what is actually true.</div>
-          <textarea class="reflect-box" id="r2" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">What does your internal commentary say about you as a mum? Write it down — the actual words, even if they are harsh. Then write what is actually true.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
       <div class="section-block" id="s3">
         <div class="section-label">Section 3</div>
         <div class="section-title">There Is a Rulebook</div>
-        <p class="body-text">There is bad data out there. We hear things like: there's no rulebook on life, there's no rulebook on being a parent.</p>
-        <div class="pullquote"><div class="pq-text">Bullshit. It's called a library. And we have them now in our pocket, in a little glowing rectangle that's connected to the internet.</div></div><p class="body-text">There are fundamentally core principles around parenting that are not unique to any particular person or the detail of their life. Your primary role as a parent is to prepare that child for the expectations of the adult world and give them enough tools to be able to deal with the preliminary challenges when they get there. You need to be able to demonstrate competency in that role to ensure that outcome.</p>
-        
+        <p class="body-text">One last piece of bad data to dismantle: the idea that there is no rulebook on parenting.</p><p class="body-text">It is a common thing people say. <em>Every child is different. There is no manual. You just figure it out as you go.</em></p><p class="body-text">That is not quite right. There are fundamental principles of parenting — of human development, of attachment, of self-regulation — that apply regardless of the specific child or the specific circumstances.</p><div class="pullquote"><div class="pq-text">"There's no rulebook on being a parent." Bullshit. It's called a library — and we have them now in our pocket.</div></div><p class="body-text">The information is there. The guidance is there. You are not figuring this out alone in the dark. You have access to more knowledge about human development and parenting than any generation before you.</p><p class="body-text">The gap is not information. The gap is you applying what you know to yourself first.</p>
       </div>
       <div class="section-block" id="s4">
         <div class="section-label">Section 4</div>
-        <div class="section-title">Act Accordingly</div>
-        <p class="body-text">Easy to understand can be complicated, most often is. Luckily, that's why we're here — to offer some guidance and support along the way.</p>
-        <p class="body-text">You must then act accordingly.</p>
+        <div class="section-title">You Must Then Act Accordingly</div>
+        <p class="body-text">Everything in this course has been building to one simple instruction.</p><p class="body-text">You now understand the bad data. You know the G&S loop. You have permission to put the mask on first. You know the trap of away thinking. You have seen Michelle in the mirror. You have accepted your current reality and started to examine how you speak to yourself.</p><p class="body-text">Now act accordingly.</p><p class="body-text">Not tomorrow. Not when things calm down. Not when you feel ready. The readiness does not come first. You already know that.</p><div class="pullquote"><div class="pq-text">Easy to understand. Complicated to do. That is why we are here — to offer guidance along the way.</div></div><p class="body-text">The course is a beginning, not an end. Keep doing the mirror exercise. Keep updating the story. Keep noticing the G&S loop when it shows up and naming it for what it is — bad data — instead of truth.</p>
+      </div>
+      <div class="section-block" id="s5">
+        <div class="section-label">Section 5</div>
+        <div class="section-title">Final Reflection</div>
         <div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What is the most important thing this course has shifted for you — even slightly?</div>
-          <textarea class="reflect-box" id="r3" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">What is the most important thing this course has shifted for you? Even slightly. What has changed?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
           <div class="reflect-prompt">What is the one commitment you are making to yourself coming out of this programme? Make it specific.</div>
-          <textarea class="reflect-box" id="r4" placeholder="Write your thoughts here…"></textarea>
+          <textarea class="reflect-box" id="r4" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
           <div class="reflect-prompt">Write a message to yourself — to the version of you who shows up in the mirror. What do you want to say to her?</div>
-          <textarea class="reflect-box" id="r5" placeholder="Write your thoughts here…"></textarea>
+          <textarea class="reflect-box" id="r5" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 <script>
@@ -239,7 +244,7 @@ let saveTimer;
 function save(){
   clearTimeout(saveTimer);
   saveTimer = setTimeout(()=>{
-    const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+    const d = {};
     document.querySelectorAll('.reflect-box').forEach(el => { d[el.id] = el.value; });
     localStorage.setItem(KEY, JSON.stringify(d));
     calcProgress();
@@ -258,6 +263,11 @@ function calcProgress(){
   const boxes = document.querySelectorAll('.reflect-box');
   const filled = [...boxes].filter(el => d[el.id] && d[el.id].trim().length > 10).length;
   const pct = boxes.length > 0 ? Math.min(100, Math.round((filled/boxes.length)*100)) : 0;
+  // Save to portal progress object
+  const prog = JSON.parse(localStorage.getItem('m180_progress')||'{}');
+  prog['mod'+MOD] = pct;
+  localStorage.setItem('m180_progress', JSON.stringify(prog));
+  // Also update unified module key for portal to read
   const modData = JSON.parse(localStorage.getItem(KEY)||'{}');
   modData.progress = pct;
   localStorage.setItem(KEY, JSON.stringify(modData));

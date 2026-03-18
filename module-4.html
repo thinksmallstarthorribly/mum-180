@@ -53,6 +53,9 @@ body{display:flex;flex-direction:column}
 .reflect-prompt{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.4}
 .reflect-box{width:100%;min-height:100px;padding:12px;border:1px solid var(--accent-m);background:#fff;font-family:inherit;font-size:14px;line-height:1.6;color:var(--charcoal);resize:vertical}
 .reflect-box:focus{outline:none;border-color:var(--accent)}
+.checklist{list-style:none;margin:16px 0}
+.checklist li{padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start}
+.checklist li::before{content:"→";color:var(--accent);font-weight:900;flex-shrink:0}
 .next-module{background:var(--charcoal);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .nm-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
 .nm-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:#fff}
@@ -81,7 +84,7 @@ body{display:flex;flex-direction:column}
     <div class="toc-header">In This Module</div>
     <a class="toc-item" id="toc-s1" href="#s1" onclick="tocClick(1)">
       <div class="toc-num">01</div>
-      <div class="toc-text">Towards and Away</div>
+      <div class="toc-text">Towards & Away</div>
     </a>
     <a class="toc-item" id="toc-s2" href="#s2" onclick="tocClick(2)">
       <div class="toc-num">02</div>
@@ -89,6 +92,10 @@ body{display:flex;flex-direction:column}
     </a>
     <a class="toc-item" id="toc-s3" href="#s3" onclick="tocClick(3)">
       <div class="toc-num">03</div>
+      <div class="toc-text">What to Focus On Instead</div>
+    </a>
+    <a class="toc-item" id="toc-s4" href="#s4" onclick="tocClick(4)">
+      <div class="toc-num">04</div>
       <div class="toc-text">Reflection</div>
     </a>
   </nav>
@@ -96,41 +103,50 @@ body{display:flex;flex-direction:column}
     <div class="mod-header">
       <div class="mod-eyebrow">Module 04 of 06 — Mum 180</div>
       <h1 class="mod-title">The Trap You<br>Set for Yourself</h1>
-      <p class="mod-subtitle">Towards and away thinking. Why trying not to be a bad mum might be making you one.</p>
+      <p class="mod-subtitle">Towards and away thinking. Why trying not to be a bad mum might be making you one — and how to redirect.</p>
       <div class="mod-meta">
         <div class="mod-meta-item">Time: <span>30–40 min</span></div>
-        <div class="mod-meta-item">Sections: <span>3</span></div>
+        <div class="mod-meta-item">Sections: <span>4</span></div>
       </div>
     </div>
     <div class="content-body">
       <div class="section-block" id="s1">
         <div class="section-label">Section 1</div>
         <div class="section-title">Towards and Away</div>
-        <p class="body-text">Mothers are either trying to move towards the idea of what they think a good mother is — or they're moving away from the opposite, where they've had a poor experience with their own mother, and now they're moving away from that.</p>
-        <div class="pullquote"><div class="pq-text">The things you think about the most will express themselves in your thoughts, actions and behaviours.</div></div>
+        <p class="body-text">There are two directions you can move in your mind. Towards something — a goal, an image, a version of yourself you want to become. Or away from something — a fear, a failure, an experience you do not want to repeat.</p><p class="body-text">Both can motivate. But they create very different results over time.</p><p class="body-text">Most mothers are moving in one of two directions. Either towards a positive image of the mum they want to be — someone they admired, an ideal, a feeling. Or away from a bad experience with their own mother, determined not to repeat it.</p><div class="pullquote"><div class="pq-text">The direction you are moving in determines what you are thinking about most.</div></div>
       </div>
       <div class="section-block" id="s2">
         <div class="section-label">Section 2</div>
         <div class="section-title">The Paradox</div>
-        <p class="body-text">Primary and secondary goal setting, mixed with this towards and away thinking, creates a paradox where the focus is so much on not becoming the bad mother that you fall into the trap.</p>
-        <p class="body-text">The things you think about the most are the poor behaviours. And if that's what you're focused on — unfortunately that starts to leak out.</p>
-        <div class="pullquote"><div class="pq-text">And again, it creates that guilty loop and the selfish loop.</div></div><div class="reflect-block">
+        <p class="body-text">Here is where it gets dangerous. If you are moving away from your own mother — away from her failures, her neglect, her anger, whatever it was — what are you thinking about constantly?</p><p class="body-text">Her. The failures. The neglect. The anger.</p><p class="body-text">You are focused on the behaviours you are trying to avoid. And here is what the brain does with that: it prepares you for them. It runs simulations of them. It looks for them in every situation.</p><p class="body-text"><strong>The things you think about most will express themselves in your actions, behaviours, and eventually your results.</strong></p><p class="body-text">This is the trap. You are so focused on not becoming the bad mother that you are thinking about the bad mother constantly. And that thinking starts to leak.</p><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Are you moving towards something or away from something? Be honest — what is the thing you are actually focused on most?</div>
-          <textarea class="reflect-box" id="r1" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">Are you moving towards something or away from something? Be honest. What is it that you are actually focused on?</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
       <div class="section-block" id="s3">
         <div class="section-label">Section 3</div>
+        <div class="section-title">What to Focus On Instead</div>
+        <p class="body-text">The solution is not to try harder to not think about it. That does not work. What works is replacing the focus entirely.</p><p class="body-text">Instead of away from what you do not want — move towards what you do want. Not as an image you are chasing, but as a decision you are making every day.</p><p class="body-text">What kind of mum do you want to be? Not compared to anyone else. Not as a performance. What does it actually look like to show up well — for yourself, and for your children?</p><ul class="checklist"><li>Define what you are moving towards, not what you are running from</li>
+<li>Your focus determines your thoughts — your thoughts determine your actions</li>
+<li>You cannot escape a fear by concentrating on it</li>
+<li>Replace the away goal with a towards goal and your mind shifts accordingly</li></ul><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">Describe the mum you want to be. Not the one you are afraid of becoming. The one you are choosing to be.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div>
+      </div>
+      <div class="section-block" id="s4">
+        <div class="section-label">Section 4</div>
         <div class="section-title">Reflection</div>
         <div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Describe the mum you want to be — not the one you're afraid of becoming. The one you are choosing to be.</div>
-          <textarea class="reflect-box" id="r2" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">What is the primary thought pattern that occupies your mind when you are struggling as a mum? Is it towards something or away from something?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What would change if you shifted from an away focus to a towards focus? What would you think about differently?</div>
-          <textarea class="reflect-box" id="r3" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">If you shifted entirely to a towards focus, what would change? What would you think about instead?</div>
+          <textarea class="reflect-box" id="r4" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 
@@ -144,31 +160,40 @@ body{display:flex;flex-direction:column}
       <div class="section-block" id="s1">
         <div class="section-label">Section 1</div>
         <div class="section-title">Towards and Away</div>
-        <p class="body-text">Mothers are either trying to move towards the idea of what they think a good mother is — or they're moving away from the opposite, where they've had a poor experience with their own mother, and now they're moving away from that.</p>
-        <div class="pullquote"><div class="pq-text">The things you think about the most will express themselves in your thoughts, actions and behaviours.</div></div>
+        <p class="body-text">There are two directions you can move in your mind. Towards something — a goal, an image, a version of yourself you want to become. Or away from something — a fear, a failure, an experience you do not want to repeat.</p><p class="body-text">Both can motivate. But they create very different results over time.</p><p class="body-text">Most mothers are moving in one of two directions. Either towards a positive image of the mum they want to be — someone they admired, an ideal, a feeling. Or away from a bad experience with their own mother, determined not to repeat it.</p><div class="pullquote"><div class="pq-text">The direction you are moving in determines what you are thinking about most.</div></div>
       </div>
       <div class="section-block" id="s2">
         <div class="section-label">Section 2</div>
         <div class="section-title">The Paradox</div>
-        <p class="body-text">Primary and secondary goal setting, mixed with this towards and away thinking, creates a paradox where the focus is so much on not becoming the bad mother that you fall into the trap.</p>
-        <p class="body-text">The things you think about the most are the poor behaviours. And if that's what you're focused on — unfortunately that starts to leak out.</p>
-        <div class="pullquote"><div class="pq-text">And again, it creates that guilty loop and the selfish loop.</div></div><div class="reflect-block">
+        <p class="body-text">Here is where it gets dangerous. If you are moving away from your own mother — away from her failures, her neglect, her anger, whatever it was — what are you thinking about constantly?</p><p class="body-text">Her. The failures. The neglect. The anger.</p><p class="body-text">You are focused on the behaviours you are trying to avoid. And here is what the brain does with that: it prepares you for them. It runs simulations of them. It looks for them in every situation.</p><p class="body-text"><strong>The things you think about most will express themselves in your actions, behaviours, and eventually your results.</strong></p><p class="body-text">This is the trap. You are so focused on not becoming the bad mother that you are thinking about the bad mother constantly. And that thinking starts to leak.</p><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Are you moving towards something or away from something? Be honest — what is the thing you are actually focused on most?</div>
-          <textarea class="reflect-box" id="r1" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">Are you moving towards something or away from something? Be honest. What is it that you are actually focused on?</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
       <div class="section-block" id="s3">
         <div class="section-label">Section 3</div>
+        <div class="section-title">What to Focus On Instead</div>
+        <p class="body-text">The solution is not to try harder to not think about it. That does not work. What works is replacing the focus entirely.</p><p class="body-text">Instead of away from what you do not want — move towards what you do want. Not as an image you are chasing, but as a decision you are making every day.</p><p class="body-text">What kind of mum do you want to be? Not compared to anyone else. Not as a performance. What does it actually look like to show up well — for yourself, and for your children?</p><ul class="checklist"><li>Define what you are moving towards, not what you are running from</li>
+<li>Your focus determines your thoughts — your thoughts determine your actions</li>
+<li>You cannot escape a fear by concentrating on it</li>
+<li>Replace the away goal with a towards goal and your mind shifts accordingly</li></ul><div class="reflect-block">
+          <div class="reflect-label">Reflection</div>
+          <div class="reflect-prompt">Describe the mum you want to be. Not the one you are afraid of becoming. The one you are choosing to be.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
+        </div>
+      </div>
+      <div class="section-block" id="s4">
+        <div class="section-label">Section 4</div>
         <div class="section-title">Reflection</div>
         <div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Describe the mum you want to be — not the one you're afraid of becoming. The one you are choosing to be.</div>
-          <textarea class="reflect-box" id="r2" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">What is the primary thought pattern that occupies your mind when you are struggling as a mum? Is it towards something or away from something?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What would change if you shifted from an away focus to a towards focus? What would you think about differently?</div>
-          <textarea class="reflect-box" id="r3" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">If you shifted entirely to a towards focus, what would change? What would you think about instead?</div>
+          <textarea class="reflect-box" id="r4" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 <script>
@@ -195,7 +220,7 @@ let saveTimer;
 function save(){
   clearTimeout(saveTimer);
   saveTimer = setTimeout(()=>{
-    const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+    const d = {};
     document.querySelectorAll('.reflect-box').forEach(el => { d[el.id] = el.value; });
     localStorage.setItem(KEY, JSON.stringify(d));
     calcProgress();
@@ -214,6 +239,11 @@ function calcProgress(){
   const boxes = document.querySelectorAll('.reflect-box');
   const filled = [...boxes].filter(el => d[el.id] && d[el.id].trim().length > 10).length;
   const pct = boxes.length > 0 ? Math.min(100, Math.round((filled/boxes.length)*100)) : 0;
+  // Save to portal progress object
+  const prog = JSON.parse(localStorage.getItem('m180_progress')||'{}');
+  prog['mod'+MOD] = pct;
+  localStorage.setItem('m180_progress', JSON.stringify(prog));
+  // Also update unified module key for portal to read
   const modData = JSON.parse(localStorage.getItem(KEY)||'{}');
   modData.progress = pct;
   localStorage.setItem(KEY, JSON.stringify(modData));

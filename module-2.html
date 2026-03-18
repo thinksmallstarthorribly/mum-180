@@ -53,6 +53,9 @@ body{display:flex;flex-direction:column}
 .reflect-prompt{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.4}
 .reflect-box{width:100%;min-height:100px;padding:12px;border:1px solid var(--accent-m);background:#fff;font-family:inherit;font-size:14px;line-height:1.6;color:var(--charcoal);resize:vertical}
 .reflect-box:focus{outline:none;border-color:var(--accent)}
+.checklist{list-style:none;margin:16px 0}
+.checklist li{padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start}
+.checklist li::before{content:"→";color:var(--accent);font-weight:900;flex-shrink:0}
 .next-module{background:var(--charcoal);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .nm-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
 .nm-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:#fff}
@@ -93,6 +96,10 @@ body{display:flex;flex-direction:column}
     </a>
     <a class="toc-item" id="toc-s4" href="#s4" onclick="tocClick(4)">
       <div class="toc-num">04</div>
+      <div class="toc-text">Breaking the Loop</div>
+    </a>
+    <a class="toc-item" id="toc-s5" href="#s5" onclick="tocClick(5)">
+      <div class="toc-num">05</div>
       <div class="toc-text">Reflection</div>
     </a>
   </nav>
@@ -100,54 +107,58 @@ body{display:flex;flex-direction:column}
     <div class="mod-header">
       <div class="mod-eyebrow">Module 02 of 06 — Mum 180</div>
       <h1 class="mod-title">Guilty &amp;<br>Selfish</h1>
-      <p class="mod-subtitle">The G&S loop. Why you feel guilty the moment you take time for yourself — and selfish the whole time you're doing it.</p>
+      <p class="mod-subtitle">The G&S loop. Why you feel guilty the moment you take time for yourself — and selfish the whole time you are doing it.</p>
       <div class="mod-meta">
         <div class="mod-meta-item">Time: <span>30–40 min</span></div>
-        <div class="mod-meta-item">Sections: <span>4</span></div>
+        <div class="mod-meta-item">Sections: <span>5</span></div>
       </div>
     </div>
     <div class="content-body">
       <div class="section-block" id="s1">
         <div class="section-label">Section 1</div>
         <div class="section-title">The Loop</div>
-        <p class="body-text">You sacrifice your own wellbeing for the child. You end up having no capacity to care for yourself and therefore can't deliver on your commitment. And now you're stuck in a loop.</p>
-        <p class="body-text">But it gets so bad that you need to take some time just for yourself to recharge your batteries. And how do you feel? Guilty. But you get to the point where you've got to do it anyway. And so you take a day for yourself. And the whole time you feel selfish.</p>
-        <div class="pullquote"><div class="pq-text">I'm not guessing. Hundreds of you have told me the same story over and over and over again.</div></div>
+        <p class="body-text">Here is the pattern. You have been living inside it so long you may not even recognise it as a pattern anymore. You just think this is what life feels like.</p><ul class="checklist"><li>You sacrifice your own wellbeing for your child</li>
+<li>You run out of capacity — emotionally, physically, mentally</li>
+<li>You reach a breaking point and take some time for yourself</li>
+<li>You feel <strong>guilty</strong></li>
+<li>You do it anyway because you have no choice</li>
+<li>The whole time, you feel <strong>selfish</strong></li>
+<li>You go back. The cycle starts again.</li></ul><p class="body-text">This is the G&S loop. Guilty and Selfish. And it is not a character flaw. It is a logical consequence of the bad data from Module 1.</p><div class="pullquote"><div class="pq-text">I'm not guessing. Hundreds of women have told me the same story over and over again.</div></div>
       </div>
       <div class="section-block" id="s2">
         <div class="section-label">Section 2</div>
         <div class="section-title">Capital G — Guilty</div>
-        <p class="body-text">I'm going to write two letters on the board. Capital G. Capital S.</p>
-        <p class="body-text">When you finally take some time for yourself — when you've run so low that you've got no choice — you feel guilty. Before you've even done it. The moment you consider it.</p>
-        <p class="body-text">The guilt feels like a moral signal. Like it's telling you something true about you. It's not. It's a conditioned response to bad data. The alarm is based on a lie.</p>
-        <div class="reflect-block">
+        <p class="body-text">The guilt arrives the moment you consider taking time for yourself.</p><p class="body-text">You have not done anything yet. You have had a thought. And already the guilt is there, loading up its arguments. <em>You should be with the kids. You do not have time for this. What kind of mother are you?</em></p><p class="body-text">The guilt feels like a moral signal — like it is telling you something important. It is not. It is a conditioned response. You were taught that taking time for yourself is at odds with being a good mother. So when you try to do it, the alarm goes off.</p><p class="body-text">The alarm is based on the bad data. The bad data is wrong. Which means the alarm is not telling you the truth.</p><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Describe the last time you felt guilty for taking time for yourself. What were the exact thoughts that came up?</div>
-          <textarea class="reflect-box" id="r1" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">Describe the last time you felt guilty for taking time for yourself. What were the thoughts that came up?</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
       <div class="section-block" id="s3">
         <div class="section-label">Section 3</div>
         <div class="section-title">Capital S — Selfish</div>
-        <p class="body-text">You do it anyway. Because you have to. And the whole time you're there — on your day off, your hour to yourself, your cup of coffee in silence — instead of actually resting, you're marinating in it.</p>
-        <p class="body-text">You feel selfish. The whole time. So you don't even get the recovery. You get the time but not the benefit of it, because you're spending it prosecuting yourself.</p>
-        <div class="pullquote"><div class="pq-text">You get the guilt going in. You get the selfishness the whole time. And you come back more depleted than when you left.</div></div><div class="reflect-block">
+        <p class="body-text">You do it anyway. Because you have to. Your battery is at zero and you know it.</p><p class="body-text">And now you are on your day off, or your hour to yourself, or your cup of coffee in silence — and instead of actually resting, you are marinating in it. The selfishness. The constant, low-grade hum of <em>I should not be doing this.</em></p><p class="body-text">So you do not even get the recovery. You get the time, but not the benefit of it, because you are spending the whole time prosecuting yourself.</p><div class="pullquote"><div class="pq-text">You get the guilt going in. You get the selfishness the whole time you are there. And you come back more depleted than when you left.</div></div><p class="body-text">This is the cruelty of the loop. It does not just drain you on the way in. It denies you the recovery on the way out.</p><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">When you take time for yourself, are you actually present in it? Or are you spending it feeling bad? Be honest.</div>
-          <textarea class="reflect-box" id="r2" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">When you do take time for yourself, are you actually present in it? Or are you spending it feeling bad? Describe what that experience is like.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
       <div class="section-block" id="s4">
         <div class="section-label">Section 4</div>
+        <div class="section-title">Breaking the Loop</div>
+        <p class="body-text">The loop does not break through willpower. It does not break by trying harder to not feel guilty.</p><p class="body-text">It breaks when you update the data. When you genuinely accept — not just intellectually, but in your body — that taking care of yourself is part of the commitment, not a violation of it.</p><p class="body-text">That is what this course is doing. Slowly, module by module, replacing the bad data with something true. By the end you will not need to fight the guilt. It will simply have less and less to stand on.</p>
+      </div>
+      <div class="section-block" id="s5">
+        <div class="section-label">Section 5</div>
         <div class="section-title">Reflection</div>
         <div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">How long have you been in this loop? When do you think it started?</div>
-          <textarea class="reflect-box" id="r3" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">How long do you think you have been in the G&S loop? When did it start?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What would it feel like to take time for yourself without the guilt or the selfishness? Can you even picture it?</div>
-          <textarea class="reflect-box" id="r4" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">What would it feel like to take time for yourself without the guilt or the selfishness? Can you even imagine it?</div>
+          <textarea class="reflect-box" id="r4" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 
@@ -161,44 +172,48 @@ body{display:flex;flex-direction:column}
       <div class="section-block" id="s1">
         <div class="section-label">Section 1</div>
         <div class="section-title">The Loop</div>
-        <p class="body-text">You sacrifice your own wellbeing for the child. You end up having no capacity to care for yourself and therefore can't deliver on your commitment. And now you're stuck in a loop.</p>
-        <p class="body-text">But it gets so bad that you need to take some time just for yourself to recharge your batteries. And how do you feel? Guilty. But you get to the point where you've got to do it anyway. And so you take a day for yourself. And the whole time you feel selfish.</p>
-        <div class="pullquote"><div class="pq-text">I'm not guessing. Hundreds of you have told me the same story over and over and over again.</div></div>
+        <p class="body-text">Here is the pattern. You have been living inside it so long you may not even recognise it as a pattern anymore. You just think this is what life feels like.</p><ul class="checklist"><li>You sacrifice your own wellbeing for your child</li>
+<li>You run out of capacity — emotionally, physically, mentally</li>
+<li>You reach a breaking point and take some time for yourself</li>
+<li>You feel <strong>guilty</strong></li>
+<li>You do it anyway because you have no choice</li>
+<li>The whole time, you feel <strong>selfish</strong></li>
+<li>You go back. The cycle starts again.</li></ul><p class="body-text">This is the G&S loop. Guilty and Selfish. And it is not a character flaw. It is a logical consequence of the bad data from Module 1.</p><div class="pullquote"><div class="pq-text">I'm not guessing. Hundreds of women have told me the same story over and over again.</div></div>
       </div>
       <div class="section-block" id="s2">
         <div class="section-label">Section 2</div>
         <div class="section-title">Capital G — Guilty</div>
-        <p class="body-text">I'm going to write two letters on the board. Capital G. Capital S.</p>
-        <p class="body-text">When you finally take some time for yourself — when you've run so low that you've got no choice — you feel guilty. Before you've even done it. The moment you consider it.</p>
-        <p class="body-text">The guilt feels like a moral signal. Like it's telling you something true about you. It's not. It's a conditioned response to bad data. The alarm is based on a lie.</p>
-        <div class="reflect-block">
+        <p class="body-text">The guilt arrives the moment you consider taking time for yourself.</p><p class="body-text">You have not done anything yet. You have had a thought. And already the guilt is there, loading up its arguments. <em>You should be with the kids. You do not have time for this. What kind of mother are you?</em></p><p class="body-text">The guilt feels like a moral signal — like it is telling you something important. It is not. It is a conditioned response. You were taught that taking time for yourself is at odds with being a good mother. So when you try to do it, the alarm goes off.</p><p class="body-text">The alarm is based on the bad data. The bad data is wrong. Which means the alarm is not telling you the truth.</p><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Describe the last time you felt guilty for taking time for yourself. What were the exact thoughts that came up?</div>
-          <textarea class="reflect-box" id="r1" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">Describe the last time you felt guilty for taking time for yourself. What were the thoughts that came up?</div>
+          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
       <div class="section-block" id="s3">
         <div class="section-label">Section 3</div>
         <div class="section-title">Capital S — Selfish</div>
-        <p class="body-text">You do it anyway. Because you have to. And the whole time you're there — on your day off, your hour to yourself, your cup of coffee in silence — instead of actually resting, you're marinating in it.</p>
-        <p class="body-text">You feel selfish. The whole time. So you don't even get the recovery. You get the time but not the benefit of it, because you're spending it prosecuting yourself.</p>
-        <div class="pullquote"><div class="pq-text">You get the guilt going in. You get the selfishness the whole time. And you come back more depleted than when you left.</div></div><div class="reflect-block">
+        <p class="body-text">You do it anyway. Because you have to. Your battery is at zero and you know it.</p><p class="body-text">And now you are on your day off, or your hour to yourself, or your cup of coffee in silence — and instead of actually resting, you are marinating in it. The selfishness. The constant, low-grade hum of <em>I should not be doing this.</em></p><p class="body-text">So you do not even get the recovery. You get the time, but not the benefit of it, because you are spending the whole time prosecuting yourself.</p><div class="pullquote"><div class="pq-text">You get the guilt going in. You get the selfishness the whole time you are there. And you come back more depleted than when you left.</div></div><p class="body-text">This is the cruelty of the loop. It does not just drain you on the way in. It denies you the recovery on the way out.</p><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">When you take time for yourself, are you actually present in it? Or are you spending it feeling bad? Be honest.</div>
-          <textarea class="reflect-box" id="r2" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">When you do take time for yourself, are you actually present in it? Or are you spending it feeling bad? Describe what that experience is like.</div>
+          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
       <div class="section-block" id="s4">
         <div class="section-label">Section 4</div>
+        <div class="section-title">Breaking the Loop</div>
+        <p class="body-text">The loop does not break through willpower. It does not break by trying harder to not feel guilty.</p><p class="body-text">It breaks when you update the data. When you genuinely accept — not just intellectually, but in your body — that taking care of yourself is part of the commitment, not a violation of it.</p><p class="body-text">That is what this course is doing. Slowly, module by module, replacing the bad data with something true. By the end you will not need to fight the guilt. It will simply have less and less to stand on.</p>
+      </div>
+      <div class="section-block" id="s5">
+        <div class="section-label">Section 5</div>
         <div class="section-title">Reflection</div>
         <div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">How long have you been in this loop? When do you think it started?</div>
-          <textarea class="reflect-box" id="r3" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">How long do you think you have been in the G&S loop? When did it start?</div>
+          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div><div class="reflect-block">
           <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What would it feel like to take time for yourself without the guilt or the selfishness? Can you even picture it?</div>
-          <textarea class="reflect-box" id="r4" placeholder="Write your thoughts here…"></textarea>
+          <div class="reflect-prompt">What would it feel like to take time for yourself without the guilt or the selfishness? Can you even imagine it?</div>
+          <textarea class="reflect-box" id="r4" oninput="save()" placeholder="Write your thoughts here…"></textarea>
         </div>
       </div>
 <script>
@@ -225,7 +240,7 @@ let saveTimer;
 function save(){
   clearTimeout(saveTimer);
   saveTimer = setTimeout(()=>{
-    const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+    const d = {};
     document.querySelectorAll('.reflect-box').forEach(el => { d[el.id] = el.value; });
     localStorage.setItem(KEY, JSON.stringify(d));
     calcProgress();
@@ -244,6 +259,11 @@ function calcProgress(){
   const boxes = document.querySelectorAll('.reflect-box');
   const filled = [...boxes].filter(el => d[el.id] && d[el.id].trim().length > 10).length;
   const pct = boxes.length > 0 ? Math.min(100, Math.round((filled/boxes.length)*100)) : 0;
+  // Save to portal progress object
+  const prog = JSON.parse(localStorage.getItem('m180_progress')||'{}');
+  prog['mod'+MOD] = pct;
+  localStorage.setItem('m180_progress', JSON.stringify(prog));
+  // Also update unified module key for portal to read
   const modData = JSON.parse(localStorage.getItem(KEY)||'{}');
   modData.progress = pct;
   localStorage.setItem(KEY, JSON.stringify(modData));
