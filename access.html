@@ -139,6 +139,11 @@ body::before{
 </div>
 
 <script>
+// Clear any stale session keys from old site
+localStorage.removeItem("lc_access");
+localStorage.removeItem("fc_access");
+localStorage.removeItem("lifecircuitry_access");
+
 // ─── ACCESS CODES ────────────────────────────────────────────────────────────
 // Add or remove codes here as needed. All codes are case-insensitive.
 // To add a new client: just add their code to this array.
