@@ -8,7 +8,7 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --accent:#e8637a;--accent-d:#c94d62;--accent-p:#fdf0f2;--accent-m:#f5c4cc;
+  --accent:#d4827a;--accent-d:#b86b64;--accent-p:#fdf5f4;--accent-m:#f0d5d2;
   --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
   --green:#27ae60;--gp:#e9f7ef;
   --purple:#9b59b6;--pp:#f5eef8;
@@ -585,15 +585,15 @@ function downloadPDF(){
   const barriers = [...document.querySelectorAll('.barrier-card.identified')].map(el=>el.querySelector('.barrier-name').textContent);
   const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Module 03 — Escaping the Conceptual Landscape</title>
   <style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;color:#1a1a1a;line-height:1.6}
-  h1{font-size:28px;border-bottom:3px solid #e8637a;padding-bottom:12px}
-  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#e8637a;margin-top:28px}
+  h1{font-size:28px;border-bottom:3px solid #d4827a;padding-bottom:12px}
+  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#d4827a;margin-top:28px}
   h3{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-top:16px}
-  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #e8637a}
+  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #d4827a}
   .barrier{display:inline-block;background:#fdf1f1;border:1px solid #e05555;padding:4px 10px;margin:4px;font-size:12px;font-weight:bold}
   .footer{margin-top:40px;font-size:11px;color:#aaa;border-top:1px solid #eee;padding-top:12px}
   </style></head><body>
   <h1>Module 03: Escaping the Conceptual Landscape</h1>
-  <p style="background:#fdf0f2;border-color:#e8637a"><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
+  <p style="background:#fdf5f4;border-color:#d4827a"><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
   <h2>My Active Barriers (${barriers.length} identified)</h2>
   ${barriers.map(b=>`<span class="barrier">${b}</span>`).join('')}
   <h2>Reflections</h2>

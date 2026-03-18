@@ -8,7 +8,7 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --accent:#e8637a;--accent-d:#c94d62;--accent-p:#fdf0f2;--accent-m:#f5c4cc;
+  --accent:#d4827a;--accent-d:#b86b64;--accent-p:#fdf5f4;--accent-m:#f0d5d2;
   --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
   --charcoal:#1a1a1a;--mid:#444;--light:#888;
   --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
@@ -558,7 +558,7 @@ function calcProgress() {
   // Log activity
   if (pct > 0) {
     const log = JSON.parse(localStorage.getItem('lc_activity') || '[]');
-    const entry = {text: `Module 01 — ${pct}% complete`, color: '#e8637a', time: new Date().toLocaleDateString()};
+    const entry = {text: `Module 01 — ${pct}% complete`, color: '#d4827a', time: new Date().toLocaleDateString()};
     const last = log[log.length-1];
     if (!last || last.text !== entry.text) { log.push(entry); localStorage.setItem('lc_activity', JSON.stringify(log.slice(-20))); }
   }

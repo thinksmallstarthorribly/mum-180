@@ -8,7 +8,7 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --accent:#e8637a;--accent-d:#c94d62;--accent-p:#fdf0f2;--accent-m:#f5c4cc;
+  --accent:#d4827a;--accent-d:#b86b64;--accent-p:#fdf5f4;--accent-m:#f0d5d2;
   --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
   --green:#27ae60;--gp:#e9f7ef;
   --charcoal:#1a1a1a;--mid:#444;--light:#888;
@@ -226,8 +226,8 @@ textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:
           <div class="gauge-card">
             <div class="gauge-label">Overall Capacity</div>
             <div class="gauge-ring">
-              <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="32"/><circle class="fg" id="gfg1" cx="40" cy="40" r="32" stroke="#e8637a" stroke-dasharray="201" stroke-dashoffset="201"/></svg>
-              <div class="gauge-num" id="gnum1" style="color:#e8637a">0</div>
+              <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="32"/><circle class="fg" id="gfg1" cx="40" cy="40" r="32" stroke="#d4827a" stroke-dasharray="201" stroke-dashoffset="201"/></svg>
+              <div class="gauge-num" id="gnum1" style="color:#d4827a">0</div>
             </div>
             <div style="font-size:11px;color:var(--light);text-align:center">average score</div>
           </div>
@@ -322,7 +322,7 @@ textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:
             <div class="phase-active-badge" style="display:none">CURRENT</div>
           </div>
           <div class="phase-row" onclick="selectPhase(this,'3')" data-phase="3">
-            <div class="phase-dot" style="background:#c94d62"></div>
+            <div class="phase-dot" style="background:#b86b64"></div>
             <div>
               <div class="phase-name">Phase 3 — Momentum</div>
               <div class="phase-desc">Consistent output. Evidence accumulating. Self-trust returning.</div>
@@ -455,7 +455,7 @@ function updateGauge(){
   const circ = 201;
   const offset = circ - (avg/10)*circ;
   document.getElementById('gfg1').style.strokeDashoffset = offset;
-  const col = avg >= 7 ? '#27ae60' : avg >= 4 ? '#e8637a' : '#e05555';
+  const col = avg >= 7 ? '#27ae60' : avg >= 4 ? '#d4827a' : '#e05555';
   document.getElementById('gfg1').style.stroke = col;
   document.getElementById('gnum1').style.color = col;
 }
@@ -518,7 +518,7 @@ function save(){
   const _pct2=calcPct();
   if(_pct2>0){
     const _log=JSON.parse(localStorage.getItem('lc_activity')||'[]');
-    const _entry={text:'Module 04 — '+_pct2+'% complete',color:'#e8637a',time:new Date().toLocaleDateString()};
+    const _entry={text:'Module 04 — '+_pct2+'% complete',color:'#d4827a',time:new Date().toLocaleDateString()};
     const _last=_log[_log.length-1];
     if(!_last||_last.text!==_entry.text){_log.push(_entry);localStorage.setItem('lc_activity',JSON.stringify(_log.slice(-20)));}  }
 }
@@ -543,17 +543,17 @@ function downloadPDF(){
   const scores=['s1','s2','s3','s4','s5'].map(id=>document.getElementById(id).value);
   const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Module 04 — Mum 180</title>
   <style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;color:#1a1a1a;line-height:1.6}
-  h1{font-size:28px;border-bottom:3px solid #e8637a;padding-bottom:12px}
-  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#e8637a;margin-top:28px}
+  h1{font-size:28px;border-bottom:3px solid #d4827a;padding-bottom:12px}
+  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#d4827a;margin-top:28px}
   h3{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-top:16px}
-  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #e8637a}
+  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #d4827a}
   .score-row{display:flex;gap:10px;margin:8px 0}
-  .score-item{background:#fdf0f2;padding:8px 12px;font-size:12px;font-weight:bold;flex:1;text-align:center}
-  .ev-item{background:#fdf0f2;padding:8px 12px;margin:4px 0;font-size:13px;border-left:3px solid #e8637a}
+  .score-item{background:#fdf5f4;padding:8px 12px;font-size:12px;font-weight:bold;flex:1;text-align:center}
+  .ev-item{background:#fdf5f4;padding:8px 12px;margin:4px 0;font-size:13px;border-left:3px solid #d4827a}
   .footer{margin-top:40px;font-size:11px;color:#aaa;border-top:1px solid #eee;padding-top:12px}
   </style></head><body>
   <h1>Module 04: Mum 180</h1>
-  <p style="background:#fdf0f2;border-color:#e8637a"><strong>Generated:</strong> ${new Date().toLocaleDateString()} | <strong>Current Phase:</strong> ${phase}</p>
+  <p style="background:#fdf5f4;border-color:#d4827a"><strong>Generated:</strong> ${new Date().toLocaleDateString()} | <strong>Current Phase:</strong> ${phase}</p>
   <h2>Capacity Audit Scores</h2>
   <div class="score-row">
     <div class="score-item">Energy<br><strong>${scores[0]}/10</strong></div>
