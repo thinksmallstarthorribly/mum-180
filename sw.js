@@ -1,38 +1,31 @@
-const CACHE_NAME = 'life-circuitry-v3';
-const ASSETS = [
+const CACHE_NAME = 'mum180-v1';
+const STATIC_ASSETS = [
+  './',
   './index.html',
   './portal.html',
   './access.html',
-  './admin.html',
-  './module-1.html',
-  './module-2.html',
-  './module-3.html',
-  './module-4.html',
-  './module-5.html',
-  './module-6.html',
-  './module-7.html',
+  './overview.html',
   './manifest.json',
-  './sw.js'
 ];
 
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
-  );
+self.addEventListener('install', e => {
   self.skipWaiting();
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(STATIC_ASSETS))
+  );
 });
 
-self.addEventListener('activate', event => {
-  event.waitUntil(
+self.addEventListener('activate', e => {
+  e.waitUntil(
     caches.keys().then(keys =>
       Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    )
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request))
+self.addEventListener('fetch', e => {
+  // Network first — always get fresh content
+  e.respondWith(
+    fetch(e.request).catch(() => caches.match(e.request))
   );
 });
