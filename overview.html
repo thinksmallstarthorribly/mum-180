@@ -8,7 +8,7 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --teal:#5ec5cc;--teal-d:#3aabb3;--teal-glow:rgba(94,197,204,0.15);
+  --rose:#e8637a;--rose-d:#c94d62;--rose-glow:rgba(94,197,204,0.15);
   --yellow:#f5c842;--red:#e05555;--green:#27ae60;
   --purple:#9b59b6;--orange:#e67e22;
   --charcoal:#111;--dark:#1a1a1a;--mid:#333;
@@ -38,7 +38,7 @@ nav{
 .nav-logo{
   font-family:'Barlow Condensed',sans-serif;
   font-size:15px;font-weight:900;letter-spacing:0.12em;
-  text-transform:uppercase;color:var(--teal);text-decoration:none;
+  text-transform:uppercase;color:var(--rose);text-decoration:none;
 }
 .nav-logo span{color:var(--faint)}
 .nav-links{display:flex;gap:28px;align-items:center}
@@ -49,10 +49,10 @@ nav{
 }
 .nav-links a:hover{color:#fff}
 .nav-links a.cta{
-  color:var(--teal);border:1px solid rgba(94,197,204,0.3);
+  color:var(--rose);border:1px solid rgba(94,197,204,0.3);
   padding:6px 14px;transition:all 0.2s;
 }
-.nav-links a.cta:hover{background:var(--teal-glow)}
+.nav-links a.cta:hover{background:var(--rose-glow)}
 
 /* ─── HERO BAND ─── */
 .hero{
@@ -68,7 +68,7 @@ nav{
 .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
 .hero-eyebrow{
   font-size:10px;font-weight:800;letter-spacing:0.35em;
-  text-transform:uppercase;color:var(--teal);margin-bottom:14px;
+  text-transform:uppercase;color:var(--rose);margin-bottom:14px;
 }
 .hero-title{
   font-family:'Barlow Condensed',sans-serif;
@@ -77,11 +77,11 @@ nav{
   line-height:0.88;letter-spacing:-0.01em;
   margin-bottom:20px;
 }
-.hero-title em{color:var(--teal);font-style:normal;display:block}
+.hero-title em{color:var(--rose);font-style:normal;display:block}
 .hero-sub{
   font-size:15px;line-height:1.75;
   color:var(--dim);max-width:480px;
-  border-left:2px solid var(--teal);
+  border-left:2px solid var(--rose);
   padding-left:18px;
 }
 .hero-stat-block{
@@ -94,7 +94,7 @@ nav{
 }
 .hero-stat-num{
   font-family:'Barlow Condensed',sans-serif;
-  font-size:36px;font-weight:900;color:var(--teal);line-height:1;
+  font-size:36px;font-weight:900;color:var(--rose);line-height:1;
 }
 .hero-stat-label{
   font-size:10px;font-weight:700;letter-spacing:0.14em;
@@ -124,7 +124,7 @@ nav{
   text-transform:uppercase;color:rgba(94,197,204,0.5);
   padding:0 16px;white-space:nowrap;
 }
-.flow-arrow{color:var(--teal);font-size:14px;line-height:1}
+.flow-arrow{color:var(--rose);font-size:14px;line-height:1}
 
 /* ─── BIG FUNNEL — Phase strip ─── */
 .phase-strip{
@@ -167,9 +167,9 @@ nav{
 
 /* accent colours per phase */
 .ph-1::before{background:var(--orange)}
-.ph-2::before{background:var(--teal)}
+.ph-2::before{background:var(--rose)}
 .ph-3::before{background:var(--yellow)}
-.ph-4::before{background:var(--teal)}
+.ph-4::before{background:var(--rose)}
 .ph-5::before{background:var(--purple)}
 .ph-6::before{background:var(--green)}
 
@@ -200,10 +200,10 @@ nav{
 .mod-hook{font-size:10px;line-height:1.5;color:var(--dim)}
 
 /* module accent colours */
-.m1::before{background:var(--teal)}.m1 .mod-num{color:var(--teal)}
+.m1::before{background:var(--rose)}.m1 .mod-num{color:var(--rose)}
 .m2::before{background:var(--red)}.m2 .mod-num{color:var(--red)}
 .m3::before{background:var(--yellow)}.m3 .mod-num{color:var(--yellow)}
-.m4::before{background:var(--teal)}.m4 .mod-num{color:var(--teal)}
+.m4::before{background:var(--rose)}.m4 .mod-num{color:var(--rose)}
 .m5::before{background:var(--purple)}.m5 .mod-num{color:var(--purple)}
 .m6::before{background:var(--orange)}.m6 .mod-num{color:var(--orange)}
 .m7::before{background:var(--green)}.m7 .mod-num{color:var(--green)}
@@ -216,7 +216,7 @@ nav{
   background:var(--smoke);border:1px solid var(--rule);
   color:var(--dim);white-space:nowrap;
 }
-.pill.teal{background:rgba(94,197,204,0.1);border-color:rgba(94,197,204,0.2);color:var(--teal)}
+.pill.teal{background:rgba(94,197,204,0.1);border-color:rgba(94,197,204,0.2);color:var(--rose)}
 
 /* ─── THREE-COLUMN DETAIL ─── */
 .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px}
@@ -225,7 +225,7 @@ nav{
   padding:24px 22px;position:relative;
 }
 .detail-col::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.dc-teal::before{background:var(--teal)}
+.dc-teal::before{background:var(--rose)}
 .dc-yellow::before{background:var(--yellow)}
 .dc-orange::before{background:var(--orange)}
 .detail-col-title{
@@ -240,7 +240,7 @@ nav{
 }
 .detail-list li::before{
   content:'';position:absolute;left:0;top:7px;
-  width:5px;height:1px;background:var(--teal);
+  width:5px;height:1px;background:var(--rose);
 }
 
 /* ─── JOURNEY TIMELINE ─── */
@@ -260,15 +260,15 @@ nav{
 }
 .j-dot{
   width:44px;height:44px;border-radius:50%;
-  border:2px solid var(--teal);
+  border:2px solid var(--rose);
   background:var(--charcoal);
   display:flex;align-items:center;justify-content:center;
   font-family:'Barlow Condensed',sans-serif;
-  font-size:14px;font-weight:900;color:var(--teal);
+  font-size:14px;font-weight:900;color:var(--rose);
   margin-bottom:12px;flex-shrink:0;
   transition:background 0.2s;
 }
-.j-step:hover .j-dot{background:var(--teal-glow)}
+.j-step:hover .j-dot{background:var(--rose-glow)}
 .j-label{
   font-family:'Barlow Condensed',sans-serif;
   font-size:12px;font-weight:900;text-transform:uppercase;
@@ -300,7 +300,7 @@ nav{
 }
 .quote-attr{
   font-size:11px;font-weight:700;letter-spacing:0.15em;
-  text-transform:uppercase;color:var(--teal);margin-top:12px;
+  text-transform:uppercase;color:var(--rose);margin-top:12px;
 }
 
 /* ─── GAP CALLOUT ─── */
@@ -336,7 +336,7 @@ nav{
 .metric-val{
   font-family:'Barlow Condensed',sans-serif;
   font-size:36px;font-weight:900;line-height:1;
-  color:var(--teal);margin-bottom:4px;
+  color:var(--rose);margin-bottom:4px;
 }
 .metric-label{
   font-size:9px;font-weight:800;letter-spacing:0.14em;
@@ -360,7 +360,7 @@ footer{
   text-transform:uppercase;color:var(--dim);
   text-decoration:none;transition:color 0.2s;
 }
-.ft-links a:hover{color:var(--teal)}
+.ft-links a:hover{color:var(--rose)}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:1000px){
@@ -391,7 +391,7 @@ footer{
 
 <!-- ── NAV ── -->
 <nav>
-  <a href="portal.html" class="nav-logo">Life Circuitry <span>/ Think Small</span></a>
+  <a href="portal.html" class="nav-logo">Mum 180 <span>/ Think Small</span></a>
   <div class="nav-links">
     <a href="roadmap.html">Full Roadmap</a>
     <a href="index.html" class="cta">Sales Page</a>
@@ -404,7 +404,7 @@ footer{
     <div>
       <div class="hero-eyebrow">Think Small, Start Horribly — System Overview</div>
       <h1 class="hero-title">The<br>Education<br><em>Ecosystem</em></h1>
-      <p class="hero-sub">One programme. Seven modules. A complete system for people who are capable but stuck — from first contact to transformation.</p>
+      <p class="hero-sub">One programme. Six modules. A complete system for people who are capable but stuck — from first contact to transformation.</p>
     </div>
     <div class="hero-stat-block">
       <div class="hero-stat">
@@ -458,7 +458,7 @@ footer{
     <div class="j-step">
       <div class="j-dot">5</div>
       <div class="j-label">Portal</div>
-      <div class="j-sub">Dashboard. 7 modules. Lifetime access.</div>
+      <div class="j-sub">Dashboard. 6 modules. Lifetime access.</div>
     </div>
     <div class="j-step">
       <div class="j-dot">6</div>
@@ -532,7 +532,7 @@ footer{
     <div class="phase-block ph-5">
       <div class="phase-num">Phase 05</div>
       <div class="phase-name">Modules</div>
-      <div class="phase-desc">7 interactive modules. Each has diagnostics, reflections, and PDF export. 45–90 min each.</div>
+      <div class="phase-desc">6 modules. Each has diagnostics, reflections, and PDF export. 45–90 min each.</div>
       <div class="phase-badge live">Live</div>
     </div>
     <div class="phase-block ph-6">
@@ -565,7 +565,7 @@ footer{
     </div>
     <div class="mod m4">
       <div class="mod-num">04</div>
-      <div class="mod-name">Foundation Circuit</div>
+      <div class="mod-name">Mum 180</div>
       <div class="mod-hook">Two states. Capacity audit. Recovery tracker. The circuit you return to.</div>
     </div>
     <div class="mod m5">
@@ -602,7 +602,7 @@ footer{
   ══════════════════════════════════ -->
   <div class="quote-band" style="margin-top:40px">
     <div class="quote-text">"The gap isn't a character flaw. It's an undiagnosed structural problem."</div>
-    <div class="quote-attr">The Foundation Premise — Life Circuitry</div>
+    <div class="quote-attr">The Foundation Premise — Mum 180</div>
   </div>
 
   <!-- ══════════════════════════════════
@@ -668,7 +668,7 @@ footer{
     <div class="gap-card">
       <div class="gap-num">3</div>
       <div class="gap-title">No Custom Domain</div>
-      <div class="gap-body">thinksmallstarthorribly.github.io/foundation-circuit works but signals amateur. A $12/year domain is the single fastest credibility upgrade available right now.</div>
+      <div class="gap-body">thinksmallstarthorribly.github.io/mum-180 works but signals amateur. A $12/year domain is the single fastest credibility upgrade available right now.</div>
     </div>
   </div>
 
@@ -677,19 +677,19 @@ footer{
   ══════════════════════════════════ -->
   <div class="quote-band" style="margin-top:40px">
     <div class="quote-text">"You've been depositing into your competence bank your entire life. It's time to make a withdrawal."</div>
-    <div class="quote-attr">Alex Cooper — Life Circuitry Core IP</div>
+    <div class="quote-attr">Anonymous — Mum 180 Core IP</div>
   </div>
 
 </div><!-- /canvas -->
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="ft-brand">Think Small, Start Horribly &mdash; Life Circuitry &copy; 2026</div>
+  <div class="ft-brand">Think Small, Start Horribly &mdash; Mum 180 &copy; 2026</div>
   <div class="ft-links">
     <a href="roadmap.html">Full Roadmap</a>
     <a href="portal.html">Portal</a>
     <a href="index.html">Sales Page</a>
-    <a href="https://thinksmallstarthorribly.github.io/foundation-circuit/" target="_blank">Live Site &rarr;</a>
+    <a href="https://thinksmallstarthorribly.github.io/mum-180/" target="_blank">Live Site &rarr;</a>
   </div>
 </footer>
 

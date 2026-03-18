@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foundation Circuit — Think Small, Start Horribly</title>
+<title>Mum 180 — Think Small, Start Horribly</title>
 <link rel="manifest" href="./manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Foundation Circuit">
-<meta name="theme-color" content="#3aabb3">
+<meta name="apple-mobile-web-app-title" content="Mum 180">
+<meta name="theme-color" content="#c94d62">
 <script>
   if('serviceWorker' in navigator){
     window.addEventListener('load', () => {
@@ -19,10 +19,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal: #5ec5cc;
-    --teal-dark: #3aabb3;
-    --teal-pale: #eaf7f8;
-    --teal-mid: #b8e8eb;
+    --rose: #e8637a;
+    --rose-dark: #c94d62;
+    --rose-pale: #fdf0f2;
+    --rose-mid: #f5c4cc;
     --yellow: #f5c842;
     --yellow-pale: #fef9e7;
     --red: #e05555;
@@ -67,7 +67,7 @@
   ══════════════════════════════════ */
   .cover {
     padding: 64px 60px 52px;
-    border-bottom: 8px solid var(--teal);
+    border-bottom: 8px solid var(--rose);
     background: var(--white);
   }
 
@@ -76,7 +76,7 @@
     font-weight: 700;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--teal-dark);
+    color: var(--rose-dark);
     margin-bottom: 20px;
     display: block;
     width: 100%;
@@ -93,7 +93,7 @@
     letter-spacing: 0.01em;
   }
 
-  .cover-title .accent { color: var(--teal); }
+  .cover-title .accent { color: var(--rose); }
 
   .cover-subtitle {
     font-family: 'Barlow Condensed', sans-serif;
@@ -107,7 +107,7 @@
 
   .cover-rule {
     height: 3px;
-    background: var(--teal-mid);
+    background: var(--rose-mid);
     margin-bottom: 28px;
   }
 
@@ -121,7 +121,7 @@
   }
 
   .cover-footer {
-    border-top: 2px solid var(--teal-mid);
+    border-top: 2px solid var(--rose-mid);
     padding-top: 20px;
     margin-top: 8px;
   }
@@ -129,7 +129,7 @@
   .cover-footer-quote {
     font-size: 13px;
     font-style: italic;
-    color: var(--teal-dark);
+    color: var(--rose-dark);
     margin-bottom: 16px;
     line-height: 1.5;
   }
@@ -165,7 +165,7 @@
      STEP SECTIONS
   ══════════════════════════════════ */
 
-  .step.teal-left { border-left: 6px solid var(--teal); }
+  .step.teal-left { border-left: 6px solid var(--rose); }
   .step.red-left  { border-left: 6px solid var(--red); }
   .step.yellow-left { border-left: 6px solid var(--yellow); }
   .step.grey-left { border-left: 6px solid #ddd; }
@@ -180,7 +180,7 @@
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--teal-dark);
+    color: var(--rose-dark);
     line-height: 1.8;
     margin-top: 8px;
     margin-left: 60px;
@@ -200,7 +200,7 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: var(--teal);
+    background: var(--rose);
     color: white;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 24px;
@@ -215,8 +215,8 @@
   .step-num.yellow { background: var(--yellow); color: var(--charcoal); }
   .step-num.outline {
     background: white;
-    border: 3px solid var(--teal);
-    color: var(--teal);
+    border: 3px solid var(--rose);
+    color: var(--rose);
   }
 
   .step-title {
@@ -242,8 +242,8 @@
 
   /* ── PULLQUOTE ── */
   .pq {
-    border-left: 5px solid var(--teal);
-    background: var(--teal-pale);
+    border-left: 5px solid var(--rose);
+    background: var(--rose-pale);
     padding: 18px 22px;
     margin: 24px 0;
   }
@@ -264,7 +264,7 @@
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--teal-dark);
+    color: var(--rose-dark);
     display: block;
     line-height: 1.8;
   }
@@ -279,8 +279,8 @@
 
   /* ── REFLECTION BOX ── */
   .reflect {
-    border: 2px dashed var(--teal-mid);
-    background: var(--teal-pale);
+    border: 2px dashed var(--rose-mid);
+    background: var(--rose-pale);
     padding: 22px;
     margin: 24px 0;
   }
@@ -290,7 +290,7 @@
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--teal-dark);
+    color: var(--rose-dark);
     margin-bottom: 10px;
   }
 
@@ -306,7 +306,7 @@
   }
 
   .lines { display: flex; flex-direction: column; gap: 14px; }
-  .line  { height: 1px; background: var(--teal-mid); }
+  .line  { height: 1px; background: var(--rose-mid); }
 
   /* ══════════════════════════════════
      DIAGRAM: TWO STATES
@@ -337,7 +337,7 @@
   }
 
   .state.bad  { background: var(--red-pale);  border: 2px solid #f0b0b0; }
-  .state.good { background: var(--teal-pale); border: 2px solid var(--teal); }
+  .state.good { background: var(--rose-pale); border: 2px solid var(--rose); }
 
   .state-title {
     font-family: 'Barlow Condensed', sans-serif;
@@ -351,7 +351,7 @@
   }
 
   .state.bad  .state-title { color: var(--red); }
-  .state.good .state-title { color: var(--teal-dark); }
+  .state.good .state-title { color: var(--rose-dark); }
 
   .bar-row {
     display: flex;
@@ -379,7 +379,7 @@
   }
 
   .bar-fill { height: 100%; border-radius: 2px; }
-  .bar-fill.teal { background: var(--teal); }
+  .bar-fill.teal { background: var(--rose); }
   .bar-fill.grey { background: #bbb; }
   .bar-fill.pink { background: #f0a0a0; }
 
@@ -410,7 +410,7 @@
   }
 
   .state.bad  .state-list li::before { color: var(--red); }
-  .state.good .state-list li::before { color: var(--teal); }
+  .state.good .state-list li::before { color: var(--rose); }
 
   .state-outcome {
     margin-top: 14px;
@@ -426,7 +426,7 @@
   }
 
   .state.bad  .state-outcome { background: #f8e0e0; color: var(--red); }
-  .state.good .state-outcome { background: var(--teal-mid); color: var(--teal-dark); }
+  .state.good .state-outcome { background: var(--rose-mid); color: var(--rose-dark); }
 
   /* ══════════════════════════════════
      VERSION 1 AND VERSION 2 CARDS
@@ -442,7 +442,7 @@
 
   .v-card {
     padding: 24px;
-    border: 2px solid var(--teal);
+    border: 2px solid var(--rose);
     background: white;
     width: 100%;
     box-sizing: border-box;
@@ -462,7 +462,7 @@
     margin-bottom: 10px;
   }
 
-  .v-card.v1 .v-badge { background: var(--teal); color: white; }
+  .v-card.v1 .v-badge { background: var(--rose); color: white; }
   .v-card.v2 .v-badge { background: var(--red); color: white; }
 
   .v-title {
@@ -474,7 +474,7 @@
     line-height: 1;
   }
 
-  .v-card.v1 .v-title { color: var(--teal-dark); }
+  .v-card.v1 .v-title { color: var(--rose-dark); }
   .v-card.v2 .v-title { color: var(--red); }
 
   .v-desc {
@@ -509,13 +509,13 @@
     font-size: 11px;
   }
 
-  .v-card.v1 .v-list li::before { color: var(--teal); }
+  .v-card.v1 .v-list li::before { color: var(--rose); }
   .v-card.v2 .v-list li::before { color: var(--red); }
 
   .v-divider {
-    background: var(--teal-pale);
-    border-top: 2px solid var(--teal);
-    border-bottom: 2px solid var(--teal);
+    background: var(--rose-pale);
+    border-top: 2px solid var(--rose);
+    border-bottom: 2px solid var(--rose);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -527,7 +527,7 @@
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--teal-dark);
+    color: var(--rose-dark);
     writing-mode: horizontal-tb;
     text-align: center;
   }
@@ -553,7 +553,7 @@
   }
 
   .wave.saw  { border-color: #f0b0b0; }
-  .wave.sine { border-color: var(--teal); }
+  .wave.sine { border-color: var(--rose); }
 
   .wave-title {
     font-family: 'Barlow Condensed', sans-serif;
@@ -565,7 +565,7 @@
   }
 
   .wave.saw  .wave-title { color: var(--red); }
-  .wave.sine .wave-title { color: var(--teal-dark); }
+  .wave.sine .wave-title { color: var(--rose-dark); }
 
   .wave-desc {
     font-size: 12px;
@@ -617,7 +617,7 @@
   }
 
   .error-box.teal-box {
-    border: 2px solid var(--teal);
+    border: 2px solid var(--rose);
   }
 
   .error-box-title {
@@ -645,8 +645,8 @@
      THRESHOLD DIAGRAM
   ══════════════════════════════════ */
   .threshold-wrap {
-    border: 2px solid var(--teal);
-    background: var(--teal-pale);
+    border: 2px solid var(--rose);
+    background: var(--rose-pale);
     padding: 20px 20px 10px;
     margin: 24px 0;
   }
@@ -666,13 +666,13 @@
   .phase {
     padding: 24px;
     background: white;
-    border: 2px solid var(--teal);
+    border: 2px solid var(--rose);
     width: 100%;
     box-sizing: border-box;
   }
 
   .check {
-    background: var(--teal);
+    background: var(--rose);
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -691,7 +691,7 @@
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--teal-dark);
+    color: var(--rose-dark);
     margin-bottom: 4px;
   }
 
@@ -724,13 +724,13 @@
     left: 0;
     font-weight: 700;
     font-size: 11px;
-    color: var(--teal);
+    color: var(--rose);
   }
 
   .phase.p2 .phase-list li::before { color: #c08080; }
 
   .check {
-    background: var(--teal);
+    background: var(--rose);
     padding: 20px 12px;
     display: flex;
     flex-direction: column;
@@ -779,21 +779,21 @@
 
   .node {
     padding: 14px 20px;
-    border: 2px solid var(--teal);
-    background: var(--teal-pale);
+    border: 2px solid var(--rose);
+    background: var(--rose-pale);
     text-align: center;
     width: 100%;
     box-sizing: border-box;
   }
 
   .node.found {
-    background: var(--teal);
-    border-color: var(--teal-dark);
+    background: var(--rose);
+    border-color: var(--rose-dark);
   }
 
   .arr {
     font-size: 20px;
-    color: var(--teal);
+    color: var(--rose);
     text-align: center;
     padding: 4px 0;
     display: block;
@@ -816,14 +816,14 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--teal-dark);
+    color: var(--rose-dark);
   }
 
   .node.found .node-sub { color: rgba(255,255,255,0.75); }
 
   .arr {
     font-size: 20px;
-    color: var(--teal);
+    color: var(--rose);
     padding: 0 3px;
     flex-shrink: 0;
   }
@@ -842,8 +842,8 @@
 
   .lang-card {
     padding: 18px;
-    background: var(--teal-pale);
-    border: 1px solid var(--teal-mid);
+    background: var(--rose-pale);
+    border: 1px solid var(--rose-mid);
     width: 100%;
     box-sizing: border-box;
   }
@@ -853,7 +853,7 @@
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--teal-dark);
+    color: var(--rose-dark);
     margin-bottom: 6px;
   }
 
@@ -870,14 +870,14 @@
   /* ══════════════════════════════════
      DIVIDERS
   ══════════════════════════════════ */
-  .div-thick { height: 8px; background: var(--teal); max-width: 700px; margin: 0 auto; }
-  .div-thin  { height: 3px; background: var(--teal-pale); max-width: 700px; margin: 0 auto; }
+  .div-thick { height: 8px; background: var(--rose); max-width: 700px; margin: 0 auto; }
+  .div-thin  { height: 3px; background: var(--rose-pale); max-width: 700px; margin: 0 auto; }
 
   /* ══════════════════════════════════
      CLOSE
   ══════════════════════════════════ */
   .close {
-    background: var(--teal);
+    background: var(--rose);
     padding: 52px 60px;
     text-align: center;
   }
@@ -928,7 +928,7 @@
 <div class="cover">
   <div class="cover-eyebrow">
     <span style="display:block;">Think Small, Start Horribly</span>
-    <span style="display:block;">Life Circuitry Expanded</span>
+    <span style="display:block;">Mum 180 Expanded</span>
   </div>
   <div class="cover-title">Foundation<br><span class="accent">Circuit</span></div>
   <div class="cover-subtitle">
@@ -937,12 +937,12 @@
   </div>
   <div class="cover-rule"></div>
   <div class="cover-intro">
-    Every framework in this body of work operates in the thinking and doing dimension. The Momentum Formula, Life Circuitry, the Stuck Model. They are built on strong core principles and they work. But all of them assume one thing is already in place. For a specific population, it is not. This guide walks you through the layer that sits underneath all of it. Step by step. By the end you will understand why your capability is not the problem and what actually is.
+    Every framework in this body of work operates in the thinking and doing dimension. The Momentum Formula, Mum 180, the Stuck Model. They are built on strong core principles and they work. But all of them assume one thing is already in place. For a specific population, it is not. This guide walks you through the layer that sits underneath all of it. Step by step. By the end you will understand why your capability is not the problem and what actually is.
   </div>
   <div class="cover-footer">
     <div class="cover-footer-meta">
       <div class="cover-footer-left">
-        Alex Cooper &nbsp;·&nbsp; Think Small, Start Horribly &nbsp;·&nbsp; Copyright &copy; 2026 &nbsp;·&nbsp; All Rights Reserved
+        Anonymous &nbsp;·&nbsp; Think Small, Start Horribly &nbsp;·&nbsp; Copyright &copy; 2026 &nbsp;·&nbsp; All Rights Reserved
       </div>
     </div>
   </div>
@@ -984,12 +984,12 @@
   <p class="body">And it is not a character flaw.</p>
   <div class="pq red">
     <div class="pq-text">"It's not a failure of competency. It's a failure of access."</div>
-    <div class="pq-attr"><span>Foundation Circuit</span><span>Alex Cooper &copy; TSSH</span></div>
+    <div class="pq-attr"><span>Mum 180</span><span>Anonymous &copy; TSSH</span></div>
   </div>
   <p class="body">Your framework is still there. Your capability is still there. Your evidence of achievement is still there. Something is preventing you from accessing any of it. That something has a name. And understanding it changes the entire diagnostic.</p>
   <div class="pq red">
     <div class="pq-text">"Structural failures are subject to moral judgement. This is the mechanism that keeps people stuck in shame rather than diagnosis."</div>
-    <div class="pq-attr"><span>Foundation Circuit</span><span>Alex Cooper &copy; TSSH</span></div>
+    <div class="pq-attr"><span>Mum 180</span><span>Anonymous &copy; TSSH</span></div>
   </div>
 </div>
 
@@ -1008,7 +1008,7 @@
   <p class="body">This new layer operates in the feeling and being dimension. It is not about what you think or what you do. It is about the state you are in when you try to think and do. And state is not chosen. It is inherited, wired, and managed or mismanaged.</p>
   <div class="pq">
     <div class="pq-text">"Capability is what you can do. Capacity is what your system can hold."</div>
-    <div class="pq-attr"><span>Foundation Circuit</span><span>Core Distinction</span><span>Alex Cooper &copy; TSSH</span></div>
+    <div class="pq-attr"><span>Mum 180</span><span>Core Distinction</span><span>Anonymous &copy; TSSH</span></div>
   </div>
   <p class="body">Your capability has not gone anywhere. It is fully intact. What changes across the day is your capacity. When capacity is high, capability loads and runs. When capacity is low, capability cannot load regardless of how strong it is.</p>
 
@@ -1141,9 +1141,9 @@
       <div class="wave-title">Sine  :  Regulated</div>
       <div class="wave-desc">Rhythmic, predictable, sustainable. Stays above threshold. Version 1 at its most consistent lives here.</div>
       <svg viewBox="0 0 240 65" width="100%" height="65">
-        <line x1="0" y1="50" x2="240" y2="50" stroke="#5ec5cc" stroke-width="1.5" stroke-dasharray="5,3"/>
-        <text x="2" y="47" font-family="Barlow" font-size="8" fill="#5ec5cc">threshold</text>
-        <path d="M0,30 C20,16 40,16 60,30 C80,44 100,44 120,30 C140,16 160,16 180,30 C200,44 220,44 240,30" fill="none" stroke="#3aabb3" stroke-width="2"/>
+        <line x1="0" y1="50" x2="240" y2="50" stroke="#e8637a" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="2" y="47" font-family="Barlow" font-size="8" fill="#e8637a">threshold</text>
+        <path d="M0,30 C20,16 40,16 60,30 C80,44 100,44 120,30 C140,16 160,16 180,30 C200,44 220,44 240,30" fill="none" stroke="#c94d62" stroke-width="2"/>
       </svg>
     </div>
   </div>
@@ -1174,7 +1174,7 @@
     <div class="error-label">The Forecasting Error  :  How It Unfolds</div>
     <div class="error-grid">
       <div class="error-box teal-box">
-        <div class="error-box-title" style="color: var(--teal-dark);">Version 1 Plans</div>
+        <div class="error-box-title" style="color: var(--rose-dark);">Version 1 Plans</div>
         <p>Full capacity plan built from a full capacity state. High load tasks assigned across the whole day. Forecasts that current capacity will remain constant.</p>
       </div>
       <div class="error-arrow">&#8595;</div>
@@ -1189,7 +1189,7 @@
 
   <div class="pq">
     <div class="pq-text">"Version 1 was always forecasting competency. It needs to start forecasting capacity."</div>
-    <div class="pq-attr"><span>Forecasting Error</span><span>Alex Cooper &copy; TSSH</span></div>
+    <div class="pq-attr"><span>Forecasting Error</span><span>Anonymous &copy; TSSH</span></div>
   </div>
 
   <div class="reflect">
@@ -1221,28 +1221,28 @@
       <rect x="0" y="108" width="400" height="112" fill="#fff0f0" rx="0"/>
 
       <!-- Zone labels -->
-      <text x="12" y="18" font-family="Barlow Condensed" font-weight="700" font-size="11" fill="#3aabb3" letter-spacing="1">ABOVE THRESHOLD</text>
-      <text x="12" y="34" font-family="Barlow" font-size="9.5" fill="#3aabb3">Framework loads · Evidence accessible · Self trust available</text>
+      <text x="12" y="18" font-family="Barlow Condensed" font-weight="700" font-size="11" fill="#c94d62" letter-spacing="1">ABOVE THRESHOLD</text>
+      <text x="12" y="34" font-family="Barlow" font-size="9.5" fill="#c94d62">Framework loads · Evidence accessible · Self trust available</text>
 
       <text x="12" y="128" font-family="Barlow Condensed" font-weight="700" font-size="11" fill="#e05555" letter-spacing="1">BELOW THRESHOLD</text>
       <text x="12" y="144" font-family="Barlow" font-size="9.5" fill="#e05555">Inaccessible · Threat wins · Relief behaviours activate</text>
 
       <!-- Threshold line -->
-      <line x1="0" y1="108" x2="400" y2="108" stroke="#5ec5cc" stroke-width="2.5" stroke-dasharray="8,5"/>
-      <text x="310" y="104" font-family="Barlow Condensed" font-weight="700" font-size="10" fill="#3aabb3" letter-spacing="1">THRESHOLD</text>
+      <line x1="0" y1="108" x2="400" y2="108" stroke="#e8637a" stroke-width="2.5" stroke-dasharray="8,5"/>
+      <text x="310" y="104" font-family="Barlow Condensed" font-weight="700" font-size="10" fill="#c94d62" letter-spacing="1">THRESHOLD</text>
 
       <!-- Capacity arc line -->
-      <path d="M20,55 C80,52 140,60 190,80 C240,100 270,108 310,130 C340,148 370,158 395,162" fill="none" stroke="#5ec5cc" stroke-width="2.5"/>
+      <path d="M20,55 C80,52 140,60 190,80 C240,100 270,108 310,130 C340,148 370,158 395,162" fill="none" stroke="#e8637a" stroke-width="2.5"/>
 
       <!-- Phase 01 bracket -->
-      <line x1="20" y1="175" x2="190" y2="175" stroke="#3aabb3" stroke-width="1.5"/>
-      <line x1="20" y1="170" x2="20" y2="180" stroke="#3aabb3" stroke-width="1.5"/>
-      <line x1="190" y1="170" x2="190" y2="180" stroke="#3aabb3" stroke-width="1.5"/>
-      <text x="105" y="192" font-family="Barlow Condensed" font-weight="700" font-size="11" fill="#3aabb3" text-anchor="middle" letter-spacing="1">PHASE 01</text>
-      <text x="105" y="206" font-family="Barlow" font-size="9" fill="#3aabb3" text-anchor="middle">Version 1 Jurisdiction</text>
+      <line x1="20" y1="175" x2="190" y2="175" stroke="#c94d62" stroke-width="1.5"/>
+      <line x1="20" y1="170" x2="20" y2="180" stroke="#c94d62" stroke-width="1.5"/>
+      <line x1="190" y1="170" x2="190" y2="180" stroke="#c94d62" stroke-width="1.5"/>
+      <text x="105" y="192" font-family="Barlow Condensed" font-weight="700" font-size="11" fill="#c94d62" text-anchor="middle" letter-spacing="1">PHASE 01</text>
+      <text x="105" y="206" font-family="Barlow" font-size="9" fill="#c94d62" text-anchor="middle">Version 1 Jurisdiction</text>
 
       <!-- CHECK box -->
-      <rect x="178" y="162" width="44" height="18" rx="3" fill="#5ec5cc"/>
+      <rect x="178" y="162" width="44" height="18" rx="3" fill="#e8637a"/>
       <text x="200" y="175" font-family="Barlow Condensed" font-weight="700" font-size="10" fill="white" text-anchor="middle" letter-spacing="1">CHECK</text>
 
       <!-- Phase 02 bracket -->
@@ -1289,7 +1289,7 @@
 
   <div class="pq">
     <div class="pq-text">"Version 2 is no longer failing to meet a plan. It is operating within a plan designed for its actual state."</div>
-    <div class="pq-attr"><span>Foundation Circuit</span><span>The Correction</span><span>Alex Cooper &copy; TSSH</span></div>
+    <div class="pq-attr"><span>Mum 180</span><span>The Correction</span><span>Anonymous &copy; TSSH</span></div>
   </div>
 
   <p class="body">This single shift removes the misread. Which removes the moral judgement. Which stops shame from accelerating the depletion. Which makes relief behaviours less compelling. <strong>The plan is not wrong. Its jurisdiction is.</strong></p>
@@ -1312,7 +1312,7 @@
     </div>
     <div class="step-eyebrow"><span>Putting It All Together</span></div>
   </div>
-  <p class="body">With the Foundation Circuit added the complete sequence of the framework reads as follows. Break capacity and the whole chain breaks at the foundation. Everything above it becomes inaccessible. Not lost, not broken. Inaccessible. Restore capacity and the chain runs again.</p>
+  <p class="body">With the Mum 180 added the complete sequence of the framework reads as follows. Break capacity and the whole chain breaks at the foundation. Everything above it becomes inaccessible. Not lost, not broken. Inaccessible. Restore capacity and the chain runs again.</p>
 
   <div class="chain">
     <div class="node found">
@@ -1351,7 +1351,7 @@
     </div>
   </div>
 
-  <p class="body">The Foundation Circuit is not an addition to this framework. It is the pre condition that determines whether any of it can run. Your existing frameworks have always addressed capability. This layer addresses capacity. And capacity is the pre condition for capability to express itself.</p>
+  <p class="body">The Mum 180 is not an addition to this framework. It is the pre condition that determines whether any of it can run. Your existing frameworks have always addressed capability. This layer addresses capacity. And capacity is the pre condition for capability to express itself.</p>
 
   <div class="step-eyebrow" style="margin: 28px 0 14px;">Core Distinctions  :  The Language</div>
   <div class="lang-grid">
@@ -1402,7 +1402,7 @@
   <p class="body">Answer honestly. Not how you usually feel. Not how you want to feel. Where are you right now.</p>
 
   <div style="margin-bottom:28px;">
-    <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#3aabb3;margin-bottom:16px;">Capability</div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#c94d62;margin-bottom:16px;">Capability</div>
     <div id="cap-sliders"></div>
   </div>
   <div style="margin-bottom:28px;">
@@ -1443,8 +1443,8 @@
     </div>
   </div>
 
-  <div style="margin-top:28px;margin-bottom:4px;padding:16px;background:#f7f7f7;border-left:4px solid #3aabb3;">
-    <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#3aabb3;margin-bottom:4px;">You are ready</div>
+  <div style="margin-top:28px;margin-bottom:4px;padding:16px;background:#f7f7f7;border-left:4px solid #c94d62;">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#c94d62;margin-bottom:4px;">You are ready</div>
     <div style="font-size:13px;color:#555;line-height:1.5;">The sliders give you your baseline read. The three sections above add the context. Together they produce a complete picture of where you are right now and what to do about it.</div>
   </div>
   <button class="assess-btn" style="margin-top:8px;" onclick="runAudit()">Run Full Audit</button>
@@ -1454,7 +1454,7 @@
     <!-- Batteries -->
     <div style="display:flex;gap:24px;justify-content:center;margin-bottom:28px;">
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#3aabb3;">Capability</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#c94d62;">Capability</div>
         <svg width="72" height="36" viewBox="0 0 72 36">
           <rect id="bcap-border" x="1" y="1" width="60" height="34" rx="4" fill="none" stroke="#ccc" stroke-width="2"/>
           <rect id="bcap-nub" x="61" y="11" width="10" height="14" rx="2" fill="#ccc"/>
@@ -1477,7 +1477,7 @@
     <div style="background:#f7f7f7;border:1px solid #eee;border-radius:8px;padding:24px 16px;margin-bottom:24px;display:flex;flex-direction:column;align-items:center;gap:16px;">
       <div style="display:flex;justify-content:center;align-items:flex-end;gap:8px;width:100%;">
         <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;">
-          <div id="av-cap-label" style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#3aabb3;">Capability</div>
+          <div id="av-cap-label" style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#c94d62;">Capability</div>
           <div id="av-cap" style="width:90px;height:110px;display:flex;align-items:flex-end;justify-content:center;"></div>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;">
@@ -1485,12 +1485,12 @@
           <div id="av-cpc" style="width:90px;height:110px;display:flex;align-items:flex-end;justify-content:center;"></div>
         </div>
       </div>
-      <div id="speech-bubble" style="background:white;border:2px solid #5ec5cc;border-radius:10px;padding:12px 16px;font-size:13px;font-style:italic;color:#444;text-align:center;line-height:1.5;width:100%;box-sizing:border-box;"></div>
+      <div id="speech-bubble" style="background:white;border:2px solid #e8637a;border-radius:10px;padding:12px 16px;font-size:13px;font-style:italic;color:#444;text-align:center;line-height:1.5;width:100%;box-sizing:border-box;"></div>
     </div>
 
     <!-- Diagnosis -->
-    <div id="diagnosis-box" style="border-left:5px solid var(--teal);background:var(--teal-pale);padding:20px;margin-bottom:32px;">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:8px;">Your Result</div>
+    <div id="diagnosis-box" style="border-left:5px solid var(--rose);background:var(--rose-pale);padding:20px;margin-bottom:32px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--rose-dark);margin-bottom:8px;">Your Result</div>
       <div id="diagnosis-text" style="font-size:14px;line-height:1.7;color:#333;"></div>
     </div>
 
@@ -1515,16 +1515,16 @@
         </div>
 
         <!-- 3 Swaps -->
-        <div style="background:#f0fafa;border-left:4px solid #5ec5cc;padding:16px;margin-bottom:24px;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#3aabb3;margin-bottom:10px;">3 Swaps To Make Now</div>
+        <div style="background:#f0fafa;border-left:4px solid #e8637a;padding:16px;margin-bottom:24px;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#c94d62;margin-bottom:10px;">3 Swaps To Make Now</div>
           <div id="swaps-list"></div>
         </div>
 
         <!-- Full detail toggle -->
-        <div style="background:#f0fafa;border:2px solid #5ec5cc;border-radius:6px;padding:16px;margin-top:8px;margin-bottom:4px;text-align:center;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#3aabb3;margin-bottom:6px;">Want The Full Picture?</div>
+        <div style="background:#f0fafa;border:2px solid #e8637a;border-radius:6px;padding:16px;margin-top:8px;margin-bottom:4px;text-align:center;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#c94d62;margin-bottom:6px;">Want The Full Picture?</div>
           <div style="font-size:13px;color:#555;margin-bottom:12px;line-height:1.5;">The detail section breaks down exactly what is happening, what your audit shows, and your personalised next steps.</div>
-          <button onclick="toggleDetail(this)" style="display:block;width:100%;padding:14px;background:#3aabb3;border:none;color:white;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:4px;">See Full Detail ▾</button>
+          <button onclick="toggleDetail(this)" style="display:block;width:100%;padding:14px;background:#c94d62;border:none;color:white;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:4px;">See Full Detail ▾</button>
         </div>
         <div id="full-detail" style="display:none;padding:20px;background:#f9f9f9;border:1px solid #eee;font-size:14px;line-height:1.8;color:#333;margin-top:4px;"></div>
 
@@ -1562,26 +1562,26 @@
 </div>
 
 <style>
-.assess-btn{display:block;width:100%;padding:16px;background:var(--teal);color:white;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;box-sizing:border-box;margin-bottom:8px;}
+.assess-btn{display:block;width:100%;padding:16px;background:var(--rose);color:white;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;box-sizing:border-box;margin-bottom:8px;}
 .q-row{margin-bottom:18px;}
 .q-text{font-size:13px;color:#333;margin-bottom:6px;line-height:1.5;}
 .slider-row{display:flex;align-items:center;gap:8px;}
 .slider-row input[type=range]{flex:1;height:5px;border-radius:3px;-webkit-appearance:none;outline:none;background:#e8e8e8;}
-input.cap-sl::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#3aabb3;cursor:pointer;}
+input.cap-sl::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#c94d62;cursor:pointer;}
 input.cpc-sl::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#e05555;cursor:pointer;}
 .slider-val{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;min-width:20px;text-align:right;}
 .audit-block{padding:20px;background:#f9f9f9;border-left:4px solid #eee;}
 .audit-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;}
-.audit-title.teal{color:var(--teal-dark);}
+.audit-title.teal{color:var(--rose-dark);}
 .audit-title.red{color:var(--red);}
 .audit-intro{font-size:12px;color:#999;margin-bottom:14px;}
 .audit-sub{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:8px;}
-.audit-sub.teal{color:var(--teal-dark);}
+.audit-sub.teal{color:var(--rose-dark);}
 .audit-sub.red{color:var(--red);}
 .tag-grid{display:flex;flex-wrap:wrap;}
 .check-grid{margin-bottom:4px;}
-.tag-btn{padding:7px 13px;border-radius:18px;border:2px solid #5ec5cc;background:white;color:#3aabb3;font-size:12px;font-weight:600;cursor:pointer;margin:3px;}
-.tag-btn.on{background:#5ec5cc;color:white;}
+.tag-btn{padding:7px 13px;border-radius:18px;border:2px solid #e8637a;background:white;color:#c94d62;font-size:12px;font-weight:600;cursor:pointer;margin:3px;}
+.tag-btn.on{background:#e8637a;color:white;}
 @keyframes av-pop{
   0%{transform:scale(0.1);opacity:0;}
   65%{transform:scale(1.1);opacity:0.75;}
@@ -1617,7 +1617,7 @@ function getColor(p){return p>=70?'#3aab6e':p>=40?'#f0a500':'#e05555';}
 function getLabel(p){return p>=70?'High':p>=40?'Medium':'Low';}
 
 function buildSliders(qs,cid,cls){
-  const color=cls==='cap-sl'?'#3aabb3':'#e05555';
+  const color=cls==='cap-sl'?'#c94d62':'#e05555';
   document.getElementById(cid).innerHTML=qs.map((q,i)=>{
     const id=cid+'_'+i;
     return `<div class="q-row"><div class="q-text">${i+1}. ${q}</div><div class="slider-row"><span style="font-size:10px;color:#ccc;">1</span><input type="range" min="1" max="10" value="5" class="${cls}" id="${id}" oninput="document.getElementById('v_${id}').textContent=this.value"><span style="font-size:10px;color:#ccc;">10</span><span class="slider-val" style="color:${color};" id="v_${id}">5</span></div></div>`;
@@ -1704,7 +1704,7 @@ function runAudit(){
   // Diagnosis
   const db=document.getElementById('diagnosis-box');
   db.style.borderLeftColor=capC;
-  db.style.background=capC==='#3aab6e'?'var(--teal-pale)':'#fff8f8';
+  db.style.background=capC==='#3aab6e'?'var(--rose-pale)':'#fff8f8';
   document.getElementById('diagnosis-text').innerHTML=getDiagnosis(capP,cpcP);
 
   // Show result panel
@@ -1873,7 +1873,7 @@ function runAudit(){
   document.getElementById('swaps-list').innerHTML=swaps.map(s=>
     `<div style="margin-bottom:20px;">
       <span style="color:#e05555;font-size:14px;font-weight:600;text-decoration:line-through;opacity:0.85;">${s.from}</span><br>
-      <span style="color:#3aabb3;font-weight:700;font-size:14px;">→ ${s.to}</span>
+      <span style="color:#c94d62;font-weight:700;font-size:14px;">→ ${s.to}</span>
       <div style="font-size:12px;color:#888;line-height:1.5;margin-top:5px;font-style:italic;">${s.why}</div>
     </div>`
   ).join('');
@@ -1881,7 +1881,7 @@ function runAudit(){
   // Full detail
   let headline='',whatHappening='',nextStepsArr=[];
   if(capLabel==='High'&&cpcLabel==='Low'){
-    headline='<span style="color:#3aabb3;">High Capability.</span> <span style="color:#e05555;">No Access.</span>';
+    headline='<span style="color:#c94d62;">High Capability.</span> <span style="color:#e05555;">No Access.</span>';
     whatHappening=`Your capability is fully intact at ${capP}%. But capacity at ${cpcP}% means the platform cannot load it. This is not a you problem. This is a resource problem.`;
     nextStepsArr=[
       'Pull everything back to simple. The noise in your head is static, not signal. Get quiet. Get still. Let the inner world settle so you can reconnect with the outside world. Do not try to solve anything yet.',
@@ -1889,7 +1889,7 @@ function runAudit(){
       'Your capability is loaded and your direction is clear. Apply your energy to one task. Take the action. Get the result. Record it as evidence.'
     ];
   } else if(capLabel==='High'&&cpcLabel==='High'){
-    headline='<span style="color:#3aabb3;">Full Access.</span> <span style="color:#3aab6e;">Use This Window.</span>';
+    headline='<span style="color:#c94d62;">Full Access.</span> <span style="color:#3aab6e;">Use This Window.</span>';
     whatHappening=`Both systems running well. Capability ${capP}%. Capacity ${cpcP}%. You are above threshold. The full architecture is available.`;
     nextStepsArr=[
       'You already have clarity. Your system is quiet and connected. You do not need to seek it. Move straight to direction.',
@@ -1897,7 +1897,7 @@ function runAudit(){
       'The line is clear. Capability confirmed. Capacity confirmed. Direction confirmed. Apply your energy to the task, take the action, get the result, record it as evidence. That is all.'
     ];
   } else if(cpcLabel==='Low'){
-    headline='<span style="color:#e05555;">System Depleted.</span> <span style="color:#3aabb3;">Recovery First.</span>';
+    headline='<span style="color:#e05555;">System Depleted.</span> <span style="color:#c94d62;">Recovery First.</span>';
     whatHappening=`Capacity at ${cpcP}% is the binding constraint. Everything you try to run is on a depleted system.`;
     nextStepsArr=[
       'Stop trying to push through. Pull everything back to the simplest possible version of right now. Remove the static from your head, not by solving it, but by stepping back from it. Get still. Reconnect.',
@@ -1905,7 +1905,7 @@ function runAudit(){
       'Do not reach for a full action right now. Your job is to complete one small thing that builds evidence your system still works. Finish it. Record it. That is the win.'
     ];
   } else {
-    headline='<span style="color:#f0a500;">Partial Access State.</span> <span style="color:#3aabb3;">Manage Deliberately.</span>';
+    headline='<span style="color:#f0a500;">Partial Access State.</span> <span style="color:#c94d62;">Manage Deliberately.</span>';
     whatHappening=`Capability ${capP}%. Capacity ${cpcP}%. Manage your energy deliberately.`;
     nextStepsArr=[
       'Reduce the number of things competing for your attention right now. Not permanently. Just for this moment. Get back to one thing at a time.',
@@ -1915,15 +1915,15 @@ function runAudit(){
   }
   const nextStepsHTML=`
     <div style="margin-bottom:20px;">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#3aabb3;margin-bottom:8px;">Seek Clarity of Mind</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#c94d62;margin-bottom:8px;">Seek Clarity of Mind</div>
       <div style="padding:14px 16px;background:#e8f7f8;border-radius:6px;font-size:13px;color:#2a7a80;line-height:1.6;">${nextStepsArr[0]}</div>
     </div>
     <div style="margin-bottom:20px;">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#3aabb3;margin-bottom:8px;">Pick a Direction</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#c94d62;margin-bottom:8px;">Pick a Direction</div>
       <div style="padding:14px 16px;background:#e8f7f8;border-radius:6px;font-size:13px;color:#2a7a80;line-height:1.6;">${nextStepsArr[1]}</div>
     </div>
     <div style="margin-bottom:8px;">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#3aabb3;margin-bottom:8px;">Go</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#c94d62;margin-bottom:8px;">Go</div>
       <div style="padding:14px 16px;background:#e8f7f8;border-radius:6px;font-size:13px;color:#2a7a80;line-height:1.6;">${nextStepsArr[2]}</div>
     </div>`;
 
@@ -1954,7 +1954,7 @@ function runAudit(){
     </div>
     <div style="margin-bottom:16px;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#aaa;margin-bottom:6px;">What Is Happening</div><p style="font-size:14px;line-height:1.7;color:#333;margin:0;">${whatHappening}</p></div>
     <div style="margin-bottom:16px;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#aaa;margin-bottom:8px;">What The Audit Shows</div>${auditCardsHTML}</div>
-    <div style="background:#f0fafa;padding:18px;border-top:3px solid #3aabb3;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#3aabb3;margin-bottom:12px;">What To Do Next</div>${nextStepsHTML}</div>`;
+    <div style="background:#f0fafa;padding:18px;border-top:3px solid #c94d62;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#c94d62;margin-bottom:12px;">What To Do Next</div>${nextStepsHTML}</div>`;
 
   document.getElementById('audit-panel').style.display='block';
   setCommitmentStage(dominantColor);
@@ -1991,10 +1991,10 @@ function setCommitmentStage(dominantColor){
   var key = dominantColor === '#3aab6e' ? 'green' : dominantColor === '#f0a500' ? 'amber' : 'red';
   var cfg = STAGE_CONFIG[key];
   document.getElementById('commit-stage-label').textContent = cfg.label;
-  document.getElementById('commit-stage-label').style.color = '#3aabb3';
+  document.getElementById('commit-stage-label').style.color = '#c94d62';
   document.getElementById('commit-stage-instruction').textContent = cfg.instruction;
   document.getElementById('commit-input').placeholder = cfg.placeholder;
-  document.getElementById('commit-input').style.borderColor = '#3aabb3';
+  document.getElementById('commit-input').style.borderColor = '#c94d62';
 }
 
 function makeCommitment(){
@@ -2079,7 +2079,7 @@ document.addEventListener('DOMContentLoaded',function(){
   buildSliders(CAP_QS,'cap-sliders','cap-sl');
   buildSliders(CPC_QS,'cpc-sliders','cpc-sl');
   buildTags(ENERGY_OPTS,'energy-tags');
-  buildChecks(V1_OPTS,'v1-thoughts','#3aabb3');
+  buildChecks(V1_OPTS,'v1-thoughts','#c94d62');
   buildChecks(V2_OPTS,'v2-thoughts','#e05555');
   buildChecks(GOOD_OPTS,'good-behaviours','#3aab6e');
   buildChecks(BAD_OPTS,'bad-behaviours','#e05555');
@@ -2093,7 +2093,7 @@ document.addEventListener('DOMContentLoaded',function(){
   <div class="close-title">You Built A Person.<br>From Nothing.</div>
   <div class="close-body">The framework is not separate from you. It came from you. All of it. The proof of concept for this entire layer is the person who built the framework. That is not irony. That is credibility.</div>
   <div class="close-quote">"You're building a person... it will take time. Be patient."</div>
-  <div class="close-copy">Think Small, Start Horribly 2026 &nbsp;·&nbsp; Foundation Circuit &nbsp;·&nbsp; All Frameworks &copy; Alex Cooper &nbsp;·&nbsp; @thinksmallstarthorribly</div>
+  <div class="close-copy">Think Small, Start Horribly 2026 &nbsp;·&nbsp; Mum 180 &nbsp;·&nbsp; All Frameworks &copy; Anonymous &nbsp;·&nbsp; @thinksmallstarthorribly</div>
 </div>
 
 </div><!-- end wrap -->

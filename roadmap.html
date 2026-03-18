@@ -8,7 +8,7 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --teal:#5ec5cc;--teal-d:#3aabb3;--teal-p:#eaf7f8;--teal-m:#b8e8eb;
+  --rose:#e8637a;--rose-d:#c94d62;--rose-p:#fdf0f2;--rose-m:#f5c4cc;
   --yellow:#f5c842;--yp:#fffbea;
   --red:#e05555;--rp:#fdf1f1;
   --green:#27ae60;--gp:#eafaf1;
@@ -22,17 +22,17 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
 
 /* ── NAV ── */
 .nav{background:var(--charcoal);padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.nav-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal);text-decoration:none}
+.nav-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:var(--rose);text-decoration:none}
 .nav-logo span{color:rgba(255,255,255,0.3)}
 .nav-back{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
-.nav-back:hover{color:var(--teal)}
+.nav-back:hover{color:var(--rose)}
 
 /* ── PAGE HEADER ── */
 .page-header{background:var(--charcoal);padding:64px 40px 56px;border-bottom:1px solid rgba(255,255,255,0.06)}
 @media(max-width:640px){.page-header{padding:48px 24px 40px}}
-.page-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+.page-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:var(--rose);margin-bottom:16px}
 .page-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,6vw,72px);font-weight:900;text-transform:uppercase;line-height:0.95;color:#fff;margin-bottom:16px}
-.page-title em{color:var(--teal);font-style:normal}
+.page-title em{color:var(--rose);font-style:normal}
 .page-sub{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.45);max-width:600px}
 
 /* ── LEGEND ── */
@@ -69,7 +69,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
 .node-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;line-height:1.1;margin-bottom:8px;color:var(--charcoal)}
 .node-body{font-size:12px;line-height:1.6;color:var(--mid)}
 .node-url{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--light);margin-top:10px;display:flex;align-items:center;gap:6px}
-.node-url a{color:var(--teal-d);text-decoration:none}
+.node-url a{color:var(--rose-d);text-decoration:none}
 .node-url a:hover{text-decoration:underline}
 .node-status{font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;margin-top:8px;display:inline-flex;align-items:center;gap:5px}
 .node-status::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0}
@@ -78,8 +78,8 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
 .node-status.partial{color:var(--yellow)}.node-status.partial::before{background:var(--yellow)}
 
 /* Colour themes */
-.theme-teal .node-accent{background:var(--teal)}
-.theme-teal .node-tag{background:var(--teal-p);color:var(--teal-d)}
+.theme-teal .node-accent{background:var(--rose)}
+.theme-teal .node-tag{background:var(--rose-p);color:var(--rose-d)}
 .theme-red .node-accent{background:var(--red)}
 .theme-red .node-tag{background:var(--rp);color:var(--red)}
 .theme-yellow .node-accent{background:var(--yellow)}
@@ -96,20 +96,20 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
 /* ── CONNECTOR ARROWS ── */
 .connector{display:flex;align-items:center;justify-content:center;padding:8px 0;gap:8px;color:var(--light)}
 .connector-line{flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--rule) 0,var(--rule) 6px,transparent 6px,transparent 12px)}
-.connector-arrow{font-size:18px;color:var(--teal);font-weight:300;flex-shrink:0}
+.connector-arrow{font-size:18px;color:var(--rose);font-weight:300;flex-shrink:0}
 .connector-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--light);white-space:nowrap}
 
 /* ── VERTICAL CONNECTOR ── */
 .v-connector{display:flex;flex-direction:column;align-items:center;padding:4px 0;gap:4px}
 .v-connector-line{width:1px;height:20px;background:repeating-linear-gradient(180deg,var(--rule) 0,var(--rule) 4px,transparent 4px,transparent 8px)}
-.v-connector-arrow{font-size:16px;color:var(--teal);line-height:1}
+.v-connector-arrow{font-size:16px;color:var(--rose);line-height:1}
 
 /* ── WIDE NODE (spans) ── */
 .node-wide{grid-column:1/-1}
 
 /* ── CALLOUT BOX ── */
 .callout{background:var(--charcoal);padding:28px 32px;margin-top:48px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
-.callout-icon{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:var(--teal);line-height:1;flex-shrink:0}
+.callout-icon{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:var(--rose);line-height:1;flex-shrink:0}
 .callout-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:6px}
 .callout-body{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.45)}
 .callout-body strong{color:rgba(255,255,255,0.75)}
@@ -123,7 +123,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
 <body>
 
 <nav class="nav">
-  <a href="portal.html" class="nav-logo">Life Circuitry <span>/ Think Small</span></a>
+  <a href="portal.html" class="nav-logo">Mum 180 <span>/ Think Small</span></a>
   <a href="portal.html" class="nav-back">← Portal</a>
 </nav>
 
@@ -197,7 +197,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
       <div class="node theme-teal">
         <div class="node-accent"></div>
         <div class="node-tag">Sales Page</div>
-        <div class="node-title">index.html — Life Circuitry Sales Page</div>
+        <div class="node-title">index.html — Mum 180 Sales Page</div>
         <div class="node-body">Full-length sales page. Hero → Foundation Gap (before/after) → Who It's For → Reactive Adaptation mechanism → Two Truths → 7 Modules → How It Works → Alex → Testimonials (Jase + Kathryn) → Guarantee → Pricing ($97) → FAQ → CTA. Purchase modal with PayPal + email fallback.</div>
         <div class="node-url">Live: <a href="index.html" target="_blank">index.html</a></div>
         <div class="node-status live">Live</div>
@@ -282,7 +282,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
         <div class="node-accent"></div>
         <div class="node-tag">Home Base</div>
         <div class="node-title">portal.html — Dashboard</div>
-        <div class="node-body">Programme home. Lists all 7 modules with progress bars, a Resources section (Document Library, Workbook), and the sidebar navigation. Progress syncs from localStorage.</div>
+        <div class="node-body">Programme home. Lists all 6 modules with progress bars, a Resources section (Document Library, Workbook), and the sidebar navigation. Progress syncs from localStorage.</div>
         <div class="node-url">Live: <a href="portal.html" target="_blank">portal.html</a></div>
         <div class="node-status live">Live</div>
       </div>
@@ -345,7 +345,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
       <div class="node theme-teal">
         <div class="node-accent"></div>
         <div class="node-tag">Module 04</div>
-        <div class="node-title">Foundation Circuit</div>
+        <div class="node-title">Mum 180</div>
         <div class="node-body">Two states. Capacity audit. Recovery tracker. Evidence log.</div>
         <div class="node-url"><a href="module-4.html" target="_blank">Open →</a></div>
         <div class="node-status live">Live</div>
@@ -374,7 +374,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
         <div class="node-tag">Module 07</div>
         <div class="node-title">Early Learning Phase</div>
         <div class="node-body">Re-entry audit. 4 corrections. Practice framework.</div>
-        <div class="node-url"><a href="module-7.html" target="_blank">Open →</a></div>
+        <div class="node-url"><a href="portal.html" target="_blank">Open →</a></div>
         <div class="node-status live">Live</div>
       </div>
 
@@ -454,7 +454,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
         <div class="node-accent"></div>
         <div class="node-tag">Planned</div>
         <div class="node-title">Progress Certificates</div>
-        <div class="node-body">Completion certificate on finishing all 7 modules. Shareable. LinkedIn-compatible. Reinforces the evidence the programme builds.</div>
+        <div class="node-body">Completion certificate on finishing all 6 modules. Shareable. LinkedIn-compatible. Reinforces the evidence the programme builds.</div>
         <div class="node-status planned">Planned</div>
       </div>
 
@@ -481,7 +481,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
         <div class="node-accent"></div>
         <div class="node-tag">Lifetime Access</div>
         <div class="node-title">Return &amp; Revisit</div>
-        <div class="node-body">No expiry. Module 04 (Foundation Circuit) is specifically designed to be returned to as circumstances change. Progress saves permanently to device.</div>
+        <div class="node-body">No expiry. Module 04 (Mum 180) is specifically designed to be returned to as circumstances change. Progress saves permanently to device.</div>
         <div class="node-status live">Live</div>
       </div>
 
@@ -497,7 +497,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
         <div class="node-accent"></div>
         <div class="node-tag">Planned</div>
         <div class="node-title">Advanced / Next Programme</div>
-        <div class="node-body">What comes after the Foundation Circuit? A second programme for people who've completed the system and need the next layer. Blank canvas.</div>
+        <div class="node-body">What comes after the Mum 180? A second programme for people who've completed the system and need the next layer. Blank canvas.</div>
         <div class="node-status planned">Planned — not designed yet</div>
       </div>
 
@@ -532,7 +532,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
         <div class="node-accent"></div>
         <div class="node-tag">Hosting</div>
         <div class="node-title">GitHub Pages — Free Hosting</div>
-        <div class="node-body">Entire platform hosted on GitHub Pages. Zero cost. Auto-deploys on git push. Current URL: thinksmallstarthorribly.github.io/foundation-circuit. Custom domain: not yet connected.</div>
+        <div class="node-body">Entire platform hosted on GitHub Pages. Zero cost. Auto-deploys on git push. Current URL: thinksmallstarthorribly.github.io/mum-180. Custom domain: not yet connected.</div>
         <div class="node-status partial">Partial — custom domain pending</div>
       </div>
 
@@ -549,7 +549,7 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
       <div class="callout-body">
         <strong>1. Payment automation</strong> — every purchase currently requires manual fulfilment (Alex sends the code). One Stripe/Gumroad integration removes this entirely.<br><br>
         <strong>2. Traffic</strong> — the sales page converts but nobody's seeing it yet. The entire marketing phase (social, email, referral) is unbuilt. This is the actual constraint on revenue.<br><br>
-        <strong>3. Custom domain</strong> — <em>thinksmallstarthorribly.github.io/foundation-circuit</em> is functional but unprofessional. A $12/yr domain is the single highest-ROI improvement available right now.
+        <strong>3. Custom domain</strong> — <em>thinksmallstarthorribly.github.io/mum-180</em> is functional but unprofessional. A $12/yr domain is the single highest-ROI improvement available right now.
       </div>
     </div>
   </div>
@@ -557,8 +557,8 @@ body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal);
 </div><!-- /main -->
 
 <footer style="background:var(--charcoal);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-  <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.25)">Think Small, Start Horribly &mdash; Life Circuitry &copy; 2026</div>
-  <a href="https://thinksmallstarthorribly.github.io/foundation-circuit/" target="_blank" style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none">Live Site &rarr;</a>
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.25)">Think Small, Start Horribly &mdash; Mum 180 &copy; 2026</div>
+  <a href="https://thinksmallstarthorribly.github.io/mum-180/" target="_blank" style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);text-decoration:none">Live Site &rarr;</a>
 </footer>
 
 </body>

@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 03: Escaping the Conceptual Landscape | Life Circuitry</title>
+<title>Module 03: Escaping the Conceptual Landscape | Mum 180</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --accent:#5ec5cc;--accent-d:#3aabb3;--accent-p:#eaf7f8;--accent-m:#b8e8eb;
+  --accent:#e8637a;--accent-d:#c94d62;--accent-p:#fdf0f2;--accent-m:#f5c4cc;
   --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
   --green:#27ae60;--gp:#e9f7ef;
   --purple:#9b59b6;--pp:#f5eef8;
@@ -133,7 +133,7 @@ textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:
 <!-- TOP NAV -->
 <nav class="topnav">
   <a href="portal.html" class="topnav-back">← Back to Portal</a>
-  <div class="topnav-title">Life Circuitry / <span>Module 03</span></div>
+  <div class="topnav-title">Mum 180 / <span>Module 03</span></div>
   <div class="topnav-progress">
     <span class="nav-pct" id="navPct">0%</span>
     <div class="nav-bar"><div class="nav-bar-fill" id="navFill" style="width:0%"></div></div>
@@ -144,7 +144,7 @@ textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:
   <!-- MAIN CONTENT -->
   <div class="content-area">
     <div class="mod-header">
-      <div class="mod-eyebrow">Module 03 of 07 — Life Circuitry Program</div>
+      <div class="mod-eyebrow">Module 03 of 07 — Mum 180 Program</div>
       <h1 class="mod-title">Escaping the<br>Conceptual Landscape</h1>
       <p class="mod-subtitle">20 barriers. Four groups. One bridge from planning to real action — and how to cross it without relying on motivation or willpower.</p>
       <div class="mod-meta">
@@ -451,7 +451,7 @@ textarea.reflect-input:focus{outline:none;border-color:var(--accent);background:
       <!-- NAV BUTTONS -->
       <div class="nav-buttons">
         <a href="module-2.html" class="btn-nav">← Module 02: Stuck Framework</a>
-        <a href="module-4.html" class="btn-nav primary">Module 04: Foundation Circuit →</a>
+        <a href="module-4.html" class="btn-nav primary">Module 04: Mum 180 →</a>
       </div>
 
     </div>
@@ -585,15 +585,15 @@ function downloadPDF(){
   const barriers = [...document.querySelectorAll('.barrier-card.identified')].map(el=>el.querySelector('.barrier-name').textContent);
   const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Module 03 — Escaping the Conceptual Landscape</title>
   <style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;color:#1a1a1a;line-height:1.6}
-  h1{font-size:28px;border-bottom:3px solid #5ec5cc;padding-bottom:12px}
-  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#5ec5cc;margin-top:28px}
+  h1{font-size:28px;border-bottom:3px solid #e8637a;padding-bottom:12px}
+  h2{font-size:16px;text-transform:uppercase;letter-spacing:0.1em;color:#e8637a;margin-top:28px}
   h3{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-top:16px}
-  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #5ec5cc}
+  p{font-size:13px;color:#444;background:#f5f5f5;padding:10px 14px;border-left:3px solid #e8637a}
   .barrier{display:inline-block;background:#fdf1f1;border:1px solid #e05555;padding:4px 10px;margin:4px;font-size:12px;font-weight:bold}
   .footer{margin-top:40px;font-size:11px;color:#aaa;border-top:1px solid #eee;padding-top:12px}
   </style></head><body>
   <h1>Module 03: Escaping the Conceptual Landscape</h1>
-  <p style="background:#eaf7f8;border-color:#5ec5cc"><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
+  <p style="background:#fdf0f2;border-color:#e8637a"><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
   <h2>My Active Barriers (${barriers.length} identified)</h2>
   ${barriers.map(b=>`<span class="barrier">${b}</span>`).join('')}
   <h2>Reflections</h2>
@@ -607,7 +607,7 @@ function downloadPDF(){
   <h3>Step 1: Zoom Out (my honest pattern)</h3><p>${d.r7||'—'}</p>
   <h3>Step 2: Honesty (the one thing I've been avoiding)</h3><p>${d.r8||'—'}</p>
   <h3>Step 3: Zoom In (my smallest possible action today)</h3><p>${d.r9||'—'}</p>
-  <div class="footer">Life Circuitry — Think Small, Start Horribly — thinksmallstarthorribly.com</div>
+  <div class="footer">Mum 180 — Think Small, Start Horribly — thinksmallstarthorribly.com</div>
   </body></html>`;
   const w = window.open('','_blank');
   w.document.write(html);

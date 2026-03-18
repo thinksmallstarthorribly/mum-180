@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document Library — Life Circuitry</title>
+<title>Document Library — Mum 180</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --teal:#5ec5cc;--teal-d:#3aabb3;--teal-p:#eaf7f8;--teal-m:#b8e8eb;
+  --rose:#e8637a;--rose-d:#c94d62;--rose-p:#fdf0f2;--rose-m:#f5c4cc;
   --yellow:#f5c842;--yp:#fef9e7;
   --red:#e05555;--rp:#fdf1f1;
   --green:#27ae60;--gp:#e9f7ef;
@@ -22,11 +22,11 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
 /* TOP NAV */
 .topnav{background:var(--charcoal);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
-.topnav-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal);text-decoration:none}
+.topnav-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--rose);text-decoration:none}
 .topnav-logo span{color:rgba(255,255,255,0.25)}
 .topnav-right{display:flex;align-items:center;gap:20px}
 .nav-link{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
-.nav-link:hover{color:var(--teal)}
+.nav-link:hover{color:var(--rose)}
 
 /* LAYOUT */
 .shell{display:flex;flex:1;min-height:0}
@@ -37,7 +37,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .sb-section{padding:20px 16px 8px;font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.18)}
 .sb-item{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;transition:all 0.15s;border-left:3px solid transparent;text-decoration:none}
 .sb-item:hover{background:rgba(255,255,255,0.04);border-left-color:rgba(94,197,204,0.3)}
-.sb-item.active{background:rgba(94,197,204,0.08);border-left-color:var(--teal)}
+.sb-item.active{background:rgba(94,197,204,0.08);border-left-color:var(--rose)}
 .sb-item-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .sb-item-body{flex:1;min-width:0}
 .sb-item-label{font-size:12px;font-weight:700;color:rgba(255,255,255,0.5);line-height:1.3}
@@ -47,18 +47,18 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .sb-divider{height:1px;background:rgba(255,255,255,0.05);margin:8px 16px}
 .sb-footer{padding:20px 16px;margin-top:auto;border-top:1px solid rgba(255,255,255,0.05)}
 .sb-footer-text{font-size:11px;color:rgba(255,255,255,0.2);line-height:1.5}
-.sb-footer-brand{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal);margin-bottom:4px}
+.sb-footer-brand{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--rose);margin-bottom:4px}
 
 /* PAGE HEADER */
 .page-header{background:var(--charcoal);padding:36px 40px}
-.page-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.page-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--rose);margin-bottom:10px}
 .page-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;color:#fff;line-height:1;margin-bottom:10px}
 .page-sub{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.6;max-width:560px}
 
 /* FILTER BAR */
 .filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .filter-btn{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--rule);background:var(--card);color:var(--light);border-radius:4px;cursor:pointer;transition:all 0.15s}
-.filter-btn:hover{border-color:var(--teal-m);color:var(--teal-d)}
+.filter-btn:hover{border-color:var(--rose-m);color:var(--rose-d)}
 .filter-btn.active{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
 .filter-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);margin-right:4px}
 
@@ -67,8 +67,8 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
 /* DOCUMENT CARD */
 .doc-card{background:var(--card);border:1px solid var(--rule);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:all 0.2s;cursor:pointer}
-.doc-card:hover{border-color:var(--teal-m);box-shadow:0 4px 20px rgba(94,197,204,0.1);transform:translateY(-1px)}
-.doc-card.preview-open{border-color:var(--teal);box-shadow:0 4px 24px rgba(94,197,204,0.18)}
+.doc-card:hover{border-color:var(--rose-m);box-shadow:0 4px 20px rgba(94,197,204,0.1);transform:translateY(-1px)}
+.doc-card.preview-open{border-color:var(--rose);box-shadow:0 4px 24px rgba(94,197,204,0.18)}
 .doc-card-accent{height:4px;width:100%}
 .doc-card-body{padding:20px 20px 16px;flex:1;display:flex;flex-direction:column;gap:8px}
 .doc-card-module{font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--light)}
@@ -79,7 +79,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .doc-card-actions{display:flex;gap:0;border-top:1px solid var(--rule)}
 .doc-action{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 8px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;color:var(--light);transition:all 0.15s;border:none;background:none;cursor:pointer}
 .doc-action:not(:last-child){border-right:1px solid var(--rule)}
-.doc-action:hover{background:var(--teal-p);color:var(--teal-d)}
+.doc-action:hover{background:var(--rose-p);color:var(--rose-d)}
 .doc-action.preview-btn:hover{background:var(--charcoal);color:#fff}
 .doc-action svg{flex-shrink:0}
 
@@ -92,8 +92,8 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .preview-close:hover{background:rgba(255,255,255,0.2);color:#fff}
 .preview-actions{display:flex;gap:8px;flex-shrink:0}
 .preview-action-btn{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 14px;border-radius:4px;text-decoration:none;transition:all 0.15s;display:flex;align-items:center;gap:5px;white-space:nowrap}
-.preview-action-btn.dl{background:var(--teal);color:#fff;border:1px solid var(--teal)}
-.preview-action-btn.dl:hover{background:var(--teal-d)}
+.preview-action-btn.dl{background:var(--rose);color:#fff;border:1px solid var(--rose)}
+.preview-action-btn.dl:hover{background:var(--rose-d)}
 .preview-action-btn.newtab{background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15)}
 .preview-action-btn.newtab:hover{border-color:rgba(255,255,255,0.4);color:#fff}
 .preview-iframe{width:100%;height:72vh;min-height:500px;border:none;display:block;background:#f5f5f5}
@@ -124,7 +124,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
 <!-- TOP NAV -->
 <nav class="topnav">
-  <a href="portal.html" class="topnav-logo">Life Circuitry <span>/ Library</span></a>
+  <a href="portal.html" class="topnav-logo">Mum 180 <span>/ Library</span></a>
   <div class="topnav-right">
     <a href="portal.html" class="nav-link">← Dashboard</a>
   </div>
@@ -136,7 +136,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
   <aside class="sidebar">
     <div class="sb-section">Programme</div>
     <a href="module-1.html" class="sb-item">
-      <div class="sb-item-dot" style="background:#5ec5cc"></div>
+      <div class="sb-item-dot" style="background:#e8637a"></div>
       <div class="sb-item-body">
         <div class="sb-item-label">The Momentum Formula</div>
         <div class="sb-item-sub">Module 01</div>
@@ -157,9 +157,9 @@ body{display:flex;flex-direction:column;min-height:100vh}
       </div>
     </a>
     <a href="module-4.html" class="sb-item">
-      <div class="sb-item-dot" style="background:#5ec5cc"></div>
+      <div class="sb-item-dot" style="background:#e8637a"></div>
       <div class="sb-item-body">
-        <div class="sb-item-label">Foundation Circuit</div>
+        <div class="sb-item-label">Mum 180</div>
         <div class="sb-item-sub">Module 04</div>
       </div>
     </a>
@@ -177,7 +177,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
         <div class="sb-item-sub">Module 06</div>
       </div>
     </a>
-    <a href="module-7.html" class="sb-item">
+    <a href="portal.html" class="sb-item">
       <div class="sb-item-dot" style="background:#27ae60"></div>
       <div class="sb-item-body">
         <div class="sb-item-label">Re-Entering Early Learning</div>
@@ -187,7 +187,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
     <div class="sb-divider"></div>
     <div class="sb-section">Resources</div>
     <a href="library.html" class="sb-item active">
-      <div class="sb-item-dot" style="background:var(--teal)"></div>
+      <div class="sb-item-dot" style="background:var(--rose)"></div>
       <div class="sb-item-body">
         <div class="sb-item-label">Document Library</div>
         <div class="sb-item-sub">Source PDFs & References</div>
@@ -201,8 +201,8 @@ body{display:flex;flex-direction:column;min-height:100vh}
       </div>
     </a>
     <div class="sb-footer">
-      <div class="sb-footer-brand">Life Circuitry</div>
-      <div class="sb-footer-text">Think Small, Start Horribly<br>Alex Cooper © 2026</div>
+      <div class="sb-footer-brand">Mum 180</div>
+      <div class="sb-footer-text">Think Small, Start Horribly<br>Anonymous © 2026</div>
     </div>
   </aside>
 
@@ -211,7 +211,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
     <!-- PAGE HEADER -->
     <div class="page-header">
-      <div class="page-eyebrow">Life Circuitry Programme</div>
+      <div class="page-eyebrow">Mum 180 Programme</div>
       <div class="page-title">Document Library</div>
       <div class="page-sub">The original source documents for each module. Read online, download, or open in a new tab.</div>
     </div>
@@ -250,13 +250,13 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
         <!-- MODULE 1 -->
         <div class="doc-card" data-tags="module framework" data-pdf="assets/docs/module-1-source.pdf" data-title="Get Started, Stay Committed">
-          <div class="doc-card-accent" style="background:#5ec5cc"></div>
+          <div class="doc-card-accent" style="background:#e8637a"></div>
           <div class="doc-card-body">
             <div class="doc-card-module">Module 01 · The Momentum Formula</div>
             <div class="doc-card-title">Get Started, Stay Committed</div>
             <div class="doc-card-desc">The original Think Small, Start Horribly guide. The Momentum Formula framework — confidence progression, the motivated state, and the core model for why action comes before motivation.</div>
             <div class="doc-card-meta">
-              <span class="doc-tag" style="background:#eaf7f8;color:#3aabb3">Module Source</span>
+              <span class="doc-tag" style="background:#fdf0f2;color:#c94d62">Module Source</span>
               <span class="doc-tag" style="background:#f0f0ee;color:#888">26 pages</span>
             </div>
           </div>
@@ -282,7 +282,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
           <div class="doc-card-body">
             <div class="doc-card-module">Module 02 · The Stuck Framework</div>
             <div class="doc-card-title">Stuck Framework</div>
-            <div class="doc-card-desc">The reason you stopped is no longer the problem keeping you here. The complete Stuck loop diagram — Giving Up vs Starting Again, The Threshold, and the Life Circuitry path through self-trust.</div>
+            <div class="doc-card-desc">The reason you stopped is no longer the problem keeping you here. The complete Stuck loop diagram — Giving Up vs Starting Again, The Threshold, and the Mum 180 path through self-trust.</div>
             <div class="doc-card-meta">
               <span class="doc-tag" style="background:#fdf1f1;color:#e05555">Module Source</span>
               <span class="doc-tag" style="background:#f0f0ee;color:#888">1 page</span>
@@ -334,13 +334,13 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
         <!-- MODULE 4 -->
         <div class="doc-card" data-tags="module framework" data-pdf="assets/docs/module-4-source.pdf" data-title="Theory to Practice: Stagnation vs Momentum">
-          <div class="doc-card-accent" style="background:#5ec5cc"></div>
+          <div class="doc-card-accent" style="background:#e8637a"></div>
           <div class="doc-card-body">
-            <div class="doc-card-module">Module 04 · Foundation Circuit</div>
+            <div class="doc-card-module">Module 04 · Mum 180</div>
             <div class="doc-card-title">Theory to Practice: Stagnation vs Momentum</div>
             <div class="doc-card-desc">The master framework diagram. Theory → Practice → Beliefs → Results. Maps the full path from conceptual landscape (stagnation) to confirmed action (momentum) — with the complete stagnation and momentum behaviour lists.</div>
             <div class="doc-card-meta">
-              <span class="doc-tag" style="background:#eaf7f8;color:#3aabb3">Module Source</span>
+              <span class="doc-tag" style="background:#fdf0f2;color:#c94d62">Module Source</span>
               <span class="doc-tag" style="background:#f0f0ee;color:#888">Framework Diagram</span>
             </div>
           </div>

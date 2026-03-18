@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 01: The Momentum Formula | Life Circuitry</title>
+<title>Module 01: The Momentum Formula | Mum 180</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --accent:#5ec5cc;--accent-d:#3aabb3;--accent-p:#eaf7f8;--accent-m:#b8e8eb;
+  --accent:#e8637a;--accent-d:#c94d62;--accent-p:#fdf0f2;--accent-m:#f5c4cc;
   --red:#e05555;--rp:#fdf1f1;--yellow:#f5c842;--yp:#fef9e7;
   --charcoal:#1a1a1a;--mid:#444;--light:#888;
   --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
@@ -173,7 +173,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 
     <!-- MODULE HEADER -->
     <div class="mod-header">
-      <div class="mod-eyebrow">Module 01 of 07 — Life Circuitry Program</div>
+      <div class="mod-eyebrow">Module 01 of 07 — Mum 180 Program</div>
       <h1 class="mod-title">The Momentum<br>Formula</h1>
       <p class="mod-subtitle">Action before motivation. The framework that explains why you can't wait to feel ready and what to do instead.</p>
       <div class="mod-meta">
@@ -193,7 +193,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
         <p class="body-text">That model is responsible for more stagnation than almost any other single belief. Because the feeling you're waiting for is almost never coming first. The sequence is wrong. Entirely, structurally, neuroscientifically wrong.</p>
         <div class="pullquote">
           <div class="pq-text">"Motivation does not come before action. Action comes before motivation."</div>
-          <div class="pq-attr">Alex Cooper · Life Circuitry · The Momentum Formula</div>
+          <div class="pq-attr">Anonymous · Mum 180 · The Momentum Formula</div>
         </div>
         <p class="body-text">The Latin root of motivation is <em>movere</em> — to move. The word itself tells you the sequence. You move first. The momentum, the drive, the motivation — those are the <strong>byproducts</strong> of moving. Not the prerequisites.</p>
         <p class="body-text">This isn't a motivational statement. It's a functional description of how the brain actually works. Dopamine — the neurotransmitter associated with drive and motivation — is released in anticipation of reward, and most powerfully in response to progress. Not in response to thinking about progress. In response to <strong>actual movement</strong>.</p>
@@ -247,7 +247,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
         <p class="body-text">Time is the only input in this equation that cannot be recovered. Every other resource — money, energy, attention, skill — can be built, rebuilt, or replaced. Time passes regardless of what you do with it. The month you spent planning instead of starting is gone either way.</p>
         <div class="pullquote">
           <div class="pq-text">"Time is going to pass regardless of what you choose to do with it."</div>
-          <div class="pq-attr">Think Small, Start Horribly · Alex Cooper</div>
+          <div class="pq-attr">Think Small, Start Horribly · Anonymous</div>
         </div>
         <p class="body-text">This is not meant to create urgency-based panic. It's meant to recalibrate what "thinking about it" actually costs. The cost is not theoretical. It's real time, passing in real life, while the gap between who you are and what you're doing stays exactly the same.</p>
         <p class="body-text">The Momentum Formula is simple: <strong>quality actions, applied consistently, over time</strong>. None of the three elements can be replaced by the others. High quality actions done once build nothing. Consistent low-quality actions build habits but not results. The compound effect only activates when all three are present.</p>
@@ -420,7 +420,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 
         <div class="pullquote">
           <div class="pq-text">"The version of you who moves consistently will always outperform the version who moves brilliantly but intermittently."</div>
-          <div class="pq-attr">Alex Cooper · Life Circuitry</div>
+          <div class="pq-attr">Anonymous · Mum 180</div>
         </div>
 
         <!-- Final reflection -->
@@ -558,7 +558,7 @@ function calcProgress() {
   // Log activity
   if (pct > 0) {
     const log = JSON.parse(localStorage.getItem('lc_activity') || '[]');
-    const entry = {text: `Module 01 — ${pct}% complete`, color: '#5ec5cc', time: new Date().toLocaleDateString()};
+    const entry = {text: `Module 01 — ${pct}% complete`, color: '#e8637a', time: new Date().toLocaleDateString()};
     const last = log[log.length-1];
     if (!last || last.text !== entry.text) { log.push(entry); localStorage.setItem('lc_activity', JSON.stringify(log.slice(-20))); }
   }

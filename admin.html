@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin — Life Circuitry</title>
+<title>Admin — Mum 180</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --teal:#5ec5cc;--teal-d:#3aabb3;--teal-p:#eaf7f8;
+  --rose:#e8637a;--rose-d:#c94d62;--rose-p:#fdf0f2;
   --yellow:#f5c842;--yp:#fef9e7;
   --red:#e05555;--rp:#fdf1f1;
   --green:#27ae60;--gp:#eafaf1;
@@ -19,7 +19,7 @@ html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color
 
 /* TOP BAR */
 .topbar{background:var(--charcoal);height:56px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.topbar-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal)}
+.topbar-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--rose)}
 .topbar-logo span{color:rgba(255,255,255,0.2)}
 .topbar-tag{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);background:rgba(245,200,66,0.12);padding:4px 10px;border:1px solid rgba(245,200,66,0.25)}
 
@@ -29,11 +29,11 @@ html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color
 .gate-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;margin-bottom:8px}
 .gate-sub{font-size:13px;color:var(--light);margin-bottom:28px;line-height:1.6}
 .gate-input{width:100%;padding:14px 16px;border:1.5px solid var(--rule);font-family:'Barlow',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.08em;outline:none;background:#fff;transition:border 0.2s;margin-bottom:10px}
-.gate-input:focus{border-color:var(--teal)}
+.gate-input:focus{border-color:var(--rose)}
 .gate-input.error{border-color:var(--red);animation:shake 0.3s}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .gate-btn{width:100%;padding:15px;background:var(--charcoal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;transition:background 0.2s}
-.gate-btn:hover{background:var(--teal)}
+.gate-btn:hover{background:var(--rose)}
 .gate-err{font-size:12px;color:var(--red);margin-top:8px;display:none}
 .gate-err.show{display:block}
 
@@ -57,7 +57,7 @@ html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color
 .code-table tr:last-child td{border-bottom:none}
 .code-badge{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:0.1em;color:var(--charcoal)}
 .code-tier{font-size:11px;font-weight:700;padding:3px 8px;text-transform:uppercase;letter-spacing:0.08em}
-.code-tier.foundation{background:var(--teal-p);color:var(--teal-d)}
+.code-tier.foundation{background:var(--rose-p);color:var(--rose-d)}
 .code-tier.full{background:var(--yp);color:#b8900a}
 .code-tier.coaching{background:var(--rp);color:var(--red)}
 .code-tier.demo{background:#f4f4f4;color:var(--light)}
@@ -72,28 +72,28 @@ html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color
 .btn-restore{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:5px 10px;background:transparent;border:1px solid var(--rule);color:var(--light);cursor:pointer;transition:all 0.15s}
 .btn-restore:hover{border-color:var(--green);color:var(--green);background:var(--gp)}
 .btn-copy{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:5px 10px;background:transparent;border:1px solid var(--rule);color:var(--light);cursor:pointer;transition:all 0.15s;margin-right:4px}
-.btn-copy:hover{border-color:var(--teal);color:var(--teal-d);background:var(--teal-p)}
+.btn-copy:hover{border-color:var(--rose);color:var(--rose-d);background:var(--rose-p)}
 
 /* ADD CODE FORM */
 .add-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;align-items:end}
 @media(max-width:640px){.add-form{grid-template-columns:1fr}}
 .field label{font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:6px}
 .field input,.field select{width:100%;padding:12px 14px;border:1.5px solid var(--rule);font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;outline:none;background:#fff;transition:border 0.2s}
-.field input:focus,.field select:focus{border-color:var(--teal)}
+.field input:focus,.field select:focus{border-color:var(--rose)}
 .btn-add{padding:13px 20px;background:var(--charcoal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;white-space:nowrap;transition:background 0.2s}
-.btn-add:hover{background:var(--teal)}
+.btn-add:hover{background:var(--rose)}
 
 /* GENERATE */
 .gen-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.gen-output{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:0.12em;color:var(--teal);background:var(--teal-p);padding:12px 20px;flex:1;min-width:200px}
-.btn-gen{padding:13px 20px;background:var(--teal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;transition:background 0.2s}
-.btn-gen:hover{background:var(--teal-d)}
+.gen-output{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:0.12em;color:var(--rose);background:var(--rose-p);padding:12px 20px;flex:1;min-width:200px}
+.btn-gen{padding:13px 20px;background:var(--rose);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;border:none;cursor:pointer;transition:background 0.2s}
+.btn-gen:hover{background:var(--rose-d)}
 
 /* EMAIL TEMPLATE */
 .email-tmpl{background:var(--bg);border:1px solid var(--rule);padding:20px;font-size:13px;line-height:1.8;color:var(--mid);white-space:pre-wrap;font-family:monospace;cursor:pointer;transition:border 0.2s;position:relative}
-.email-tmpl:hover{border-color:var(--teal)}
+.email-tmpl:hover{border-color:var(--rose)}
 .tmpl-copy-hint{position:absolute;top:8px;right:10px;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--light)}
-.email-tmpl-code{color:var(--teal-d);font-weight:700}
+.email-tmpl-code{color:var(--rose-d);font-weight:700}
 
 /* TOAST */
 .toast{position:fixed;bottom:24px;right:24px;background:var(--charcoal);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none}
@@ -109,7 +109,7 @@ html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color
 <body>
 
 <div class="topbar">
-  <div class="topbar-logo">Life Circuitry <span>/ Admin</span></div>
+  <div class="topbar-logo">Mum 180 <span>/ Admin</span></div>
   <div class="topbar-tag">Private — Alex Only</div>
 </div>
 
@@ -214,16 +214,16 @@ html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color
     </div>
     <div class="panel-body">
       <div class="email-tmpl" id="emailTemplate" onclick="copyEmailTemplate()">
-        <div class="tmpl-copy-hint">Click to copy</div>Subject: Your Life Circuitry Access Code
+        <div class="tmpl-copy-hint">Click to copy</div>Subject: Your Mum 180 Access Code
 
 Hi [Name],
 
-Thanks for getting access to Life Circuitry. Here's everything you need to get started.
+Thanks for getting access to Mum 180. Here's everything you need to get started.
 
 YOUR ACCESS CODE: <span class="email-tmpl-code">[CODE]</span>
 
 HOW TO ACCESS:
-1. Go to: https://thinksmallstarthorribly.github.io/foundation-circuit/access.html
+1. Go to: https://thinksmallstarthorribly.github.io/mum-180/access.html
 2. Enter your code: [CODE]
 3. You're in — start from Module 01 and work through in order.
 
@@ -247,10 +247,10 @@ thinksmallstarthorribly.com</div>
     <div class="panel-head"><div class="panel-title">How This Works</div></div>
     <div class="panel-body">
       <p style="font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:12px"><strong>Codes live in two places:</strong> This admin page (your records) and <code style="background:var(--bg);padding:2px 6px;font-size:12px">access.html</code> (the actual validation). When you add a code here it saves to your browser's localStorage as your record — but you also need to add it to the <code style="background:var(--bg);padding:2px 6px;font-size:12px">VALID_CODES</code> array in access.html on GitHub.</p>
-      <p style="font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:12px"><strong>To add a code to access.html:</strong> Go to <a href="https://github.com/thinksmallstarthorribly/foundation-circuit/blob/main/access.html" target="_blank" style="color:var(--teal)">access.html on GitHub</a> → click the pencil icon to edit → find the <code style="background:var(--bg);padding:2px 6px;font-size:12px">VALID_CODES</code> array → add your new code → commit.</p>
+      <p style="font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:12px"><strong>To add a code to access.html:</strong> Go to <a href="https://github.com/thinksmallstarthorribly/mum-180/blob/main/access.html" target="_blank" style="color:var(--rose)">access.html on GitHub</a> → click the pencil icon to edit → find the <code style="background:var(--bg);padding:2px 6px;font-size:12px">VALID_CODES</code> array → add your new code → commit.</p>
       <p style="font-size:13px;color:var(--mid);line-height:1.8"><strong>To revoke a code:</strong> Mark it revoked here (your records), then remove it from the <code style="background:var(--bg);padding:2px 6px;font-size:12px">VALID_CODES</code> array in access.html on GitHub. The client's existing session lasts up to 7 days after their last login.</p>
       <div style="margin-top:20px">
-        <a href="https://github.com/thinksmallstarthorribly/foundation-circuit/blob/main/access.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--charcoal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;text-decoration:none">Edit access.html on GitHub →</a>
+        <a href="https://github.com/thinksmallstarthorribly/mum-180/blob/main/access.html" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--charcoal);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;text-decoration:none">Edit access.html on GitHub →</a>
       </div>
     </div>
   </div>
