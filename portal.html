@@ -140,6 +140,20 @@ body{display:flex;flex-direction:column;min-height:100vh}
   .main{padding:20px}
   .dash-header{padding:24px 20px}
 }
+/* BONUS UNLOCK MODAL */
+.bonus-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center}
+.bonus-modal-overlay.show{display:flex}
+.bonus-modal{background:#fff;padding:40px;max-width:420px;width:90%;position:relative}
+.bm-title{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;margin-bottom:8px}
+.bm-sub{font-size:14px;color:#888;margin-bottom:24px;line-height:1.5}
+.bm-input{width:100%;padding:14px;border:2px solid #e8e8e6;font-family:inherit;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px}
+.bm-input:focus{outline:none;border-color:#d4827a}
+.bm-input.error{border-color:#e05555;}
+.bm-error{font-size:12px;color:#e05555;margin-bottom:12px;display:none}
+.bm-error.show{display:block}
+.bm-btn{width:100%;padding:16px;background:#d4827a;color:#fff;border:none;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer}
+.bm-btn:hover{background:#b86b64}
+.bm-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#888}
 </style>
 </head>
 <body>
@@ -191,15 +205,15 @@ body{display:flex;flex-direction:column;min-height:100vh}
   </a>
   <div class="sb-divider"></div>
   <div class="sb-section">Bonus Unlocks</div>
-  <div class="sb-item" id="sb-bonus1" style="opacity:0.4;cursor:default">
+  <div class="sb-item" id="sb-bonus1" style="opacity:0.4;cursor:pointer" onclick="openBonusModal(0)">
     <div class="sb-item-dot" style="background:#9b59b6"></div>
     <div class="sb-item-body"><div class="sb-item-label">🔒 Version of Self</div><div class="sb-item-sub">Unlocks after 7 days</div></div>
   </div>
-  <div class="sb-item" id="sb-bonus2" style="opacity:0.4;cursor:default">
+  <div class="sb-item" id="sb-bonus2" style="opacity:0.4;cursor:pointer" onclick="openBonusModal(1)">
     <div class="sb-item-dot" style="background:#27ae60"></div>
     <div class="sb-item-body"><div class="sb-item-label">🔒 The Stuck Framework</div><div class="sb-item-sub">Unlocks after 14 days</div></div>
   </div>
-  <div class="sb-item" id="sb-bonus3" style="opacity:0.4;cursor:default">
+  <div class="sb-item" id="sb-bonus3" style="opacity:0.4;cursor:pointer" onclick="openBonusModal(2)">
     <div class="sb-item-dot" style="background:#f5c842"></div>
     <div class="sb-item-body"><div class="sb-item-label">🔒 Conceptual Landscape</div><div class="sb-item-sub">Unlocks after 21 days</div></div>
   </div>
@@ -455,6 +469,19 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
 </div>
 
+<!-- BONUS UNLOCK MODAL -->
+<div class="bonus-modal-overlay" id="bonusModal">
+  <div class="bonus-modal">
+    <button class="bm-close" onclick="closeBonusModal()">✕</button>
+    <div class="bm-title" id="bmTitle">Bonus Module</div>
+    <div class="bm-sub" id="bmSub">Enter your unlock code to access this bonus module.</div>
+    <input class="bm-input" id="bmInput" type="text" placeholder="ENTER CODE" maxlength="20" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter') checkBonusCode()">
+    <div class="bm-error" id="bmError">Incorrect code. Please try again.</div>
+    <button class="bm-btn" onclick="checkBonusCode()">Unlock →</button>
+    <p style="font-size:11px;color:#aaa;margin-top:16px;text-align:center">This module also unlocks automatically after the required number of days.</p>
+  </div>
+</div>
+
 <script>
 
 // ── MUM 180 PORTAL LOGIC ────────────────────────────────────────────────────
@@ -469,6 +496,8 @@ const MODULES = [
 ];
 
 const BONUS_UNLOCK_DAYS = [7, 14, 21];
+const BONUS_CODES = ['VOS-MUM180-7DAY', 'STUCK-MUM180-14DAY', 'CONCEPT-MUM180-21DAY'];
+let currentBonusIndex = -1;
 const BONUS_PAGES = ['bonus-1.html', 'bonus-2.html', 'bonus-3.html'];
 const BONUS_NAMES = ['Version of Self', 'The Stuck Framework', 'Conceptual Landscape'];
 
@@ -488,6 +517,46 @@ function checkAccess(){
   }catch(e){ window.location.href = 'access.html'; return false; }
 }
 
+// ── BONUS MODAL LOGIC ────────────────────────────────────────────────────────
+function openBonusModal(i){
+  currentBonusIndex = i;
+  const names = ['Version of Self', 'The Stuck Framework', 'Conceptual Landscape'];
+  const days = [7, 14, 21];
+  document.getElementById('bmTitle').textContent = names[i];
+  document.getElementById('bmSub').textContent = 'This bonus module unlocks automatically after ' + days[i] + ' days, or enter your unlock code below.';
+  document.getElementById('bmInput').value = '';
+  document.getElementById('bmError').classList.remove('show');
+  document.getElementById('bmInput').classList.remove('error');
+  document.getElementById('bonusModal').classList.add('show');
+  setTimeout(()=>document.getElementById('bmInput').focus(), 100);
+}
+
+function closeBonusModal(){
+  document.getElementById('bonusModal').classList.remove('show');
+  currentBonusIndex = -1;
+}
+
+function checkBonusCode(){
+  const input = document.getElementById('bmInput').value.trim().toUpperCase().replace(/\s+/g,'');
+  if(currentBonusIndex < 0) return;
+  const valid = BONUS_CODES[currentBonusIndex].toUpperCase().replace(/\s+/g,'');
+  if(input === valid){
+    const unlocks = JSON.parse(localStorage.getItem('mum180_bonus_unlocks')||'{}');
+    unlocks['bonus'+(currentBonusIndex+1)] = Date.now();
+    localStorage.setItem('mum180_bonus_unlocks', JSON.stringify(unlocks));
+    closeBonusModal();
+    loadDashboard();
+  } else {
+    document.getElementById('bmInput').classList.add('error');
+    document.getElementById('bmError').classList.add('show');
+  }
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('bonusModal').addEventListener('click', e=>{ if(e.target.id==='bonusModal') closeBonusModal(); });
+});
+// ─────────────────────────────────────────────────────────────────────────────
+
 function signOut(){
   if(!confirm('Sign out? Your progress will be saved.')) return;
   localStorage.removeItem(SESSION_KEY);
@@ -506,13 +575,17 @@ function getDaysActive(){
 // ── BONUS UNLOCK LOGIC ───────────────────────────────────────────────────────
 function checkBonusUnlocks(daysActive){
   let unlocked = 0;
+  // Check localStorage for code-unlocked bonuses
+  const bonusUnlocks = JSON.parse(localStorage.getItem('mum180_bonus_unlocks')||'{}');
+
   BONUS_UNLOCK_DAYS.forEach((days, i) => {
+    const codeUnlocked = !!bonusUnlocks['bonus'+(i+1)];
     const card = document.getElementById('bc' + (i+1));
     const btn = document.getElementById('bb' + (i+1));
     const pctEl = document.getElementById('bp' + (i+1));
     const sbItem = document.getElementById('sb-bonus' + (i+1));
 
-    if(daysActive >= days){
+    if(daysActive >= days || codeUnlocked){
       unlocked++;
       if(card) card.style.opacity = '1';
       if(btn){
@@ -537,6 +610,7 @@ function checkBonusUnlocks(daysActive){
         title.textContent = title.textContent.replace('🔒 ', '');
       }
     } else {
+      // Still locked — keep openBonusModal onclick (already set in HTML)
       // Show countdown
       const daysLeft = days - daysActive;
       if(sbItem){
