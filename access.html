@@ -121,15 +121,15 @@ body::before{
 
     <div class="lock-purchase">
       <div class="lp-title">Don't have an access code?</div>
-      <p class="lp-text">Get the full 7-module interactive programme — one-time payment, lifetime access. Includes all frameworks, diagnostics, and PDF exports.</p>
+      <p class="lp-text">Get the full 6-module interactive programme — one-time payment, lifetime access. Includes all frameworks, diagnostics, and PDF exports.</p>
       <div class="lp-actions">
         <a href="index.html#pricing" class="lp-btn primary">View Pricing →</a>
-        <a href="mailto:hello@thinksmallstarthorribly.com" class="lp-btn outline">Contact Alex</a>
+        <a href="mailto:hello@mum180.com" class="lp-btn outline">Contact Us</a>
       </div>
     </div>
 
     <div class="lock-hint">
-      Forgot your code? <a href="mailto:hello@thinksmallstarthorribly.com">Email hello@thinksmallstarthorribly.com</a>
+      Forgot your code? <a href="mailto:hello@mum180.com">Email hello@mum180.com</a>
     </div>
   </div>
 </div>
@@ -144,8 +144,8 @@ body::before{
 // To add a new client: just add their code to this array.
 // Format: plain text strings — e.g. 'ALEX2026', 'CLIENT-ABC', etc.
 const VALID_CODES = [
-  'CIRCUIT2026',      // Default / demo code
-  'THINKSMALL',       // Alex personal code
+  'MUM180NOW',        // Default / demo code
+  'MUM180ALEX',       // Owner personal code
   'FOUNDATION',       // Foundation Pack
   'LIFECIRCUITRY',    // Full programme
   'STARTHORRI8LY',    // Alternate
@@ -153,7 +153,7 @@ const VALID_CODES = [
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
-const SESSION_KEY = 'lc_access';
+const SESSION_KEY = 'mum180_access';
 const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 function isValidSession(){
