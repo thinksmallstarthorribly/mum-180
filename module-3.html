@@ -9,12 +9,12 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --accent:#d4827a;--accent-d:#b86b64;--accent-p:#fdf5f4;--accent-m:#f0d5d2;
-  --charcoal:#1a1a1a;--mid:#444;--light:#888;
-  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+  --charcoal:#221413;--mid:#4a3a38;--light:#888;
+  --bg:#fef9f7;--card:#fff;--rule:rgba(212,130,122,0.14);
 }
 html,body{height:100%;font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg)}
 body{display:flex;flex-direction:column}
-.topnav{background:var(--charcoal);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
+.topnav{background:#1e0f0e;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
 .topnav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
 .topnav-back:hover{color:var(--accent)}
 .topnav-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4)}
@@ -34,38 +34,39 @@ body{display:flex;flex-direction:column}
 .toc-text{font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);line-height:1.3}
 .toc-item.active .toc-text{color:#fff}
 .content-area{flex:1;overflow-y:auto}
-.mod-header{background:var(--charcoal);padding:48px 56px;color:#fff}
+.mod-header{background:linear-gradient(135deg,#221413 0%,#3d1f1b 100%);padding:48px 56px 40px;color:#fff}
 .mod-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 .mod-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,6vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95;margin-bottom:16px;color:#fff}
 .mod-subtitle{font-size:17px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:620px;margin-bottom:24px}
 .mod-meta{display:flex;gap:24px;flex-wrap:wrap}
 .mod-meta-item{font-size:12px;color:rgba(255,255,255,0.3);font-weight:600}
 .mod-meta-item span{color:rgba(255,255,255,0.6)}
-.content-body{max-width:760px;margin:0 auto;padding:48px 56px}
-.section-block{margin-bottom:64px;scroll-margin-top:80px}
+.content-body{max-width:760px;margin:0 auto;padding:48px 56px;overflow-x:hidden;word-wrap:break-word}
+.section-block{margin-bottom:60px;scroll-margin-top:80px;overflow-x:hidden}
 .section-label{font-size:9px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .section-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;color:var(--charcoal);line-height:1;margin-bottom:20px}
 .body-text{font-size:16px;line-height:1.8;color:var(--mid);margin-bottom:16px}
-.pullquote{background:var(--charcoal);padding:28px 32px;margin:28px 0;border-left:4px solid var(--accent)}
-.pq-text{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;color:#fff;line-height:1.3}
-.reflect-block{background:var(--accent-p);border:1px solid var(--accent-m);padding:28px;margin:24px 0}
+.pullquote{background:#fdf3f1;padding:28px 32px;margin:28px 0;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}
+.pq-text{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;color:#221413;line-height:1.3}
+.reflect-block{background:#fff;border:1.5px solid var(--accent-m);padding:28px;margin:24px 0;border-radius:12px;box-shadow:0 2px 12px rgba(212,130,122,0.08)}
 .reflect-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-d);margin-bottom:8px}
 .reflect-prompt{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.4}
 .reflect-box{width:100%;min-height:100px;padding:12px;border:1px solid var(--accent-m);background:#fff;font-family:inherit;font-size:14px;line-height:1.6;color:var(--charcoal);resize:vertical}
 .reflect-box:focus{outline:none;border-color:var(--accent)}
 .checklist{list-style:none;margin:16px 0}
-.checklist li{padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start}
+.checklist li{padding:10px 0;border-bottom:1px solid rgba(212,130,122,0.1);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start;line-height:1.55}
 .checklist li::before{content:"→";color:var(--accent);font-weight:900;flex-shrink:0}
-.next-module{background:var(--charcoal);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.next-module{background:linear-gradient(135deg,#221413,#3d1f1b);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-radius:12px}
 .nm-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
 .nm-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:#fff}
 .nm-btn{font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;background:var(--accent);color:#fff;text-decoration:none;white-space:nowrap;transition:background 0.2s}
 .nm-btn:hover{background:var(--accent-d)}
-.complete-banner{display:none;background:#27ae60;color:#fff;padding:16px 24px;text-align:center;font-weight:700;font-size:14px;letter-spacing:0.05em}
+.complete-banner{display:none;background:linear-gradient(135deg,#27ae60,#2ed573);color:#fff;padding:16px 24px;text-align:center;font-weight:700;font-size:14px;letter-spacing:0.05em}
 .complete-banner.show{display:block}
 .save-badge{position:fixed;bottom:24px;right:24px;background:var(--charcoal);color:#fff;padding:10px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0;transition:opacity 0.3s;pointer-events:none}
 .save-badge.show{opacity:1}
-@media(max-width:768px){.toc-sidebar{display:none}.content-body{padding:32px 20px}.mod-header{padding:36px 24px}}
+@media(max-width:768px){.toc-sidebar{display:none}.content-body{padding:28px 18px;overflow-x:hidden}.mod-header{padding:32px 20px}}
+@media(max-width:480px){.content-body{padding:20px 14px}.mod-header{padding:24px 14px}}
 </style>
 </head>
 <body>
@@ -154,42 +155,6 @@ body{display:flex;flex-direction:column}
     </div>
   </div>
 </div>
-      <div class="section-block" id="s1">
-        <div class="section-label">Section 1</div>
-        <div class="section-title">The Oxygen Mask</div>
-        <p class="body-text">You have heard the safety announcement. The plane loses pressure. Oxygen masks drop. You are told: put on your own mask before assisting others.</p><p class="body-text">It sounds counterintuitive the first time you hear it. You want to help the person next to you. The child in the seat beside you. Why would you put your own mask on first?</p><p class="body-text">Because if you put theirs on first, they stay alive just long enough to watch you lose consciousness in front of them. And then they have no one.</p><div class="pullquote"><div class="pq-text">You must serve your own life first before you can be of any service to the commitments you have made.</div></div><p class="body-text">This is not a metaphor about being selfish. It is a description of how capacity works. You cannot give what you do not have.</p>
-      </div>
-      <div class="section-block" id="s2">
-        <div class="section-label">Section 2</div>
-        <div class="section-title">Full Permission</div>
-        <p class="body-text">This module is giving you something formal. Permission. Not permission to be irresponsible. Not permission to abandon anyone. Permission to exist as a full human being.</p><p class="body-text">Taking care of yourself is not a reward you earn after you have done everything else. It is not a luxury for mothers who have it easy. It is a baseline requirement — for you, and for the children who are watching you navigate the world.</p><p class="body-text">They are learning from you right now. Not from what you tell them. From what you do. From how you treat yourself. From whether you have any standards for your own care and your own time.</p><ul class="checklist"><li>Your needs are not optional extras</li>
-<li>Rest is not laziness — it is maintenance</li>
-<li>Taking time for yourself models self-respect to your children</li>
-<li>You cannot demonstrate what you do not practise</li>
-<li>The most responsible thing you can do is look after yourself</li></ul>
-      </div>
-      <div class="section-block" id="s3">
-        <div class="section-label">Section 3</div>
-        <div class="section-title">What This Actually Looks Like</div>
-        <p class="body-text">This is not about holidays or spa days. It does not require money or hours of free time. It requires a decision — a genuine, internal decision that your wellbeing is non-negotiable.</p><p class="body-text">That decision looks different for everyone. It might be 20 minutes of quiet in the morning. It might be a walk. It might be saying no to something that is draining you. It might be as simple as sitting down to eat a meal instead of standing over the sink.</p><p class="body-text">The size of the act does not matter. The decision behind it does.</p><div class="reflect-block">
-          <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Name one thing — small or large — that you have been denying yourself. What is it, and why have you been denying it?</div>
-          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
-        </div>
-      </div>
-      <div class="section-block" id="s4">
-        <div class="section-label">Section 4</div>
-        <div class="section-title">Reflection</div>
-        <div class="reflect-block">
-          <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Do you believe, genuinely, that taking care of yourself is part of your commitment as a mother? What comes up when you try to accept that?</div>
-          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
-        </div><div class="reflect-block">
-          <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What would you need to let go of — what belief or habit — to start putting your mask on first?</div>
-          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
-        </div>
-      </div>
 <script>
 (function(){
   const S='mum180_access', D=30*24*60*60*1000;

@@ -9,12 +9,12 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --accent:#d4827a;--accent-d:#b86b64;--accent-p:#fdf5f4;--accent-m:#f0d5d2;
-  --charcoal:#1a1a1a;--mid:#444;--light:#888;
-  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+  --charcoal:#221413;--mid:#4a3a38;--light:#888;
+  --bg:#fef9f7;--card:#fff;--rule:rgba(212,130,122,0.14);
 }
 html,body{height:100%;font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg)}
 body{display:flex;flex-direction:column}
-.topnav{background:var(--charcoal);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
+.topnav{background:#1e0f0e;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
 .topnav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
 .topnav-back:hover{color:var(--accent)}
 .topnav-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4)}
@@ -34,38 +34,39 @@ body{display:flex;flex-direction:column}
 .toc-text{font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);line-height:1.3}
 .toc-item.active .toc-text{color:#fff}
 .content-area{flex:1;overflow-y:auto}
-.mod-header{background:var(--charcoal);padding:48px 56px;color:#fff}
+.mod-header{background:linear-gradient(135deg,#221413 0%,#3d1f1b 100%);padding:48px 56px 40px;color:#fff}
 .mod-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 .mod-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,6vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95;margin-bottom:16px;color:#fff}
 .mod-subtitle{font-size:17px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:620px;margin-bottom:24px}
 .mod-meta{display:flex;gap:24px;flex-wrap:wrap}
 .mod-meta-item{font-size:12px;color:rgba(255,255,255,0.3);font-weight:600}
 .mod-meta-item span{color:rgba(255,255,255,0.6)}
-.content-body{max-width:760px;margin:0 auto;padding:48px 56px}
-.section-block{margin-bottom:64px;scroll-margin-top:80px}
+.content-body{max-width:760px;margin:0 auto;padding:48px 56px;overflow-x:hidden;word-wrap:break-word}
+.section-block{margin-bottom:60px;scroll-margin-top:80px;overflow-x:hidden}
 .section-label{font-size:9px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .section-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;color:var(--charcoal);line-height:1;margin-bottom:20px}
 .body-text{font-size:16px;line-height:1.8;color:var(--mid);margin-bottom:16px}
-.pullquote{background:var(--charcoal);padding:28px 32px;margin:28px 0;border-left:4px solid var(--accent)}
-.pq-text{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;color:#fff;line-height:1.3}
-.reflect-block{background:var(--accent-p);border:1px solid var(--accent-m);padding:28px;margin:24px 0}
+.pullquote{background:#fdf3f1;padding:28px 32px;margin:28px 0;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}
+.pq-text{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;color:#221413;line-height:1.3}
+.reflect-block{background:#fff;border:1.5px solid var(--accent-m);padding:28px;margin:24px 0;border-radius:12px;box-shadow:0 2px 12px rgba(212,130,122,0.08)}
 .reflect-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-d);margin-bottom:8px}
 .reflect-prompt{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.4}
 .reflect-box{width:100%;min-height:100px;padding:12px;border:1px solid var(--accent-m);background:#fff;font-family:inherit;font-size:14px;line-height:1.6;color:var(--charcoal);resize:vertical}
 .reflect-box:focus{outline:none;border-color:var(--accent)}
 .checklist{list-style:none;margin:16px 0}
-.checklist li{padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start}
+.checklist li{padding:10px 0;border-bottom:1px solid rgba(212,130,122,0.1);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start;line-height:1.55}
 .checklist li::before{content:"→";color:var(--accent);font-weight:900;flex-shrink:0}
-.next-module{background:var(--charcoal);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.next-module{background:linear-gradient(135deg,#221413,#3d1f1b);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-radius:12px}
 .nm-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
 .nm-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:#fff}
 .nm-btn{font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;background:var(--accent);color:#fff;text-decoration:none;white-space:nowrap;transition:background 0.2s}
 .nm-btn:hover{background:var(--accent-d)}
-.complete-banner{display:none;background:#27ae60;color:#fff;padding:16px 24px;text-align:center;font-weight:700;font-size:14px;letter-spacing:0.05em}
+.complete-banner{display:none;background:linear-gradient(135deg,#27ae60,#2ed573);color:#fff;padding:16px 24px;text-align:center;font-weight:700;font-size:14px;letter-spacing:0.05em}
 .complete-banner.show{display:block}
 .save-badge{position:fixed;bottom:24px;right:24px;background:var(--charcoal);color:#fff;padding:10px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0;transition:opacity 0.3s;pointer-events:none}
 .save-badge.show{opacity:1}
-@media(max-width:768px){.toc-sidebar{display:none}.content-body{padding:32px 20px}.mod-header{padding:36px 24px}}
+@media(max-width:768px){.toc-sidebar{display:none}.content-body{padding:28px 18px;overflow-x:hidden}.mod-header{padding:32px 20px}}
+@media(max-width:480px){.content-body{padding:20px 14px}.mod-header{padding:24px 14px}}
 </style>
 </head>
 <body>
@@ -150,38 +151,6 @@ body{display:flex;flex-direction:column}
     </div>
   </div>
 </div>
-      <div class="section-block" id="s1">
-        <div class="section-label">Section 1</div>
-        <div class="section-title">Michelle's Story</div>
-        <p class="body-text">I want to tell you about Michelle.</p><p class="body-text">She was French, had lived in Australia for 25 years. Happily married for 20 years. She and her husband were both successful, had a comfortable life. Her son was 19, had just moved out to start university — a nice kid, doing well, bright future.</p><p class="body-text">By every external measure, she had everything. No crisis. No obvious reason to be in the room.</p><p class="body-text">But she was there. And from the very first day she arrived, she served as an example — quietly, without even knowing it — of the trap that mothers fall into regardless of their circumstances.</p><div class="pullquote"><div class="pq-text">It is not just the single mums doing it hard. It happens to all of them.</div></div>
-      </div>
-      <div class="section-block" id="s2">
-        <div class="section-label">Section 2</div>
-        <div class="section-title">The Mirror Exercise</div>
-        <p class="body-text">Throughout the course, I ask everyone to do the same thing each morning. Go to the mirror. Not to check your hair. Not to brush your teeth. <strong>To actually see yourself.</strong></p><p class="body-text">Have a conversation with yourself. Look at the person in front of you. Acknowledge that they are a human being who requires care and attention. Set some standards. Decide how you want to be seen and treated in the world — and hold yourself to it.</p><div class="pullquote"><div class="pq-text">There is a person waiting for you in your bathroom in a big silver box above your sink. They love you and they can't wait to see you. And we never talk to them.</div></div><p class="body-text">Every day I would ask: did anyone go to the mirror?</p><p class="body-text">Most days, nobody had. It sounds simple. It is one of the hardest things I ask people to do.</p><p class="body-text">The resistance is the point. If you cannot handle the tension of having a conversation with yourself, you cannot expect the world to take your standards seriously.</p>
-      </div>
-      <div class="section-block" id="s3">
-        <div class="section-label">Section 3</div>
-        <div class="section-title">I Remember You</div>
-        <p class="body-text">On the last day of the course, Michelle came in and said:</p><p class="body-text"><em>"Alex, this morning I did what you've been talking about."</em></p><p class="body-text">I asked how it went.</p><p class="body-text"><em>"I felt a bit silly. I walked over and looked up. And before I knew what I was going to say, these words came out of my mouth."</em></p><p class="body-text">She pointed at the mirror. She said:</p><div class="pullquote"><div class="pq-text">"I remember you."</div></div><p class="body-text">I told her I already knew how long she had been gone. We said it at the same time.</p><p class="body-text"><strong>19 years.</strong></p><p class="body-text">I asked her how old her son was. She said 19.</p><p class="body-text">I said: what a coincidence. Where have you been for the last 19 years?</p><p class="body-text">She said: <em>"I don't know. When I became a mum, that's who I became."</em></p><div class="reflect-block">
-          <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What comes up for you reading that story? Is there a version of yourself you have lost sight of?</div>
-          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
-        </div>
-      </div>
-      <div class="section-block" id="s4">
-        <div class="section-label">Section 4</div>
-        <div class="section-title">Your Turn</div>
-        <p class="body-text">Now I am asking you to do it.</p><p class="body-text">Tomorrow morning — or tonight — go to the mirror. Not quickly. Not while doing something else. Just go. Look. See the person there.</p><p class="body-text">Notice what comes up. You might feel silly. You might feel nothing. You might feel something unexpected.</p><p class="body-text">Whatever happens — write it down.</p><div class="reflect-block">
-          <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Describe your experience with the mirror exercise. What did you notice? What came up?</div>
-          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
-        </div><div class="reflect-block">
-          <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">If you had to say — when did you last feel fully like yourself? What were you doing? What was different about that time?</div>
-          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
-        </div>
-      </div>
 <script>
 (function(){
   const S='mum180_access', D=30*24*60*60*1000;

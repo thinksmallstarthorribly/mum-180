@@ -15,14 +15,14 @@
   --green:#27ae60;--gp:#e9f7ef;
   --purple:#9b59b6;--pp:#f5eef8;
   --orange:#e67e22;--op:#fef3e8;
-  --charcoal:#1a1a1a;--mid:#444;--light:#888;
-  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+  --charcoal:#221413;--mid:#4a3a38;--light:#888;
+  --bg:#fef9f7;--card:#fff;--rule:rgba(212,130,122,0.14);
 }
 html,body{height:100%;background:var(--bg);font-family:'Barlow',sans-serif;color:var(--charcoal)}
 body{display:flex;flex-direction:column;min-height:100vh}
 
 /* TOP NAV */
-.topnav{background:var(--charcoal);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
+.topnav{background:#1a0d0c;padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
 .topnav-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--rose);text-decoration:none}
 .topnav-logo span{color:rgba(255,255,255,0.25)}
 .topnav-right{display:flex;align-items:center;gap:20px}
@@ -32,7 +32,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
 /* LAYOUT */
 .shell{display:flex;flex:1;min-height:0}
-.sidebar{width:260px;background:var(--charcoal);flex-shrink:0;display:flex;flex-direction:column;overflow-y:auto}
+.sidebar{width:260px;background:#1a0d0c;flex-shrink:0;display:flex;flex-direction:column;overflow-y:auto}
 .main{flex:1;overflow-y:auto;padding:40px;display:flex;flex-direction:column;gap:32px}
 
 /* SIDEBAR */
@@ -54,7 +54,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .sb-footer-brand{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--rose);margin-bottom:4px}
 
 /* DASHBOARD HEADER */
-.dash-header{background:var(--charcoal);padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.dash-header{background:linear-gradient(135deg,#221413 0%,#3d1f1b 100%);padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border-radius:12px}
 .dash-headline{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;color:#fff;line-height:1;margin-bottom:6px}
 .dash-sub{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.5}
 .dash-overall{text-align:right}
@@ -62,16 +62,16 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .dash-overall-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
 
 /* OVERALL PROGRESS BAR */
-.overall-bar-wrap{background:var(--card);border:1px solid var(--rule);padding:16px 24px;display:flex;align-items:center;gap:20px}
+.overall-bar-wrap{background:var(--card);border:1px solid rgba(212,130,122,0.13);padding:16px 24px;display:flex;align-items:center;gap:20px;border-radius:10px;box-shadow:0 2px 8px rgba(180,80,70,0.05)}
 .ob-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);white-space:nowrap}
-.ob-bar{flex:1;height:8px;background:var(--rule);border-radius:4px;overflow:hidden}
-.ob-fill{height:100%;background:var(--rose);border-radius:4px;transition:width 0.6s}
+.ob-bar{flex:1;height:8px;background:rgba(212,130,122,0.12);border-radius:4px;overflow:hidden}
+.ob-fill{height:100%;background:linear-gradient(90deg,#e8a09a,#d4827a);border-radius:4px;transition:width 0.6s}
 .ob-pct{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--rose);min-width:44px;text-align:right}
 
 /* MODULE CARDS */
-.modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px}
-.mod-card{background:var(--card);border:1px solid var(--rule);display:flex;flex-direction:column;position:relative;overflow:hidden;transition:all 0.2s}
-.mod-card:hover{border-color:var(--rose-m);box-shadow:0 4px 20px rgba(94,197,204,0.1)}
+.modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.mod-card{background:var(--card);border:1px solid rgba(212,130,122,0.13);display:flex;flex-direction:column;position:relative;overflow:hidden;transition:all 0.2s;border-radius:12px;box-shadow:0 2px 10px rgba(180,80,70,0.06)}
+.mod-card:hover{border-color:var(--rose-m);box-shadow:0 6px 24px rgba(180,80,70,0.13);transform:translateY(-2px)}
 .mod-card-accent-bar{height:4px;width:100%}
 .mod-card-inner{padding:24px;flex:1;display:flex;flex-direction:column}
 .mod-card-eyebrow{font-size:9px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--light);margin-bottom:10px}
@@ -79,8 +79,8 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .mod-card-desc{font-size:12px;color:var(--mid);line-height:1.6;flex:1;margin-bottom:16px}
 .mod-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--rule)}
 .mod-progress{flex:1}
-.mod-progress-bar{height:4px;background:var(--rule);border-radius:2px;overflow:hidden;margin-bottom:4px}
-.mod-progress-fill{height:100%;border-radius:2px;transition:width 0.4s}
+.mod-progress-bar{height:4px;background:rgba(212,130,122,0.12);border-radius:2px;overflow:hidden;margin-bottom:4px}
+.mod-progress-fill{height:100%;border-radius:2px;transition:width 0.4s;background:linear-gradient(90deg,#e8a09a,#d4827a) !important}
 .mod-progress-pct{font-size:10px;font-weight:700;color:var(--light)}
 .mod-btn{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:8px 16px;text-decoration:none;transition:all 0.2s;white-space:nowrap;border:none;cursor:pointer}
 .mod-btn.start{background:var(--rose);color:#fff}
@@ -93,9 +93,9 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .status-progress{background:var(--rose-p);color:var(--rose-d);border:1px solid rgba(94,197,204,0.2)}
 
 /* QUICK STATS */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 @media(max-width:640px){.stats-row{grid-template-columns:1fr 1fr}}
-.stat-card{background:var(--card);border:1px solid var(--rule);padding:20px 24px}
+.stat-card{background:var(--card);border:1px solid rgba(212,130,122,0.12);padding:20px 24px;border-radius:10px;box-shadow:0 2px 8px rgba(180,80,70,0.05)}
 .stat-num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;line-height:1;margin-bottom:4px}
 .stat-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--light)}
 .stat-card.teal .stat-num{color:var(--rose)}
@@ -118,9 +118,9 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .section-head-meta{font-size:11px;color:var(--light);font-weight:600}
 
 /* RESOURCES */
-.resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:640px){.resources-grid{grid-template-columns:1fr}}
-.resource-card{background:var(--card);border:1px solid var(--rule);padding:20px 24px;display:flex;align-items:center;gap:16px;text-decoration:none;transition:all 0.2s}
+.resource-card{background:var(--card);border:1px solid rgba(212,130,122,0.12);padding:20px 24px;display:flex;align-items:center;gap:16px;text-decoration:none;transition:all 0.2s;border-radius:10px;box-shadow:0 2px 8px rgba(180,80,70,0.04)}
 .resource-card:hover{border-color:var(--rose-m)}
 .resource-icon{font-size:24px;flex-shrink:0}
 .resource-body{flex:1}
@@ -129,21 +129,18 @@ body{display:flex;flex-direction:column;min-height:100vh}
 .resource-arrow{color:var(--rose);font-size:16px}
 
 /* WELCOME BANNER */
-.welcome-banner{background:var(--charcoal);padding:20px 24px;border-left:4px solid var(--rose);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.welcome-banner{background:linear-gradient(135deg,#221413,#3d1f1b);padding:20px 24px;border-left:4px solid var(--rose);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-radius:10px}
 .wb-text{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5}
 .wb-text strong{color:#fff}
 .wb-close{background:none;border:none;color:rgba(255,255,255,0.3);font-size:18px;cursor:pointer;padding:4px}
 .wb-close:hover{color:rgba(255,255,255,0.6)}
 
-@media(max-width:768px){
-  .sidebar{display:none}
-  .main{padding:20px}
-  .dash-header{padding:24px 20px}
-}
+@media(max-width:768px){.sidebar{display:none}.main{padding:16px}.dash-header{padding:24px 16px;border-radius:8px}}
+@media(max-width:480px){.modules-grid{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}.main{padding:12px}}
 /* BONUS UNLOCK MODAL */
 .bonus-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center}
 .bonus-modal-overlay.show{display:flex}
-.bonus-modal{background:#fff;padding:40px;max-width:420px;width:90%;position:relative}
+.bonus-modal{background:#fff;padding:40px;max-width:420px;width:90%;position:relative;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
 .bm-title{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;margin-bottom:8px}
 .bm-sub{font-size:14px;color:#888;margin-bottom:24px;line-height:1.5}
 .bm-input{width:100%;padding:14px;border:2px solid #e8e8e6;font-family:inherit;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px}
@@ -204,7 +201,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
     <div class="sb-progress" id="sbp6">0%</div>
   </a>
   <div class="sb-divider"></div>
-  <div class="sb-section">Bonus Unlocks</div>
+  <div class="sb-section">Bonus Modules</div>
   <div class="sb-item" id="sb-bonus1" style="opacity:0.4;cursor:pointer" onclick="openBonusModal(0)">
     <div class="sb-item-dot" style="background:#9b59b6"></div>
     <div class="sb-item-body"><div class="sb-item-label">🔒 Version of Self</div><div class="sb-item-sub">Unlocks after 7 days</div></div>
@@ -229,7 +226,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
   <!-- WELCOME BANNER -->
   <div class="welcome-banner" id="welcomeBanner">
-    <div class="wb-text"><strong>Welcome to Mum 180.</strong> Start with Module 01 and work through in order. Your bonus modules unlock automatically as you log in each week.</div>
+    <div class="wb-text"><strong>Welcome to Mum 180.</strong> You showed up for yourself today and that matters. Start with Module 01 and work through in order. Bonus modules unlock weekly, or enter your code to access them now.</div>
     <button class="wb-close" onclick="document.getElementById('welcomeBanner').style.display='none'">✕</button>
   </div>
 
@@ -375,7 +372,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
     </div>
     <div class="modules-grid" id="bonusGrid">
 
-      <div class="mod-card" id="bc1" style="opacity:0.55">
+      <div class="mod-card" id="bc1" style="opacity:0.6;cursor:pointer" onclick="openBonusModal(0)">
         <div class="mod-card-accent-bar" style="background:#9b59b6"></div>
         <div class="mod-card-inner">
           <div class="mod-card-eyebrow">Bonus 01 · Unlocks Day 7</div>
@@ -386,12 +383,12 @@ body{display:flex;flex-direction:column;min-height:100vh}
               <div class="mod-progress-bar"><div class="mod-progress-fill" id="bf1" style="width:0%;background:#9b59b6"></div></div>
               <div class="mod-progress-pct" id="bp1" style="color:#9b59b6">🔒 Locked</div>
             </div>
-            <span class="mod-btn" style="background:#9b59b6;color:#fff;opacity:0.5;cursor:default" id="bb1">Locked</span>
+            <span class="mod-btn" style="background:#9b59b6;color:#fff;cursor:pointer" id="bb1">Enter Code</span>
           </div>
         </div>
       </div>
 
-      <div class="mod-card" id="bc2" style="opacity:0.55">
+      <div class="mod-card" id="bc2" style="opacity:0.6;cursor:pointer" onclick="openBonusModal(1)">
         <div class="mod-card-accent-bar" style="background:#27ae60"></div>
         <div class="mod-card-inner">
           <div class="mod-card-eyebrow">Bonus 02 · Unlocks Day 14</div>
@@ -402,12 +399,12 @@ body{display:flex;flex-direction:column;min-height:100vh}
               <div class="mod-progress-bar"><div class="mod-progress-fill" id="bf2" style="width:0%;background:#27ae60"></div></div>
               <div class="mod-progress-pct" id="bp2" style="color:#27ae60">🔒 Locked</div>
             </div>
-            <span class="mod-btn" style="background:#27ae60;color:#fff;opacity:0.5;cursor:default" id="bb2">Locked</span>
+            <span class="mod-btn" style="background:#27ae60;color:#fff;cursor:pointer" id="bb2">Enter Code</span>
           </div>
         </div>
       </div>
 
-      <div class="mod-card" id="bc3" style="opacity:0.55">
+      <div class="mod-card" id="bc3" style="opacity:0.6;cursor:pointer" onclick="openBonusModal(2)">
         <div class="mod-card-accent-bar" style="background:#f5c842"></div>
         <div class="mod-card-inner">
           <div class="mod-card-eyebrow">Bonus 03 · Unlocks Day 21</div>
@@ -418,7 +415,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
               <div class="mod-progress-bar"><div class="mod-progress-fill" id="bf3" style="width:0%;background:#f5c842"></div></div>
               <div class="mod-progress-pct" id="bp3" style="color:#b8900a">🔒 Locked</div>
             </div>
-            <span class="mod-btn" style="background:#f5c842;color:#1a1a1a;opacity:0.5;cursor:default" id="bb3">Locked</span>
+            <span class="mod-btn" style="background:#f5c842;color:#1a1a1a;cursor:pointer" id="bb3">Enter Code</span>
           </div>
         </div>
       </div>

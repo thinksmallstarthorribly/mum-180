@@ -9,12 +9,12 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --accent:#d4827a;--accent-d:#b86b64;--accent-p:#fdf5f4;--accent-m:#f0d5d2;
-  --charcoal:#1a1a1a;--mid:#444;--light:#888;
-  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+  --charcoal:#221413;--mid:#4a3a38;--light:#888;
+  --bg:#fef9f7;--card:#fff;--rule:rgba(212,130,122,0.14);
 }
 html,body{height:100%;font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg)}
 body{display:flex;flex-direction:column}
-.topnav{background:var(--charcoal);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
+.topnav{background:#1e0f0e;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
 .topnav-back{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
 .topnav-back:hover{color:var(--accent)}
 .topnav-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4)}
@@ -34,38 +34,39 @@ body{display:flex;flex-direction:column}
 .toc-text{font-size:11px;font-weight:600;color:rgba(255,255,255,0.4);line-height:1.3}
 .toc-item.active .toc-text{color:#fff}
 .content-area{flex:1;overflow-y:auto}
-.mod-header{background:var(--charcoal);padding:48px 56px;color:#fff}
+.mod-header{background:linear-gradient(135deg,#221413 0%,#3d1f1b 100%);padding:48px 56px 40px;color:#fff}
 .mod-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 .mod-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(40px,6vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95;margin-bottom:16px;color:#fff}
 .mod-subtitle{font-size:17px;line-height:1.6;color:rgba(255,255,255,0.55);max-width:620px;margin-bottom:24px}
 .mod-meta{display:flex;gap:24px;flex-wrap:wrap}
 .mod-meta-item{font-size:12px;color:rgba(255,255,255,0.3);font-weight:600}
 .mod-meta-item span{color:rgba(255,255,255,0.6)}
-.content-body{max-width:760px;margin:0 auto;padding:48px 56px}
-.section-block{margin-bottom:64px;scroll-margin-top:80px}
+.content-body{max-width:760px;margin:0 auto;padding:48px 56px;overflow-x:hidden;word-wrap:break-word}
+.section-block{margin-bottom:60px;scroll-margin-top:80px;overflow-x:hidden}
 .section-label{font-size:9px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .section-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;color:var(--charcoal);line-height:1;margin-bottom:20px}
 .body-text{font-size:16px;line-height:1.8;color:var(--mid);margin-bottom:16px}
-.pullquote{background:var(--charcoal);padding:28px 32px;margin:28px 0;border-left:4px solid var(--accent)}
-.pq-text{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;color:#fff;line-height:1.3}
-.reflect-block{background:var(--accent-p);border:1px solid var(--accent-m);padding:28px;margin:24px 0}
+.pullquote{background:#fdf3f1;padding:28px 32px;margin:28px 0;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}
+.pq-text{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;color:#221413;line-height:1.3}
+.reflect-block{background:#fff;border:1.5px solid var(--accent-m);padding:28px;margin:24px 0;border-radius:12px;box-shadow:0 2px 12px rgba(212,130,122,0.08)}
 .reflect-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-d);margin-bottom:8px}
 .reflect-prompt{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.4}
 .reflect-box{width:100%;min-height:100px;padding:12px;border:1px solid var(--accent-m);background:#fff;font-family:inherit;font-size:14px;line-height:1.6;color:var(--charcoal);resize:vertical}
 .reflect-box:focus{outline:none;border-color:var(--accent)}
 .checklist{list-style:none;margin:16px 0}
-.checklist li{padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start}
+.checklist li{padding:10px 0;border-bottom:1px solid rgba(212,130,122,0.1);font-size:15px;color:var(--mid);display:flex;gap:12px;align-items:flex-start;line-height:1.55}
 .checklist li::before{content:"→";color:var(--accent);font-weight:900;flex-shrink:0}
-.next-module{background:var(--charcoal);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.next-module{background:linear-gradient(135deg,#221413,#3d1f1b);padding:32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-radius:12px}
 .nm-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
 .nm-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;color:#fff}
 .nm-btn{font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;background:var(--accent);color:#fff;text-decoration:none;white-space:nowrap;transition:background 0.2s}
 .nm-btn:hover{background:var(--accent-d)}
-.complete-banner{display:none;background:#27ae60;color:#fff;padding:16px 24px;text-align:center;font-weight:700;font-size:14px;letter-spacing:0.05em}
+.complete-banner{display:none;background:linear-gradient(135deg,#27ae60,#2ed573);color:#fff;padding:16px 24px;text-align:center;font-weight:700;font-size:14px;letter-spacing:0.05em}
 .complete-banner.show{display:block}
 .save-badge{position:fixed;bottom:24px;right:24px;background:var(--charcoal);color:#fff;padding:10px 18px;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0;transition:opacity 0.3s;pointer-events:none}
 .save-badge.show{opacity:1}
-@media(max-width:768px){.toc-sidebar{display:none}.content-body{padding:32px 20px}.mod-header{padding:36px 24px}}
+@media(max-width:768px){.toc-sidebar{display:none}.content-body{padding:28px 18px;overflow-x:hidden}.mod-header{padding:32px 20px}}
+@media(max-width:480px){.content-body{padding:20px 14px}.mod-header{padding:24px 14px}}
 </style>
 </head>
 <body>
@@ -169,53 +170,6 @@ body{display:flex;flex-direction:column}
     </div>
   </div>
 </div>
-      <div class="section-block" id="s1">
-        <div class="section-label">Section 1</div>
-        <div class="section-title">The Loop</div>
-        <p class="body-text">Here is the pattern. You have been living inside it so long you may not even recognise it as a pattern anymore. You just think this is what life feels like.</p><ul class="checklist"><li>You sacrifice your own wellbeing for your child</li>
-<li>You run out of capacity — emotionally, physically, mentally</li>
-<li>You reach a breaking point and take some time for yourself</li>
-<li>You feel <strong>guilty</strong></li>
-<li>You do it anyway because you have no choice</li>
-<li>The whole time, you feel <strong>selfish</strong></li>
-<li>You go back. The cycle starts again.</li></ul><p class="body-text">This is the G&S loop. Guilty and Selfish. And it is not a character flaw. It is a logical consequence of the bad data from Module 1.</p><div class="pullquote"><div class="pq-text">I'm not guessing. Hundreds of women have told me the same story over and over again.</div></div>
-      </div>
-      <div class="section-block" id="s2">
-        <div class="section-label">Section 2</div>
-        <div class="section-title">Capital G — Guilty</div>
-        <p class="body-text">The guilt arrives the moment you consider taking time for yourself.</p><p class="body-text">You have not done anything yet. You have had a thought. And already the guilt is there, loading up its arguments. <em>You should be with the kids. You do not have time for this. What kind of mother are you?</em></p><p class="body-text">The guilt feels like a moral signal — like it is telling you something important. It is not. It is a conditioned response. You were taught that taking time for yourself is at odds with being a good mother. So when you try to do it, the alarm goes off.</p><p class="body-text">The alarm is based on the bad data. The bad data is wrong. Which means the alarm is not telling you the truth.</p><div class="reflect-block">
-          <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">Describe the last time you felt guilty for taking time for yourself. What were the thoughts that came up?</div>
-          <textarea class="reflect-box" id="r1" oninput="save()" placeholder="Write your thoughts here…"></textarea>
-        </div>
-      </div>
-      <div class="section-block" id="s3">
-        <div class="section-label">Section 3</div>
-        <div class="section-title">Capital S — Selfish</div>
-        <p class="body-text">You do it anyway. Because you have to. Your battery is at zero and you know it.</p><p class="body-text">And now you are on your day off, or your hour to yourself, or your cup of coffee in silence — and instead of actually resting, you are marinating in it. The selfishness. The constant, low-grade hum of <em>I should not be doing this.</em></p><p class="body-text">So you do not even get the recovery. You get the time, but not the benefit of it, because you are spending the whole time prosecuting yourself.</p><div class="pullquote"><div class="pq-text">You get the guilt going in. You get the selfishness the whole time you are there. And you come back more depleted than when you left.</div></div><p class="body-text">This is the cruelty of the loop. It does not just drain you on the way in. It denies you the recovery on the way out.</p><div class="reflect-block">
-          <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">When you do take time for yourself, are you actually present in it? Or are you spending it feeling bad? Describe what that experience is like.</div>
-          <textarea class="reflect-box" id="r2" oninput="save()" placeholder="Write your thoughts here…"></textarea>
-        </div>
-      </div>
-      <div class="section-block" id="s4">
-        <div class="section-label">Section 4</div>
-        <div class="section-title">Breaking the Loop</div>
-        <p class="body-text">The loop does not break through willpower. It does not break by trying harder to not feel guilty.</p><p class="body-text">It breaks when you update the data. When you genuinely accept — not just intellectually, but in your body — that taking care of yourself is part of the commitment, not a violation of it.</p><p class="body-text">That is what this course is doing. Slowly, module by module, replacing the bad data with something true. By the end you will not need to fight the guilt. It will simply have less and less to stand on.</p>
-      </div>
-      <div class="section-block" id="s5">
-        <div class="section-label">Section 5</div>
-        <div class="section-title">Reflection</div>
-        <div class="reflect-block">
-          <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">How long do you think you have been in the G&S loop? When did it start?</div>
-          <textarea class="reflect-box" id="r3" oninput="save()" placeholder="Write your thoughts here…"></textarea>
-        </div><div class="reflect-block">
-          <div class="reflect-label">Reflection</div>
-          <div class="reflect-prompt">What would it feel like to take time for yourself without the guilt or the selfishness? Can you even imagine it?</div>
-          <textarea class="reflect-box" id="r4" oninput="save()" placeholder="Write your thoughts here…"></textarea>
-        </div>
-      </div>
 <script>
 (function(){
   const S='mum180_access', D=30*24*60*60*1000;
