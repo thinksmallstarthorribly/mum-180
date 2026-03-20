@@ -36,8 +36,8 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 @media(max-width:768px){.hero-inner{grid-template-columns:1fr;gap:40px;padding:48px 24px}}
 .hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:24px;display:flex;align-items:center;gap:14px}
 .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--rose);flex-shrink:0}
-.hero-quote-box{border:1px solid rgba(107,84,80,0.35);background:var(--bg);padding:26px 30px;position:relative;margin-bottom:40px;max-width:460px;overflow:visible}
-.hero-quote-box::after{content:'';position:absolute;inset:0;border:1px solid rgba(107,84,80,0.28);transform:translate(10px,10px);z-index:-1;pointer-events:none;background:var(--bg)}
+.hero-quote-box{border:1px solid rgba(107,84,80,0.35);background:var(--bg);padding:26px 30px;position:relative;margin-bottom:40px;max-width:460px;box-shadow:10px 10px 0 1px rgba(107,84,80,0.25),10px 10px 0 0 var(--bg)}
+.hero-quote-box::after{display:none}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(20px,2.2vw,26px);font-weight:600;font-style:italic;line-height:1.55;color:rgba(107,84,80,0.68);margin:0}
 .hero-body-sub{font-size:15px;line-height:1.75;color:var(--mid);margin-bottom:36px;max-width:440px}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
