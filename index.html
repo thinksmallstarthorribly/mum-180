@@ -36,40 +36,61 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 @media(max-width:768px){.hero-inner{grid-template-columns:1fr;gap:40px;padding:48px 24px}}
 .hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:24px;display:flex;align-items:center;gap:14px}
 .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--rose);flex-shrink:0}
-.hero-quote-wrap{position:relative;margin-bottom:32px;max-width:480px;padding:0 28px 28px 0}
-/* The border with top-right corner missing */
-.hero-quote-wrap::before{
-  content:'';
-  position:absolute;
-  /* top border */
-  top:0;left:0;right:28px;height:1px;
-  background:rgba(44,31,31,0.3);
+.hero-quote-wrap{
+  position:relative;
+  margin-bottom:32px;
+  max-width:480px;
+  padding:36px 28px 36px 28px;
 }
-.hero-quote-wrap::after{
-  content:'';
-  position:absolute;
-  /* left border full height */
-  top:0;left:0;width:1px;bottom:28px;
-  background:rgba(44,31,31,0.3);
-}
+/* The rounded border with gaps at top-left and bottom-right for quote marks */
 .hero-quote-box{
   position:relative;
-  padding:28px 28px 20px 20px;
-  margin-top:0;
+  /* SVG border: rounded rect with gap top-left and bottom-right */
+  background:rgba(212,130,122,0.06);
+  border-radius:12px;
+  padding:28px 32px;
 }
-/* Right border — stops 28px from top (gap = missing corner) */
-.hero-quote-box::before{
-  content:'';
-  position:absolute;
-  right:0;top:28px;bottom:0;width:1px;
-  background:rgba(44,31,31,0.3);
-}
-/* Bottom border — full width */
+.hero-quote-box::before,
 .hero-quote-box::after{
   content:'';
   position:absolute;
-  bottom:0;left:0;right:0;height:1px;
-  background:rgba(44,31,31,0.3);
+  border:1.5px solid rgba(107,60,50,0.35);
+  border-radius:12px;
+  inset:0;
+}
+/* Gap at top-left: hide that corner of the border */
+.hero-quote-box::before{
+  /* clip away top-left corner region */
+  clip-path:polygon(36px 0%, 100% 0%, 100% calc(100% - 36px), calc(100% - 0px) 100%, 0% 100%, 0% 36px);
+}
+/* Gap at bottom-right: separate layer clipping that corner */
+.hero-quote-box::after{
+  clip-path:polygon(0% 0%, calc(100% - 36px) 0%, 100% 36px, 100% 100%, 36px 100%, 0% calc(100% - 36px));
+  border:none;
+}
+/* Opening quote mark — sits at top-left gap */
+.hero-quote-open{
+  position:absolute;
+  top:-2px;left:4px;
+  font-family:'Playfair Display',serif;
+  font-size:52px;
+  font-weight:700;
+  line-height:1;
+  color:rgba(107,60,50,0.6);
+  z-index:2;
+  user-select:none;
+}
+/* Closing quote mark — sits at bottom-right gap */
+.hero-quote-close{
+  position:absolute;
+  bottom:-28px;right:4px;
+  font-family:'Playfair Display',serif;
+  font-size:52px;
+  font-weight:700;
+  line-height:1;
+  color:rgba(107,60,50,0.6);
+  z-index:2;
+  user-select:none;
 }
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(20px,2.2vw,26px);font-weight:600;font-style:italic;line-height:1.55;color:rgba(107,84,80,0.68);margin:0}
 .hero-body-sub{font-size:15px;line-height:1.75;color:var(--mid);margin-bottom:36px;max-width:440px}
@@ -193,7 +214,9 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
       <div class="hero-eyebrow">A Course for Mums</div>
       <div class="hero-quote-wrap">
         <div class="hero-quote-box">
-          <h1 class="hero-title">"I feel like just another burned out mum that's letting her kids down. The more I try, the worse it gets."</h1>
+          <span class="hero-quote-open">&#8220;</span>
+          <span class="hero-quote-close">&#8221;</span>
+          <h1 class="hero-title">I feel like just another burned out mum that's letting her kids down. The more I try, the worse it gets.</h1>
         </div>
       </div>
       <p class="hero-body-sub">If that's the voice in your head, this course was made for you. Not to push harder. To understand why it feels this way — and how to stop.</p>
