@@ -125,9 +125,9 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 
 /* STORY */
 .story-section{background:var(--bg)}
-.story-banner{background:var(--charcoal);padding:72px 48px;text-align:center;position:relative;overflow:hidden}
+.story-banner{background:#3a1f1c;padding:72px 48px;text-align:center;position:relative;overflow:hidden}
 .story-banner-ghost{font-family:'Playfair Display',serif;font-size:clamp(120px,18vw,220px);font-weight:700;font-style:italic;color:rgba(255,255,255,0.03);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;line-height:1;pointer-events:none;user-select:none}
-.story-banner-quote{font-family:'Playfair Display',serif;font-size:clamp(40px,6.5vw,76px);font-weight:700;font-style:italic;color:#fff;line-height:1.1;position:relative}
+.story-banner-quote{font-family:'Playfair Display',serif;font-size:clamp(40px,6.5vw,76px);font-weight:700;font-style:italic;color:var(--rose);line-height:1.1;position:relative}
 .story-banner-sub{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.15em;text-transform:uppercase;margin-top:20px;position:relative}
 .story-body-wrap{padding:64px 48px}
 @media(max-width:640px){.story-banner{padding:52px 24px}.story-body-wrap{padding:48px 24px}}
@@ -143,10 +143,10 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .problem-section{background:#fff}
 .problem-split{display:grid;grid-template-columns:1fr 1fr}
 @media(max-width:768px){.problem-split{grid-template-columns:1fr}}
-.problem-left{background:var(--charcoal);padding:64px 52px;display:flex;flex-direction:column;justify-content:center}
+.problem-left{background:#3a1f1c;padding:64px 52px;display:flex;flex-direction:column;justify-content:center}
 .problem-left .section-eyebrow{color:var(--rose-m)}
 .problem-left .section-eyebrow::before{background:var(--rose-m)}
-.problem-left .section-title{color:#fff}
+.problem-left .section-title{color:var(--rose)}
 .problem-left .section-body{color:rgba(255,255,255,0.45);max-width:none;margin-bottom:0}
 .problem-right{padding:0}
 .pain-card{padding:36px 40px;border-bottom:1px solid var(--rule);transition:background 0.2s;display:flex;gap:20px;align-items:flex-start}
@@ -159,13 +159,13 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 @media(max-width:640px){.problem-left{padding:48px 24px}.pain-card{padding:28px 24px}}
 
 /* PRICING */
-.pricing-section{background:var(--charcoal);padding:72px 48px;text-align:center}
+.pricing-section{background:#3a1f1c;padding:72px 48px;text-align:center}
 @media(max-width:640px){.pricing-section{padding:56px 24px}}
 .pricing-inner{max-width:520px;margin:0 auto}
 .price-box{border:1px solid rgba(255,255,255,0.1);padding:48px;margin:32px 0;position:relative}
 .price-box::before{content:'';position:absolute;top:8px;right:8px;bottom:8px;left:8px;border:1px solid rgba(255,255,255,0.05);pointer-events:none}
 .price-was{font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:0.12em;text-transform:uppercase;text-decoration:line-through;margin-bottom:8px}
-.price-now{font-family:'Playfair Display',serif;font-size:80px;font-weight:700;color:#fff;line-height:1}
+.price-now{font-family:'Playfair Display',serif;font-size:80px;font-weight:700;color:var(--rose);line-height:1}
 .price-currency{font-size:26px;vertical-align:top;padding-top:16px;display:inline-block}
 .price-note{font-size:13px;color:rgba(255,255,255,0.35);margin-top:10px}
 .price-includes{text-align:left;margin:28px 0;list-style:none}
@@ -173,7 +173,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .price-includes li::before{content:"—";color:var(--rose);font-weight:700;flex-shrink:0}
 
 /* FOOTER */
-.footer{background:var(--charcoal);padding:40px;text-align:center;border-top:1px solid rgba(255,255,255,0.05)}
+.footer{background:#3a1f1c;padding:40px;text-align:center;border-top:1px solid rgba(255,255,255,0.05)}
 .footer-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:rgba(255,255,255,0.6);margin-bottom:10px}
 .footer-text{font-size:11px;color:rgba(255,255,255,0.18);letter-spacing:0.04em}
 </style>
@@ -370,7 +370,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 <section class="pricing-section" id="pricing">
   <div class="pricing-inner">
     <div class="section-eyebrow" style="color:rgba(200,114,106,0.7);justify-content:center">Get Started</div>
-    <h2 class="section-title" style="color:#fff;margin-bottom:16px">One price.<br><em style="font-style:italic;color:rgba(255,255,255,0.5)">Complete access.</em></h2>
+    <h2 class="section-title" style="color:var(--rose);margin-bottom:16px">One price.<br><em style="font-style:italic;color:rgba(255,255,255,0.5)">Complete access.</em></h2>
     <p style="font-size:16px;color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto">All 6 modules, the workbook, and lifetime access. No subscriptions. No upsells.</p>
     <div class="price-box">
       <div class="price-was">Full price $97 AUD</div>
