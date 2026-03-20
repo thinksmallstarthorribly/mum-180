@@ -38,16 +38,14 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--rose);flex-shrink:0}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(42px,5.5vw,68px);font-weight:700;line-height:1.1;color:var(--charcoal);margin-bottom:28px}
 .hero-title em{color:var(--rose);font-style:italic;display:block}
-.hero-body{font-size:17px;line-height:1.8;color:var(--mid);margin-bottom:14px;max-width:460px}
-.hero-body-sub{font-size:14px;line-height:1.75;color:var(--light);margin-bottom:44px;max-width:440px}
+.hero-voice{font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,24px);font-style:italic;line-height:1.6;color:var(--mid);max-width:480px;margin-bottom:10px;padding-left:20px;border-left:2px solid var(--rose-m)}
+.hero-voice::before{content:'\201C';font-size:1.4em;color:var(--rose);line-height:0;vertical-align:-0.3em;margin-right:4px}
+.hero-body-sub{font-size:15px;line-height:1.75;color:var(--light);margin-bottom:44px;max-width:440px;margin-top:20px}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
 .btn-primary{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:18px 40px;background:var(--charcoal);color:#fff;text-decoration:none;transition:all 0.2s;display:inline-block}
 .btn-primary:hover{background:var(--rose);transform:translateY(-1px)}
 .btn-sec{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:18px 32px;border:1.5px solid var(--rule);color:var(--mid);text-decoration:none;transition:all 0.2s;display:inline-block}
 .btn-sec:hover{border-color:var(--mid);color:var(--charcoal)}
-.hero-stats{display:flex;gap:40px;flex-wrap:wrap;padding-top:40px;border-top:1px solid var(--rule)}
-.hero-stat-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--charcoal);line-height:1}
-.hero-stat-label{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--light);margin-top:5px}
 .hero-visual{display:flex;align-items:center;justify-content:center}
 @media(max-width:768px){.hero-visual{display:none}}
 .hero-card{padding:56px 48px;background:var(--rose-p);border:1px solid var(--rose-m);text-align:center;position:relative}
@@ -153,17 +151,11 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
         When did you last<br>
         <em>remember yourself?</em>
       </h1>
-      <p class="hero-body">You gave everything to your children. Your energy. Your time. Your identity. And somewhere along the way, you disappeared.</p>
-      <p class="hero-body-sub">This is the course that brings you back. 6 modules. Honest. Practical. No fluff. Built from 10 years and 3,000 people in the room.</p>
+      <p class="hero-voice">I feel like just another burned out mum that's letting her kids down. The more I try, the worse it gets."</p>
+      <p class="hero-body-sub">If that's the voice in your head, this course was made for you. Not to push harder. To understand why it feels this way — and how to stop.</p>
       <div class="hero-actions">
         <a href="access.html" class="btn-primary">Start Mum 180 — $47 AUD</a>
         <a href="#modules" class="btn-sec">See What's Inside</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Modules</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">10</div><div class="hero-stat-label">Years in the room</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">3,000</div><div class="hero-stat-label">People</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">$47</div><div class="hero-stat-label">Launch price</div></div>
       </div>
     </div>
     <div class="hero-visual">
