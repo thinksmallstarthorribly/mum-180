@@ -36,7 +36,9 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 @media(max-width:768px){.hero-inner{grid-template-columns:1fr;gap:40px;padding:48px 24px}}
 .hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:24px;display:flex;align-items:center;gap:14px}
 .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--rose);flex-shrink:0}
-.hero-quote-box{border:1px solid rgba(107,84,80,0.35);background:var(--bg);padding:26px 30px;position:relative;margin-bottom:40px;max-width:460px;box-shadow:10px 10px 0 1px rgba(107,84,80,0.25),10px 10px 0 0 var(--bg)}
+.hero-quote-wrap{position:relative;padding-right:10px;padding-bottom:10px;margin-bottom:32px;max-width:460px}
+.hero-quote-wrap::after{content:'';position:absolute;top:10px;left:10px;right:0;bottom:0;border:1px solid rgba(44,31,31,0.18)}
+.hero-quote-box{position:relative;z-index:1;border:1px solid rgba(44,31,31,0.28);background:var(--bg);padding:26px 30px}
 .hero-quote-box::after{display:none}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(20px,2.2vw,26px);font-weight:600;font-style:italic;line-height:1.55;color:rgba(107,84,80,0.68);margin:0}
 .hero-body-sub{font-size:15px;line-height:1.75;color:var(--mid);margin-bottom:36px;max-width:440px}
@@ -158,8 +160,10 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
   <div class="hero-inner">
     <div>
       <div class="hero-eyebrow">A Course for Mums</div>
-      <div class="hero-quote-box">
-        <h1 class="hero-title">"I feel like just another burned out mum that's letting her kids down. The more I try, the worse it gets."</h1>
+      <div class="hero-quote-wrap">
+        <div class="hero-quote-box">
+          <h1 class="hero-title">"I feel like just another burned out mum that's letting her kids down. The more I try, the worse it gets."</h1>
+        </div>
       </div>
       <p class="hero-body-sub">If that's the voice in your head, this course was made for you. Not to push harder. To understand why it feels this way — and how to stop.</p>
       <div class="hero-actions">
