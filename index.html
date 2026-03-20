@@ -162,9 +162,9 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .pricing-section{background:var(--rose-p);padding:72px 48px;text-align:center;border-top:1px solid var(--rose-m)}
 @media(max-width:640px){.pricing-section{padding:56px 24px}}
 .pricing-inner{max-width:520px;margin:0 auto}
-.price-box{border:1px solid rgba(255,255,255,0.1);padding:48px;margin:32px 0;position:relative}
+.price-box{border:1px solid var(--rule);padding:48px;margin:32px 0;position:relative}
 .price-box::before{content:'';position:absolute;top:8px;right:8px;bottom:8px;left:8px;border:1px solid rgba(255,255,255,0.05);pointer-events:none}
-.price-was{font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:0.12em;text-transform:uppercase;text-decoration:line-through;margin-bottom:8px}
+.price-was{font-size:12px;color:var(--light);letter-spacing:0.12em;text-transform:uppercase;text-decoration:line-through;margin-bottom:8px}
 .price-now{font-family:'Playfair Display',serif;font-size:80px;font-weight:700;color:var(--charcoal);line-height:1}
 .price-currency{font-size:26px;vertical-align:top;padding-top:16px;display:inline-block}
 .price-note{font-size:13px;color:var(--light);margin-top:10px}
@@ -173,7 +173,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .price-includes li::before{content:"—";color:var(--rose);font-weight:700;flex-shrink:0}
 
 /* FOOTER */
-.footer{background:var(--charcoal);padding:40px;text-align:center;border-top:1px solid rgba(255,255,255,0.05)}
+.footer{background:var(--charcoal);padding:40px;text-align:center;border-top:1px solid var(--rule)}
 .footer-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--mid);margin-bottom:10px}
 .footer-text{font-size:11px;color:rgba(255,255,255,0.18);letter-spacing:0.04em}
 </style>
@@ -371,7 +371,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
   <div class="pricing-inner">
     <div class="section-eyebrow" style="color:rgba(200,114,106,0.7);justify-content:center">Get Started</div>
     <h2 class="section-title" style="color:var(--charcoal);margin-bottom:16px">One price.<br><em style="font-style:italic;color:var(--rose)">Complete access.</em></h2>
-    <p style="font-size:16px;color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto">All 6 modules, the workbook, and lifetime access. No subscriptions. No upsells.</p>
+    <p style="font-size:16px;color:var(--mid);max-width:480px;margin:0 auto">All 6 modules, the workbook, and lifetime access. No subscriptions. No upsells.</p>
     <div class="price-box">
       <div class="price-was">Full price $97 AUD</div>
       <div class="price-now"><span class="price-currency">$</span>47<span style="font-size:24px;color:var(--light);margin-left:8px">AUD</span></div>
@@ -385,14 +385,14 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
       </ul>
       <a href="access.html" class="btn-primary" style="display:block;text-align:center;font-size:16px;padding:22px">Start Mum 180 — $47 AUD</a>
     </div>
-    <p style="font-size:12px;color:rgba(255,255,255,0.2);margin-top:16px">Secure checkout. Instant access after purchase.</p>
+    <p style="font-size:12px;color:var(--light);margin-top:16px">Secure checkout. Instant access after purchase.</p>
   </div>
 </section>
 
 <footer class="footer">
   <div class="footer-logo">Mum 180</div>
   <p class="footer-text">The complete turnaround for mums who've lost themselves.</p>
-  <p class="footer-text" style="margin-top:8px">© 2026 Mum 180. All rights reserved. | <a href="portal.html" style="color:rgba(255,255,255,0.2);text-decoration:none">Student Login</a></p>
+  <p class="footer-text" style="margin-top:8px">© 2026 Mum 180. All rights reserved. | <a href="portal.html" style="color:var(--light);text-decoration:none">Student Login</a></p>
 </footer>
 
 <script></script>
