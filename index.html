@@ -7,38 +7,38 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta name="theme-color" content="#d4827a">
+<meta name="theme-color" content="#7B3F6E">
 <meta name="description" content="You gave everything to your children. Your energy. Your time. Your identity. Mum 180 is the course that brings you back. 6 modules. Honest. Practical. No fluff.">
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --rose:#d4827a;--rose-d:#b86b64;--rose-p:#fdf5f4;--rose-m:#f0d5d2;
+  --rose:#7B3F6E;--gold:#C9922A;--gold-d:#B8821E;--gold-p:#FBF4E8;--rose-d:#5E2954;--rose-p:#F5EEF3;--rose-m:#E4D0DF;
   --yellow:#f5c842;
   --red:#e05555;--rp:#fdf1f1;
   --green:#27ae60;
-  --charcoal:#1a1a1a;--mid:#444;--light:#888;
-  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+  --charcoal:#1C1218;--mid:#444;--light:#888;
+  --bg:#FAF7F2;--card:#fff;--rule:#e8e8e6;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);margin:0}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,26,26,0.97);backdrop-filter:blur(8px);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:var(--rose);text-decoration:none}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(28,18,24,0.97);backdrop-filter:blur(8px);padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);text-decoration:none}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-link{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s}
-.nav-link:hover{color:var(--rose)}
+.nav-link:hover{color:var(--gold)}
 .nav-cta{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:10px 20px;background:var(--rose);color:#fff;text-decoration:none;transition:all 0.2s}
 .nav-cta:hover{background:var(--rose-d)}
 @media(max-width:640px){.nav-links{gap:12px}.nav-link{display:none}.nav{padding:0 20px}}
 
 /* HERO */
 .hero{min-height:100vh;background:var(--charcoal);display:flex;align-items:center;padding-top:60px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;opacity:0.04;background:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(232,99,122,0.5) 60px,rgba(232,99,122,0.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(232,99,122,0.5) 60px,rgba(232,99,122,0.5) 61px)}
+.hero-bg{position:absolute;inset:0;opacity:0.04;background:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(123,63,110,0.5) 60px,rgba(123,63,110,0.5) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(123,63,110,0.5) 60px,rgba(123,63,110,0.5) 61px)}
 .hero-inner{max-width:1100px;margin:0 auto;padding:80px 40px;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 @media(max-width:768px){.hero-inner{grid-template-columns:1fr;gap:48px;padding:60px 24px}}
-.hero-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:var(--rose);margin-bottom:20px}
+.hero-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
 .hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(44px,7vw,80px);font-weight:900;text-transform:uppercase;letter-spacing:0.01em;line-height:0.95;color:#fff;margin-bottom:28px}
 .hero-title em{color:var(--rose);font-style:normal;display:block}
 .hero-body{font-size:18px;line-height:1.7;color:rgba(255,255,255,0.6);margin-bottom:16px;max-width:480px}
@@ -50,7 +50,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .btn-sec:hover{border-color:rgba(255,255,255,0.4);color:#fff}
 .hero-stats{display:flex;gap:32px;flex-wrap:wrap;padding-top:36px;border-top:1px solid rgba(255,255,255,0.07)}
 .hero-stat{text-align:left}
-.hero-stat-num{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:#fff;line-height:1}
+.hero-stat-num{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--gold);line-height:1}
 .hero-stat-label{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px}
 .hero-visual{display:flex;align-items:center;justify-content:center}
 @media(max-width:768px){.hero-visual{display:none}}
@@ -63,7 +63,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .section{padding:100px 40px}
 @media(max-width:640px){.section{padding:64px 24px}}
 .section-inner{max-width:1100px;margin:0 auto}
-.section-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:var(--rose);margin-bottom:16px}
+.section-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .section-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:900;text-transform:uppercase;line-height:1;margin-bottom:24px}
 .section-body{font-size:18px;line-height:1.7;color:var(--mid);max-width:680px;margin-bottom:16px}
 
@@ -72,7 +72,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 @media(max-width:768px){.pain-grid{grid-template-columns:1fr}}
 .pain-card{background:var(--charcoal);padding:36px;color:#fff}
 .pain-card-icon{font-size:32px;margin-bottom:16px}
-.pain-card-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:var(--rose);margin-bottom:12px}
+.pain-card-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 .pain-card-body{font-size:15px;line-height:1.6;color:rgba(255,255,255,0.55)}
 
 /* GS SECTION */
@@ -81,7 +81,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .gs-inner{max-width:900px;margin:0 auto;text-align:center}
 .gs-letters{display:flex;gap:40px;justify-content:center;margin:48px 0}
 .gs-letter{text-align:center}
-.gs-letter-big{font-family:'Barlow Condensed',sans-serif;font-size:120px;font-weight:900;color:var(--rose);line-height:1}
+.gs-letter-big{font-family:'Barlow Condensed',sans-serif;font-size:120px;font-weight:900;color:var(--gold);line-height:1}
 .gs-letter-word{font-size:14px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:8px}
 .gs-quote{font-size:clamp(20px,3vw,28px);font-style:italic;color:rgba(255,255,255,0.7);line-height:1.5;max-width:700px;margin:0 auto 24px}
 .gs-quote-attr{font-size:13px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase}
@@ -94,7 +94,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 @media(max-width:768px){.modules-grid{grid-template-columns:1fr}}
 .module-card{background:var(--card);padding:36px;border:1px solid var(--rule);position:relative}
 .module-num{font-family:'Barlow Condensed',sans-serif;font-size:64px;font-weight:900;color:var(--rose);opacity:0.12;position:absolute;top:16px;right:24px;line-height:1}
-.module-tag{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:10px}
+.module-tag{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
 .module-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-transform:uppercase;margin-bottom:12px;line-height:1.1;padding-right:48px}
 .module-body{font-size:14px;line-height:1.6;color:var(--mid)}
 
@@ -118,11 +118,11 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .price-note{font-size:13px;color:rgba(255,255,255,0.4);margin-top:12px;letter-spacing:0.05em}
 .price-includes{text-align:left;margin:32px 0;list-style:none}
 .price-includes li{font-size:15px;color:rgba(255,255,255,0.6);padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:12px}
-.price-includes li::before{content:"✓";color:var(--rose);font-weight:900;font-size:14px;flex-shrink:0}
+.price-includes li::before{content:"✓";color:var(--gold);font-weight:900;font-size:14px;flex-shrink:0}
 
 /* FOOTER */
 .footer{background:var(--charcoal);padding:40px;text-align:center;border-top:1px solid rgba(255,255,255,0.05)}
-.footer-logo{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;text-transform:uppercase;color:var(--rose);letter-spacing:0.1em;margin-bottom:12px}
+.footer-logo{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;text-transform:uppercase;color:var(--gold);letter-spacing:0.1em;margin-bottom:12px}
 .footer-text{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.05em}
 </style>
 </head>
@@ -199,7 +199,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 <!-- G&S -->
 <section class="gs-section">
   <div class="gs-inner">
-    <div class="section-eyebrow" style="color:var(--rose)">The G&amp;S Loop</div>
+    <div class="section-eyebrow" style="color:var(--gold)">The G&amp;S Loop</div>
     <h2 class="section-title" style="color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:900;text-transform:uppercase;line-height:1;margin-bottom:24px">I already know<br>how you feel</h2>
     <div class="gs-letters">
       <div class="gs-letter">
@@ -287,7 +287,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 <!-- PRICING -->
 <section class="pricing-section" id="pricing">
   <div class="pricing-inner">
-    <div class="section-eyebrow" style="color:var(--rose)">Get Started</div>
+    <div class="section-eyebrow" style="color:var(--gold)">Get Started</div>
     <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:16px">One price.<br>Complete access.</h2>
     <p style="font-size:16px;color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto">All 6 modules, the workbook, and lifetime access. No subscriptions. No upsells.</p>
     <div class="price-box">
