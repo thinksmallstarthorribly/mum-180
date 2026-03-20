@@ -36,10 +36,41 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 @media(max-width:768px){.hero-inner{grid-template-columns:1fr;gap:40px;padding:48px 24px}}
 .hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:24px;display:flex;align-items:center;gap:14px}
 .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--rose);flex-shrink:0}
-.hero-quote-wrap{position:relative;padding-right:10px;padding-bottom:10px;margin-bottom:32px;max-width:460px}
-.hero-quote-wrap::after{content:'';position:absolute;top:10px;left:10px;right:0;bottom:0;border:1px solid rgba(44,31,31,0.18)}
-.hero-quote-box{position:relative;z-index:1;border:1px solid rgba(44,31,31,0.28);background:var(--bg);padding:26px 30px}
-.hero-quote-box::after{display:none}
+.hero-quote-wrap{position:relative;margin-bottom:32px;max-width:480px;padding:0 28px 28px 0}
+/* The border with top-right corner missing */
+.hero-quote-wrap::before{
+  content:'';
+  position:absolute;
+  /* top border */
+  top:0;left:0;right:28px;height:1px;
+  background:rgba(44,31,31,0.3);
+}
+.hero-quote-wrap::after{
+  content:'';
+  position:absolute;
+  /* left border full height */
+  top:0;left:0;width:1px;bottom:28px;
+  background:rgba(44,31,31,0.3);
+}
+.hero-quote-box{
+  position:relative;
+  padding:28px 28px 20px 20px;
+  margin-top:0;
+}
+/* Right border — stops 28px from top (gap = missing corner) */
+.hero-quote-box::before{
+  content:'';
+  position:absolute;
+  right:0;top:28px;bottom:0;width:1px;
+  background:rgba(44,31,31,0.3);
+}
+/* Bottom border — full width */
+.hero-quote-box::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;height:1px;
+  background:rgba(44,31,31,0.3);
+}
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(20px,2.2vw,26px);font-weight:600;font-style:italic;line-height:1.55;color:rgba(107,84,80,0.68);margin:0}
 .hero-body-sub{font-size:15px;line-height:1.75;color:var(--mid);margin-bottom:36px;max-width:440px}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
