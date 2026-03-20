@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mum 180 — The Complete Turnaround for Mums Who've Lost Themselves</title>
+<title>Mum 180... The Complete Turnaround for Mums Who've Lost Themselves</title>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -38,44 +38,59 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--rose);flex-shrink:0}
 .hero-quote-wrap{
   position:relative;
-  margin-bottom:32px;
-  max-width:480px;
+  margin-bottom:40px;
+  max-width:500px;
+  /* room for rose offset panel */
+  padding:0 16px 16px 0;
 }
+/* Rose offset panel... sits behind and below-right */
+.hero-quote-wrap::before{
+  content:'';
+  position:absolute;
+  top:16px;left:16px;right:0;bottom:0;
+  background:var(--rose-m);
+  z-index:0;
+}
+/* Main quote card... white, lifted above the panel */
 .hero-quote-box{
   position:relative;
-  border:1px solid rgba(44,31,31,0.28);
-  background:var(--bg);
-  padding:28px 30px;
+  z-index:1;
+  border:1px solid rgba(200,114,106,0.3);
+  background:#fff;
+  padding:32px 36px;
+  box-shadow:0 4px 24px rgba(200,114,106,0.1);
 }
-/* Large opening quote — top-left, overlaps border */
+/* Opening quote mark */
 .hero-quote-open{
   position:absolute;
-  top:-22px;
-  left:-8px;
+  top:-24px;
+  left:-4px;
   font-family:'Playfair Display',serif;
-  font-size:80px;
+  font-size:88px;
   font-weight:700;
   line-height:1;
-  color:rgba(90,45,35,0.6);
+  color:var(--rose);
+  opacity:0.7;
   z-index:2;
   user-select:none;
   letter-spacing:-4px;
 }
-/* Large closing quote — bottom-right, overlaps border */
+/* Closing quote mark */
 .hero-quote-close{
   position:absolute;
-  bottom:-52px;
-  right:-8px;
+  bottom:-56px;
+  right:-4px;
   font-family:'Playfair Display',serif;
-  font-size:80px;
+  font-size:88px;
   font-weight:700;
   line-height:1;
-  color:rgba(90,45,35,0.6);
+  color:var(--rose);
+  opacity:0.7;
   z-index:2;
   user-select:none;
   letter-spacing:-4px;
 }
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(20px,2.2vw,26px);font-weight:600;font-style:italic;line-height:1.55;color:rgba(107,84,80,0.68);margin:0}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(19px,2.2vw,25px);font-weight:600;font-style:italic;line-height:1.6;color:rgba(80,50,45,0.75);margin:0}
 .hero-body-sub{font-size:15px;line-height:1.75;color:var(--mid);margin-bottom:36px;max-width:440px}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
 .btn-primary{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:16px 36px;background:var(--rose);color:#fff;text-decoration:none;transition:all 0.2s;display:inline-block}
@@ -170,7 +185,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .price-note{font-size:13px;color:var(--light);margin-top:10px}
 .price-includes{text-align:left;margin:28px 0;list-style:none}
 .price-includes li{font-size:14px;color:var(--mid);padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:12px}
-.price-includes li::before{content:"—";color:var(--rose);font-weight:700;flex-shrink:0}
+.price-includes li::before{content:"...";color:var(--rose);font-weight:700;flex-shrink:0}
 
 /* FOOTER */
 .footer{background:var(--charcoal);padding:40px;text-align:center;border-top:1px solid var(--rule)}
@@ -185,7 +200,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
   <div class="nav-links">
     <a href="#modules" class="nav-link">Modules</a>
     <a href="#pricing" class="nav-link">Pricing</a>
-    <a href="access.html" class="nav-cta">Start Now — $47</a>
+    <a href="access.html" class="nav-cta">Start Now... $47</a>
   </div>
 </nav>
 
@@ -202,9 +217,9 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
           <h1 class="hero-title">I feel like just another burned out mum that's letting her kids down. The more I try, the worse it gets.</h1>
         </div>
       </div>
-      <p class="hero-body-sub">If that's the voice in your head, this course was made for you. Not to push harder. To understand why it feels this way — and how to stop.</p>
+      <p class="hero-body-sub">If that's the voice in your head, this course was made for you. Not to push harder. To understand why it feels this way... and how to stop.</p>
       <div class="hero-actions">
-        <a href="access.html" class="btn-primary">Start Mum 180 — $47 AUD</a>
+        <a href="access.html" class="btn-primary">Start Mum 180... $47 AUD</a>
         <a href="#modules" class="btn-sec">See What's Inside</a>
       </div>
     </div>
@@ -236,8 +251,8 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
       </div>
     </div>
     <p class="gs-quote">"I'm not guessing. Hundreds of you have told me the same story over and over and over again."</p>
-    <p class="gs-quote-attr">— From the course</p>
-    <p class="gs-body">When you finally take time for yourself, you feel guilty. And the whole time you're doing it, you feel selfish. That's the G&S loop. It's not a character flaw. It's bad data — and it's fixable.</p>
+    <p class="gs-quote-attr">... From the course</p>
+    <p class="gs-body">When you finally take time for yourself, you feel guilty. And the whole time you're doing it, you feel selfish. That's the G&S loop. It's not a character flaw. It's bad data... and it's fixable.</p>
   </div>
 </section>
 
@@ -246,13 +261,13 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
   <div class="modules-inner">
     <div class="section-eyebrow">The Course</div>
     <h2 class="section-title">6 modules.<br>One complete turnaround.</h2>
-    <p class="section-body">Each module is short, direct, and builds on the last. No filler. No watered-down advice. This is the real framework — the same one developed over 10 years and 3,000 people.</p>
+    <p class="section-body">Each module is short, direct, and builds on the last. No filler. No watered-down advice. This is the real framework... the same one developed over 10 years and 3,000 people.</p>
     <div class="modules-grid">
       <div class="module-card">
         <div class="module-num">1</div>
         <div class="module-tag">Module 1</div>
         <div class="module-title">The Lie You Were Told</div>
-        <div class="module-body">You were told that becoming a mum means you are now accountable for your child. That's not true — and it's the source of everything. We start here.</div>
+        <div class="module-body">You were told that becoming a mum means you are now accountable for your child. That's not true... and it's the source of everything. We start here.</div>
       </div>
       <div class="module-card">
         <div class="module-num">2</div>
@@ -264,19 +279,19 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
         <div class="module-num">3</div>
         <div class="module-tag">Module 3</div>
         <div class="module-title">The Oxygen Mask</div>
-        <div class="module-body">Putting yourself first is not selfish. It is the most responsible thing you can do as a parent. This module gives you full permission — and explains exactly why.</div>
+        <div class="module-body">Putting yourself first is not selfish. It is the most responsible thing you can do as a parent. This module gives you full permission... and explains exactly why.</div>
       </div>
       <div class="module-card">
         <div class="module-num">4</div>
         <div class="module-tag">Module 4</div>
         <div class="module-title">The Trap You Set for Yourself</div>
-        <div class="module-body">Towards and away thinking. Why trying NOT to be a bad mum is making you one. The paradox of primary and secondary goal setting — and how to break it.</div>
+        <div class="module-body">Towards and away thinking. Why trying NOT to be a bad mum is making you one. The paradox of primary and secondary goal setting... and how to break it.</div>
       </div>
       <div class="module-card">
         <div class="module-num">5</div>
         <div class="module-tag">Module 5</div>
         <div class="module-title">I Remember You</div>
-        <div class="module-body">The mirror exercise. Michelle had a great marriage, a successful career, a 19-year-old son who'd just left home — and she'd been gone for 19 years. The moment she came back is in this module.</div>
+        <div class="module-body">The mirror exercise. Michelle had a great marriage, a successful career, a 19-year-old son who'd just left home... and she'd been gone for 19 years. The moment she came back is in this module.</div>
       </div>
       <div class="module-card">
         <div class="module-num">6</div>
@@ -293,7 +308,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
   <div class="story-banner">
     <div class="story-banner-ghost">"I remember you."</div>
     <div class="story-banner-quote">"I remember you."</div>
-    <div class="story-banner-sub">— Michelle, course participant. 19 years.</div>
+    <div class="story-banner-sub">... Michelle, course participant. 19 years.</div>
   </div>
   <div class="story-body-wrap">
     <div class="story-inner">
@@ -301,14 +316,14 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
       <div class="story-cols">
         <div>
           <p class="story-body">She was happily married. Successful career. Her 19-year-old son had just moved out to start university. By every measure, she had everything.</p>
-          <p class="story-body">On the last day of the course, she finally did the mirror exercise. She walked up, looked at herself, and before she knew what she was going to say — the words came out.</p>
+          <p class="story-body">On the last day of the course, she finally did the mirror exercise. She walked up, looked at herself, and before she knew what she was going to say... the words came out.</p>
           <p class="story-body"><em>"I pointed at the mirror and I said: I remember you."</em></p>
         </div>
         <div>
           <p class="story-body">Together, at the same time, they said: <strong>19 years.</strong></p>
           <p class="story-body story-emph">"When I became a mum, that's who I became."</p>
           <p class="story-body">This is what this course is about. Not just for single mums doing it hard. For every mum who's been so focused on everyone else that she forgot herself.</p>
-          <a href="access.html" class="btn-primary" style="margin-top:8px">I'm ready — Start Mum 180</a>
+          <a href="access.html" class="btn-primary" style="margin-top:8px">I'm ready... Start Mum 180</a>
         </div>
       </div>
     </div>
@@ -321,7 +336,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
     <div class="problem-left">
       <div class="section-eyebrow">Sound Familiar?</div>
       <h2 class="section-title">You're not lazy.<br>You're running on empty.</h2>
-      <p class="section-body">The exhaustion isn't a personality trait. The guilt isn't weakness. You've been operating on bad data — and nobody told you.</p>
+      <p class="section-body">The exhaustion isn't a personality trait. The guilt isn't weakness. You've been operating on bad data... and nobody told you.</p>
     </div>
     <div class="problem-right">
       <div class="pain-card">
@@ -375,15 +390,15 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
     <div class="price-box">
       <div class="price-was">Full price $97 AUD</div>
       <div class="price-now"><span class="price-currency">$</span>47<span style="font-size:24px;color:var(--light);margin-left:8px">AUD</span></div>
-      <div class="price-note">Launch price — available now</div>
+      <div class="price-note">Launch price... available now</div>
       <ul class="price-includes">
         <li>6 complete video modules</li>
         <li>Mum 180 workbook</li>
         <li>Module worksheets and exercises</li>
-        <li>Lifetime access — revisit anytime</li>
+        <li>Lifetime access... revisit anytime</li>
         <li>Works on any device</li>
       </ul>
-      <a href="access.html" class="btn-primary" style="display:block;text-align:center;font-size:16px;padding:22px">Start Mum 180 — $47 AUD</a>
+      <a href="access.html" class="btn-primary" style="display:block;text-align:center;font-size:16px;padding:22px">Start Mum 180... $47 AUD</a>
     </div>
     <p style="font-size:12px;color:var(--light);margin-top:16px">Secure checkout. Instant access after purchase.</p>
   </div>
