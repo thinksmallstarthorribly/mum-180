@@ -38,54 +38,42 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--rose);flex-shrink:0}
 .hero-quote-wrap{
   position:relative;
-  margin-bottom:40px;
-  max-width:500px;
-  /* space for offset shadow below+right */
-  padding:0 14px 14px 0;
+  margin-bottom:32px;
+  max-width:480px;
 }
-/* Offset shadow panel — lighter beige, shifted right+down */
-.hero-quote-wrap::before{
-  content:'';
-  position:absolute;
-  top:14px;left:14px;right:0;bottom:0;
-  background:#e8ddd5;
-  border-radius:14px;
-  z-index:0;
-}
-/* Main card */
 .hero-quote-box{
   position:relative;
-  z-index:1;
-  background:#f5ede8;
-  border:1.5px solid rgba(90,45,35,0.5);
-  border-radius:14px;
-  padding:36px 36px 36px 36px;
+  border:1px solid rgba(44,31,31,0.28);
+  background:var(--bg);
+  padding:28px 30px;
 }
-/* Opening quote mark — top-left, overlaps border */
+/* Large opening quote — top-left, overlaps border */
 .hero-quote-open{
   position:absolute;
-  top:-18px;left:16px;
+  top:-22px;
+  left:-8px;
   font-family:'Playfair Display',serif;
-  font-size:72px;
+  font-size:80px;
   font-weight:700;
   line-height:1;
-  color:rgba(90,45,35,0.75);
+  color:rgba(90,45,35,0.6);
   z-index:2;
   user-select:none;
-  letter-spacing:-2px;
+  letter-spacing:-4px;
 }
-/* Closing quote mark — bottom-right, overlaps border */
+/* Large closing quote — bottom-right, overlaps border */
 .hero-quote-close{
   position:absolute;
-  bottom:-38px;right:16px;
+  bottom:-52px;
+  right:-8px;
   font-family:'Playfair Display',serif;
-  font-size:72px;
+  font-size:80px;
   font-weight:700;
   line-height:1;
-  color:rgba(90,45,35,0.75);
+  color:rgba(90,45,35,0.6);
   z-index:2;
   user-select:none;
-  letter-spacing:-2px;
+  letter-spacing:-4px;
 }
 .hero-title{font-family:'Playfair Display',serif;font-size:clamp(20px,2.2vw,26px);font-weight:600;font-style:italic;line-height:1.55;color:rgba(107,84,80,0.68);margin:0}
 .hero-body-sub{font-size:15px;line-height:1.75;color:var(--mid);margin-bottom:36px;max-width:440px}
