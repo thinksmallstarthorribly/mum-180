@@ -8,10 +8,10 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --rose:#d4827a;--rose-d:#b86b64;--rose-p:#fdf5f4;
-  --charcoal:#1a1a1a;--mid:#444;--light:#888;
+  --rose:#7B3F6E;--gold:#C9922A;--gold-d:#B8821E;--gold-p:#FBF4E8;--rose-d:#5E2954;--rose-p:#F5EEF3;
+  --charcoal:#1C1218;--mid:#444;--light:#888;
   --red:#e05555;--rp:#fdf1f1;
-  --bg:#f0f0ee;--card:#fff;--rule:#e8e8e6;
+  --bg:#FAF7F2;--card:#fff;--rule:#e8e8e6;
 }
 html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--charcoal);color:#fff}
 body{display:flex;flex-direction:column;min-height:100vh}
@@ -19,17 +19,17 @@ body{display:flex;flex-direction:column;min-height:100vh}
 /* BACKGROUND GRID */
 body::before{
   content:'';position:fixed;inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(94,197,204,0.04) 60px,rgba(94,197,204,0.04) 61px),
-             repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(94,197,204,0.04) 60px,rgba(94,197,204,0.04) 61px);
+  background:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(201,146,42,0.04) 60px,rgba(201,146,42,0.04) 61px),
+             repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(201,146,42,0.04) 60px,rgba(201,146,42,0.04) 61px);
   pointer-events:none;z-index:0
 }
 
 /* TOP BAR */
 .topbar{padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;border-bottom:1px solid rgba(255,255,255,0.05)}
-.topbar-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--rose)}
+.topbar-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold)}
 .topbar-logo span{color:rgba(255,255,255,0.2)}
 .topbar-link{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
-.topbar-link:hover{color:var(--rose)}
+.topbar-link:hover{color:var(--gold)}
 
 /* MAIN LOCK SCREEN */
 .lock-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;z-index:1}
@@ -52,7 +52,7 @@ body::before{
   outline:none;
 }
 .lock-input::placeholder{color:rgba(255,255,255,0.2);letter-spacing:0.04em;font-weight:400;font-size:14px}
-.lock-input:focus{border-color:var(--rose);background:rgba(94,197,204,0.05)}
+.lock-input:focus{border-color:var(--rose);background:rgba(201,146,42,0.05)}
 .lock-input.error{border-color:var(--red);background:rgba(224,85,85,0.06);animation:shake 0.4s ease}
 @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 
