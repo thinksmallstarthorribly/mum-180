@@ -72,7 +72,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .pain-card:last-child{border-right:none}
 .pain-card:hover{background:var(--rose-p)}
 @media(max-width:768px){.pain-card{border-right:none;border-bottom:1px solid var(--rule)}.pain-card:last-child{border-bottom:none}}
-.pain-card-icon{font-size:26px;margin-bottom:20px}
+.pain-card-icon{margin-bottom:24px;color:var(--rose);display:block;line-height:0}
 .pain-card-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--charcoal);margin-bottom:12px;line-height:1.25}
 .pain-card-body{font-size:14px;line-height:1.75;color:var(--mid)}
 
@@ -86,6 +86,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
 .gs-letter-word{font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-top:10px}
 .gs-quote{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);font-style:italic;color:var(--charcoal);line-height:1.6;max-width:680px;margin:0 auto 20px}
 .gs-quote-attr{font-size:11px;color:var(--light);letter-spacing:0.12em;text-transform:uppercase}
+.gs-body{font-size:17px;line-height:1.8;color:var(--mid);max-width:600px;margin:20px auto 0}
 
 /* MODULES */
 .modules-section{background:var(--card);padding:100px 48px}
@@ -175,37 +176,13 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
   </div>
 </section>
 
-<!-- PROBLEM -->
-<section class="section" style="background:#fff">
-  <div class="section-inner">
-    <div class="section-eyebrow">Sound Familiar?</div>
-    <h2 class="section-title">You're not lazy.<br>You're running on empty.</h2>
-    <p class="section-body">The exhaustion isn't a personality trait. The guilt isn't weakness. You've been operating on bad data — and nobody told you.</p>
-    <div class="pain-grid">
-      <div class="pain-card">
-        <div class="pain-card-icon">🔋</div>
-        <div class="pain-card-title">Permanently drained</div>
-        <div class="pain-card-body">You can barely look after yourself, let alone anyone else. The gap between what you want to give and what you have left is growing.</div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-card-icon">🔁</div>
-        <div class="pain-card-title">Stuck in the loop</div>
-        <div class="pain-card-body">You sacrifice your wellbeing. You run out. You finally take time for yourself. You feel guilty. Then selfish. Then the whole thing starts again.</div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-card-icon">🪞</div>
-        <div class="pain-card-title">Lost yourself</div>
-        <div class="pain-card-body">One woman in this course looked in the mirror after 19 years and said three words that stopped the room. "I remember you." That's where this ends.</div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- G&S -->
 <section class="gs-section">
   <div class="gs-inner">
-    <div class="section-eyebrow" style="color:var(--gold)">The G&amp;S Loop</div>
-    <h2 class="section-title" style="color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:900;text-transform:uppercase;line-height:1;margin-bottom:24px">I already know<br>how you feel</h2>
+    <div class="section-eyebrow">The G&amp;S Loop</div>
+    <h2 class="section-title">I already know<br>how you feel</h2>
     <div class="gs-letters">
       <div class="gs-letter">
         <div class="gs-letter-big">G</div>
@@ -218,7 +195,7 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
     </div>
     <p class="gs-quote">"I'm not guessing. Hundreds of you have told me the same story over and over and over again."</p>
     <p class="gs-quote-attr">— From the course</p>
-    <p style="font-size:16px;color:rgba(255,255,255,0.5);margin-top:32px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7">When you finally take time for yourself, you feel guilty. And the whole time you're doing it, you feel selfish. That's the G&S loop. It's not a character flaw. It's bad data — and it's fixable.</p>
+    <p class="gs-body">When you finally take time for yourself, you feel guilty. And the whole time you're doing it, you feel selfish. That's the G&S loop. It's not a character flaw. It's bad data — and it's fixable.</p>
   </div>
 </section>
 
@@ -289,11 +266,54 @@ body{font-family:'Barlow',sans-serif;color:var(--charcoal);background:var(--bg);
   </div>
 </section>
 
+<!-- PROBLEM -->
+<section class="section" style="background:#fff">
+  <div class="section-inner">
+    <div class="section-eyebrow">Sound Familiar?</div>
+    <h2 class="section-title">You're not lazy.<br>You're running on empty.</h2>
+    <p class="section-body">The exhaustion isn't a personality trait. The guilt isn't weakness. You've been operating on bad data — and nobody told you.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-card-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="14" width="28" height="13" rx="2"/>
+            <path d="M32 18v5"/>
+            <rect x="7" y="17" width="6" height="7" rx="1" fill="currentColor" opacity="0.2"/>
+          </svg>
+        </div>
+        <div class="pain-card-title">Permanently drained</div>
+        <div class="pain-card-body">You can barely look after yourself, let alone anyone else. The gap between what you want to give and what you have left is growing.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 8a12 12 0 1 1-8.5 3.5"/>
+            <path d="M7 7l5 5-5 4"/>
+          </svg>
+        </div>
+        <div class="pain-card-title">Stuck in the loop</div>
+        <div class="pain-card-body">You sacrifice your wellbeing. You run out. You finally take time for yourself. You feel guilty. Then selfish. Then the whole thing starts again.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 5c-5 0-8 4.5-8 10.5S15 28 20 28s8-6.5 8-12.5S25 5 20 5z"/>
+            <path d="M16 28v5M24 28v5"/>
+            <path d="M13 33h14"/>
+          </svg>
+        </div>
+        <div class="pain-card-title">Lost yourself</div>
+        <div class="pain-card-body">One woman in this course looked in the mirror after 19 years and said three words that stopped the room. "I remember you." That's where this ends.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section class="pricing-section" id="pricing">
   <div class="pricing-inner">
-    <div class="section-eyebrow" style="color:var(--gold)">Get Started</div>
-    <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:16px">One price.<br>Complete access.</h2>
+    <div class="section-eyebrow" style="justify-content:center">Get Started</div>
+    <h2 class="section-title" style="color:#fff;margin-bottom:16px">One price.<br><em style="font-style:italic;color:rgba(255,255,255,0.6)">Complete access.</em></h2>
     <p style="font-size:16px;color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto">All 6 modules, the workbook, and lifetime access. No subscriptions. No upsells.</p>
     <div class="price-box">
       <div class="price-was">Full price $97 AUD</div>
