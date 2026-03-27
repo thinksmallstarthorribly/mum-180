@@ -29,88 +29,178 @@ body{font-family:system-ui,-apple-system,sans-serif;color:var(--black);backgroun
 .logo-banner img{max-height:100px;width:auto}
 
 /* NAV */
-.nav{position:static;top:auto;left:auto;right:auto;z-index:100;background:var(--bg);padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--rose)}
+.nav{position:static;background:var(--bg);padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--rose)}
 .nav-logo{height:48px}
 .nav-logo img{height:100%;width:auto}
 .nav-links{display:flex;align-items:center;gap:32px}
 .nav-link{font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s}
 .nav-link:hover{color:var(--pink)}
-.nav-cta{font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:12px 24px;background:var(--pink);color:#fff;text-decoration:none;transition:all 0.2s;font-weight:900}
+.nav-cta{font-size:11px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;padding:12px 24px;background:var(--pink);color:#fff;text-decoration:none;transition:all 0.2s}
 .nav-cta:hover{background:var(--pink-dark)}
 @media(max-width:640px){.nav-link{display:none}.nav{padding:0 20px}}
 
-/* HERO */
-.hero{min-height:calc(100vh - 72px);background:var(--off);display:flex;align-items:center;padding-top:0;position:relative}
-.hero-inner{max-width:1200px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-@media(max-width:768px){.hero-inner{grid-template-columns:1fr;gap:48px;padding:60px 24px;text-align:center}}
-.hero-eyebrow{font-size:11px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--pink);margin-bottom:20px}
-.hero-title{font-size:clamp(28px,5vw,56px);font-weight:900;letter-spacing:-1px;line-height:1.1;color:var(--black);text-transform:uppercase;margin-bottom:24px}
-.hero-title span{display:block;color:var(--pink)}
-.hero-body{font-size:16px;line-height:1.8;color:var(--mid);margin-bottom:36px;max-width:500px}
-@media(max-width:768px){.hero-body{margin:0 auto 36px}}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-@media(max-width:768px){.hero-actions{justify-content:center}}
+/* BUTTONS */
 .btn-primary{font-size:13px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;padding:18px 40px;background:var(--pink);color:#fff;text-decoration:none;transition:all 0.2s;display:inline-block}
 .btn-primary:hover{background:var(--pink-dark);transform:translateY(-2px)}
 .btn-sec{font-size:13px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:18px 32px;border:2px solid var(--pink);color:var(--pink);text-decoration:none;transition:all 0.2s;display:inline-block}
 .btn-sec:hover{background:var(--pink);color:#fff}
+
+/* SECTION BASE */
+.section{padding:80px 40px}
+@media(max-width:640px){.section{padding:60px 24px}}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:11px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--pink);margin-bottom:16px}
+.section-title{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-1px;line-height:1.1;text-transform:uppercase;margin-bottom:24px}
+.section-body{font-size:16px;line-height:1.85;color:var(--mid);max-width:640px;margin-bottom:16px}
+
+/* ═══════════════════════════════
+   STAGE 1: ATTACH
+   Hook the emotion that's already
+   running. Don't describe the pain.
+   Activate it. She recognises it
+   before she consciously evaluates.
+   ═══════════════════════════════ */
+.hero{background:var(--off);display:flex;align-items:center;min-height:calc(100vh - 144px)}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr;gap:40px;padding:60px 24px;text-align:center}}
+.hero-eyebrow{font-size:11px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--pink);margin-bottom:20px}
+.hero-title{font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-1px;line-height:1.1;color:var(--black);text-transform:uppercase;margin-bottom:24px}
+.hero-title span{display:block;color:var(--pink)}
+.hero-body{font-size:17px;line-height:1.85;color:var(--mid);margin-bottom:16px;max-width:500px}
+.hero-body strong{color:var(--black)}
+@media(max-width:768px){.hero-body{margin:0 auto 16px}}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
+@media(max-width:768px){.hero-actions{justify-content:center}}
 .hero-visual{display:flex;align-items:center;justify-content:center}
 @media(max-width:768px){.hero-visual{display:none}}
 .hero-logo img{max-width:280px;width:100%}
 
-/* STATS BAR */
+/* STATS */
 .stats-bar{background:var(--pink);padding:32px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
 @media(max-width:640px){.stats-bar{grid-template-columns:repeat(2,1fr);padding:24px}}
 .stat-num{font-size:42px;font-weight:900;color:#fff;line-height:1;letter-spacing:-1px}
 .stat-label{font-size:10px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-top:8px}
 
-/* SECTION */
-.section{padding:80px 40px}
-@media(max-width:640px){.section{padding:60px 24px}}
-.section-inner{max-width:1200px;margin:0 auto}
-.section-eyebrow{font-size:11px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--pink);margin-bottom:16px}
-.section-title{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-1px;line-height:1.1;text-transform:uppercase;margin-bottom:24px}
-.section-body{font-size:16px;line-height:1.8;color:var(--mid);max-width:600px}
+/* ═══════════════════════════════
+   STAGE 2: ENTER
+   Bypass critical evaluation.
+   Moral reframe: good mums were
+   given wrong data, not weak.
+   Shortcut: "if effort fixed this,
+   you would have fixed it already."
+   ═══════════════════════════════ */
+.enter{background:var(--black);padding:80px 40px}
+@media(max-width:640px){.enter{padding:60px 24px}}
+.enter-inner{max-width:900px;margin:0 auto}
+.enter-eyebrow{font-size:11px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--pink);margin-bottom:20px}
+.enter-title{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-1px;line-height:1.1;text-transform:uppercase;color:#fff;margin-bottom:32px}
+.enter-body{font-size:17px;line-height:1.85;color:rgba(255,255,255,0.6);margin-bottom:20px}
+.enter-body strong{color:#fff}
+.enter-callout{border-left:4px solid var(--pink);padding:24px 32px;margin:40px 0;background:rgba(255,105,180,0.08)}
+.enter-callout p{font-size:20px;font-weight:800;color:#fff;line-height:1.4;text-transform:uppercase;letter-spacing:-0.5px}
+
+/* ═══════════════════════════════
+   STAGE 3: REPLICATE
+   Once named, the pattern can't
+   run invisibly. She sees it
+   happening right now as she reads.
+   Her past starts making sense.
+   ═══════════════════════════════ */
+.gs{background:var(--bg);text-align:center;border-top:2px solid var(--pink);border-bottom:2px solid var(--pink);padding:80px 40px}
+@media(max-width:640px){.gs{padding:60px 24px}}
+.gs-inner{max-width:900px;margin:0 auto}
+.gs-title{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-1px;line-height:1.1;text-transform:uppercase;margin-bottom:24px}
+.gs-body{font-size:17px;line-height:1.85;color:var(--mid);max-width:700px;margin:0 auto 16px}
+.gs-body strong{color:var(--black)}
+.gs-letters{display:flex;gap:80px;justify-content:center;margin:48px 0 40px}
+@media(max-width:640px){.gs-letters{gap:40px}}
+.gs-char{font-size:120px;font-weight:900;color:var(--pink);line-height:1}
+.gs-word{font-size:12px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-top:8px}
+.gs-awareness{background:var(--off);border:2px solid var(--rose);padding:32px 40px;margin:40px auto;max-width:700px;text-align:left}
+.gs-awareness-label{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--pink);margin-bottom:12px}
+.gs-awareness p{font-size:16px;line-height:1.8;color:var(--gray)}
+.gs-awareness strong{color:var(--black)}
+.gs-quote{font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--black);max-width:800px;margin:32px auto 0;text-transform:uppercase;line-height:1.4}
 
 /* PROBLEM */
-.problem{background:var(--off)}
+.problem{background:var(--off);padding:0}
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
 @media(max-width:768px){.problem-grid{grid-template-columns:1fr}}
 .problem-left{background:var(--pink);padding:64px;color:#fff}
+@media(max-width:768px){.problem-left{padding:48px 24px}}
 .problem-left .section-title{color:#fff}
 .problem-left .section-body{color:rgba(255,255,255,0.9)}
 .pain-item{padding:32px 40px;border-bottom:1px solid #FFE4EE}
 .pain-item:last-child{border-bottom:none}
 .pain-item:hover{background:var(--rose)}
-.pain-title{font-size:18px;font-weight:900;color:var(--black);margin-bottom:8px;text-transform:uppercase;transition:color 0.2s}
-.pain-body{font-size:14px;color:var(--mid);line-height:1.6;transition:color 0.2s}
-@media(max-width:768px){.problem-left{padding:48px 24px}.pain-item{padding:24px}}
-
-/* G&S */
-.gs{background:var(--bg);text-align:center;border-top:2px solid var(--pink);border-bottom:2px solid var(--pink)}
-.gs-letters{display:flex;gap:80px;justify-content:center;margin:40px 0}
-@media(max-width:640px){.gs-letters{gap:40px}}
-.gs-char{font-size:120px;font-weight:900;color:var(--pink);line-height:1}
-.gs-word{font-size:12px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);margin-top:8px}
-.gs-quote{font-size:clamp(16px,2.5vw,24px);font-weight:800;color:var(--black);max-width:800px;margin:32px auto 0;text-transform:uppercase}
+.pain-title{font-size:18px;font-weight:900;color:var(--black);margin-bottom:8px;text-transform:uppercase}
+.pain-body{font-size:14px;color:var(--mid);line-height:1.7}
+@media(max-width:768px){.pain-item{padding:24px}}
 
 /* MODULES */
 .modules{background:var(--bg)}
-.modules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.modules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
 @media(max-width:768px){.modules-grid{grid-template-columns:1fr}}
 .mod-card{background:var(--off);padding:32px;border:2px solid transparent;position:relative;transition:all 0.2s}
 .mod-card:hover{border-color:var(--pink);transform:translateY(-4px)}
 .mod-num{position:absolute;top:16px;right:20px;font-size:64px;font-weight:900;color:var(--pink);opacity:0.2;line-height:1}
 .mod-tag{font-size:9px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
 .mod-title{font-size:18px;font-weight:900;text-transform:uppercase;color:var(--black);margin-bottom:10px;line-height:1.2}
-.mod-body{font-size:13px;line-height:1.7;color:var(--mid)}
+.mod-body{font-size:13px;line-height:1.75;color:var(--mid)}
 
 /* STORY */
-.story{background:var(--off);text-align:center}
-.story .section-title{font-size:clamp(40px,7vw,80px)}
+.story{background:var(--off);text-align:center;padding:80px 40px}
+@media(max-width:640px){.story{padding:60px 24px}}
+.story-inner{max-width:800px;margin:0 auto}
+.story-title{font-size:clamp(48px,8vw,96px);font-weight:900;letter-spacing:-2px;line-height:1;text-transform:uppercase;color:var(--black);margin:24px 0}
+.story-sub{font-size:clamp(16px,2.5vw,22px);font-weight:800;color:var(--black);text-transform:uppercase;margin-bottom:32px}
+.story-body{font-size:16px;line-height:1.85;color:var(--mid);margin-bottom:16px}
+.story-body strong{color:var(--black)}
+
+/* ═══════════════════════════════
+   STAGE 4: DEFEND
+   Convert resistance into evidence.
+   The guilt about spending $47 on
+   herself IS the loop. Named and
+   defused. Doubt = confirmation.
+   ═══════════════════════════════ */
+.defend{background:var(--black);padding:80px 40px}
+@media(max-width:640px){.defend{padding:60px 24px}}
+.defend-inner{max-width:900px;margin:0 auto}
+.defend-eyebrow{font-size:11px;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--pink);margin-bottom:20px}
+.defend-title{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-1px;line-height:1.1;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.defend-intro{font-size:17px;line-height:1.85;color:rgba(255,255,255,0.5);margin-bottom:40px}
+.defend-intro strong{color:#fff}
+.objections{display:flex;flex-direction:column;gap:0}
+.obj{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.obj:last-child{border-bottom:none}
+@media(max-width:640px){.obj{grid-template-columns:1fr}}
+.obj-thought{padding:28px 32px 28px 0;font-size:16px;font-style:italic;color:rgba(255,255,255,0.25);line-height:1.6;border-right:1px solid rgba(255,255,255,0.08)}
+@media(max-width:640px){.obj-thought{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);padding:24px 0 16px}}
+.obj-reframe{padding:28px 0 28px 32px;font-size:15px;color:rgba(255,255,255,0.6);line-height:1.7}
+@media(max-width:640px){.obj-reframe{padding:16px 0 24px}}
+.obj-reframe strong{color:var(--pink)}
+.defend-close{font-size:17px;color:rgba(255,255,255,0.5);margin-top:40px;line-height:1.7}
+.defend-close strong{color:#fff}
+
+/* ═══════════════════════════════
+   STAGE 5: TRANSMIT
+   Identity upgrade. Not what she
+   learns — who she becomes. The
+   share mechanic is implicit: she
+   tells other mums because it
+   makes her identity feel stronger.
+   ═══════════════════════════════ */
+.transmit{background:var(--pink);padding:80px 40px;text-align:center}
+@media(max-width:640px){.transmit{padding:60px 24px}}
+.transmit-inner{max-width:800px;margin:0 auto}
+.transmit-title{font-size:clamp(32px,5vw,60px);font-weight:900;letter-spacing:-1px;line-height:1.1;text-transform:uppercase;color:#fff;margin-bottom:28px}
+.transmit-body{font-size:17px;line-height:1.85;color:rgba(255,255,255,0.85);margin-bottom:16px;max-width:640px;margin-left:auto;margin-right:auto}
+.transmit-body strong{color:#fff}
 
 /* PRICING */
-.pricing{background:var(--bg);text-align:center}
+.pricing{background:var(--bg);text-align:center;padding:80px 40px}
+@media(max-width:640px){.pricing{padding:60px 24px}}
 .price-card{background:var(--off);padding:48px;max-width:480px;margin:40px auto 0;border:2px solid var(--pink);position:relative}
 .price-was{font-size:12px;color:var(--light);letter-spacing:0.15em;text-transform:uppercase;text-decoration:line-through;margin-bottom:8px}
 .price-now{font-size:72px;font-weight:900;color:var(--pink);line-height:1;letter-spacing:-3px}
@@ -124,9 +214,9 @@ body{font-family:system-ui,-apple-system,sans-serif;color:var(--black);backgroun
 @media(max-width:640px){.price-card{padding:32px 24px;margin:24px 16px 0}}
 
 /* FOOTER */
-.footer{background:var(--pink);padding:48px 40px;text-align:center}
-.footer-logo{font-size:24px;font-weight:900;color:#fff;letter-spacing:-1px;text-transform:uppercase;margin-bottom:12px}
-.footer-text{font-size:12px;color:rgba(255,255,255,0.9);letter-spacing:0.05em;text-transform:uppercase}
+.footer{background:var(--black);padding:48px 40px;text-align:center}
+.footer-logo{font-size:24px;font-weight:900;color:var(--pink);letter-spacing:-1px;text-transform:uppercase;margin-bottom:12px}
+.footer-text{font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:0.05em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -145,13 +235,21 @@ body{font-family:system-ui,-apple-system,sans-serif;color:var(--black);backgroun
   </div>
 </nav>
 
-<!-- HERO -->
+
+<!-- ═══════════════════════════════════════════════════
+     STAGE 1: ATTACH
+     The emotion is already present before she arrives.
+     We attach to what's running, not what we describe.
+     She recognises this before she decides to read on.
+     ═══════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-inner">
     <div>
       <div class="hero-eyebrow">A Programme for Mums</div>
       <h1 class="hero-title">I feel like just another burned out mum <span>that's letting her kids down.</span></h1>
-      <p class="hero-body">You've been carrying it so long it feels like yours. It's not. And this programme will show you exactly where it came from... and how to put it down.</p>
+      <p class="hero-body">You already know that feeling. You have been carrying it so long it feels like yours.</p>
+      <p class="hero-body"><strong>It is not yours. And it is fixable.</strong></p>
+      <p class="hero-body">This programme shows you exactly where it came from... and how to put it down for good.</p>
       <div class="hero-actions">
         <a href="access.html" class="btn-primary">START MUM 180 — $47</a>
         <a href="#modules" class="btn-sec">SEE MODULES</a>
@@ -163,15 +261,15 @@ body{font-family:system-ui,-apple-system,sans-serif;color:var(--black);backgroun
   </div>
 </section>
 
-<!-- STATS -->
+<!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat-item">
     <div class="stat-num">6</div>
     <div class="stat-label">Modules</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">G&S</div>
-    <div class="stat-label">Loop Explained</div>
+    <div class="stat-num">G&amp;S</div>
+    <div class="stat-label">Loop Dismantled</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">1</div>
@@ -183,38 +281,42 @@ body{font-family:system-ui,-apple-system,sans-serif;color:var(--black);backgroun
   </div>
 </div>
 
-<!-- PROBLEM -->
-<section class="section problem">
-  <div class="problem-grid">
-    <div class="problem-left">
-      <div class="section-eyebrow" style="color:#fff">Sound Familiar?</div>
-      <h2 class="section-title">YOU'RE NOT LAZY.<br>YOU'RE RUNNING ON EMPTY.</h2>
-      <p class="section-body">The exhaustion isn't a personality trait. The guilt isn't a character flaw. You've been running on a set of beliefs about what it means to be a good mum... and those beliefs are wrong.</p>
-      <p class="section-body" style="margin-top:16px">Not slightly wrong. Fundamentally wrong. Nobody told you. This programme does.</p>
+
+<!-- ═══════════════════════════════════════════════════
+     STAGE 2: ENTER
+     Bypass critical evaluation before she decides
+     whether to keep reading. Moral reframe: good mums
+     were given wrong data, not weak mums who failed.
+     Shortcut: "If effort fixed this, you'd have fixed it."
+     ═══════════════════════════════════════════════════ -->
+<section class="enter">
+  <div class="enter-inner">
+    <div class="enter-eyebrow">The Real Problem</div>
+    <h2 class="enter-title">You were given<br>wrong data.</h2>
+    <p class="enter-body">You were handed a set of beliefs about what it means to be a good mum. Those beliefs are not incomplete. They are <strong>fundamentally wrong in a way that guarantees the exact outcome you are experiencing right now.</strong></p>
+    <p class="enter-body">This is not about effort. Hundreds of mums have sat in this programme. Women who tried harder than most people try at anything in their lives. Women who put their children above every single thing. Women who did everything they were told a good mum does.</p>
+    <p class="enter-body">They still ended up here. Because <strong>effort does not fix a belief problem.</strong></p>
+    <div class="enter-callout">
+      <p>If effort fixed this,<br>you would have fixed it already.</p>
     </div>
-    <div class="problem-right">
-      <div class="pain-item">
-        <div class="pain-title">PERMANENTLY DRAINED</div>
-        <div class="pain-body">You can barely look after yourself, let alone anyone else. The gap between what you want to give and what you have left is growing.</div>
-      </div>
-      <div class="pain-item">
-        <div class="pain-title">STUCK IN THE LOOP</div>
-        <div class="pain-body">You sacrifice your wellbeing. You run out. You finally take time for yourself. You feel guilty. Then selfish. Then the whole thing starts again.</div>
-      </div>
-      <div class="pain-item">
-        <div class="pain-title">LOST YOURSELF</div>
-        <div class="pain-body">One woman in this programme looked in the mirror after 19 years and said three words that stopped the room. "I remember you."</div>
-      </div>
-    </div>
+    <p class="enter-body">You are not someone who does not try. You were failed by the data you were given on the most important job you have ever done. Once you understand the mechanism... the whole thing starts to unwind.</p>
   </div>
 </section>
 
-<!-- G&S -->
-<section class="section gs">
-  <div class="section-inner">
-    <div class="section-eyebrow">THE G&S LOOP</div>
-    <h2 class="section-title">I ALREADY KNOW HOW YOU FEEL.</h2>
-    <p class="section-body" style="margin:0 auto">When you finally take time for yourself... you feel guilty before you've even done it. And the whole time you're there, you feel selfish. So you don't even get the recovery. You come back more depleted than when you left.</p>
+
+<!-- ═══════════════════════════════════════════════════
+     STAGE 3: REPLICATE
+     Once named, the pattern can't run invisibly.
+     The copy makes her see it operating right now.
+     Her past starts making sense through the framework.
+     "Something is happening as you read this."
+     ═══════════════════════════════════════════════════ -->
+<section class="gs">
+  <div class="gs-inner">
+    <div class="section-eyebrow">The G&amp;S Loop</div>
+    <h2 class="gs-title">Something is happening<br>right now as you read this.</h2>
+    <p class="gs-body">When you finally take time for yourself... you feel guilty before you have even done it. And the whole time you are there, you feel selfish. So you do not even get the recovery. You come back <strong>more depleted than when you left.</strong></p>
+    <p class="gs-body">That loop has a name. It has a mechanism. It is not a personality trait. It is a pattern running on bad data... data you were given a long time ago.</p>
     <div class="gs-letters">
       <div class="gs-letter">
         <div class="gs-char">G</div>
@@ -225,88 +327,178 @@ body{font-family:system-ui,-apple-system,sans-serif;color:var(--black);backgroun
         <div class="gs-word">Selfish</div>
       </div>
     </div>
-    <p class="gs-quote">"I'm not guessing. Hundreds of you have told me the same story. Word for word."</p>
+    <div class="gs-awareness">
+      <div class="gs-awareness-label">Pay Attention to This</div>
+      <p>Next time you get a chance to do something for yourself... notice what happens before you have even decided. The guilt arrives first. Then, while you are there, the voice that says you should be home.</p>
+      <p style="margin-top:12px"><strong>That is not your conscience. That is the loop. Now you have a name for it.</strong></p>
+    </div>
+    <p class="gs-quote">"I'm not guessing. Hundreds of you have told me the same story. Word for word. That is not a coincidence. That is a pattern."</p>
   </div>
 </section>
 
-<!-- MODULES -->
-<section class="section modules" id="modules">
-  <div class="section-inner">
-    <div class="section-eyebrow">THE PROGRAMME</div>
-    <h2 class="section-title">6 MODULES.<br>ONE COMPLETE TURNAROUND.</h2>
-    <p class="section-body">Each module is short, direct, and builds on the last. No filler. No watered-down advice. This is the real framework.</p>
-    <div class="modules-grid">
-      <div class="mod-card">
-        <div class="mod-num">01</div>
-        <div class="mod-tag">Module 1</div>
-        <h3 class="mod-title">The Lie You Were Told</h3>
-        <p class="mod-body">You were told that becoming a mum means you are now accountable for your child. That's not true... and it's the source of everything. We start here.</p>
+
+<!-- PROBLEM SECTION -->
+<section class="section problem">
+  <div class="problem-grid">
+    <div class="problem-left">
+      <div class="section-eyebrow" style="color:rgba(255,255,255,0.6)">Sound Familiar?</div>
+      <h2 class="section-title">You're not lazy.<br>You're running on empty.</h2>
+      <p class="section-body">The exhaustion is not a personality trait. The guilt is not a character flaw. You have been running on a set of beliefs about what it means to be a good mum... and those beliefs are wrong.</p>
+      <p class="section-body">Not slightly wrong. <strong style="color:#fff">Fundamentally wrong.</strong> In a way that guarantees you end up exactly where you are right now. Nobody told you. This programme does.</p>
+    </div>
+    <div class="problem-right">
+      <div class="pain-item">
+        <div class="pain-title">Permanently Drained</div>
+        <div class="pain-body">The gap between what you want to give and what you actually have left keeps growing. You know it. And trying harder has never closed it.</div>
       </div>
-      <div class="mod-card">
-        <div class="mod-num">02</div>
-        <div class="mod-tag">Module 2</div>
-        <h3 class="mod-title">Guilty & Selfish</h3>
-        <p class="mod-body">The G&S loop explained in full. Why you feel this way, why it's not your fault, and why the loop keeps repeating until you understand what's driving it.</p>
+      <div class="pain-item">
+        <div class="pain-title">Stuck in the Loop</div>
+        <div class="pain-body">You sacrifice your wellbeing. You run out. You finally take time for yourself. You feel guilty. Then selfish. You come back worse. Then the whole thing starts again.</div>
       </div>
-      <div class="mod-card">
-        <div class="mod-num">03</div>
-        <div class="mod-tag">Module 3</div>
-        <h3 class="mod-title">The Oxygen Mask</h3>
-        <p class="mod-body">Putting yourself first is not selfish. It is the most responsible thing you can do. This module gives you full permission... and explains exactly why.</p>
-      </div>
-      <div class="mod-card">
-        <div class="mod-num">04</div>
-        <div class="mod-tag">Module 4</div>
-        <h3 class="mod-title">The Trap You Set for Yourself</h3>
-        <p class="mod-body">Towards and away thinking. Why trying NOT to be a bad mum is making you one. The paradox of primary and secondary goal setting... and how to break it.</p>
-      </div>
-      <div class="mod-card">
-        <div class="mod-num">05</div>
-        <div class="mod-tag">Module 5</div>
-        <h3 class="mod-title">I Remember You</h3>
-        <p class="mod-body">The mirror exercise. Michelle had everything — and she'd been gone for 19 years. Three words that stopped the room. The moment she came back is in this module.</p>
-      </div>
-      <div class="mod-card">
-        <div class="mod-num">06</div>
-        <div class="mod-tag">Module 6</div>
-        <h3 class="mod-title">What Now</h3>
-        <p class="mod-body">The prescription. Accept your current reality. Change how you think and speak about yourself. You are the person you communicate with most. Act accordingly.</p>
+      <div class="pain-item">
+        <div class="pain-title">Lost Yourself</div>
+        <div class="pain-body">One woman in this programme looked in the mirror after 19 years and said three words that stopped the room. "I remember you." She was not struggling. She was thriving. And she had still been gone.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STORY -->
-<section class="section story">
+
+<!-- MODULES -->
+<section class="section modules" id="modules">
   <div class="section-inner">
-    <div class="section-eyebrow">A True Story</div>
-    <h2 class="section-title">"I REMEMBER YOU."</h2>
-    <p class="gs-quote" style="margin-top:16px">Together, at the same time, they said: 19 YEARS.</p>
-    <p style="font-size:14px;color:var(--mid);margin-top:24px;text-transform:uppercase;letter-spacing:0.1em">When I became a mum, that's who I became.</p>
-    <p class="section-body" style="margin:32px auto 0;max-width:700px">Michelle wasn't struggling. She was thriving... by every measure that the world could see. And she had still been gone for 19 years.<br><br>You might be thinking this isn't for you. That your situation is different. That thought? That's the loop talking. It always sounds like a reason. It's never actually a reason.</p>
-    <a href="access.html" class="btn-primary" style="margin-top:40px">I'M READY — START MUM 180</a>
+    <div class="section-eyebrow">The Programme</div>
+    <h2 class="section-title">6 modules.<br>One complete turnaround.</h2>
+    <p class="section-body">Each module is short, direct, and builds on the last. No filler. No watered-down advice. This is the real framework developed over 10 years and 3,000 people.</p>
+    <div class="modules-grid">
+      <div class="mod-card">
+        <div class="mod-num">01</div>
+        <div class="mod-tag">Module 1</div>
+        <h3 class="mod-title">The Lie You Were Told</h3>
+        <p class="mod-body">You were handed a belief about what good motherhood looks like. That belief is the source of everything you are feeling right now. We dismantle it here. This is where it starts to unwind.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-num">02</div>
+        <div class="mod-tag">Module 2</div>
+        <h3 class="mod-title">Guilty &amp; Selfish</h3>
+        <p class="mod-body">The G&amp;S loop explained in full. Why it runs, why effort alone never stops it, and what actually breaks the cycle. Once you understand the mechanism, it loses its grip.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-num">03</div>
+        <div class="mod-tag">Module 3</div>
+        <h3 class="mod-title">The Oxygen Mask</h3>
+        <p class="mod-body">Taking care of yourself is not a luxury. It is the most structurally sound thing you can do as a parent. This module makes that undeniable... and gives you full permission to act on it.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-num">04</div>
+        <div class="mod-tag">Module 4</div>
+        <h3 class="mod-title">The Trap You Set for Yourself</h3>
+        <p class="mod-body">Towards and away thinking. Why trying NOT to be a bad mum is making you one. The paradox of goal setting that keeps you running in circles... and exactly how to break it.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-num">05</div>
+        <div class="mod-tag">Module 5</div>
+        <h3 class="mod-title">I Remember You</h3>
+        <p class="mod-body">The mirror exercise. Michelle had a great marriage, a successful career, a 19-year-old son who had just left home. And she had been gone for 19 years. Three words that stopped the room.</p>
+      </div>
+      <div class="mod-card">
+        <div class="mod-num">06</div>
+        <div class="mod-tag">Module 6</div>
+        <h3 class="mod-title">What Now</h3>
+        <p class="mod-body">Accept your current reality. Change how you think and speak about yourself. You are the person you communicate with most. What you say to her... matters more than anything else.</p>
+      </div>
+    </div>
   </div>
 </section>
+
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-inner">
+    <div class="section-eyebrow" style="justify-content:center">A True Story</div>
+    <h2 class="story-title">"I Remember You."</h2>
+    <p class="story-sub">Together, at the same time, they said: 19 years.</p>
+    <p class="story-body">Michelle was not struggling. She had a happy marriage. A thriving career. Her son had just left for university. By every measure the world could see, she had it all.</p>
+    <p class="story-body">On the last day of the programme, she did the mirror exercise. She looked at herself. And before she knew what she was going to say, the words came out.</p>
+    <p class="story-body"><strong>"When I became a mum... that is who I became."</strong></p>
+    <p class="story-body">That is how quietly this thing runs. You do not have to be falling apart to have lost yourself. You just have to have been last on your own list for long enough.</p>
+    <a href="access.html" class="btn-primary" style="margin-top:40px;display:inline-block">I'm Ready — Start Mum 180</a>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STAGE 4: DEFEND
+     A dedicated section that converts resistance into
+     evidence. The guilt about spending $47 on herself
+     IS the loop. Named and defused. The thought that
+     says "not now" is the exact problem being solved.
+     ═══════════════════════════════════════════════════ -->
+<section class="defend">
+  <div class="defend-inner">
+    <div class="defend-eyebrow">The Loop Pushes Back</div>
+    <h2 class="defend-title">Notice what<br>just happened.</h2>
+    <p class="defend-intro">You have been reading. Something landed. And right on schedule... <strong>a thought arrived to talk you out of it.</strong> That thought is not logic. That is the loop running its defend sequence. Here are the most common versions.</p>
+    <div class="objections">
+      <div class="obj">
+        <div class="obj-thought">"I don't have $47 to spend on myself right now."</div>
+        <div class="obj-reframe">You have spent $47 on things for your kids without hesitation. The discomfort you feel spending it on yourself... <strong>that is exactly what this programme is about.</strong> You just demonstrated the problem in real time.</div>
+      </div>
+      <div class="obj">
+        <div class="obj-thought">"I don't have time for a course."</div>
+        <div class="obj-reframe">The loop always frames self-investment as something that takes from your family. It never frames your depletion as something that takes from your family. <strong>Notice the difference.</strong></div>
+      </div>
+      <div class="obj">
+        <div class="obj-thought">"I've tried things before. Nothing works."</div>
+        <div class="obj-reframe">You have tried solutions designed for a different problem. Effort and strategies cannot fix a belief system. <strong>This programme goes to the source.</strong></div>
+      </div>
+      <div class="obj">
+        <div class="obj-thought">"Maybe later. When things settle down."</div>
+        <div class="obj-reframe">Things do not settle down while the loop is running. The loop generates the chaos. <strong>Later is what the loop is counting on.</strong></div>
+      </div>
+    </div>
+    <p class="defend-close">You do not owe loyalty to a thought just because it arrived with a feeling attached to it. <strong>The thought that says "not now" is the exact thing this programme addresses.</strong></p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     STAGE 5: TRANSMIT
+     Identity upgrade. Not what she learns. Who she
+     becomes. The mum her kids will describe. The one
+     other mums call when they are in the loop.
+     ═══════════════════════════════════════════════════ -->
+<section class="transmit">
+  <div class="transmit-inner">
+    <div class="section-eyebrow" style="color:rgba(255,255,255,0.6)">Who You Become</div>
+    <h2 class="transmit-title">The mum who did<br>something about it.</h2>
+    <p class="transmit-body">Not the mum who almost did. Not the mum who bookmarked it for later. <strong>The mum who looked at the loop, understood what it was, and decided it was done.</strong></p>
+    <p class="transmit-body">Your kids will remember how you felt about yourself. Not in words. In the way you moved through the house. In whether you seemed like someone who mattered to themselves.</p>
+    <p class="transmit-body">That is what changes. Not just for you. For everyone in your household who is watching you model what it means to be an adult.</p>
+    <a href="access.html" class="btn-primary" style="margin-top:36px;display:inline-block;background:#fff;color:var(--pink)">I'm that mum. Start Mum 180 — $47</a>
+  </div>
+</section>
+
 
 <!-- PRICING -->
 <section class="section pricing" id="pricing">
   <div class="section-inner">
-    <div class="section-eyebrow">GET STARTED</div>
-    <h2 class="section-title">ONE PRICE.<br>COMPLETE ACCESS.</h2>
-    <p class="section-body" style="margin:0 auto">All 6 modules, the workbook, and lifetime access. No subscriptions. No upsells. The mum who does this programme is not the same mum who started it.</p>
+    <div class="section-eyebrow">Get Started</div>
+    <h2 class="section-title">One price.<br>Complete access.</h2>
+    <p class="section-body" style="margin:0 auto">All 6 modules, the workbook, and lifetime access. No subscriptions. No upsells. No drip-feed. The mum who does this programme is not the same mum who started it.</p>
     <div class="price-card">
       <div class="price-was">Full Price $97 AUD</div>
       <div class="price-now"><span class="price-currency">$</span>47 <span style="font-size:20px;color:var(--pink);letter-spacing:0">AUD</span></div>
       <div class="price-note">Launch Price — Available Now</div>
       <ul class="price-includes">
         <li>6 Complete Modules — The Full Framework</li>
-        <li>The G&S Loop Explained and Dismantled</li>
+        <li>The G&amp;S Loop Explained and Dismantled</li>
         <li>The Mirror Exercise — The One That Changes Things</li>
         <li>Mum 180 Workbook and Reflection Exercises</li>
         <li>Lifetime Access — Revisit Whenever You Need To</li>
         <li>Works on Any Device</li>
       </ul>
-      <a href="access.html" class="price-cta">START MUM 180 — $47 AUD</a>
+      <a href="access.html" class="price-cta">Start Mum 180 — $47 AUD</a>
     </div>
     <p style="font-size:12px;color:var(--mid);margin-top:24px;letter-spacing:0.05em;text-transform:uppercase">Secure Checkout · Instant Access After Purchase</p>
   </div>
@@ -315,29 +507,8 @@ body{font-family:system-ui,-apple-system,sans-serif;color:var(--black);backgroun
 <footer class="footer">
   <div class="footer-logo">MUM 180</div>
   <p class="footer-text">For the mum who's been last on her own list for too long.</p>
-  <p class="footer-text" style="margin-top:12px">© 2026 Mum 180 · <a href="portal.html" style="color:#fff;text-decoration:none;font-weight:700">STUDENT LOGIN</a></p>
+  <p class="footer-text" style="margin-top:12px">© 2026 Mum 180 · <a href="portal.html" style="color:rgba(255,255,255,0.4);text-decoration:none;font-weight:700">STUDENT LOGIN</a></p>
 </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
