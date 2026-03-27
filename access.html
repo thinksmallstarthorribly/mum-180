@@ -4,79 +4,84 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mum 180 — Access</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --rose:#C8726A;--rose-d:#A85B54;--rose-p:#FAF0ED;--rose-m:#F2D5CE;
-  --charcoal:#2C1F1F;--mid:#6B5450;--light:#A89090;
-  --bg:#FBF8F3;--card:#FFFFFF;--rule:#EDE5DE;
-  --red:#d94f4f;
+  --pink:#FF69B4;--pink-dark:#E91E8C;--pink-light:#FFE4EE;
+  --black:#1A1A1A;--mid:#666666;--light:#999999;
+  --bg:#FFFFFF;--off:#FFF5F7;--rose:#FFE4EE;
+  --red:#E74C3C;
 }
-html,body{height:100%;font-family:'Barlow',sans-serif;background:var(--bg);color:var(--charcoal)}
+html,body{height:100%;font-family:'Inter',sans-serif;background:var(--off);color:var(--black)}
 body{display:flex;flex-direction:column;min-height:100vh}
 
 /* TOP BAR */
-.topbar{padding:0 40px;height:60px;display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-bottom:1px solid var(--rule)}
-.topbar-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--charcoal);letter-spacing:0.01em}
-.topbar-logo span{color:var(--light);font-weight:400;font-size:14px;margin-left:4px}
+.topbar{padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;background:var(--bg);border-bottom:2px solid var(--rose)}
+.topbar-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.topbar-logo img{height:32px;width:auto}
+.topbar-logo-text{font-size:18px;font-weight:900;color:var(--pink);letter-spacing:-0.5px;text-transform:uppercase}
+.topbar-logo span{color:var(--mid);font-weight:400;font-size:13px}
 .topbar-link{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s}
-.topbar-link:hover{color:var(--rose)}
+.topbar-link:hover{color:var(--pink)}
 
 /* MAIN */
 .lock-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 20px}
-.lock-card{width:100%;max-width:460px}
+.lock-card{width:100%;max-width:460px;background:var(--bg);padding:48px;border-radius:16px;border:2px solid var(--rose)}
 
-.lock-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:20px;display:flex;align-items:center;gap:12px}
-.lock-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--rose);flex-shrink:0}
-.lock-title{font-family:'Playfair Display',serif;font-size:clamp(36px,7vw,52px);font-weight:700;line-height:1.1;color:var(--charcoal);margin-bottom:12px}
+/* FORM ELEMENTS */
+.lock-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--pink);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.lock-eyebrow::before{content:'';display:block;width:24px;height:2px;background:var(--pink);flex-shrink:0}
+.lock-title{font-size:clamp(36px,7vw,52px);font-weight:900;line-height:1.1;color:var(--black);margin-bottom:12px;text-transform:uppercase;letter-spacing:-2px}
 .lock-sub{font-size:14px;color:var(--mid);line-height:1.75;margin-bottom:40px}
 
-/* FORM */
 .lock-form{display:flex;flex-direction:column;gap:12px}
 .lock-input-wrap{position:relative}
 .lock-input{
   width:100%;padding:18px 20px;
-  background:var(--card);border:1.5px solid var(--rule);
-  color:var(--charcoal);font-family:'Barlow',sans-serif;font-size:16px;font-weight:600;
-  letter-spacing:0.08em;transition:border-color 0.2s;outline:none;
+  background:var(--off);border:2px solid var(--rose);
+  color:var(--black);font-family:'Inter',sans-serif;font-size:16px;font-weight:600;
+  letter-spacing:0.08em;transition:border-color 0.2s;outline:none;border-radius:8px;
 }
 .lock-input::placeholder{color:var(--light);letter-spacing:0.04em;font-weight:400;font-size:14px}
-.lock-input:focus{border-color:var(--rose)}
+.lock-input:focus{border-color:var(--pink)}
 .lock-input.error{border-color:var(--red);animation:shake 0.4s ease}
 @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 
-.lock-btn{padding:18px;background:var(--charcoal);border:none;font-family:'Barlow',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#fff;cursor:pointer;transition:all 0.2s}
-.lock-btn:hover{background:var(--rose)}
-.lock-btn.loading{background:var(--rule);color:var(--mid);cursor:default}
+.lock-btn{padding:18px;background:var(--pink);border:none;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--black);cursor:pointer;transition:all 0.2s;border-radius:8px}
+.lock-btn:hover{background:var(--pink-dark);color:#fff}
+.lock-btn.loading{background:var(--rose);color:var(--mid);cursor:default}
 
-.lock-error{font-size:12px;font-weight:700;letter-spacing:0.04em;color:var(--red);padding:12px 16px;background:#FDF1F0;border:1px solid rgba(217,79,79,0.15);display:none}
+.lock-error{font-size:12px;font-weight:700;letter-spacing:0.04em;color:var(--red);padding:12px 16px;background:#FDF1F0;border:1px solid rgba(217,79,79,0.15);display:none;border-radius:8px}
 .lock-error.show{display:block}
 
 /* PURCHASE PROMPT */
-.lock-purchase{margin-top:40px;padding:28px 32px;border:1px solid var(--rule);background:var(--card)}
-.lp-title{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);margin-bottom:10px}
+.lock-purchase{margin-top:40px;padding:28px 32px;border:2px solid var(--rose);background:var(--off);border-radius:12px}
+.lp-title{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
 .lp-text{font-size:14px;color:var(--mid);line-height:1.7;margin-bottom:18px}
 .lp-actions{display:flex;gap:10px;flex-wrap:wrap}
-.lp-btn{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:11px 20px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer}
-.lp-btn.primary{background:var(--charcoal);color:#fff}
-.lp-btn.primary:hover{background:var(--rose)}
-.lp-btn.outline{background:transparent;border:1.5px solid var(--rule);color:var(--mid)}
-.lp-btn.outline:hover{border-color:var(--mid);color:var(--charcoal)}
+.lp-btn{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:11px 20px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;border-radius:6px}
+.lp-btn.primary{background:var(--pink);color:var(--black)}
+.lp-btn.primary:hover{background:var(--pink-dark);color:#fff}
+.lp-btn.outline{background:transparent;border:2px solid var(--rose);color:var(--mid)}
+.lp-btn.outline:hover{border-color:var(--pink);color:var(--pink)}
 
 /* HINT */
 .lock-hint{margin-top:20px;font-size:12px;color:var(--light);text-align:center;line-height:1.5}
-.lock-hint a{color:var(--mid);text-decoration:none}
-.lock-hint a:hover{color:var(--rose)}
+.lock-hint a{color:var(--pink);text-decoration:none}
+.lock-hint a:hover{text-decoration:underline}
 
 /* FOOTER */
-.lock-footer{padding:20px 40px;text-align:center;font-size:11px;color:var(--light);border-top:1px solid var(--rule)}
+.lock-footer{padding:20px 40px;text-align:center;font-size:11px;color:var(--light);border-top:2px solid var(--rose)}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="topbar-logo">Mum 180 <span>/ Think Small, Start Horribly</span></div>
+  <a href="index.html" class="topbar-logo">
+    <img src="assets/logo.png" alt="MUM 180">
+    
+  </a>
   <a href="index.html" class="topbar-link">← Sales Page</a>
 </div>
 
@@ -119,7 +124,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
 </div>
 
 <div class="lock-footer">
-  © 2026 Anonymous / Think Small, Start Horribly. All rights reserved.
+  © 2026 Anonymous / . All rights reserved.
 </div>
 
 <script>
@@ -194,5 +199,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('codeInput').focus();
 });
 </script>
+
 </body>
 </html>

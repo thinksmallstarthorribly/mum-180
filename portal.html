@@ -3,167 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal — Mum 180</title>
-<meta name="theme-color" content="#5E2954">
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<title>Portal — MUM 180</title>
+<meta name="theme-color" content="#FF69B4">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --rose:#C8726A;--rose-d:#A85B54;--rose-p:#FAF0ED;--rose-m:#F2D5CE;
-  --yellow:#c9972a;--yp:#fef9e7;
-  --red:#d94f4f;--rp:#fdf1f1;
-  --green:#27ae60;--gp:#e9f7ef;
-  --purple:#8e5ea2;--pp:#f3eef6;
-  --orange:#c97a2a;--op:#fef3e8;
-  --charcoal:#2C1F1F;--mid:#6B5450;--light:#A89090;
-  --bg:#FBF8F3;--card:#FFFFFF;--rule:#EDE5DE;
+  --pink:#FF69B4;
+  --pink-dark:#E91E8C;
+  --pink-light:#FFE4EE;
+  --black:#1A1A1A;
+  --dark:#1A1A1A;
+  --gray:#333333;
+  --mid:#666666;
+  --light:#999999;
+  --bg:#FFFFFF;
+  --off:#FFF5F7;
+  --rose:#FFE4EE;
+  --purple:#9B59B6;
+  --green:#27AE60;
+  --yellow:#F1C40F;
+  --red:#E74C3C;
 }
-html,body{height:100%;background:var(--bg);font-family:'Barlow',sans-serif;color:var(--charcoal)}
+html,body{height:100%;background:var(--off);font-family:'Inter',system-ui,sans-serif;color:var(--black)}
 body{display:flex;flex-direction:column;min-height:100vh}
 
+/* HERO LOGO HEADER */
+.hero-logo-header{background:var(--bg);padding:24px 32px;text-align:center;border-bottom:2px solid var(--rose)}
+.hero-logo-img{max-height:80px;width:auto}
+.hero-logo-tagline{font-size:12px;font-weight:600;color:var(--light);letter-spacing:0.1em;text-transform:uppercase;margin-top:8px}
+
 /* TOP NAV */
-.topnav{background:var(--charcoal);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100}
-.topnav-logo{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:rgba(255,255,255,0.9);text-decoration:none;letter-spacing:0.01em}
-.topnav-logo span{color:rgba(255,255,255,0.3);font-weight:400;font-size:13px}
+.topnav{background:var(--bg);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--rose)}
+.topnav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topnav-logo img{height:36px;width:auto}
+.topnav-logo-text{font-size:18px;font-weight:900;color:var(--pink);letter-spacing:-0.5px;text-transform:uppercase}
+.topnav-logo span{color:var(--mid);font-weight:400;font-size:13px}
 .topnav-right{display:flex;align-items:center;gap:20px}
-.topnav-user{font-size:13px;color:rgba(255,255,255,0.4);font-weight:600}
-.nav-home{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s;background:none;border:none;cursor:pointer}
-.nav-home:hover{color:rgba(255,255,255,0.7)}
+.topnav-user{font-size:13px;color:var(--mid);font-weight:600}
+.nav-home{font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;background:none;border:none;cursor:pointer}
+.nav-home:hover{color:var(--pink)}
 
 /* LAYOUT */
 .shell{display:flex;flex:1;min-height:0}
-.sidebar{width:256px;background:#3D2B2B;flex-shrink:0;display:flex;flex-direction:column;overflow-y:auto}
-.main{flex:1;overflow-y:auto;padding:40px;display:flex;flex-direction:column;gap:28px}
+.sidebar{width:260px;background:var(--bg);flex-shrink:0;display:flex;flex-direction:column;overflow-y:auto;border-right:2px solid var(--rose)}
+.main{flex:1;overflow-y:auto;padding:32px;display:flex;flex-direction:column;gap:24px}
 
 /* SIDEBAR */
-.sb-section{padding:20px 16px 8px;font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
-.sb-item{display:flex;align-items:center;gap:12px;padding:11px 16px;cursor:pointer;transition:all 0.15s;border-left:3px solid transparent;text-decoration:none}
-.sb-item:hover{background:rgba(255,255,255,0.05);border-left-color:rgba(200,114,106,0.4)}
-.sb-item.active{background:rgba(200,114,106,0.1);border-left-color:var(--rose)}
+.sb-section{padding:20px 16px 8px;font-size:9px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;color:var(--light)}
+.sb-item{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;transition:all 0.15s;border-left:3px solid transparent;text-decoration:none;border-radius:0 8px 8px 0}
+.sb-item:hover{background:var(--rose);border-left-color:var(--pink)}
+.sb-item.active{background:var(--rose);border-left-color:var(--pink)}
 .sb-item-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .sb-item-body{flex:1;min-width:0}
-.sb-item-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);line-height:1.3}
-.sb-item.active .sb-item-label{color:rgba(255,255,255,0.9)}
-.sb-item:hover .sb-item-label{color:rgba(255,255,255,0.75)}
-.sb-item-sub{font-size:10px;color:rgba(255,255,255,0.2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sb-progress{font-size:10px;font-weight:700;color:rgba(255,255,255,0.2);min-width:32px;text-align:right}
-.sb-item.active .sb-progress{color:var(--rose)}
-.sb-divider{height:1px;background:rgba(255,255,255,0.06);margin:8px 16px}
-.sb-footer{padding:20px 16px;margin-top:auto;border-top:1px solid rgba(255,255,255,0.06)}
-.sb-footer-text{font-size:11px;color:rgba(255,255,255,0.2);line-height:1.5}
-.sb-footer-brand{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:4px}
+.sb-item-label{font-size:12px;font-weight:700;color:var(--gray);line-height:1.3}
+.sb-item.active .sb-item-label{color:var(--black)}
+.sb-item:hover .sb-item-label{color:var(--black)}
+.sb-item-sub{font-size:10px;color:var(--light);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-progress{font-size:10px;font-weight:900;color:var(--light);min-width:32px;text-align:right}
+.sb-item.active .sb-progress{color:var(--pink)}
+.sb-divider{height:1px;background:var(--rose);margin:8px 16px}
+.sb-footer{padding:20px 16px;margin-top:auto;border-top:2px solid var(--rose)}
+.sb-footer-text{font-size:11px;color:var(--light);line-height:1.5}
+.sb-footer-brand{font-size:16px;font-weight:900;color:var(--pink);margin-bottom:4px;text-transform:uppercase;letter-spacing:-0.5px}
 
 /* DASHBOARD HEADER */
-.dash-header{background:var(--charcoal);padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.dash-headline{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,36px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:6px}
-.dash-sub{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.5}
+.dash-header{background:var(--rose);padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border-radius:12px}
+.dash-headline{font-size:clamp(28px,4vw,40px);font-weight:900;color:var(--black);line-height:1.1;margin-bottom:6px;text-transform:uppercase;letter-spacing:-1px}
+.dash-sub{font-size:14px;color:var(--mid);line-height:1.5}
 .dash-overall{text-align:right}
-.dash-overall-num{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--rose);line-height:1}
-.dash-overall-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.dash-overall-num{font-size:48px;font-weight:900;color:var(--pink);line-height:1;letter-spacing:-2px}
+.dash-overall-label{font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid)}
 
 /* PROGRESS BAR */
-.overall-bar-wrap{background:var(--card);border:1px solid var(--rule);padding:16px 24px;display:flex;align-items:center;gap:20px}
-.ob-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);white-space:nowrap}
-.ob-bar{flex:1;height:6px;background:var(--rule);overflow:hidden}
-.ob-fill{height:100%;background:linear-gradient(90deg,var(--rose-m),var(--rose));transition:width 0.6s}
-.ob-pct{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--rose);min-width:44px;text-align:right}
+.overall-bar-wrap{background:var(--bg);border:2px solid var(--rose);padding:16px 24px;display:flex;align-items:center;gap:20px;border-radius:12px}
+.ob-label{font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);white-space:nowrap}
+.ob-bar{flex:1;height:8px;background:var(--rose);overflow:hidden;border-radius:4px}
+.ob-fill{height:100%;background:var(--pink);transition:width 0.6s;border-radius:4px}
+.ob-pct{font-size:20px;font-weight:900;color:var(--pink);min-width:44px;text-align:right;letter-spacing:-1px}
 
 /* MODULE CARDS */
-.modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--rule)}
-.mod-card{background:var(--card);display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background 0.2s}
-.mod-card:hover{background:var(--rose-p)}
-.mod-card-accent-bar{height:3px;width:100%}
+.modules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.mod-card{background:var(--bg);display:flex;flex-direction:column;position:relative;overflow:hidden;border:2px solid var(--rose);transition:all 0.2s;border-radius:12px}
+.mod-card:hover{border-color:var(--pink);transform:translateY(-2px);box-shadow:0 4px 20px rgba(255,105,180,0.15)}
+.mod-card-accent{height:4px;width:100%;background:var(--pink)}
 .mod-card-inner{padding:24px;flex:1;display:flex;flex-direction:column}
-.mod-card-eyebrow{font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--light);margin-bottom:10px}
-.mod-card-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;line-height:1.2;margin-bottom:8px;color:var(--charcoal)}
-.mod-card-desc{font-size:12px;color:var(--mid);line-height:1.65;flex:1;margin-bottom:16px}
-.mod-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--rule)}
+.mod-card-eyebrow{font-size:9px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+.mod-card-title{font-size:18px;font-weight:900;text-transform:uppercase;line-height:1.2;margin-bottom:8px;color:var(--black);letter-spacing:-0.5px}
+.mod-card-desc{font-size:13px;color:var(--mid);line-height:1.6;flex:1;margin-bottom:16px}
+.mod-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--rose)}
 .mod-progress{flex:1}
-.mod-progress-bar{height:3px;background:var(--rule);overflow:hidden;margin-bottom:4px}
-.mod-progress-fill{height:100%;transition:width 0.4s;background:linear-gradient(90deg,var(--rose-m),var(--rose)) !important}
-.mod-progress-pct{font-size:10px;font-weight:700;color:var(--light)}
-.mod-btn{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:8px 16px;text-decoration:none;transition:all 0.2s;white-space:nowrap;border:none;cursor:pointer}
-.mod-btn.start{background:var(--charcoal);color:#fff}
-.mod-btn.start:hover{background:var(--rose)}
-.mod-btn.continue{background:var(--rose-p);color:var(--rose)}
-.mod-btn.continue:hover{background:var(--rose-m)}
+.mod-progress-bar{height:4px;background:var(--rose);overflow:hidden;border-radius:2px;margin-bottom:4px}
+.mod-progress-fill{height:100%;transition:width 0.4s;background:var(--pink) !important;border-radius:2px}
+.mod-progress-pct{font-size:10px;font-weight:800;color:var(--mid)}
+.mod-btn{font-size:10px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;padding:10px 16px;text-decoration:none;transition:all 0.2s;white-space:nowrap;border:none;cursor:pointer;border-radius:6px}
+.mod-btn.start{background:var(--pink);color:var(--black)}
+.mod-btn.start:hover{background:var(--pink-dark);color:#fff}
+.mod-btn.continue{background:var(--pink);color:var(--black)}
+.mod-btn.continue:hover{background:var(--pink-dark);color:#fff}
 .mod-btn.done{background:var(--green);color:#fff}
-.mod-card-status{position:absolute;top:16px;right:16px;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px}
-.status-complete{background:var(--gp);color:var(--green);border:1px solid rgba(39,174,96,0.2)}
-.status-progress{background:var(--rose-p);color:var(--rose);border:1px solid rgba(200,114,106,0.2)}
+.mod-card-status{position:absolute;top:12px;right:12px;font-size:9px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px}
+.status-complete{background:var(--green);color:#fff}
+.status-progress{background:var(--pink);color:var(--black)}
 
 /* QUICK STATS */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 @media(max-width:640px){.stats-row{grid-template-columns:1fr 1fr}}
-.stat-card{background:var(--card);padding:20px 24px}
-.stat-num{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;line-height:1;margin-bottom:4px}
-.stat-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--light)}
-.stat-card.teal .stat-num{color:var(--rose)}
-.stat-card.green .stat-num{color:var(--green)}
-.stat-card.red .stat-num{color:var(--red)}
-.stat-card.yellow .stat-num{color:var(--yellow)}
-
-/* ACTIVITY */
-.activity-feed{background:var(--card);border:1px solid var(--rule);overflow:hidden}
-.activity-feed-empty{padding:20px 24px;font-size:13px;color:var(--light);font-style:italic}
-.activity-item{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--rule)}
-.activity-item:last-child{border-bottom:none}
-.activity-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.activity-text{font-size:13px;color:var(--mid);font-weight:600;flex:1}
-.activity-time{font-size:11px;color:var(--light)}
-
-/* SECTION TITLES */
-.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
-.section-head-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--charcoal)}
-.section-head-meta{font-size:11px;color:var(--light);font-weight:600}
-
-/* RESOURCES */
-.resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule)}
-@media(max-width:640px){.resources-grid{grid-template-columns:1fr}}
-.resource-card{background:var(--card);padding:20px 24px;display:flex;align-items:center;gap:16px;text-decoration:none;transition:background 0.2s}
-.resource-card:hover{background:var(--rose-p)}
-.resource-icon{font-size:22px;flex-shrink:0}
-.resource-body{flex:1}
-.resource-title{font-size:14px;font-weight:700;color:var(--charcoal);margin-bottom:2px}
-.resource-desc{font-size:11px;color:var(--light)}
-.resource-arrow{color:var(--rose);font-size:14px}
+.stat-card{background:var(--bg);padding:24px;border:2px solid var(--rose);text-align:center;border-radius:12px}
+.stat-num{font-size:36px;font-weight:900;color:var(--pink);line-height:1;margin-bottom:4px;letter-spacing:-1px}
+.stat-label{font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid)}
 
 /* WELCOME BANNER */
-.welcome-banner{background:var(--rose-p);padding:20px 24px;border-left:3px solid var(--rose);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.wb-text{font-size:14px;color:var(--charcoal);line-height:1.6}
-.wb-text strong{color:var(--charcoal)}
-.wb-close{background:none;border:none;color:var(--light);font-size:18px;cursor:pointer;padding:4px}
-.wb-close:hover{color:var(--charcoal)}
+.welcome-banner{background:var(--pink);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-radius:12px}
+.wb-text{font-size:14px;color:var(--black);line-height:1.6;font-weight:600}
+.wb-close{background:var(--bg);border:none;color:var(--pink);font-size:14px;cursor:pointer;padding:8px 12px;font-weight:900;border-radius:6px}
+
+/* SECTION TITLES */
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px}
+.section-head-title{font-size:16px;font-weight:900;color:var(--black);text-transform:uppercase;letter-spacing:-0.5px}
+.section-head-meta{font-size:11px;color:var(--mid);font-weight:600}
+
+/* RESOURCES */
+.resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.resources-grid{grid-template-columns:1fr}}
+.resource-card{background:var(--bg);padding:20px 24px;display:flex;align-items:center;gap:16px;text-decoration:none;transition:all 0.2s;border:2px solid var(--rose);border-radius:12px}
+.resource-card:hover{border-color:var(--pink);transform:translateY(-2px);box-shadow:0 4px 20px rgba(255,105,180,0.15)}
+.resource-icon{font-size:22px;flex-shrink:0}
+.resource-body{flex:1}
+.resource-title{font-size:14px;font-weight:800;color:var(--black);margin-bottom:2px;text-transform:uppercase}
+.resource-desc{font-size:11px;color:var(--mid)}
+.resource-arrow{color:var(--pink);font-size:14px;font-weight:900}
+
+/* BONUS UNLOCK MODAL */
+.bonus-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center}
+.bonus-modal-overlay.show{display:flex}
+.bonus-modal{background:#fff;padding:40px;max-width:420px;width:90%;position:relative;border:2px solid var(--rose);border-radius:16px}
+.bm-title{font-size:24px;font-weight:900;margin-bottom:8px;color:var(--black);text-transform:uppercase;letter-spacing:-1px}
+.bm-sub{font-size:14px;color:var(--mid);margin-bottom:24px;line-height:1.6}
+.bm-input{width:100%;padding:14px;border:2px solid var(--rose);font-family:inherit;font-size:16px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;outline:none;transition:border-color 0.2s;border-radius:8px}
+.bm-input:focus{border-color:var(--pink)}
+.bm-input.error{border-color:var(--red)}
+.bm-error{font-size:12px;color:var(--red);margin-bottom:12px;display:none;font-weight:700}
+.bm-error.show{display:block}
+.bm-btn{width:100%;padding:16px;background:var(--pink);color:var(--black);border:none;font-family:inherit;font-size:12px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;border-radius:8px}
+.bm-btn:hover{background:var(--pink-dark);color:#fff}
+.bm-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--mid)}
+.bm-close:hover{color:var(--pink)}
 
 @media(max-width:768px){.sidebar{display:none}.main{padding:16px}.dash-header{padding:24px 16px}}
 @media(max-width:480px){.modules-grid{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}.main{padding:12px}}
-
-/* BONUS UNLOCK MODAL */
-.bonus-modal-overlay{display:none;position:fixed;inset:0;background:rgba(44,31,31,0.6);z-index:1000;align-items:center;justify-content:center}
-.bonus-modal-overlay.show{display:flex}
-.bonus-modal{background:#fff;padding:40px;max-width:420px;width:90%;position:relative}
-.bm-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:8px;color:var(--charcoal)}
-.bm-sub{font-size:14px;color:var(--mid);margin-bottom:24px;line-height:1.6}
-.bm-input{width:100%;padding:14px;border:1.5px solid var(--rule);font-family:inherit;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;outline:none;transition:border-color 0.2s}
-.bm-input:focus{border-color:var(--rose)}
-.bm-input.error{border-color:var(--red)}
-.bm-error{font-size:12px;color:var(--red);margin-bottom:12px;display:none}
-.bm-error.show{display:block}
-.bm-btn{width:100%;padding:16px;background:var(--charcoal);color:#fff;border:none;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s}
-.bm-btn:hover{background:var(--rose)}
-.bm-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--light)}
-.bm-close:hover{color:var(--charcoal)}
 </style>
 </head>
 <body>
 
+<!-- HERO LOGO HEADER -->
+<div class="hero-logo-header">
+  <img src="assets/logo.png" alt="MUM 180" class="hero-logo-img">
+  <div class="hero-logo-tagline"></div>
+</div>
+
 <!-- TOP NAV -->
 <nav class="topnav">
-  <a href="index.html" class="topnav-logo">Mum 180 <span>/ Portal</span></a>
+  <a href="index.html" class="topnav-logo">
+    <img src="assets/logo.png" alt="MUM 180">
+    <span>/ Portal</span>
+  </a>
   <div class="topnav-right">
     <span class="topnav-user">Anonymous</span>
-    <button onclick="signOut()" class="nav-home" style="background:none;border:none;cursor:pointer;">Sign Out</button>
-    <a href="index.html" class="nav-home">← Sales Page</a>
+    <button onclick="signOut()" class="nav-home">SIGN OUT</button>
+    <a href="index.html" class="nav-home">← SALES PAGE</a>
   </div>
 </nav>
 
@@ -171,39 +180,39 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-  <div class="sb-section">Programme</div>
+  <div class="sb-section">PROGRAMME</div>
   <a href="module-1.html" class="sb-item" id="sb-mod1">
-    <div class="sb-item-dot" style="background:var(--rose)"></div>
+    <div class="sb-item-dot" style="background:var(--pink)"></div>
     <div class="sb-item-body"><div class="sb-item-label">01 — The Lie You Were Told</div></div>
     <div class="sb-progress" id="sbp1">0%</div>
   </a>
   <a href="module-2.html" class="sb-item" id="sb-mod2">
-    <div class="sb-item-dot" style="background:var(--rose-d)"></div>
-    <div class="sb-item-body"><div class="sb-item-label">02 — Guilty &amp; Selfish</div></div>
+    <div class="sb-item-dot" style="background:var(--pink-dark)"></div>
+    <div class="sb-item-body"><div class="sb-item-label">02 — Guilty & Selfish</div></div>
     <div class="sb-progress" id="sbp2">0%</div>
   </a>
   <a href="module-3.html" class="sb-item" id="sb-mod3">
-    <div class="sb-item-dot" style="background:var(--rose)"></div>
+    <div class="sb-item-dot" style="background:var(--pink)"></div>
     <div class="sb-item-body"><div class="sb-item-label">03 — The Oxygen Mask</div></div>
     <div class="sb-progress" id="sbp3">0%</div>
   </a>
   <a href="module-4.html" class="sb-item" id="sb-mod4">
-    <div class="sb-item-dot" style="background:var(--rose-d)"></div>
+    <div class="sb-item-dot" style="background:var(--pink-dark)"></div>
     <div class="sb-item-body"><div class="sb-item-label">04 — The Trap</div></div>
     <div class="sb-progress" id="sbp4">0%</div>
   </a>
   <a href="module-5.html" class="sb-item" id="sb-mod5">
-    <div class="sb-item-dot" style="background:var(--rose)"></div>
+    <div class="sb-item-dot" style="background:var(--pink)"></div>
     <div class="sb-item-body"><div class="sb-item-label">05 — I Remember You</div></div>
     <div class="sb-progress" id="sbp5">0%</div>
   </a>
   <a href="module-6.html" class="sb-item" id="sb-mod6">
-    <div class="sb-item-dot" style="background:var(--rose-d)"></div>
+    <div class="sb-item-dot" style="background:var(--pink-dark)"></div>
     <div class="sb-item-body"><div class="sb-item-label">06 — What Now</div></div>
     <div class="sb-progress" id="sbp6">0%</div>
   </a>
   <div class="sb-divider"></div>
-  <div class="sb-section">Bonus Modules</div>
+  <div class="sb-section">BONUS MODULES</div>
   <div class="sb-item" id="sb-bonus1" style="opacity:0.4;cursor:pointer" onclick="openBonusModal(0)">
     <div class="sb-item-dot" style="background:var(--purple)"></div>
     <div class="sb-item-body"><div class="sb-item-label">🔒 Version of Self</div><div class="sb-item-sub">Unlocks after 7 days</div></div>
@@ -218,7 +227,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
   </div>
   <div class="sb-divider"></div>
   <div class="sb-footer">
-    <div class="sb-footer-brand">Mum 180</div>
+    <div class="sb-footer-brand">MUM 180</div>
     <div class="sb-footer-text">Your progress saves automatically.</div>
   </div>
 </div>
@@ -228,14 +237,14 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
   <!-- WELCOME BANNER -->
   <div class="welcome-banner" id="welcomeBanner">
-    <div class="wb-text"><strong>Welcome to Mum 180.</strong> You showed up for yourself today and that matters. Start with Module 01 and work through in order. Bonus modules unlock weekly, or enter your code to access them now.</div>
+    <div class="wb-text"><strong>WELCOME TO MUM 180.</strong> You showed up for yourself today. Start with Module 01 and work through in order.</div>
     <button class="wb-close" onclick="document.getElementById('welcomeBanner').style.display='none'">✕</button>
   </div>
 
   <!-- DASH HEADER -->
   <div class="dash-header">
     <div>
-      <div class="dash-headline">Your Programme</div>
+      <div class="dash-headline">YOUR PROGRAMME</div>
       <div class="dash-sub" id="dashGreeting">Welcome back. Keep going.</div>
     </div>
     <div class="dash-overall">
@@ -253,10 +262,10 @@ body{display:flex;flex-direction:column;min-height:100vh}
 
   <!-- STATS -->
   <div class="stats-row">
-    <div class="stat-card teal"><div class="stat-num" id="statDone">0</div><div class="stat-label">Modules<br>Complete</div></div>
-    <div class="stat-card green"><div class="stat-num" id="statDaysIn">0</div><div class="stat-label">Days<br>Active</div></div>
-    <div class="stat-card yellow"><div class="stat-num" id="statBonus">0/3</div><div class="stat-label">Bonus Modules<br>Unlocked</div></div>
-    <div class="stat-card red"><div class="stat-num" id="statRemaining">6</div><div class="stat-label">Modules<br>Remaining</div></div>
+    <div class="stat-card"><div class="stat-num" id="statDone">0</div><div class="stat-label">Modules<br>Complete</div></div>
+    <div class="stat-card"><div class="stat-num" id="statDaysIn">0</div><div class="stat-label">Days<br>Active</div></div>
+    <div class="stat-card"><div class="stat-num" id="statBonus">0/3</div><div class="stat-label">Bonus Modules<br>Unlocked</div></div>
+    <div class="stat-card"><div class="stat-num" id="statRemaining">6</div><div class="stat-label">Modules<br>Remaining</div></div>
   </div>
 
   <!-- MODULES GRID -->
@@ -268,97 +277,97 @@ body{display:flex;flex-direction:column;min-height:100vh}
     <div class="modules-grid" id="modulesGrid">
 
       <div class="mod-card" id="mc1">
-        <div class="mod-card-accent-bar" style="background:var(--rose)"></div>
+        <div class="mod-card-accent"></div>
         <div class="mod-card-inner">
-          <div class="mod-card-eyebrow">Module 01 · Foundation</div>
+          <div class="mod-card-eyebrow">MODULE 01 · FOUNDATION</div>
           <h3 class="mod-card-title">The Lie You Were Told</h3>
           <p class="mod-card-desc">You cannot be accountable FOR another human being. You can only be accountable for the commitment you made. This is where everything starts.</p>
           <div class="mod-card-footer">
             <div class="mod-progress">
-              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf1" style="width:0%;background:var(--rose)"></div></div>
+              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf1" style="width:0%"></div></div>
               <div class="mod-progress-pct" id="mp1">Not started</div>
             </div>
-            <a href="module-1.html" class="mod-btn start" id="mb1">Start →</a>
+            <a href="module-1.html" class="mod-btn start" id="mb1">START →</a>
           </div>
         </div>
       </div>
 
       <div class="mod-card" id="mc2">
-        <div class="mod-card-accent-bar" style="background:var(--rose-d)"></div>
+        <div class="mod-card-accent" style="background:var(--pink-dark)"></div>
         <div class="mod-card-inner">
-          <div class="mod-card-eyebrow">Module 02 · The Loop</div>
-          <h3 class="mod-card-title">Guilty &amp; Selfish</h3>
-          <p class="mod-card-desc">The G&amp;S loop explained. Why you feel guilty taking time for yourself — and selfish the whole time you do it. Hundreds of women. Same story.</p>
+          <div class="mod-card-eyebrow">MODULE 02 · THE LOOP</div>
+          <h3 class="mod-card-title">Guilty & Selfish</h3>
+          <p class="mod-card-desc">The G&S loop explained. Why you feel guilty taking time for yourself — and selfish the whole time you do it.</p>
           <div class="mod-card-footer">
             <div class="mod-progress">
-              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf2" style="width:0%;background:var(--rose-d)"></div></div>
+              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf2" style="width:0%;background:var(--pink-dark)"></div></div>
               <div class="mod-progress-pct" id="mp2">Not started</div>
             </div>
-            <a href="module-2.html" class="mod-btn start" id="mb2">Start →</a>
+            <a href="module-2.html" class="mod-btn start" id="mb2">START →</a>
           </div>
         </div>
       </div>
 
       <div class="mod-card" id="mc3">
-        <div class="mod-card-accent-bar" style="background:var(--rose)"></div>
+        <div class="mod-card-accent"></div>
         <div class="mod-card-inner">
-          <div class="mod-card-eyebrow">Module 03 · Permission</div>
+          <div class="mod-card-eyebrow">MODULE 03 · PERMISSION</div>
           <h3 class="mod-card-title">The Oxygen Mask</h3>
-          <p class="mod-card-desc">Putting yourself first is not selfish. It is the most responsible thing you can do. This module gives you full permission — and the logic to back it up.</p>
+          <p class="mod-card-desc">Putting yourself first is not selfish. It is the most responsible thing you can do. This module gives you full permission.</p>
           <div class="mod-card-footer">
             <div class="mod-progress">
-              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf3" style="width:0%;background:var(--rose)"></div></div>
+              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf3" style="width:0%"></div></div>
               <div class="mod-progress-pct" id="mp3">Not started</div>
             </div>
-            <a href="module-3.html" class="mod-btn start" id="mb3">Start →</a>
+            <a href="module-3.html" class="mod-btn start" id="mb3">START →</a>
           </div>
         </div>
       </div>
 
       <div class="mod-card" id="mc4">
-        <div class="mod-card-accent-bar" style="background:var(--rose-d)"></div>
+        <div class="mod-card-accent" style="background:var(--pink-dark)"></div>
         <div class="mod-card-inner">
-          <div class="mod-card-eyebrow">Module 04 · The Paradox</div>
+          <div class="mod-card-eyebrow">MODULE 04 · THE PARADOX</div>
           <h3 class="mod-card-title">The Trap You Set for Yourself</h3>
-          <p class="mod-card-desc">Towards and away thinking. Why trying NOT to be a bad mum is making you one. The paradox of primary and secondary goal setting.</p>
+          <p class="mod-card-desc">Towards and away thinking. Why trying NOT to be a bad mum is making you one.</p>
           <div class="mod-card-footer">
             <div class="mod-progress">
-              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf4" style="width:0%;background:var(--rose-d)"></div></div>
+              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf4" style="width:0%;background:var(--pink-dark)"></div></div>
               <div class="mod-progress-pct" id="mp4">Not started</div>
             </div>
-            <a href="module-4.html" class="mod-btn start" id="mb4">Start →</a>
+            <a href="module-4.html" class="mod-btn start" id="mb4">START →</a>
           </div>
         </div>
       </div>
 
       <div class="mod-card" id="mc5">
-        <div class="mod-card-accent-bar" style="background:var(--rose)"></div>
+        <div class="mod-card-accent"></div>
         <div class="mod-card-inner">
-          <div class="mod-card-eyebrow">Module 05 · The Mirror</div>
+          <div class="mod-card-eyebrow">MODULE 05 · THE MIRROR</div>
           <h3 class="mod-card-title">I Remember You</h3>
-          <p class="mod-card-desc">The mirror exercise. Michelle had everything — and she'd been gone for 19 years. Three words that stopped the room. This is the tool that brings you back.</p>
+          <p class="mod-card-desc">The mirror exercise. Michelle had everything — and she'd been gone for 19 years. Three words that stopped the room.</p>
           <div class="mod-card-footer">
             <div class="mod-progress">
-              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf5" style="width:0%;background:var(--rose)"></div></div>
+              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf5" style="width:0%"></div></div>
               <div class="mod-progress-pct" id="mp5">Not started</div>
             </div>
-            <a href="module-5.html" class="mod-btn start" id="mb5">Start →</a>
+            <a href="module-5.html" class="mod-btn start" id="mb5">START →</a>
           </div>
         </div>
       </div>
 
       <div class="mod-card" id="mc6">
-        <div class="mod-card-accent-bar" style="background:var(--rose-d)"></div>
+        <div class="mod-card-accent" style="background:var(--pink-dark)"></div>
         <div class="mod-card-inner">
-          <div class="mod-card-eyebrow">Module 06 · The Prescription</div>
+          <div class="mod-card-eyebrow">MODULE 06 · THE PRESCRIPTION</div>
           <h3 class="mod-card-title">What Now</h3>
-          <p class="mod-card-desc">Accept your current reality. Change how you think and speak about yourself. You are the person you communicate with most. Act accordingly.</p>
+          <p class="mod-card-desc">Accept your current reality. Change how you think and speak about yourself. You are the person you communicate with most.</p>
           <div class="mod-card-footer">
             <div class="mod-progress">
-              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf6" style="width:0%;background:var(--rose-d)"></div></div>
+              <div class="mod-progress-bar"><div class="mod-progress-fill" id="mf6" style="width:0%;background:var(--pink-dark)"></div></div>
               <div class="mod-progress-pct" id="mp6">Not started</div>
             </div>
-            <a href="module-6.html" class="mod-btn start" id="mb6">Start →</a>
+            <a href="module-6.html" class="mod-btn start" id="mb6">START →</a>
           </div>
         </div>
       </div>
@@ -374,50 +383,50 @@ body{display:flex;flex-direction:column;min-height:100vh}
     </div>
     <div class="modules-grid" id="bonusGrid">
 
-      <div class="mod-card" id="bc1" style="opacity:0.6;cursor:pointer" onclick="openBonusModal(0)">
-        <div class="mod-card-accent-bar" style="background:var(--purple)"></div>
+      <div class="mod-card" id="bc1" style="opacity:0.6" onclick="openBonusModal(0)">
+        <div class="mod-card-accent" style="background:var(--purple)"></div>
         <div class="mod-card-inner">
-          <div class="mod-card-eyebrow">Bonus 01 · Unlocks Day 7</div>
+          <div class="mod-card-eyebrow" style="color:var(--purple)">BONUS 01 · UNLOCKS DAY 7</div>
           <h3 class="mod-card-title">🔒 Version of Self</h3>
-          <p class="mod-card-desc">Tailored for Mum 180. A deep identity framework — who you were, who you became, and who you choose to be now. Unlocks after 7 days.</p>
+          <p class="mod-card-desc">A deep identity framework — who you were, who you became, and who you choose to be now.</p>
           <div class="mod-card-footer">
             <div class="mod-progress">
               <div class="mod-progress-bar"><div class="mod-progress-fill" id="bf1" style="width:0%;background:var(--purple)"></div></div>
-              <div class="mod-progress-pct" id="bp1" style="color:var(--purple)">🔒 Locked</div>
+              <div class="mod-progress-pct" id="bp1" style="color:var(--purple)">🔒 LOCKED</div>
             </div>
-            <span class="mod-btn" style="background:var(--purple);color:#fff;cursor:pointer" id="bb1">Enter Code</span>
+            <span class="mod-btn" style="background:var(--purple);color:#fff;cursor:pointer" id="bb1">ENTER CODE</span>
           </div>
         </div>
       </div>
 
-      <div class="mod-card" id="bc2" style="opacity:0.6;cursor:pointer" onclick="openBonusModal(1)">
-        <div class="mod-card-accent-bar" style="background:var(--green)"></div>
+      <div class="mod-card" id="bc2" style="opacity:0.6" onclick="openBonusModal(1)">
+        <div class="mod-card-accent" style="background:var(--green)"></div>
         <div class="mod-card-inner">
-          <div class="mod-card-eyebrow">Bonus 02 · Unlocks Day 14</div>
+          <div class="mod-card-eyebrow" style="color:var(--green)">BONUS 02 · UNLOCKS DAY 14</div>
           <h3 class="mod-card-title">🔒 The Stuck Framework</h3>
-          <p class="mod-card-desc">Map the exact loop keeping you stuck as a mum. Understand the threshold between where you are and where you want to be — and how to cross it.</p>
+          <p class="mod-card-desc">Map the exact loop keeping you stuck. Understand the threshold between where you are and where you want to be.</p>
           <div class="mod-card-footer">
             <div class="mod-progress">
               <div class="mod-progress-bar"><div class="mod-progress-fill" id="bf2" style="width:0%;background:var(--green)"></div></div>
-              <div class="mod-progress-pct" id="bp2" style="color:var(--green)">🔒 Locked</div>
+              <div class="mod-progress-pct" id="bp2" style="color:var(--green)">🔒 LOCKED</div>
             </div>
-            <span class="mod-btn" style="background:var(--green);color:#fff;cursor:pointer" id="bb2">Enter Code</span>
+            <span class="mod-btn" style="background:var(--green);color:#fff;cursor:pointer" id="bb2">ENTER CODE</span>
           </div>
         </div>
       </div>
 
-      <div class="mod-card" id="bc3" style="opacity:0.6;cursor:pointer" onclick="openBonusModal(2)">
-        <div class="mod-card-accent-bar" style="background:var(--yellow)"></div>
+      <div class="mod-card" id="bc3" style="opacity:0.6" onclick="openBonusModal(2)">
+        <div class="mod-card-accent" style="background:var(--yellow)"></div>
         <div class="mod-card-inner">
-          <div class="mod-card-eyebrow">Bonus 03 · Unlocks Day 21</div>
+          <div class="mod-card-eyebrow" style="color:var(--yellow)">BONUS 03 · UNLOCKS DAY 21</div>
           <h3 class="mod-card-title">🔒 Conceptual Landscape</h3>
-          <p class="mod-card-desc">20 barriers across 4 groups — Starting, Continuing, Thinking, Adapting. Identify yours precisely. The complete framework for lasting change.</p>
+          <p class="mod-card-desc">20 barriers across 4 groups — Starting, Continuing, Thinking, Adapting. Identify yours precisely.</p>
           <div class="mod-card-footer">
             <div class="mod-progress">
               <div class="mod-progress-bar"><div class="mod-progress-fill" id="bf3" style="width:0%;background:var(--yellow)"></div></div>
-              <div class="mod-progress-pct" id="bp3" style="color:var(--yellow)">🔒 Locked</div>
+              <div class="mod-progress-pct" id="bp3" style="color:var(--yellow)">🔒 LOCKED</div>
             </div>
-            <span class="mod-btn" style="background:#f5c842;color:#1C1218;cursor:pointer" id="bb3">Enter Code</span>
+            <span class="mod-btn" style="background:var(--yellow);color:var(--black);cursor:pointer" id="bb3">ENTER CODE</span>
           </div>
         </div>
       </div>
@@ -457,7 +466,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
         <div class="resource-icon">🌐</div>
         <div class="resource-body">
           <div class="resource-title">Share Mum 180</div>
-          <div class="resource-desc">Share the programme with another mum</div>
+          <div class="resource-desc">Share with another mum</div>
         </div>
         <div class="resource-arrow">→</div>
       </a>
@@ -472,11 +481,11 @@ body{display:flex;flex-direction:column;min-height:100vh}
 <div class="bonus-modal-overlay" id="bonusModal">
   <div class="bonus-modal">
     <button class="bm-close" onclick="closeBonusModal()">✕</button>
-    <div class="bm-title" id="bmTitle">Bonus Module</div>
+    <div class="bm-title" id="bmTitle">BONUS MODULE</div>
     <div class="bm-sub" id="bmSub">Enter your unlock code to access this bonus module.</div>
     <input class="bm-input" id="bmInput" type="text" placeholder="ENTER CODE" maxlength="20" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter') checkBonusCode()">
     <div class="bm-error" id="bmError">Incorrect code. Please try again.</div>
-    <button class="bm-btn" onclick="checkBonusCode()">Unlock →</button>
+    <button class="bm-btn" onclick="checkBonusCode()">UNLOCK →</button>
     <p style="font-size:11px;color:#aaa;margin-top:16px;text-align:center">This module also unlocks automatically after the required number of days.</p>
   </div>
 </div>
@@ -486,12 +495,12 @@ body{display:flex;flex-direction:column;min-height:100vh}
 // ── MUM 180 PORTAL LOGIC ────────────────────────────────────────────────────
 
 const MODULES = [
-  {key:'m180_mod1', id:1, color:'#C8726A'},
-  {key:'m180_mod2', id:2, color:'#A85B54'},
-  {key:'m180_mod3', id:3, color:'#C8726A'},
-  {key:'m180_mod4', id:4, color:'#A85B54'},
-  {key:'m180_mod5', id:5, color:'#C8726A'},
-  {key:'m180_mod6', id:6, color:'#A85B54'},
+  {key:'m180_mod1', id:1, color:'#FF69B4'},
+  {key:'m180_mod2', id:2, color:'#E91E8C'},
+  {key:'m180_mod3', id:3, color:'#FF69B4'},
+  {key:'m180_mod4', id:4, color:'#E91E8C'},
+  {key:'m180_mod5', id:5, color:'#FF69B4'},
+  {key:'m180_mod6', id:6, color:'#E91E8C'},
 ];
 
 const BONUS_UNLOCK_DAYS = [7, 14, 21];
@@ -521,7 +530,7 @@ function openBonusModal(i){
   currentBonusIndex = i;
   const names = ['Version of Self', 'The Stuck Framework', 'Conceptual Landscape'];
   const days = [7, 14, 21];
-  document.getElementById('bmTitle').textContent = names[i];
+  document.getElementById('bmTitle').textContent = names[i].toUpperCase();
   document.getElementById('bmSub').textContent = 'This bonus module unlocks automatically after ' + days[i] + ' days, or enter your unlock code below.';
   document.getElementById('bmInput').value = '';
   document.getElementById('bmError').classList.remove('show');
@@ -574,7 +583,6 @@ function getDaysActive(){
 // ── BONUS UNLOCK LOGIC ───────────────────────────────────────────────────────
 function checkBonusUnlocks(daysActive){
   let unlocked = 0;
-  // Check localStorage for code-unlocked bonuses
   const bonusUnlocks = JSON.parse(localStorage.getItem('mum180_bonus_unlocks')||'{}');
 
   BONUS_UNLOCK_DAYS.forEach((days, i) => {
@@ -588,12 +596,11 @@ function checkBonusUnlocks(daysActive){
       unlocked++;
       if(card) card.style.opacity = '1';
       if(btn){
-        btn.textContent = 'Start →';
-        btn.style.opacity = '1';
+        btn.textContent = 'START →';
         btn.style.cursor = 'pointer';
         btn.onclick = () => { window.location.href = BONUS_PAGES[i]; };
       }
-      if(pctEl) pctEl.textContent = 'Unlocked';
+      if(pctEl) pctEl.textContent = 'UNLOCKED';
       if(sbItem){
         sbItem.style.opacity = '1';
         sbItem.style.cursor = 'pointer';
@@ -603,14 +610,11 @@ function checkBonusUnlocks(daysActive){
         if(label) label.textContent = '✓ ' + BONUS_NAMES[i];
         if(sub) sub.textContent = 'Unlocked — ' + days + ' days';
       }
-      // Update card title to remove lock emoji
       const title = card ? card.querySelector('.mod-card-title') : null;
       if(title && title.textContent.startsWith('🔒 ')){
         title.textContent = title.textContent.replace('🔒 ', '');
       }
     } else {
-      // Still locked — keep openBonusModal onclick (already set in HTML)
-      // Show countdown
       const daysLeft = days - daysActive;
       if(sbItem){
         const sub = sbItem.querySelector('.sb-item-sub');
@@ -641,24 +645,24 @@ function loadDashboard(){
 
     if(pct === 0){
       if(pctEl) pctEl.textContent = 'Not started';
-      if(btn){ btn.textContent='Start →'; btn.className='mod-btn start'; }
+      if(btn){ btn.textContent='START →'; btn.className='mod-btn start'; }
     } else if(pct >= 80){
-      if(pctEl) pctEl.textContent = pct + '% — Complete';
-      if(btn){ btn.textContent='Review →'; btn.className='mod-btn done'; }
+      if(pctEl) pctEl.textContent = pct + '% — COMPLETE';
+      if(btn){ btn.textContent='REVIEW →'; btn.className='mod-btn done'; }
       if(card && !card.querySelector('.mod-card-status')){
         const badge = document.createElement('div');
         badge.className = 'mod-card-status status-complete';
-        badge.textContent = 'Complete';
+        badge.textContent = 'COMPLETE';
         card.appendChild(badge);
       }
       complete++;
     } else {
-      if(pctEl) pctEl.textContent = pct + '% — In Progress';
-      if(btn){ btn.textContent='Continue →'; btn.className='mod-btn continue'; }
+      if(pctEl) pctEl.textContent = pct + '% — IN PROGRESS';
+      if(btn){ btn.textContent='CONTINUE →'; btn.className='mod-btn continue'; }
       if(card && !card.querySelector('.mod-card-status')){
         const badge = document.createElement('div');
         badge.className = 'mod-card-status status-progress';
-        badge.textContent = 'In Progress';
+        badge.textContent = 'IN PROGRESS';
         card.appendChild(badge);
       }
     }
@@ -666,7 +670,6 @@ function loadDashboard(){
 
   const avg = Math.round(totalPct / MODULES.length);
 
-  // Overall progress
   const obFill = document.getElementById('obFill');
   const obPct = document.getElementById('obPct');
   const overallPct = document.getElementById('overallPct');
@@ -674,7 +677,6 @@ function loadDashboard(){
   if(obPct) obPct.textContent = avg + '%';
   if(overallPct) overallPct.textContent = avg + '%';
 
-  // Stats
   const daysActive = getDaysActive();
   const bonusUnlocked = checkBonusUnlocks(daysActive);
 
@@ -684,7 +686,6 @@ function loadDashboard(){
   if(el('statBonus')) el('statBonus').textContent = bonusUnlocked + '/3';
   if(el('statRemaining')) el('statRemaining').textContent = MODULES.length - complete;
 
-  // Greeting
   const greet = el('dashGreeting');
   if(greet){
     const h = new Date().getHours();
@@ -701,5 +702,6 @@ function resetProgress(){
 
 window.addEventListener('DOMContentLoaded', () => { if(checkAccess()) loadDashboard(); });
 </script>
+
 </body>
 </html>
