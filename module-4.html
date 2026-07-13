@@ -169,6 +169,13 @@ body{display:flex;flex-direction:column}
 <script>
 (function(){
   const S='mum180_access', D=30*24*60*60*1000;
+  function getUserPrefix() {
+    try {
+      const s = JSON.parse(localStorage.getItem(S)||'null');
+      if (s && s.code) return 'u_' + s.code.replace(/[^a-zA-Z0-9]/g,'_') + '_';
+    } catch(e) {}
+    return 'u_guest_';
+  }
   try{
     const s=JSON.parse(localStorage.getItem(S)||'null');
     if(!s||Date.now()-s.ts>D){localStorage.removeItem(S);window.location.replace('access.html');}
@@ -179,7 +186,7 @@ const MOD = 4;
 const KEY = 'm180_mod' + MOD;
 
 function load(){
-  const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+  const d = JSON.parse(localStorage.getItem(getUserPrefix()+KEY)||'{}');
   document.querySelectorAll('.reflect-box').forEach(el => {
     if(d[el.id]) el.value = d[el.id];
   });
@@ -192,7 +199,7 @@ function save(){
   saveTimer = setTimeout(()=>{
     const d = {};
     document.querySelectorAll('.reflect-box').forEach(el => { d[el.id] = el.value; });
-    localStorage.setItem(KEY, JSON.stringify(d));
+    localStorage.setItem(getUserPrefix()+KEY, JSON.stringify(d));
     calcProgress();
     showSaved();
   }, 500);
@@ -205,18 +212,18 @@ function showSaved(){
 }
 
 function calcProgress(){
-  const d = JSON.parse(localStorage.getItem(KEY)||'{}');
+  const d = JSON.parse(localStorage.getItem(getUserPrefix()+KEY)||'{}');
   const boxes = document.querySelectorAll('.reflect-box');
   const filled = [...boxes].filter(el => d[el.id] && d[el.id].trim().length > 10).length;
   const pct = boxes.length > 0 ? Math.min(100, Math.round((filled/boxes.length)*100)) : 0;
   // Save to portal progress object
-  const prog = JSON.parse(localStorage.getItem('m180_progress')||'{}');
+  const prog = JSON.parse(localStorage.getItem(getUserPrefix()+'m180_progress')||'{}');
   prog['mod'+MOD] = pct;
-  localStorage.setItem('m180_progress', JSON.stringify(prog));
+  localStorage.setItem(getUserPrefix()+'m180_progress', JSON.stringify(prog));
   // Also update unified module key for portal to read
-  const modData = JSON.parse(localStorage.getItem(KEY)||'{}');
+  const modData = JSON.parse(localStorage.getItem(getUserPrefix()+KEY)||'{}');
   modData.progress = pct;
-  localStorage.setItem(KEY, JSON.stringify(modData));
+  localStorage.setItem(getUserPrefix()+KEY, JSON.stringify(modData));
   document.getElementById('nav-pct').textContent = pct + '%';
   document.getElementById('nav-bar-fill').style.width = pct + '%';
   if(pct >= 80) document.getElementById('complete-banner').classList.add('show');

@@ -504,6 +504,14 @@ const BONUS_NAMES = ['Version of Self', 'The Stuck Framework', 'Conceptual Lands
 
 // ── ACCESS GATE ──────────────────────────────────────────────────────────────
 const SESSION_KEY = 'mum180_access';
+// Get user-scoped prefix — ties all progress to this buyer's unique code
+function getUserPrefix() {
+  try {
+    const s = JSON.parse(localStorage.getItem(SESSION_KEY)||'null');
+    if (s && s.code) return 'u_' + s.code.replace(/[^a-zA-Z0-9]/g,'_') + '_';
+  } catch(e) {}
+  return 'u_guest_';
+}
 const SESSION_DURATION = 30 * 24 * 60 * 60 * 1000; // 30 days
 
 function checkAccess(){
@@ -542,9 +550,9 @@ function checkBonusCode(){
   if(currentBonusIndex < 0) return;
   const valid = BONUS_CODES[currentBonusIndex].toUpperCase().replace(/\s+/g,'');
   if(input === valid){
-    const unlocks = JSON.parse(localStorage.getItem('mum180_bonus_unlocks')||'{}');
+    const unlocks = JSON.parse(localStorage.getItem(getUserPrefix()+'mum180_bonus_unlocks')||'{}');
     unlocks['bonus'+(currentBonusIndex+1)] = Date.now();
-    localStorage.setItem('mum180_bonus_unlocks', JSON.stringify(unlocks));
+    localStorage.setItem(getUserPrefix()+'mum180_bonus_unlocks', JSON.stringify(unlocks));
     closeBonusModal();
     loadDashboard();
   } else {
@@ -576,7 +584,7 @@ function getDaysActive(){
 // ── BONUS UNLOCK LOGIC ───────────────────────────────────────────────────────
 function checkBonusUnlocks(daysActive){
   let unlocked = 0;
-  const bonusUnlocks = JSON.parse(localStorage.getItem('mum180_bonus_unlocks')||'{}');
+  const bonusUnlocks = JSON.parse(localStorage.getItem(getUserPrefix()+'mum180_bonus_unlocks')||'{}');
 
   BONUS_UNLOCK_DAYS.forEach((days, i) => {
     const codeUnlocked = !!bonusUnlocks['bonus'+(i+1)];
@@ -623,7 +631,7 @@ function loadDashboard(){
   let complete = 0, totalPct = 0;
 
   MODULES.forEach(m => {
-    const data = JSON.parse(localStorage.getItem(m.key)||'{}');
+    const data = JSON.parse(localStorage.getItem(getUserPrefix()+m.key)||'{}');
     const pct = data.progress || 0;
     totalPct += pct;
 
@@ -689,7 +697,8 @@ function loadDashboard(){
 
 function resetProgress(){
   if(!confirm('Reset ALL progress? This will clear every saved response across all 6 modules. This cannot be undone.')) return;
-  MODULES.forEach(m => localStorage.removeItem(m.key));
+  MODULES.forEach(m => localStorage.removeItem(getUserPrefix()+m.key));
+  localStorage.removeItem(getUserPrefix()+'mum180_bonus_unlocks');
   loadDashboard();
 }
 
