@@ -1,0 +1,16 @@
+{
+  "name": "mum180-access-worker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker for Mum 180 access-code validation.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "seed": "node scripts/seed-codes.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.118.0"
+  }
+}

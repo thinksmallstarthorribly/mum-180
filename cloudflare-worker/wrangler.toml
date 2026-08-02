@@ -1,0 +1,13 @@
+name = "mum180-access"
+main = "src/index.js"
+compatibility_date = "2026-08-02"
+workers_dev = true
+
+# Public, non-sensitive configuration.
+[vars]
+ALLOWED_ORIGIN = "https://mum180.com"
+
+# This namespace was created for the Mum 180 access validator.
+[[kv_namespaces]]
+binding = "ACCESS_CODES"
+id = "999991ad8b6d4aab8472030346e84b58"

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mum 180 — Access</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800&family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #FF69B4;
+      --dark-pink: #E05555;
+      --light-pink: #FFF5F7;
+      --text-dark: #1a1a1a;
+      --text-light: #f0f0f0;
+      --gray: #ccc;
+      --light-gray: #eee;
+    }
+    body {
+      font-family: 'Barlow', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light-pink);
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .lock-container {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 40px;
+      max-width: 480px;
+      width: 90%;
+      margin: 20px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .lock-logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: auto;
+    }
+    .lock-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 10px;
+    }
+    .lock-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 1.1;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+    .lock-sub {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .lock-form {
+      margin-top: 20px;
+    }
+    .lock-input-wrap {
+      margin-bottom: 15px;
+    }
+    .lock-input {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: 2px solid var(--gray);
+      border-radius: 8px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+      font-family: 'Barlow', sans-serif;
+      color: var(--text-dark);
+    }
+    .lock-input:focus {
+      outline: none;
+      border-color: var(--pink);
+    }
+    .lock-input.error {
+      border-color: var(--dark-pink);
+    }
+    .lock-error {
+      color: var(--dark-pink);
+      font-size: 14px;
+      margin-top: -10px;
+      margin-bottom: 15px;
+      height: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .lock-error.show {
+      opacity: 1;
+    }
+    .lock-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background-color: var(--pink);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, opacity 0.3s ease;
+    }
+    .lock-btn:hover:not([disabled]) {
+      background-color: var(--dark-pink);
+    }
+    .lock-btn[disabled] {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    .lock-btn.loading {
+      background-color: #999;
+    }
+    .lock-purchase {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .lp-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+    .lp-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 25px;
+    }
+    .lp-actions {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+    .lp-btn {
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+    .lp-btn.primary {
+      background-color: var(--pink);
+      color: #fff;
+      border: 2px solid var(--pink);
+    }
+    .lp-btn.primary:hover {
+      background-color: var(--dark-pink);
+      border-color: var(--dark-pink);
+    }
+    .lp-btn.outline {
+      background-color: transparent;
+      color: var(--pink);
+      border: 2px solid var(--pink);
+    }
+    .lp-btn.outline:hover {
+      background-color: var(--pink);
+      color: #fff;
+    }
+    .lock-hint {
+      font-size: 14px;
+      color: #777;
+      margin-top: 25px;
+    }
+    .lock-hint a {
+      color: var(--pink);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .lock-hint a:hover {
+      text-decoration: underline;
+    }
+    .lock-footer {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #aaa;
+    }
+    @media (max-width: 600px) {
+      .lock-container {
+        padding: 30px 20px;
+      }
+      .lock-title {
+        font-size: 30px;
+      }
+      .lp-actions {
+        flex-direction: column;
+      }
+      .lp-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="lock-container">
+    <a href="index.html" class="lock-logo"><img src="assets/logo.png" alt="MUM 180"></a>
+    <div class="lock-eyebrow">Member Access</div>
+    <h1 class="lock-title">Enter Your<br>Access Code.</h1>
+    <p class="lock-sub">Check your email for your personal access code and enter it below to get into the programme.</p>
+
+    <form class="lock-form" onsubmit="event.preventDefault();checkCode()">
+      <div class="lock-input-wrap">
+        <input
+          class="lock-input"
+          id="codeInput"
+          type="password"
+          placeholder="Enter your access code…"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          onkeydown="if(event.key===\'Enter\') checkCode()"
+        >
+      </div>
+      <div class="lock-error" id="lockError">Incorrect code. Check your email for your personal access code.</div>
+      <button class="lock-btn" id="lockBtn" type="submit">Enter Programme →</button>
+    </form>
+
+    <div class="lock-purchase">
+      <div class="lp-title">Don\'t have an access code?</div>
+      <p class="lp-text">Get the full 6-module interactive programme — one-time payment, lifetime access. Includes all frameworks, diagnostics, and PDF exports.</p>
+      <div class="lp-actions">
+        <a href="index.html#pricing" class="lp-btn primary">View Pricing →</a>
+        <a href="mailto:hello@mum180.com" class="lp-btn outline">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="lock-hint">
+      Forgot your code? <a href="mailto:hello@mum180.com">Email hello@mum180.com</a>
+    </div>
+  </div>
+
+<div class="lock-footer">
+  © 2026 Mum 180. All rights reserved.
+</div>
+
+<script>
+// Replace only YOUR-SUBDOMAIN after the Cloudflare Worker has been deployed.
+const VALIDATION_ENDPOINT = 'https://mum180-access.YOUR-SUBDOMAIN.workers.dev/validate';
+const SESSION_KEY = 'mum180_access';
+const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
+const DEFAULT_ERROR_MESSAGE = 'Incorrect code. Check your email for your personal access code.';
+
+function isValidSession(){
+  try{
+    const s = JSON.parse(localStorage.getItem(SESSION_KEY)||'null');
+    if(!s) return false;
+    if(Date.now() - s.ts > SESSION_DURATION){ localStorage.removeItem(SESSION_KEY); return false; }
+    return true;
+  }catch(e){ return false; }
+}
+
+function wait(milliseconds){
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
+function showError(input, errEl, message){
+  errEl.textContent = message;
+  input.classList.add('error');
+  errEl.classList.add('show');
+  setTimeout(()=>input.classList.remove('error'), 500);
+  input.select();
+}
+
+function resetButton(btn){
+  btn.dataset.checking = '';
+  btn.disabled = false;
+  btn.textContent = 'Enter Programme →';
+  btn.classList.remove('loading');
+}
+
+async function checkCode(){
+  const btn = document.getElementById('lockBtn');
+  const input = document.getElementById('codeInput');
+  const errEl = document.getElementById('lockError');
+  const code = input.value.trim().toUpperCase().replace(/\s+/g,'');
+
+  if(!code){
+    input.classList.add('error');
+    setTimeout(()=>input.classList.remove('error'),500);
+    return;
+  }
+  if(btn.dataset.checking === 'true') return;
+
+  btn.dataset.checking = 'true';
+  btn.disabled = true;
+  btn.textContent = 'Checking…';
+  btn.classList.add('loading');
+  errEl.classList.remove('show');
+  let granted = false;
+
+  try{
+    const validationRequest = fetch(VALIDATION_ENDPOINT, {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'omit',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code })
+    });
+    const [response] = await Promise.all([validationRequest, wait(400)]);
+    const result = await response.json().catch(()=>null);
+
+    if(!response.ok){
+      throw new Error(`Validation request failed with HTTP ${response.status}`);
+    }
+    if(result?.valid !== true){
+      showError(input, errEl, DEFAULT_ERROR_MESSAGE);
+      return;
+    }
+
+    granted = true;
+    localStorage.setItem(SESSION_KEY, JSON.stringify({ts: Date.now()}));
+    btn.textContent = 'Welcome ✓ — Loading portal…';
+    setTimeout(()=>{ window.location.href = 'portal.html'; }, 600);
+  }catch(error){
+    console.error('Mum 180 access validation failed.', error);
+    showError(input, errEl, 'We couldn’t verify your code right now. Please try again.');
+  }finally{
+    if(!granted) resetButton(btn);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('codeInput').focus();
+});
+</script>
+
+</body>
+</html>
