@@ -74,6 +74,7 @@ body{display:flex;flex-direction:column;min-height:100vh}
 /* FOOTER */
 .lock-footer{padding:20px 40px;text-align:center;font-size:11px;color:var(--light);border-top:2px solid var(--rose)}
 </style>
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
@@ -124,29 +125,20 @@ body{display:flex;flex-direction:column;min-height:100vh}
 </div>
 
 <div class="lock-footer">
-  © 2026 Anonymous / . All rights reserved.
+  © 2026 Mum 180. All rights reserved.
 </div>
 
 <script>
-// Clear any stale session keys from old site
-localStorage.removeItem("lc_access");
-localStorage.removeItem("fc_access");
-localStorage.removeItem("lifecircuitry_access");
+// Session data is stored under the Mum 180 key below.
 
-// ─── ACCESS CODES ────────────────────────────────────────────────────────────
-// Add or remove codes here as needed. All codes are case-insensitive.
-// To add a new client: just add their code to this array.
-// Format: plain text strings — e.g. 'ALEX2026', 'CLIENT-ABC', etc.
 const VALID_CODES = [
   'MUM180NOW',        // Default / demo code
   'MUM180ALEX',       // Owner personal code
   'MUM180DANIELLE',   // Danielle
   'FOUNDATION',       // Foundation Pack
-  'LIFECIRCUITRY',    // Full programme
   'STARTHORRI8LY',    // Alternate
   '0770',             // Preview / review code
 ];
-// ─────────────────────────────────────────────────────────────────────────────
 
 const SESSION_KEY = 'mum180_access';
 const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days

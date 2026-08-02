@@ -1,14 +1,25 @@
 {
-  "name": "Mum 180",
-  "short_name": "Mum 180",
-  "description": "The complete turnaround for mums who've lost themselves",
-  "start_url": "./",
+  "name": "MUM 180",
+  "short_name": "MUM 180",
+  "description": "The complete turnaround for mums who've lost themselves.",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#1a1a1a",
-  "theme_color": "#d4827a",
+  "background_color": "#FFF5F7",
+  "theme_color": "#FF69B4",
   "orientation": "portrait-primary",
   "icons": [
-    {"src": "./assets/icon-192.png", "sizes": "192x192", "type": "image/png"},
-    {"src": "./assets/icon-512.png", "sizes": "512x512", "type": "image/png"}
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
